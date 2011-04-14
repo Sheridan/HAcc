@@ -12,6 +12,7 @@ namespace ui
 namespace widget
 {
 
+//! Метка с всплывающими иконками-кнопками
 class WControlLabel : public QLabel
 {
     Q_OBJECT

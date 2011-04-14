@@ -12,6 +12,10 @@ namespace ui
 namespace widget
 {
 
+//! Виджет "описания"
+/**
+  Текст+картинка в лайоуте
+*/
 class WItemDescription : public QWidget
 {
     Q_OBJECT

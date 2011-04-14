@@ -15,6 +15,7 @@ namespace tag
 namespace base
 {
 
+//! Контейнер для тегов
 class WTagContainer : public ui::widget::WAbstractScrollArea
 {
     Q_OBJECT

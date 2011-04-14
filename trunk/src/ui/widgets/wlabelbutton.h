@@ -8,6 +8,7 @@ namespace ui
 namespace widget
 {
 
+//! Метка-кнопка
 class WLabelButton : public QLabel
 {
     Q_OBJECT

@@ -8,6 +8,7 @@ namespace ui
 namespace tag
 {
 
+//! Универсальный контейнер для тегов
 template <typename TBase, typename TBases> class TTagContainer: public base::WTagContainer, public TBase
 {
 public:

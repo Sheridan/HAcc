@@ -8,6 +8,11 @@ namespace ui
 namespace widget
 {
 
+//! Стилизирующийся виджет
+/**
+  По умолчанию у объектов унаследованных от QWidget не получится
+  установить css стиль. Чтобы получилось - надо реализовать подобный интерфейс.
+*/
 class WStyledWidget : public QWidget
 {
     Q_OBJECT

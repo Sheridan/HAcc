@@ -11,7 +11,10 @@ namespace item
 namespace base
 {
 
-class WHeader : public ui::widget::WStyledWidget, public CItemLabels
+//! Заголовок грида
+class WHeader :
+        public ui::widget::WStyledWidget,
+        public CItemLabels
 {
     Q_OBJECT
 public:

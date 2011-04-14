@@ -18,11 +18,15 @@ namespace base
 
 class WContainer;
 class WBase;
-class WItem : public ui::widget::WStyledWidget, public CItemLabels
+
+//! Элемент грида
+class WItem :
+        public ui::widget::WStyledWidget,
+        public CItemLabels
 {
     Q_OBJECT
 public:
-    explicit WItem(const int &columns, const int &rows, const bool &expandingAllowed = false);
+    WItem(const int &columns, const int &rows, const bool &expandingAllowed = false);
     ~WItem();
     ui::widget::WIconButton *expandButton();
     virtual hacc::TDBID itemID() = 0;
@@ -33,13 +37,13 @@ public:
     void updateGeometry();
 
 private:
-    QGridLayout *m_layout;
+    QGridLayout             *m_layout;
     ui::widget::WIconButton *m_button;
     void mousePressEvent ( QMouseEvent * ev );
     void mouseDoubleClickEvent(QMouseEvent * ev);
     QSize m_sizeHint;
-    bool m_expandingAllowed;
-    int m_heightDelta;
+    bool  m_expandingAllowed;
+    int   m_heightDelta;
 
     ui::widget::WResizer *m_resizer;
 
@@ -56,7 +60,7 @@ protected:
     virtual void assignActions();
     void resizeEvent(QResizeEvent *e);
 
-    virtual void buildExpanderUIEvent();        // дети наследуют и при вызове создают гуй
+    virtual void buildExpanderUIEvent();        //!< Для создания гуя в дочерних классах
     bool expanded();
 
 signals:

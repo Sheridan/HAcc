@@ -14,6 +14,10 @@ namespace base
 
 class WItem;
 typedef QMap<hacc::TDBID, WItem *> TItemsMap;
+//! Контейнер грида.
+/**
+  Реализуетотображение списка элементов со скроллом.
+  */
 class WContainer : public ui::widget::WAbstractScrollArea
 {
     Q_OBJECT

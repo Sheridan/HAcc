@@ -11,7 +11,10 @@ namespace tag
 namespace base
 {
 
-class WTagLabel : public ui::widget::WLabelButton, public hacc::CIDItem
+//! Метка - тег
+class WTagLabel :
+        public ui::widget::WLabelButton,
+        public hacc::CIDItem
 {
     Q_OBJECT
 public:

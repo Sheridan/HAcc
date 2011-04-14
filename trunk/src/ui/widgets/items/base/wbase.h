@@ -14,6 +14,10 @@ namespace base
 {
 
 class WContainer;
+//! Подложка под грид
+/**
+  Реализует заголовок грида, а также тулбар для грида
+*/
 class WBase : public QWidget
 {
     Q_OBJECT
@@ -25,9 +29,9 @@ public:
     WContainer *container();
 
 protected:
-    virtual void constructControls(QToolBar *tb) = 0;
-    virtual WContainer *buidContainer() = 0;
-    virtual void constructHeader(WHeader *header) = 0;
+    virtual void constructControls(QToolBar *tb) = 0; //!< Для создания элементов тулбара
+    virtual WContainer *buidContainer() = 0;          //!< Должна вернуть контейнер грида
+    virtual void constructHeader(WHeader *header) = 0;//!< Для создания заголовка грида
 
 private:
     QVBoxLayout   *m_layout;

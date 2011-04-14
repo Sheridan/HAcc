@@ -35,7 +35,7 @@ void CItemLabels::initialize(const int &columns, const int &rows, QWidget *paren
         {
             l = new WItemLabel(m_parent);
             m_layout->addWidget(l, row, column);
-            m_labels[row*m_maxDim+column] = l;
+            m_labels[id(column, row)] = l;
         }
     }
 }
@@ -47,7 +47,7 @@ void CItemLabels::setLabels(const QStringList& strings)
     {
         for (int row=0; row<m_rows; row++)
         {
-            m_labels[row*m_maxDim+column]->setText(strings[cnt]);
+            m_labels[id(column, row)]->setText(strings[cnt]);
             cnt++;
         }
     }
@@ -62,36 +62,21 @@ int CItemLabels::labelsHeight()
         maxItemHeight = 0;
         for (int column=0; column<m_columns; column++)
         {
-             maxItemHeight = qMax(maxItemHeight, m_labels[row*m_maxDim+column]->height());
+             maxItemHeight = qMax(maxItemHeight, m_labels[id(column, row)]->height());
         }
         rowsHeight += maxItemHeight;
     }
     return rowsHeight;
 }
 
-void CItemLabels::setText(const int &column, const int &row, const QString &text)
-{
-    m_labels[row*m_maxDim+column]->setText(text);
-}
-
-void CItemLabels::setIcon(const int &column, const int &row, const QIcon &icon)
-{
-    m_labels[row*m_maxDim+column]->setIcon(icon);
-}
-
-void CItemLabels::setIcon(const int &column, const int &row, const QString &file)
-{
-    m_labels[row*m_maxDim+column]->setIcon(file);
-}
-
-void CItemLabels::setIcon(const int &column, const int &row, const hacc::TDBID &id)
-{
-    m_labels[row*m_maxDim+column]->setIcon(id);
-}
+void CItemLabels::setText(const int &column, const int &row, const QString &text)   { m_labels[id(column, row)]->setText(text); }
+void CItemLabels::setIcon(const int &column, const int &row, const QIcon   &icon)   { m_labels[id(column, row)]->setIcon(icon); }
+void CItemLabels::setIcon(const int &column, const int &row, const QString &file)   { m_labels[id(column, row)]->setIcon(file); }
+void CItemLabels::setIcon(const int &column, const int &row, const hacc::TDBID &iid) { m_labels[id(column, row)]->setIcon(iid);   }
 
 ui::widget::WControlLabel *CItemLabels::controlLabel(const int &column, const int &row)
 {
-    return m_labels[row*m_maxDim+column]->label();
+    return m_labels[id(column, row)]->label();
 }
 
 void CItemLabels::setPropertyToAll(const char *name, const QVariant &property)
@@ -108,6 +93,11 @@ void CItemLabels::setStyleSrcToAll(const QString &style)
     {
         l->setStyleSheet(style);
     }
+}
+
+int CItemLabels::id(const int &column, const int &row)
+{
+    return row*m_maxDim+column;
 }
 
 }
