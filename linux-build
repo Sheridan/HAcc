@@ -1,0 +1,9 @@
+#!/bin/bash
+
+mkdir -p ../build
+cd ../build
+rm Makefile
+echo "qmake"
+qmake ../hg/hacc.pro
+echo "make"
+make -j3 

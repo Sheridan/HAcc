@@ -1,0 +1,9 @@
+QWidget[more_ui="true"]
+{
+    border: 1px solid palette(shadow);
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 palette(light),
+                                      stop: 0.2 palette(window),
+                                      stop: 0.8 palette(window),
+                                      stop:1 palette(dark));
+}

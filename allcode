@@ -1,0 +1,11 @@
+#!/bin/bash
+
+gcc -E \
+	-I src \
+        -I src/ui \
+        -I src/ui/widgets \
+        -I src/ui/widgets/items \
+        -I src/ui/docks \
+        -I src/db \
+        -I src/model \
+$@

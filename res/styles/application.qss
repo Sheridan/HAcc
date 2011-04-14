@@ -1,0 +1,88 @@
+QWidget[alt_bg="false"] { background-color: palette(base); border: 1px solid palette(alternate-base); }
+QWidget[alt_bg="true"]  { background-color: palette(alternate-base); border: 1px solid palette(base); }
+QWidget[alt_bg="true"]:hover, QWidget[alt_bg="false"]:hover { border: 1px solid palette(shadow); }
+QAbstractScrollArea[scrollarea="true"] { background-color: palette(base); border: 1px solid palette(shadow); }
+QWidget[resizer="true"]
+{
+    background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                      stop: 0 palette(dark),
+                                      stop: 0.2 palette(window),
+                                      stop: 0.5 palette(light),
+                                      stop: 0.8 palette(window),
+                                      stop: 1 palette(dark)
+                                      );
+    border: 1px solid palette(shadow);
+    border-radius: 4px;
+}
+QWidget[resizer="true"]:hover
+{
+background-color: qlineargradient(x1:0, y1:0, x2:1, y2:0,
+                                  stop: 0 palette(light),
+                                  stop: 0.2 palette(window),
+                                  stop: 0.5 palette(dark),
+                                  stop: 0.8 palette(window),
+                                  stop: 1 palette(light)
+                                  );
+}
+QLabel[description="true"]            { background-color: palette(base); border: 1px solid palette(shadow); }
+QWidget[selector="button"]
+{
+    border: 1px inset palette(shadow);
+    background-color: palette(button);
+    border-radius: 4px;
+}
+QWidget[selector="button"]:hover
+{
+    border: 1px outset palette(shadow);
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                      stop:0 palette(light),
+                                      stop: 0.1 palette(window),
+                                      stop: 0.9 palette(window),
+                                      stop:1 palette(dark));
+
+}
+QWidget[selector="button"]:pressed
+{
+background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                  stop:0 palette(dark),
+                                  stop: 0.1 palette(window),
+                                  stop: 0.9 palette(window),
+                                  stop:1 palette(light));
+}
+QWidget[selector="button"]:focus
+{
+    border: 1px outset palette(light);
+}
+
+QWidget[selector="popup"]
+{
+    border-radius: 4px;
+    border: 1px solid palette(shadow);
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                                  stop:0 palette(light),
+                                  stop: 0.2 palette(window),
+                                  stop: 0.8 palette(window),
+                                  stop:1 palette(dark));
+}
+
+QLabel[grid_position="first"]  {                                       border-right: 1px solid palette(dark); }
+QLabel[grid_position="last"]   { border-left: 1px solid palette(dark);                                        }
+QLabel[grid_position="middle"] { border-left: 1px solid palette(dark); border-right: 1px solid palette(dark); }
+
+QWidget[header="base"]
+{
+    border: 1px solid palette(shadow);
+    background-color: palette(button);
+    margin: 1px;
+    padding: 1px;
+}
+QWidget[header="item"]
+{
+    border: 1px solid palette(shadow);
+    background-color: palette(window);
+    margin: 1px;
+    padding: 1px;
+}
+
+
+

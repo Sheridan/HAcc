@@ -1,0 +1,530 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FThingEdit</class>
+ <widget class="QDialog" name="FThingEdit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>381</width>
+    <height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Thing edit</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../res/hacc.qrc">
+    <normaloff>:/items/thing.png</normaloff>:/items/thing.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label3">
+       <property name="text">
+        <string>Icon</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <widget class="QLabel" name="label">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Name</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="ui::icons::WIconSelect" name="pwIcons" native="true">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="2">
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QLineEdit" name="leName"/>
+       </item>
+       <item>
+        <widget class="QToolButton" name="tbClearName">
+         <property name="toolTip">
+          <string>Clear name</string>
+         </property>
+         <property name="text">
+          <string>...</string>
+         </property>
+         <property name="icon">
+          <iconset resource="../../../res/hacc.qrc">
+           <normaloff>:/main/icons/edit-clear-locationbar-rtl.png</normaloff>:/main/icons/edit-clear-locationbar-rtl.png</iconset>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="2" column="0" colspan="2">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>Manufacturer</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLabel" name="label_5">
+       <property name="text">
+        <string>Enumerate</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="ui::selector::WManufacturerSelectButton" name="pwManufacturer" native="true">
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="ui::selector::WEnumeratedThingTypeButton" name="pwEnumerateType" native="true">
+       <property name="focusPolicy">
+        <enum>Qt::StrongFocus</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0" colspan="2">
+      <widget class="QCheckBox" name="cbExpiration">
+       <property name="text">
+        <string>Expiration</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2" colspan="2">
+      <widget class="QCheckBox" name="cbGuarantee">
+       <property name="text">
+        <string>Guarantee</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QSpinBox" name="sbExpDays">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QComboBox" name="cbExpCount">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Day(s)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Weeks(s)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Mounth(s)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Year(s)</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QSpinBox" name="sbGuarDays">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QComboBox" name="cbGuarCount">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <item>
+        <property name="text">
+         <string>Day(s)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Weeks(s)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Mounth(s)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Year(s)</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>Type</string>
+     </property>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="rbService">
+        <property name="text">
+         <string>Service</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbObject">
+        <property name="text">
+         <string>Object</string>
+        </property>
+        <property name="checked">
+         <bool>true</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="rbExpendable">
+        <property name="text">
+         <string>Expendable</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+   <item>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Description</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QToolButton" name="tbClearDescription">
+       <property name="toolTip">
+        <string>Clear description</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../res/hacc.qrc">
+         <normaloff>:/main/icons/edit-clear-locationbar-rtl.png</normaloff>:/main/icons/edit-clear-locationbar-rtl.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>Image</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QToolButton" name="tbClearImage">
+       <property name="toolTip">
+        <string>Clear image</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../res/hacc.qrc">
+         <normaloff>:/main/icons/edit-clear-locationbar-rtl.png</normaloff>:/main/icons/edit-clear-locationbar-rtl.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="4">
+      <widget class="QToolButton" name="tbLoadImage">
+       <property name="toolTip">
+        <string>Open image</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../res/hacc.qrc">
+         <normaloff>:/main/icons/document-open-data.png</normaloff>:/main/icons/document-open-data.png</iconset>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2" colspan="3">
+      <widget class="ui::images::WImage" name="lImage">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>128</width>
+         <height>128</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>128</width>
+         <height>128</height>
+        </size>
+       </property>
+       <property name="frameShape">
+        <enum>QFrame::StyledPanel</enum>
+       </property>
+       <property name="text">
+        <string>No image</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::PlainText</enum>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QPlainTextEdit" name="teDescription">
+       <property name="verticalScrollBarPolicy">
+        <enum>Qt::ScrollBarAsNeeded</enum>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ui::icons::WIconSelect</class>
+   <extends>QWidget</extends>
+   <header>wiconselect.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ui::images::WImage</class>
+   <extends>QLabel</extends>
+   <header>wimage.h</header>
+  </customwidget>
+  <customwidget>
+   <class>ui::selector::WEnumeratedThingTypeButton</class>
+   <extends>QWidget</extends>
+   <header>wenumeratedthingtypebutton.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ui::selector::WManufacturerSelectButton</class>
+   <extends>QWidget</extends>
+   <header>wmanufacturerselectbutton.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <tabstops>
+  <tabstop>leName</tabstop>
+  <tabstop>pwIcons</tabstop>
+  <tabstop>pwManufacturer</tabstop>
+  <tabstop>sbExpDays</tabstop>
+  <tabstop>cbExpCount</tabstop>
+  <tabstop>pwEnumerateType</tabstop>
+  <tabstop>sbGuarDays</tabstop>
+  <tabstop>cbGuarCount</tabstop>
+  <tabstop>rbService</tabstop>
+  <tabstop>rbObject</tabstop>
+  <tabstop>rbExpendable</tabstop>
+  <tabstop>teDescription</tabstop>
+  <tabstop>tbLoadImage</tabstop>
+  <tabstop>tbClearName</tabstop>
+  <tabstop>tbClearDescription</tabstop>
+  <tabstop>tbClearImage</tabstop>
+  <tabstop>buttonBox</tabstop>
+  <tabstop>cbExpiration</tabstop>
+  <tabstop>cbGuarantee</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../../../res/hacc.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>FThingEdit</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>362</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>340</x>
+     <y>358</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>FThingEdit</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>429</x>
+     <y>414</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>435</x>
+     <y>356</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tbClearName</sender>
+   <signal>clicked()</signal>
+   <receiver>leName</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>427</x>
+     <y>52</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>213</x>
+     <y>50</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tbClearDescription</sender>
+   <signal>clicked()</signal>
+   <receiver>teDescription</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>294</x>
+     <y>168</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>228</x>
+     <y>339</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cbExpiration</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cbExpCount</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>149</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>154</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cbExpiration</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sbExpDays</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>64</x>
+     <y>94</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>62</x>
+     <y>119</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cbGuarantee</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>sbGuarDays</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>271</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>271</x>
+     <y>131</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cbGuarantee</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>cbGuarCount</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>373</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>378</x>
+     <y>116</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>

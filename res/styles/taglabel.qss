@@ -1,0 +1,30 @@
+QLabel[tagAttached="true"]
+{
+    border: 1px solid palette(dark);
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                              stop:0 palette(dark),
+                              stop: 0.2 palette(window),
+                              stop: 0.8 palette(window),
+                              stop:1 palette(dark));
+    margin: 1px;
+    padding: 1px;
+}
+QLabel[tagAttached="false"]
+{
+    border: 1px solid palette(window);
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                              stop:0 palette(window),
+                              stop:1 palette(light));
+    margin: 1px;
+    padding: 1px;
+}
+QLabel[tagAttached="false"]:hover, QLabel[tagAttached="true"]:hover
+{
+    border-radius: 8px;
+    background-color: qlineargradient(x1:0, y1:0, x2:0, y2:1,
+                              stop:0 palette(highlight),
+                              stop:0.2 palette(window),
+                              stop:0.8 palette(window),
+                              stop:1 palette(highlight));
+
+}

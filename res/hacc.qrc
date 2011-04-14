@@ -1,0 +1,79 @@
+<RCC>
+    <qresource prefix="/main">
+        <file>icons/application-exit.png</file>
+        <file>icons/document-new.png</file>
+        <file>icons/document-open-data.png</file>
+        <file>icons/document-close.png</file>
+        <file alias="list-remove.png">icons/list-remove.png</file>
+        <file>icons/dialog-cancel.png</file>
+        <file>icons/dialog-ok-apply.png</file>
+        <file>icons/document-edit.png</file>
+        <file>icons/edit-clear-locationbar-rtl.png</file>
+        <file>icons/edit-copy.png</file>
+        <file alias="edit-delete.png">icons/edit-delete.png</file>
+        <file alias="list-add.png">icons/list-add.png</file>
+        <file>icons/item-empty.png</file>
+        <file alias="container-close.png">icons/container-close.png</file>
+        <file alias="container-open.png">icons/container-open.png</file>
+        <file alias="view-refresh.png">icons/view-refresh.png</file>
+        <file>icons/edit-undo.png</file>
+        <file>icons/dialog-ok.png</file>
+        <file>icons/eraser.png</file>
+        <file alias="description.png">icons/description.png</file>
+    </qresource>
+    <qresource prefix="/overlays">
+        <file alias="clock.png">icons/overlays/clock.png</file>
+        <file alias="close.png">icons/overlays/close.png</file>
+        <file alias="delete.png">icons/overlays/delete.png</file>
+        <file alias="edit.png">icons/overlays/edit.png</file>
+        <file alias="error.png">icons/overlays/error.png</file>
+        <file alias="new.png">icons/overlays/new.png</file>
+        <file alias="ok.png">icons/overlays/ok.png</file>
+        <file alias="star.png">icons/overlays/star.png</file>
+        <file alias="warning.png">icons/overlays/warnnig.png</file>
+        <file alias="tag.png">icons/overlays/tag.png</file>
+        <file alias="window-new.png">icons/overlays/window-new.png</file>
+        <file alias="local.png">icons/overlays/local.png</file>
+        <file alias="outgoing.png">icons/overlays/outgoing.png</file>
+        <file alias="incoming.png">icons/overlays/incoming.png</file>
+        <file alias="commission.png">icons/overlays/commission.png</file>
+        <file alias="write-off.png">icons/overlays/write-off.png</file>
+    </qresource>
+    <qresource prefix="/items">
+        <file alias="account.png">icons/items/account.png</file>
+        <file alias="contractor.png">icons/items/contractor.png</file>
+        <file alias="icon.png">icons/items/icon.png</file>
+        <file alias="tag.png">icons/items/tag.png</file>
+        <file alias="transaction.png">icons/items/transaction.png</file>
+        <file alias="thing.png">icons/items/thing.png</file>
+        <file alias="transaction-pool.png">icons/items/transaction-pool.png</file>
+        <file alias="contractor-self.png">icons/items/contractor-self.png</file>
+        <file alias="enumerated.png">icons/items/enumerated.png</file>
+        <file alias="manufacturer.png">icons/items/manufacturer.png</file>
+        <file alias="valuable.png">icons/items/valuable.png</file>
+        <file alias="money.png">icons/items/money.png</file>
+        <file alias="gift.png">icons/items/gift.png</file>
+        <file alias="movement.png">icons/items/movement.png</file>
+    </qresource>
+    <qresource prefix="/qss">
+        <file alias="default.qss">styles/application.qss</file>
+        <file alias="item.qss">styles/item.qss</file>
+        <file alias="taglabel.qss">styles/taglabel.qss</file>
+    </qresource>
+    <qresource prefix="/usefull">
+        <file alias="bag-1.png">icons/usefull/bag-1.png</file>
+        <file alias="card-0.png">icons/usefull/card-0.png</file>
+        <file alias="card-1.png">icons/usefull/card-1.png</file>
+        <file alias="card-2.png">icons/usefull/card-2.png</file>
+        <file alias="card-3.png">icons/usefull/card-3.png</file>
+        <file alias="coins-0.png">icons/usefull/coins-0.png</file>
+        <file alias="coins-1.png">icons/usefull/coins-1.png</file>
+        <file alias="coins-2.png">icons/usefull/coins-2.png</file>
+        <file alias="coins-3.png">icons/usefull/coins-3.png</file>
+        <file alias="money-0.png">icons/usefull/money-0.png</file>
+        <file alias="money-coin-0.png">icons/usefull/money-coin-0.png</file>
+        <file alias="contractor-0.png">icons/usefull/contractor-0.png</file>
+        <file alias="contractor-2.png">icons/usefull/contractor-2.png</file>
+        <file alias="contractor-1.png">icons/usefull/contractor-1.png</file>
+    </qresource>
+</RCC>

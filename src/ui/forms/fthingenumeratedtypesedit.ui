@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>FThingEnumeratedTypesEdit</class>
+ <widget class="QDialog" name="FThingEnumeratedTypesEdit">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>179</width>
+    <height>149</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Enumeration type edit</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../res/hacc.qrc">
+    <normaloff>:/items/enumerated.png</normaloff>:/items/enumerated.png</iconset>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLineEdit" name="leName"/>
+     </item>
+     <item>
+      <widget class="QToolButton" name="tbClearName">
+       <property name="toolTip">
+        <string>Clear name</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../res/hacc.qrc">
+         <normaloff>:/main/icons/edit-clear-locationbar-rtl.png</normaloff>:/main/icons/edit-clear-locationbar-rtl.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label">
+     <property name="text">
+      <string>Name</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QSpinBox" name="sbPrecision">
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::PlusMinus</enum>
+       </property>
+       <property name="value">
+        <number>2</number>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QToolButton" name="tbClearPrecision">
+       <property name="toolTip">
+        <string>Clear name</string>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../res/hacc.qrc">
+         <normaloff>:/main/icons/edit-clear-locationbar-rtl.png</normaloff>:/main/icons/edit-clear-locationbar-rtl.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <widget class="QLabel" name="label2">
+     <property name="text">
+      <string>Precision</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+   <item>
+    <widget class="QDialogButtonBox" name="buttonBox">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources>
+  <include location="../../../res/hacc.qrc"/>
+ </resources>
+ <connections>
+  <connection>
+   <sender>tbClearName</sender>
+   <signal>clicked()</signal>
+   <receiver>leName</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>297</x>
+     <y>63</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>242</x>
+     <y>65</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>accepted()</signal>
+   <receiver>FThingEnumeratedTypesEdit</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>243</x>
+     <y>183</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>210</x>
+     <y>228</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>buttonBox</sender>
+   <signal>rejected()</signal>
+   <receiver>FThingEnumeratedTypesEdit</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>311</x>
+     <y>179</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>278</x>
+     <y>225</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tbClearPrecision</sender>
+   <signal>clicked()</signal>
+   <receiver>sbPrecision</receiver>
+   <slot>clear()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>104</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>198</x>
+     <y>103</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
