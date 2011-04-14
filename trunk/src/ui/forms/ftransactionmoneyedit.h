@@ -41,7 +41,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FTransactionMoneyEdit *ui;
+    Ui::FTransactionMoneyEdit *m_ui;
     void init(const int &trType);
     hacc::TDBID m_basePoolID;
     hacc::TDBID m_commissionPoolID;

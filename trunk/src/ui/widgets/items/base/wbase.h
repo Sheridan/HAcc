@@ -18,7 +18,7 @@ class WBase : public QWidget
 {
     Q_OBJECT
 public:
-    explicit WBase(QWidget *parent = 0);
+    WBase(QWidget *parent = 0);
     virtual ~WBase();
     void buildUi();
     int contentHeight();

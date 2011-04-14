@@ -29,7 +29,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FTransactionGiftEdit *ui;
+    Ui::FTransactionGiftEdit *m_ui;
     void init(const int &gType);
 };
 

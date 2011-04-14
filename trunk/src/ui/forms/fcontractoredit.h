@@ -26,7 +26,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FContractorEdit *ui;
+    Ui::FContractorEdit *m_ui;
     ui::item::expanded::WExpandedAccountBase *m_accounts;
     void init();
 };

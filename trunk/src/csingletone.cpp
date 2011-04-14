@@ -14,6 +14,7 @@ CSingleTone::CSingleTone()
     init_accounts();
     init_valuables();
     init_movements();
+    init_currencyes();
     init_contractors();
     init_things();
     init_transactions();
@@ -36,6 +37,7 @@ CSingleTone::~CSingleTone()
     destroy_accounts();
     destroy_valuables();
     destroy_movements();
+    destroy_currencyes();
     destroy_contractors();
     destroy_things();
     destroy_transactions();

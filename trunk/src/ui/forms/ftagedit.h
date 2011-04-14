@@ -24,7 +24,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FTagEdit *ui;
+    Ui::FTagEdit *m_ui;
 };
 
 }

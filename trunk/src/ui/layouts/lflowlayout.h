@@ -5,9 +5,11 @@
 #include <QStyle>
 namespace ui
 {
+//!< Раскладки
 namespace layout
 {
 
+//!< "Плавающая" раскладка
 class LFlowLayout : public QLayout
 {
 public:

@@ -24,7 +24,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FAccountEdit *ui;
+    Ui::FAccountEdit *m_ui;
     void init();
 };
 

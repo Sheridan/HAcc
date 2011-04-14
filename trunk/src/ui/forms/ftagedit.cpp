@@ -12,29 +12,29 @@ HACC_STD_TRANSLATE_UI(FTagEdit, QDialog)
 
 FTagEdit::FTagEdit(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FTagEdit)
+    m_ui(new Ui::FTagEdit)
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
     setObjectName(objectName()+"_new");
 }
 
 FTagEdit::FTagEdit(const hacc::TDBID &id, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FTagEdit)
+    m_ui(new Ui::FTagEdit)
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
     setObjectName(objectName()+"_edit");
-    ui->leName->setText(HACC_TAGS->tagName(id));
+    m_ui->leName->setText(HACC_TAGS->tagName(id));
 }
 
 FTagEdit::~FTagEdit()
 {
-    delete ui;
+    delete m_ui;
 }
 
 QString FTagEdit::name()
 {
-    return ui->leName->text();
+    return m_ui->leName->text();
 }
 
 }

@@ -13,7 +13,7 @@ class WIconItem : public WIconButtonBase
 {
     Q_OBJECT
 public:
-    explicit WIconItem(const hacc::TDBID &iconId, QWidget *parent = 0);
+    WIconItem(const hacc::TDBID &iconId, QWidget *parent = 0);
     virtual ~WIconItem();
 
 private:

@@ -33,7 +33,7 @@ private slots:
     void on_tbClearLogo_clicked();
 
 private:
-    Ui::FManufacturerEdit *ui;
+    Ui::FManufacturerEdit *m_ui;
     void init();
 };
 

@@ -13,15 +13,15 @@ HACC_STD_TRANSLATE_UI(FTransactionMoneyEdit, QDialog);
 
 FTransactionMoneyEdit::FTransactionMoneyEdit(const int &trType, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FTransactionMoneyEdit)
+    m_ui(new Ui::FTransactionMoneyEdit)
 {
     init(trType);
-    ui->dtDateTime->setDateTime(QDateTime::currentDateTime());
+    m_ui->dtDateTime->setDateTime(QDateTime::currentDateTime());
 }
 
 FTransactionMoneyEdit::FTransactionMoneyEdit(const hacc::TDBID &id, const int &trType, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FTransactionMoneyEdit)
+    m_ui(new Ui::FTransactionMoneyEdit)
 {
     m_baseTransactionID = 0;
     m_commissionTransactionID = 0;
@@ -69,50 +69,50 @@ FTransactionMoneyEdit::FTransactionMoneyEdit(const hacc::TDBID &id, const int &t
 
     init(m_transactionPoolType);
     m_baseTransactionID = HACC_DB_2_DBID(q, 11);
-    ui->dtDateTime->setDateTime(HACC_DB_2_DATI(q, 0));
-    ui->leMoney->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 4)));
+    m_ui->dtDateTime->setDateTime(HACC_DB_2_DATI(q, 0));
+    m_ui->leMoney->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 4)));
     bool thisHasCommission = !q.value(5).isNull();
-    ui->gbCommission->setChecked(thisHasCommission);
+    m_ui->gbCommission->setChecked(thisHasCommission);
     if(thisHasCommission)
     {
         m_commissionTransactionID = HACC_DB_2_DBID(q, 10);
         m_commissionPoolID = HACC_DB_2_DBID(q, 3);
-        ui->leCommission->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 9)));
-        ui->cbCommisionInMoney->setChecked(HACC_DB_2_BOOL(q, 8));
-        ui->pwCommissionTo->setID(HACC_DB_2_DBID(q, 6));
-        ui->cbPercent->setChecked(HACC_DB_2_BOOL(q, 7));
+        m_ui->leCommission->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 9)));
+        m_ui->cbCommisionInMoney->setChecked(HACC_DB_2_BOOL(q, 8));
+        m_ui->pwCommissionTo->setID(HACC_DB_2_DBID(q, 6));
+        m_ui->cbPercent->setChecked(HACC_DB_2_BOOL(q, 7));
     }
-    ui->pwAccountFrom->setID(HACC_DB_2_DBID(q, 1));
-    ui->pwAccountTo->setID(HACC_DB_2_DBID(q, 2));
+    m_ui->pwAccountFrom->setID(HACC_DB_2_DBID(q, 1));
+    m_ui->pwAccountTo->setID(HACC_DB_2_DBID(q, 2));
 }
 
 FTransactionMoneyEdit::~FTransactionMoneyEdit()
 {
-    delete ui;
+    delete m_ui;
 }
 
 void FTransactionMoneyEdit::init(const int &trType)
 {
-    ui->setupUi(this);
-    ui->pwCommissionTo->setSelfFilter(hacc::model::ctAll);
+    m_ui->setupUi(this);
+    m_ui->pwCommissionTo->setSelfFilter(hacc::model::ctAll);
     switch(trType)
     {
         case HACC_TAG_ID_TRANSFER:
         {
-            ui->pwAccountFrom->setSelfFilter(hacc::model::ctSelf);
-            ui->pwAccountTo->setSelfFilter(hacc::model::ctSelf);
+            m_ui->pwAccountFrom->setSelfFilter(hacc::model::ctSelf);
+            m_ui->pwAccountTo->setSelfFilter(hacc::model::ctSelf);
         }
         break;
         case HACC_TAG_ID_INCOMING:
         {
-            ui->pwAccountFrom->setSelfFilter(hacc::model::ctOther);
-            ui->pwAccountTo->setSelfFilter(hacc::model::ctSelf);
+            m_ui->pwAccountFrom->setSelfFilter(hacc::model::ctOther);
+            m_ui->pwAccountTo->setSelfFilter(hacc::model::ctSelf);
         }
         break;
         case HACC_TAG_ID_OUTGOING:
         {
-            ui->pwAccountFrom->setSelfFilter(hacc::model::ctSelf);
-            ui->pwAccountTo->setSelfFilter(hacc::model::ctOther);
+            m_ui->pwAccountFrom->setSelfFilter(hacc::model::ctSelf);
+            m_ui->pwAccountTo->setSelfFilter(hacc::model::ctOther);
         }
         break;
     default: break;
@@ -123,47 +123,47 @@ void FTransactionMoneyEdit::init(const int &trType)
 
 hacc::TDBID FTransactionMoneyEdit::source()
 {
-    return ui->pwAccountFrom->id();
+    return m_ui->pwAccountFrom->id();
 }
 
 hacc::TDBID FTransactionMoneyEdit::destination()
 {
-    return ui->pwAccountTo->id();
+    return m_ui->pwAccountTo->id();
 }
 
 hacc::TMoney FTransactionMoneyEdit::money()
 {
-    return tools::convert::stringToMoney(ui->leMoney->text());
+    return tools::convert::stringToMoney(m_ui->leMoney->text());
 }
 
 QDateTime FTransactionMoneyEdit::datetime()
 {
-    return ui->dtDateTime->dateTime();
+    return m_ui->dtDateTime->dateTime();
 }
 
 hacc::TMoney FTransactionMoneyEdit::commission()
 {
-    return tools::convert::stringToMoney(ui->leCommission->text());
+    return tools::convert::stringToMoney(m_ui->leCommission->text());
 }
 
 bool FTransactionMoneyEdit::hasCommission()
 {
-    return ui->gbCommission->isChecked();
+    return m_ui->gbCommission->isChecked();
 }
 
 bool FTransactionMoneyEdit::commissionInPercents()
 {
-    return ui->cbPercent->isChecked();
+    return m_ui->cbPercent->isChecked();
 }
 
 bool FTransactionMoneyEdit::commissionAlreadyInMoney()
 {
-    return ui->cbCommisionInMoney->isChecked();
+    return m_ui->cbCommisionInMoney->isChecked();
 }
 
 hacc::TDBID FTransactionMoneyEdit::commissionTo()
 {
-    return ui->pwCommissionTo->id();
+    return m_ui->pwCommissionTo->id();
 }
 
 hacc::TDBID FTransactionMoneyEdit::basePoolID()

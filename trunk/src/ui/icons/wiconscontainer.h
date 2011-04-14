@@ -16,7 +16,7 @@ class WIconsContainer : public ui::widget::WAbstractScrollArea
 {
     Q_OBJECT
 public:
-    explicit WIconsContainer(QWidget *parent = 0);
+    WIconsContainer(QWidget *parent = 0);
     virtual ~WIconsContainer();
 
 private:

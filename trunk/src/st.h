@@ -18,6 +18,7 @@
 #define HACC_ACCOUNTS               HACC_ST(accounts)              //!< Счета
 #define HACC_VALUABLES              HACC_ST(valuables)             //!< Основные средства
 #define HACC_MOVEMENTS              HACC_ST(movements)             //!< Движение средств
+#define HACC_CURRENCYES             HACC_ST(currencyes)            //!< Валюта
 #define HACC_CONTRACTORS            HACC_ST(contractors)           //!< Контрагенты
 #define HACC_TRANSACTIONS           HACC_ST(transactions)          //!< Транзакции
 #define HACC_MANUFACTURERS          HACC_ST(manufacturers)         //!< Производители

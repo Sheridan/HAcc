@@ -26,7 +26,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FTransactionSellThingEdit *ui;
+    Ui::FTransactionSellThingEdit *m_ui;
     void init();
 };
 

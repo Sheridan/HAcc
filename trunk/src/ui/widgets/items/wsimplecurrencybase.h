@@ -1,7 +1,8 @@
-#ifndef WTAGBASE_Hs
-#define WTAGBASE_Hs
+#ifndef WSIMPLECURRENCYBASE_H
+#define WSIMPLECURRENCYBASE_H
+
 #include "wbase.h"
-#include "wsimpletagcontainer.h"
+#include "wsimplecurrencycontainer.h"
 
 namespace ui
 {
@@ -10,13 +11,13 @@ namespace item
 namespace simple
 {
 
-class WSimpleTagBase :
+class WSimpleCurrencyBase :
         public ui::item::base::WBase
 {
     Q_OBJECT
 public:
-    WSimpleTagBase(QWidget *parent = 0);
-    ~WSimpleTagBase();
+    WSimpleCurrencyBase(QWidget *parent = 0);
+    ~WSimpleCurrencyBase();
 private:
     void constructControls(QToolBar *tb);
     ui::item::base::WContainer *buidContainer();
@@ -27,4 +28,4 @@ private:
 }
 }
 }
-#endif // WTAGBASE_Hs
+#endif // WSIMPLECURRENCYBASE_H

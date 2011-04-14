@@ -9,6 +9,7 @@
 #include "cdbiconscache.h"
 #include "caccounts.h"
 #include "cvaluables.h"
+#include "ccurrencyes.h"
 #include "cthings.h"
 #include "ccontractors.h"
 #include "cmovements.h"
@@ -62,6 +63,7 @@ class CSingleTone
     HACC_SIMPLE_ST(hacc::model::CAccounts            , accounts);
     HACC_SIMPLE_ST(hacc::model::CValuables           , valuables);
     HACC_SIMPLE_ST(hacc::model::CMovements           , movements);
+    HACC_SIMPLE_ST(hacc::model::CCurrencyes          , currencyes);
     HACC_SIMPLE_ST(hacc::model::CContractors         , contractors);
     HACC_SIMPLE_ST(hacc::model::CTransactions        , transactions);
     HACC_SIMPLE_ST(hacc::model::CManufacturers       , manufacturers);

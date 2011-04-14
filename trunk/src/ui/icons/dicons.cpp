@@ -10,24 +10,24 @@ namespace icons
 {
 HACC_STD_TRANSLATE_UI(DIcons, QDialog)
 
-DIcons::DIcons(QWidget *parent) : QDialog(parent), ui(new Ui::DIcons)
+DIcons::DIcons(QWidget *parent) : QDialog(parent), m_ui(new Ui::DIcons)
 {
     selectedId = 0;
-    ui->setupUi(this);
-    ui->tbAdd->setIcon(HACC_ICONS->icon(tools::icons::iIcon, tools::icons::oNew));
-    connect(ui->tbRefresh       , SIGNAL(clicked())            , ui->pwIconsContainer, SLOT(refresh())            );
-    connect(HACC_DB_ICONS       , SIGNAL(updated())            , ui->pwIconsContainer, SLOT(refresh())            );
-    connect(ui->tbAdd           , SIGNAL(clicked())            , this                , SLOT(add())                );
-    connect(ui->pwIconsContainer, SIGNAL(selected(hacc::TDBID)), this                , SLOT(selected(hacc::TDBID)));
-    connect(ui->tbClearUnused   , SIGNAL(clicked())            , HACC_DB_ICONS       , SLOT(removeUnused())       );
-    ui->pwIconsContainer->refresh();
+    m_ui->setupUi(this);
+    m_ui->tbAdd->setIcon(HACC_ICONS->icon(tools::icons::iIcon, tools::icons::oNew));
+    connect(m_ui->tbRefresh       , SIGNAL(clicked())            , m_ui->pwIconsContainer, SLOT(refresh())            );
+    connect(HACC_DB_ICONS       , SIGNAL(updated())            , m_ui->pwIconsContainer, SLOT(refresh())            );
+    connect(m_ui->tbAdd           , SIGNAL(clicked())            , this                , SLOT(add())                );
+    connect(m_ui->pwIconsContainer, SIGNAL(selected(hacc::TDBID)), this                , SLOT(selected(hacc::TDBID)));
+    connect(m_ui->tbClearUnused   , SIGNAL(clicked())            , HACC_DB_ICONS       , SLOT(removeUnused())       );
+    m_ui->pwIconsContainer->refresh();
     HACC_RESTORE_DIALOG;
 }
 
 DIcons::~DIcons()
 {
     HACC_SAVE_DIALOG;
-    delete ui;
+    delete m_ui;
 }
 
 void DIcons::add()
@@ -40,7 +40,7 @@ void DIcons::add()
         {
             if(QFile::exists(fileName)) { HACC_DB_ICONS->add(fileName); }
         }
-        ui->pwIconsContainer->refresh();
+        m_ui->pwIconsContainer->refresh();
     }
 }
 

@@ -12,8 +12,8 @@ class WImage : public QLabel
 {
     Q_OBJECT
 public:
-    explicit WImage(QWidget *parent = 0);
-    explicit WImage(int side, QWidget *parent = 0);
+    WImage(QWidget *parent = 0);
+    WImage(int side, QWidget *parent = 0);
     ~WImage();
     void setEmptyText(const QString &text);
     void resize(int side);

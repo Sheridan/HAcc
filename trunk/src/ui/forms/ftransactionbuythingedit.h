@@ -31,7 +31,7 @@ private slots:
     void validateData();
 
 private:
-    Ui::FTransactionBuyThingEdit *ui;
+    Ui::FTransactionBuyThingEdit *m_ui;
     void init();
     int m_minimumAmount;
 };

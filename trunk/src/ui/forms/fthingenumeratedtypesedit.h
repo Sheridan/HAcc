@@ -24,7 +24,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FThingEnumeratedTypesEdit *ui;
+    Ui::FThingEnumeratedTypesEdit *m_ui;
     void init();
 };
 

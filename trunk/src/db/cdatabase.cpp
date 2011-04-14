@@ -289,14 +289,21 @@ hacc::TIDList CDatabase::listID(const QString &table, const QString &where, cons
   */
 void CDatabase::createDatabase()
 {
+//######################################################################################################
+//## Счета контрагентов
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(accounts)
             HACC_DB_ID_FIELD                                           HACC_DB_FIELD_DELIMITER
             HACC_DB_NAME_FIELD                                         HACC_DB_FIELD_DELIMITER
             HACC_DB_ICON_FIELD                                         HACC_DB_FIELD_DELIMITER
+            HACC_DB_CURRENCY_FIELD                                     HACC_DB_FIELD_DELIMITER
             HACC_DB_ID(contractor_id)
     HACC_DB_CREATE_TABLE_END;
     HACC_DB_CREATE_INDEX(accounts, contractor_id);
 
+//######################################################################################################
+//## Контрагенты
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(contractors)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_UNIQUE_NAME_FIELD                                   HACC_DB_FIELD_DELIMITER
@@ -306,6 +313,9 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_INDEX(contractors, own_account);
     HACC_DB_CREATE_UNIQNAME_ID_INDEX(contractors);
 
+//######################################################################################################
+//## Производители
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(manufacturers)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_UNIQUE_NAME_FIELD                                   HACC_DB_FIELD_DELIMITER
@@ -314,6 +324,9 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_TABLE_END;
     HACC_DB_CREATE_UNIQNAME_ID_INDEX(manufacturers);
 
+//######################################################################################################
+//## Вещи (Объекты, услуги, расходники...)
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(things)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_NAME_FIELD                                          HACC_DB_FIELD_DELIMITER
@@ -327,6 +340,9 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_INDEX(things, manufacturer_id);
     HACC_DB_CREATE_INDEX(things, enumerated_type_id);
 
+//######################################################################################################
+//## перечисляемые типы вещей
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(thing_enumerated_types)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_UNIQUE_NAME_FIELD                                   HACC_DB_FIELD_DELIMITER
@@ -334,6 +350,9 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_TABLE_END;
     HACC_DB_CREATE_UNIQNAME_ID_INDEX(thing_enumerated_types);
 
+//######################################################################################################
+//## Ценности, основные средства
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(valuables)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_ID(transaction_id)                                  HACC_DB_FIELD_DELIMITER // транзакция, которой купили вещь
@@ -346,17 +365,26 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_INDEX(valuables, owner_id);
     HACC_DB_CREATE_INDEX(valuables, recipient_id);
 
+//######################################################################################################
+//## Теги
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(tags)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_UNIQUE_NAME_FIELD
     HACC_DB_CREATE_TABLE_END;
     HACC_DB_CREATE_UNIQNAME_ID_INDEX(tags);
 
+//######################################################################################################
+//## Иконки для сущностей
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(icons)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_BLOB(icon) HACC_DB_FIELD_NOT_NULL
     HACC_DB_CREATE_TABLE_END;
 
+//######################################################################################################
+//## Пулы транзакций
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(transactions_pool)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_DATETIME(date_time) HACC_DB_FIELD_NOT_NULL          HACC_DB_FIELD_DELIMITER
@@ -366,6 +394,10 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_INDEX(transactions_pool, source_account_id);
     HACC_DB_CREATE_INDEX(transactions_pool, destination_account_id);
 
+//######################################################################################################
+//## Транзакции
+//######################################################################################################
+//############ Основные записи транзакции #######################
     HACC_DB_CREATE_TABLE_BEGIN(transactions)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER // transactions_things.id или tratransactions_commisions.id
             HACC_DB_ID(pool_id)                                         HACC_DB_FIELD_DELIMITER
@@ -374,25 +406,25 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_INDEX(transactions, pool_id);
     HACC_DB_CREATE_INDEX_2(transactions, id, pool_id);
 
-    // вещь, купленая или принятая в дар транзакцией
+//############ Входящие вещевые записи транзакции #######################
     HACC_DB_CREATE_TABLE_BEGIN(transactions_things)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
-            HACC_DB_ID(thing_id)                                        HACC_DB_FIELD_DELIMITER
+            HACC_DB_ID(thing_id)                                        HACC_DB_FIELD_DELIMITER // вещь, купленая или принятая в дар транзакцией
             HACC_DB_REAL(amount) HACC_DB_FIELD_DEFAULT(0)
     HACC_DB_CREATE_TABLE_END;
     HACC_DB_CREATE_INDEX(transactions_things, thing_id);
     HACC_DB_CREATE_INDEX_2(transactions_things, id, thing_id);
 
-    // Ценность, проданная или подаренная
+//############ Исходящие вещевые записи транзакции #######################
     HACC_DB_CREATE_TABLE_BEGIN(transactions_valuables)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
-            HACC_DB_ID(valuable_id)
+            HACC_DB_ID(valuable_id)                                                             // Ценность, проданная или подаренная
     HACC_DB_CREATE_TABLE_END;
     HACC_DB_CREATE_INDEX(transactions_valuables, id);
     HACC_DB_CREATE_INDEX(transactions_valuables, valuable_id);
     HACC_DB_CREATE_INDEX_2(transactions_valuables, id, valuable_id);
 
-    // Коммиссия к транзакции
+//############ Коммиссия к транзакции #######################
     HACC_DB_CREATE_TABLE_BEGIN(transactions_commisions)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_ID(base_pool_id)                                    HACC_DB_FIELD_DELIMITER // pool id
@@ -406,6 +438,9 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_INDEX_2(transactions_commisions, id, base_pool_id);
     HACC_DB_CREATE_INDEX_2(transactions_commisions, id, commission_to_id);
 
+//######################################################################################################
+//## Перемещения вещей
+//######################################################################################################
     HACC_DB_CREATE_TABLE_BEGIN(movements)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
             HACC_DB_DATETIME(date_time) HACC_DB_FIELD_NOT_NULL          HACC_DB_FIELD_DELIMITER
@@ -420,6 +455,16 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_INDEX_2(movements, id, source_contractor_id);
     HACC_DB_CREATE_INDEX_2(movements, id, destination_contractor_id);
 
+//######################################################################################################
+//## Валюты
+//######################################################################################################
+    HACC_DB_CREATE_TABLE_BEGIN(currencyes)
+            HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER
+            HACC_DB_UNIQUE_NAME_FIELD                                   HACC_DB_FIELD_DELIMITER
+            HACC_DB_TEXT(reduction)                                     HACC_DB_FIELD_DELIMITER
+            HACC_DB_BOOL(show_reduction_before_value)
+    HACC_DB_CREATE_TABLE_END;
+    HACC_DB_CREATE_UNIQNAME_ID_INDEX(currencyes);
 
     exec("create table db_options (name text not null primary key, value text not null);");
 
@@ -447,20 +492,21 @@ void CDatabase::createDatabase()
     HACC_DB_ICONS->add(":/items/money.png"           ); // id: 13
     HACC_DB_ICONS->add(":/items/gift.png"            ); // id: 14
     HACC_DB_ICONS->add(":/items/movement.png"        ); // id: 15
-    HACC_DB_ICONS->add(":/usefull/bag-1.png"         ); // id: 16
-    HACC_DB_ICONS->add(":/usefull/card-0.png"        ); // id: 17
-    HACC_DB_ICONS->add(":/usefull/card-1.png"        ); // id: 18
-    HACC_DB_ICONS->add(":/usefull/card-2.png"        ); // id: 19
-    HACC_DB_ICONS->add(":/usefull/card-3.png"        ); // id: 20
-    HACC_DB_ICONS->add(":/usefull/coins-0.png"       ); // id: 21
-    HACC_DB_ICONS->add(":/usefull/coins-1.png"       ); // id: 22
-    HACC_DB_ICONS->add(":/usefull/coins-2.png"       ); // id: 23
-    HACC_DB_ICONS->add(":/usefull/coins-3.png"       ); // id: 24
-    HACC_DB_ICONS->add(":/usefull/money-0.png"       ); // id: 25
-    HACC_DB_ICONS->add(":/usefull/money-coin-0.png"  ); // id: 26
-    HACC_DB_ICONS->add(":/usefull/contractor-0.png"  ); // id: 27
-    HACC_DB_ICONS->add(":/usefull/contractor-1.png"  ); // id: 28
-    HACC_DB_ICONS->add(":/usefull/contractor-2.png"  ); // id: 29
+    HACC_DB_ICONS->add(":/items/currency.png"        ); // id: 16
+    HACC_DB_ICONS->add(":/usefull/bag-1.png"         ); // id: 17
+    HACC_DB_ICONS->add(":/usefull/card-0.png"        ); // id: 18
+    HACC_DB_ICONS->add(":/usefull/card-1.png"        ); // id: 19
+    HACC_DB_ICONS->add(":/usefull/card-2.png"        ); // id: 20
+    HACC_DB_ICONS->add(":/usefull/card-3.png"        ); // id: 21
+    HACC_DB_ICONS->add(":/usefull/coins-0.png"       ); // id: 22
+    HACC_DB_ICONS->add(":/usefull/coins-1.png"       ); // id: 23
+    HACC_DB_ICONS->add(":/usefull/coins-2.png"       ); // id: 24
+    HACC_DB_ICONS->add(":/usefull/coins-3.png"       ); // id: 25
+    HACC_DB_ICONS->add(":/usefull/money-0.png"       ); // id: 26
+    HACC_DB_ICONS->add(":/usefull/money-coin-0.png"  ); // id: 27
+    HACC_DB_ICONS->add(":/usefull/contractor-0.png"  ); // id: 28
+    HACC_DB_ICONS->add(":/usefull/contractor-1.png"  ); // id: 29
+    HACC_DB_ICONS->add(":/usefull/contractor-2.png"  ); // id: 30
 
     // predeclared tags
     int i=0;
@@ -498,6 +544,10 @@ void CDatabase::createDatabase()
     exec("insert into thing_enumerated_types (id,name,precision) values (19,?,0)", QVariantList() << tr("byte(s)"));
     exec("insert into thing_enumerated_types (id,name,precision) values (11,?,0)", QVariantList() << tr("count"));
 
+    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (1,?,?,?)", QVariantList() << tr("American dollar") << "$"  << true );
+    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (2,?,?,?)", QVariantList() << tr("Euro")            << "€"  << false);
+    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (3,?,?,?)", QVariantList() << tr("Russian ruble")   << "р." << false);
+
     int contractorID, accountID, manufacturerID, thingID; contractorID = accountID = manufacturerID = thingID = 0;
     HDB_APPEND_MANUFACTURER_FULL(tr("Unknown manufacturer"), tr("Some unknown manufacturer"), 11);
     HDB_APPEND_THING(tr("Unknown thing"), 7, 1, HACC_TAG_ID_OBJECT);
@@ -509,30 +559,30 @@ void CDatabase::createDatabase()
     // собственный акк
     HDB_APPEND_CONTRACTOR(tr("Family"), 9, true);
     HDB_APPEND_ACCOUNT(tr("Cash money")        , 13);
-    HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 18);
-    HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 20);
+    HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19);
+    HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21);
 
     exec("insert into db_options (name, value) values (?,?)", QVariantList() << "database version" << HACC_DATABASE_VERSION);
 
     #ifdef HACC_DEBUG_DB
         contractorID = accountID = manufacturerID = thingID = 100;
 
-        HDB_APPEND_CONTRACTOR(tr("Wife"), 29, true);
+        HDB_APPEND_CONTRACTOR(tr("Wife"), 30, true);
         HDB_APPEND_ACCOUNT(tr("Money"), 13);
-        HDB_APPEND_ACCOUNT(tr("Card") , 17);
-        HDB_APPEND_ACCOUNT(tr("Nest") , 16);
+        HDB_APPEND_ACCOUNT(tr("Card") , 18);
+        HDB_APPEND_ACCOUNT(tr("Nest") , 17);
 
-        HDB_APPEND_CONTRACTOR(tr("Vistotch"), 28, false);
-        HDB_APPEND_ACCOUNT(tr("Base account"), 23);
+        HDB_APPEND_CONTRACTOR(tr("Vistotch"), 29, false);
+        HDB_APPEND_ACCOUNT(tr("Base account"), 24);
 
         HDB_APPEND_CONTRACTOR(tr("Sigma"), 3, false);
-        HDB_APPEND_ACCOUNT(tr("Account"), 22);
+        HDB_APPEND_ACCOUNT(tr("Account"), 23);
 
-        HDB_APPEND_CONTRACTOR(tr("Consultant+"), 28, false);
-        HDB_APPEND_ACCOUNT(tr("Account"), 25);
+        HDB_APPEND_CONTRACTOR(tr("Consultant+"), 29, false);
+        HDB_APPEND_ACCOUNT(tr("Account"), 24);
 
-        HDB_APPEND_CONTRACTOR(tr("OPT-Torg"), 29, false);
-        HDB_APPEND_ACCOUNT(tr("Account"), 25);
+        HDB_APPEND_CONTRACTOR(tr("OPT-Torg"), 30, false);
+        HDB_APPEND_ACCOUNT(tr("Account"), 26);
 
         HDB_APPEND_MANUFACTURER(tr("Ural Metall"), 11);
         HDB_APPEND_THING(tr("Hammer"), 11, 2, HACC_TAG_ID_OBJECT    );

@@ -11,10 +11,10 @@
     int days = _value; \
     if(days) \
     { \
-        ui->_checkBox->setChecked(true); \
+        m_ui->_checkBox->setChecked(true); \
         tools::date::STimePeriod period = tools::date::daysTo(days); \
-        ui->_comboBox->setCurrentIndex(period.period); \
-        ui->_spinBox->setValue(period.days); \
+        m_ui->_comboBox->setCurrentIndex(period.period); \
+        m_ui->_spinBox->setValue(period.days); \
     } \
 }
 
@@ -25,16 +25,16 @@ namespace form
 
 HACC_STD_TRANSLATE_UI(FThingEdit, QDialog)
 
-FThingEdit::FThingEdit(QWidget *parent) : QDialog(parent), ui(new Ui::FThingEdit)
+FThingEdit::FThingEdit(QWidget *parent) : QDialog(parent), m_ui(new Ui::FThingEdit)
 {
     init();
     setObjectName(objectName()+"_new");
-    ui->lImage->clear();
-    ui->pwIcons->setID(7);
+    m_ui->lImage->clear();
+    m_ui->pwIcons->setID(7);
     HACC_RESTORE_DIALOG;
 }
 
-FThingEdit::FThingEdit(const hacc::TDBID &id, QWidget *parent) : QDialog(parent), ui(new Ui::FThingEdit)
+FThingEdit::FThingEdit(const hacc::TDBID &id, QWidget *parent) : QDialog(parent), m_ui(new Ui::FThingEdit)
 {
     init();
     setObjectName(objectName()+"_edit");
@@ -51,107 +51,107 @@ FThingEdit::FThingEdit(const hacc::TDBID &id, QWidget *parent) : QDialog(parent)
                                  QVariantList() << id);
     if(q.next())
     {
-        ui->leName ->setText(HACC_DB_2_STRG(q, 0));
-        ui->pwIcons->setID(HACC_DB_2_DBID(q, 2));
-        ui->teDescription->appendPlainText(HACC_DB_2_STRG(q, 1));
-        ui->lImage->setPixmap(ui::images::byteArray2Pixmap(q.value(3).toByteArray()), 128);
-        ui->pwEnumerateType->setID(HACC_DB_2_DBID(q, 4));
-        ui->pwManufacturer ->setID(HACC_DB_2_DBID(q, 5));
+        m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
+        m_ui->pwIcons->setID(HACC_DB_2_DBID(q, 2));
+        m_ui->teDescription->appendPlainText(HACC_DB_2_STRG(q, 1));
+        m_ui->lImage->setPixmap(ui::images::byteArray2Pixmap(q.value(3).toByteArray()), 128);
+        m_ui->pwEnumerateType->setID(HACC_DB_2_DBID(q, 4));
+        m_ui->pwManufacturer ->setID(HACC_DB_2_DBID(q, 5));
         HACC_PERIOD_ASSIGN(HACC_DB_2_PERD(q ,6), cbExpiration, cbExpCount, sbExpDays);
         HACC_PERIOD_ASSIGN(HACC_DB_2_PERD(q, 7), cbGuarantee, cbGuarCount, sbGuarDays);
-        ui->rbService   ->setChecked(HACC_THINGS->tagAttached(HACC_TAG_ID_SERVICE   , id));
-        ui->rbObject    ->setChecked(HACC_THINGS->tagAttached(HACC_TAG_ID_OBJECT    , id));
-        ui->rbExpendable->setChecked(HACC_THINGS->tagAttached(HACC_TAG_ID_EXPENDABLE, id));
+        m_ui->rbService   ->setChecked(HACC_THINGS->tagAttached(HACC_TAG_ID_SERVICE   , id));
+        m_ui->rbObject    ->setChecked(HACC_THINGS->tagAttached(HACC_TAG_ID_OBJECT    , id));
+        m_ui->rbExpendable->setChecked(HACC_THINGS->tagAttached(HACC_TAG_ID_EXPENDABLE, id));
     }
     HACC_RESTORE_DIALOG;
 }
 
 void FThingEdit::init()
 {
-    ui->setupUi(this);
-    ui->lImage->setEmptyText(tr("No image"));
-    ui->pwEnumerateType->init();
-    ui->pwManufacturer->init();
+    m_ui->setupUi(this);
+    m_ui->lImage->setEmptyText(tr("No image"));
+    m_ui->pwEnumerateType->init();
+    m_ui->pwManufacturer->init();
 }
 
 FThingEdit::~FThingEdit()
 {
     HACC_SAVE_DIALOG;
-    delete ui;
+    delete m_ui;
 }
 
 void FThingEdit::on_tbLoadImage_clicked()
 {
-    ui->lImage->clear();
+    m_ui->lImage->clear();
     tools::dialog::SFileDialogResult dlgResult =
             tools::dialog::CFileDialogs::getOpenImage(tr("Open image"));
     if(dlgResult.dialogOk && !dlgResult.fileNames[0].isEmpty())
     {
         QPixmap *pm = new QPixmap(dlgResult.fileNames[0]);
-        ui->lImage->setPixmap(pm->scaled(QSize(128,128), Qt::KeepAspectRatio, Qt::SmoothTransformation), 128);
+        m_ui->lImage->setPixmap(pm->scaled(QSize(128,128), Qt::KeepAspectRatio, Qt::SmoothTransformation), 128);
         delete pm;
     }
 }
 
 void FThingEdit::on_tbClearImage_clicked()
 {
-    ui->lImage->clear();
+    m_ui->lImage->clear();
 }
 
 QString FThingEdit::name()
 {
-    return ui->leName->text();
+    return m_ui->leName->text();
 }
 
 QString FThingEdit::description()
 {
-    return ui->teDescription->toPlainText();
+    return m_ui->teDescription->toPlainText();
 }
 
 hacc::TDBID FThingEdit::iconId()
 {
-    return ui->pwIcons->id();
+    return m_ui->pwIcons->id();
 }
 
 hacc::TDBID FThingEdit::enumeratedTypeThingId()
 {
-    return ui->pwEnumerateType->id();
+    return m_ui->pwEnumerateType->id();
 }
 
 hacc::TDBID FThingEdit::manufacturerId()
 {
-    return ui->pwManufacturer->id();
+    return m_ui->pwManufacturer->id();
 }
 
 QByteArray FThingEdit::pixmapData()
 {
-    return ui::images::pixmap2ByteArray(ui->lImage->pixmap());
+    return ui::images::pixmap2ByteArray(m_ui->lImage->pixmap());
 }
 
 bool FThingEdit::hasImage()
 {
-    return !ui->lImage->empty();
+    return !m_ui->lImage->empty();
 }
 
 int FThingEdit::expiration()
 {
-    return ui->cbExpiration->checkState() == Qt::Checked ?
-                tools::date::daysFrom(ui->sbExpDays->value(), ui->cbExpCount->currentIndex()) :
+    return m_ui->cbExpiration->checkState() == Qt::Checked ?
+                tools::date::daysFrom(m_ui->sbExpDays->value(), m_ui->cbExpCount->currentIndex()) :
                 0;
 }
 
 int FThingEdit::guarantee()
 {
-    return ui->cbGuarantee->checkState() == Qt::Checked ?
-                tools::date::daysFrom(ui->sbGuarDays->value(), ui->cbGuarCount->currentIndex()) :
+    return m_ui->cbGuarantee->checkState() == Qt::Checked ?
+                tools::date::daysFrom(m_ui->sbGuarDays->value(), m_ui->cbGuarCount->currentIndex()) :
                 0;
 }
 
 int FThingEdit::thingType()
 {
-    if(ui->rbService->isChecked())    { return HACC_TAG_ID_SERVICE; }
-    if(ui->rbObject->isChecked())     { return HACC_TAG_ID_OBJECT; }
-    if(ui->rbExpendable->isChecked()) { return HACC_TAG_ID_EXPENDABLE; }
+    if(m_ui->rbService->isChecked())    { return HACC_TAG_ID_SERVICE; }
+    if(m_ui->rbObject->isChecked())     { return HACC_TAG_ID_OBJECT; }
+    if(m_ui->rbExpendable->isChecked()) { return HACC_TAG_ID_EXPENDABLE; }
     return HACC_TAG_ID_OBJECT;
 }
 

@@ -25,7 +25,7 @@ private slots:
     void on_buttonBox_accepted();
 
 private:
-    Ui::DOptions *ui;
+    Ui::DOptions *m_ui;
 };
 
 }

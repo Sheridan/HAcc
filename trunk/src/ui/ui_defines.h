@@ -6,7 +6,7 @@ void _class::changeEvent(QEvent *e) \
 { \
     _base::changeEvent(e); \
     switch (e->type())  \
-    { case QEvent::LanguageChange: ui->retranslateUi(this); break; \
+    { case QEvent::LanguageChange: m_ui->retranslateUi(this); break; \
     default: break; } \
 }
 

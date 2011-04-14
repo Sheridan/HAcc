@@ -31,7 +31,7 @@ void WSimpleTagContainer::refresh(const hacc::TDBID &createdID)
     QString sql = "select id, name from tags ";
     if(!m_searchText.isEmpty())
     {
-        where += QString( " (upper(name) like upper(\"%%%0%%\") ").arg(m_searchText);
+        where += QString( " upper(name) like upper(\"%%%0%%\") ").arg(m_searchText);
     }
     if(createdID)
     {

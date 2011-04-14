@@ -13,37 +13,37 @@ HACC_STD_TRANSLATE_UI(FTransactionSellThingEdit, QDialog);
 
 FTransactionSellThingEdit::FTransactionSellThingEdit(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FTransactionSellThingEdit)
+    m_ui(new Ui::FTransactionSellThingEdit)
 {
     init();
 }
 
 FTransactionSellThingEdit::FTransactionSellThingEdit(const hacc::TDBID &valuableID, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FTransactionSellThingEdit)
+    m_ui(new Ui::FTransactionSellThingEdit)
 {
     init();
 }
 
 FTransactionSellThingEdit::~FTransactionSellThingEdit()
 {
-    delete ui;
+    delete m_ui;
 }
 
 void FTransactionSellThingEdit::init()
 {
-    ui->setupUi(this);
-    ui->pwValuableSelector->init();
+    m_ui->setupUi(this);
+    m_ui->pwValuableSelector->init();
 }
 
 hacc::TDBID FTransactionSellThingEdit::valuable()
 {
-    return ui->pwValuableSelector->id();
+    return m_ui->pwValuableSelector->id();
 }
 
 hacc::TMoney FTransactionSellThingEdit::money()
 {
-    return  tools::convert::stringToMoney(ui->leMoney->text());
+    return  tools::convert::stringToMoney(m_ui->leMoney->text());
 }
 
 }

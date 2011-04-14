@@ -25,7 +25,7 @@ protected:
     virtual ui::tag::base::WTagContainer *constructContainer() = 0;
 
 private:
-    Ui::FItemTagsEdit *ui;
+    Ui::FItemTagsEdit *m_ui;
     ui::tag::base::WTagContainer *m_container;
 
 };

@@ -54,6 +54,7 @@
         <file alias="money.png">icons/items/money.png</file>
         <file alias="gift.png">icons/items/gift.png</file>
         <file alias="movement.png">icons/items/movement.png</file>
+        <file alias="currency.png">icons/items/currency.png</file>
     </qresource>
     <qresource prefix="/qss">
         <file alias="default.qss">styles/application.qss</file>

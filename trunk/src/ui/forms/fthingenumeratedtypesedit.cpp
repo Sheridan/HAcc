@@ -12,7 +12,7 @@ HACC_STD_TRANSLATE_UI(FThingEnumeratedTypesEdit, QDialog)
 
 FThingEnumeratedTypesEdit::FThingEnumeratedTypesEdit(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FThingEnumeratedTypesEdit)
+    m_ui(new Ui::FThingEnumeratedTypesEdit)
 {
     init();
     setObjectName(objectName()+"_new");
@@ -21,7 +21,7 @@ FThingEnumeratedTypesEdit::FThingEnumeratedTypesEdit(QWidget *parent) :
 
 FThingEnumeratedTypesEdit::FThingEnumeratedTypesEdit(const hacc::TDBID &id, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::FThingEnumeratedTypesEdit)
+    m_ui(new Ui::FThingEnumeratedTypesEdit)
 {
     init();
     setObjectName(objectName()+"_edit");
@@ -30,31 +30,31 @@ FThingEnumeratedTypesEdit::FThingEnumeratedTypesEdit(const hacc::TDBID &id, QWid
                                  QVariantList() << id);
     if(q.next())
     {
-        ui->leName ->setText(HACC_DB_2_STRG(q, 0));
-        ui->sbPrecision->setValue(HACC_DB_2_PREC(q, 1));
+        m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
+        m_ui->sbPrecision->setValue(HACC_DB_2_PREC(q, 1));
     }
     HACC_RESTORE_DIALOG;
 }
 
 void FThingEnumeratedTypesEdit::init()
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
 }
 
 FThingEnumeratedTypesEdit::~FThingEnumeratedTypesEdit()
 {
     HACC_SAVE_DIALOG;
-    delete ui;
+    delete m_ui;
 }
 
 QString FThingEnumeratedTypesEdit::name()
 {
-    return ui->leName->text();
+    return m_ui->leName->text();
 }
 
 int FThingEnumeratedTypesEdit::precision()
 {
-    return ui->sbPrecision->value();
+    return m_ui->sbPrecision->value();
 }
 
 }

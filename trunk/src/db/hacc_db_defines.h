@@ -23,6 +23,7 @@
 
 #define HACC_DB_ID_FIELD          HACC_DB_ID(id) " primary key"
 #define HACC_DB_ICON_FIELD        HACC_DB_ID(icon_id) HACC_DB_FIELD_DEFAULT(1)
+#define HACC_DB_CURRENCY_FIELD    HACC_DB_ID(currency_id) HACC_DB_FIELD_DEFAULT(1)
 #define HACC_DB_NAME_FIELD        HACC_DB_TEXT(name)  HACC_DB_FIELD_NOT_NULL
 #define HACC_DB_UNIQUE_NAME_FIELD HACC_DB_NAME_FIELD  HACC_DB_FIELD_UNIQUE
 #define HACC_DB_FULL_DESCRIPTION  HACC_DB_TEXT(description) HACC_DB_FIELD_DELIMITER HACC_DB_BLOB(image)
@@ -46,8 +47,8 @@
         QVariantList() << ++contractorID << _name << _icon << _own);
 
 #define HDB_APPEND_ACCOUNT(_name, _icon) \
-        exec("insert into accounts (id, name, icon_id, contractor_id) values (?,?,?,?)" , \
-        QVariantList() << ++accountID << _name << _icon << contractorID);
+        exec("insert into accounts (id, name, icon_id, contractor_id, currency_id) values (?,?,?,?,?)" , \
+        QVariantList() << ++accountID << _name << _icon << contractorID << 1);
 
 #define HDB_APPEND_MANUFACTURER_FULL(_name, _description, _icon) \
         exec("insert into manufacturers (id, name, icon_id) values (?,?,?)", \

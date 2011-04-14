@@ -24,7 +24,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::DIcons *ui;
+    Ui::DIcons *m_ui;
     hacc::TDBID selectedId;
 
 private slots:

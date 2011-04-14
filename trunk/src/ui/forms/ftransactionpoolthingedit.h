@@ -28,7 +28,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FTransactionPoolThingEdit *ui;
+    Ui::FTransactionPoolThingEdit *m_ui;
     void init();
     ui::item::base::WBase * constructContainer(const hacc::TDBID &id = 0);
     int m_type;

@@ -11,6 +11,7 @@
 #include "wexpandedtransactionpoolbase.h"
 #include "wexpandedvaluablebase.h"
 #include "wsimplemovementbase.h"
+#include "wsimplecurrencybase.h"
 #include <QDockWidget>
 #include "tmdichild.h"
 #include "tdwcontainerbase.h"
@@ -23,24 +24,27 @@ namespace ui
 namespace form
 {
 
+//! Основное окно приложения
+/** Может быть как окном-с-доклетами, так и MDI.
+*/
 class FMainWindow : public QMainWindow
 {
     Q_OBJECT
 public:
     FMainWindow(QWidget *parent = 0);
     ~FMainWindow();
-    void changeViewMode(bool mdi);
+    void changeViewMode(bool mdi); //!< Устанавливает режим окна
 
 protected:
     void changeEvent(QEvent *e);
 
 private:
-    Ui::FMainWindow *ui;
-    QMdiArea *m_MdiArea;
+    Ui::FMainWindow                                  *m_ui;
+    QMdiArea                                         *m_mdiArea;
     ui::item::expanded::WExpandedTransactionPoolBase *m_transactionPoolBase;
-    QList<FMDIChild *> m_mdiChilds;
-    QList<ui::dock::DWContainerBase *> m_docks;
-    QList<QAction *> m_wActions;
+    QList<FMDIChild                 *>                m_mdiChilds;
+    QList<ui::dock::DWContainerBase *>                m_docks;
+    QList<QAction                   *>                m_wActions;
     void clearUi();
     void appendAction(QAction *a);
 
@@ -48,14 +52,15 @@ private:
     template <typename TContainerBase> void addDock(const QString &title, const QIcon &icon);
 
 private slots:
-    void newThingBaseMdiChild();
-    void newTagBaseMdiChild();
-    void newContractorBaseMdiChild();
-    void newManufacturerBaseMdiChild();
     void newEnumeratedThingTypeBaseMdiChild();
     void newTransactionPoolBaseMdiChild();
+    void newManufacturerBaseMdiChild();
+    void newContractorBaseMdiChild();
     void newValuablesBaseMdiChild();
     void newMovementBaseMdiChild();
+    void newCurrencyBaseMdiChild();
+    void newThingBaseMdiChild();
+    void newTagBaseMdiChild();
 
     void mdiClose(int index);
 

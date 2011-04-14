@@ -18,60 +18,60 @@ HACC_STD_TRANSLATE_UI(FMainWindow, QMainWindow)
 
 FMainWindow::FMainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::FMainWindow)
+    m_ui(new Ui::FMainWindow)
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
 
-    ui->menuView->addAction(ui->mainToolBar->toggleViewAction());
-    ui->menuView->addAction(ui->actionsWindowsToolbar->toggleViewAction());
-    ui->menuView->addSeparator();
+    m_ui->menuView->addAction(m_ui->mainToolBar->toggleViewAction());
+    m_ui->menuView->addAction(m_ui->actionsWindowsToolbar->toggleViewAction());
+    m_ui->menuView->addSeparator();
 
-    ui->mainToolBar->addAction(HACC_CONTRACTORS->addAction());
-    ui->mainToolBar->addAction(HACC_CONTRACTORS->addSelfAction());
-    ui->mainToolBar->addAction(HACC_THINGS->addAction());
-    ui->mainToolBar->addAction(HACC_TAGS->addAction());
-    ui->mainToolBar->addAction(HACC_MANUFACTURERS->addAction());
-    ui->mainToolBar->addAction(HACC_ENUMERATED_THING_TYPES->addAction());
+    m_ui->mainToolBar->addAction(HACC_CONTRACTORS->addAction());
+    m_ui->mainToolBar->addAction(HACC_CONTRACTORS->addSelfAction());
+    m_ui->mainToolBar->addAction(HACC_THINGS->addAction());
+    m_ui->mainToolBar->addAction(HACC_TAGS->addAction());
+    m_ui->mainToolBar->addAction(HACC_MANUFACTURERS->addAction());
+    m_ui->mainToolBar->addAction(HACC_ENUMERATED_THING_TYPES->addAction());
 
-    ui->menuManage->addSeparator();
-    ui->menuManage->addAction(HACC_CONTRACTORS->addAction());
-    ui->menuManage->addAction(HACC_CONTRACTORS->addSelfAction());
-    ui->menuManage->addAction(HACC_THINGS->addAction());
-    ui->menuManage->addAction(HACC_MANUFACTURERS->addAction());
-    ui->menuManage->addAction(HACC_ENUMERATED_THING_TYPES->addAction());
-    ui->menuManage->addSeparator();
-    ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionLocalAction());
-    ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionBuyAction());
-    ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionSellAction());
-    ui->menuManage->addSeparator();
-    ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyIncomingAction());
-    ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyOutgoingAction());
-    ui->menuManage->addSeparator();
+    m_ui->menuManage->addSeparator();
+    m_ui->menuManage->addAction(HACC_CONTRACTORS->addAction());
+    m_ui->menuManage->addAction(HACC_CONTRACTORS->addSelfAction());
+    m_ui->menuManage->addAction(HACC_THINGS->addAction());
+    m_ui->menuManage->addAction(HACC_MANUFACTURERS->addAction());
+    m_ui->menuManage->addAction(HACC_ENUMERATED_THING_TYPES->addAction());
+    m_ui->menuManage->addSeparator();
+    m_ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionLocalAction());
+    m_ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionBuyAction());
+    m_ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionSellAction());
+    m_ui->menuManage->addSeparator();
+    m_ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyIncomingAction());
+    m_ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyOutgoingAction());
+    m_ui->menuManage->addSeparator();
 //    ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionAcceptGiftAction());
 //    ui->menuManage->addAction(HACC_TRANSACTIONS_POOLS->addTransactionGiveGiftAction());
 
-    ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionLocalAction());
-    ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionBuyAction());
-    ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionSellAction());
-    ui->transactionsBar->addSeparator();
-    ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyIncomingAction());
-    ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyOutgoingAction());
-    ui->transactionsBar->addSeparator();
+    m_ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionLocalAction());
+    m_ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionBuyAction());
+    m_ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionSellAction());
+    m_ui->transactionsBar->addSeparator();
+    m_ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyIncomingAction());
+    m_ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionMoneyOutgoingAction());
+    m_ui->transactionsBar->addSeparator();
 //    ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionAcceptGiftAction());
 //    ui->transactionsBar->addAction(HACC_TRANSACTIONS_POOLS->addTransactionGiveGiftAction());
 
     m_transactionPoolBase = NULL;
-    m_MdiArea = NULL;
+    m_mdiArea = NULL;
 
     bool mdi = HACC_OPTIONS->sectionValue("view", "mdi", false).toBool();
-    ui->actionMDI_mode->setChecked(mdi);
+    m_ui->actionMDI_mode->setChecked(mdi);
     changeViewMode(mdi);
 }
 
 FMainWindow::~FMainWindow()
 {
     clearUi();
-    delete ui;
+    delete m_ui;
 }
 
 void FMainWindow::clearUi()
@@ -86,40 +86,40 @@ void FMainWindow::clearUi()
     while(!m_mdiChilds.empty())
     {
         FMDIChild *w = m_mdiChilds.takeLast();
-        m_MdiArea->removeSubWindow(w);
+        m_mdiArea->removeSubWindow(w);
         delete w;
     }
     while(!m_wActions.empty())
     {
         QAction *a = m_wActions.takeLast();
-        if(ui->menuView->actions().contains(a))
+        if(m_ui->menuView->actions().contains(a))
         {
-            ui->menuView->removeAction(a);
-            ui->actionsWindowsToolbar->removeAction(a);
+            m_ui->menuView->removeAction(a);
+            m_ui->actionsWindowsToolbar->removeAction(a);
             delete a;
         }
     }
     delete m_transactionPoolBase;
-    delete m_MdiArea;
+    delete m_mdiArea;
     m_transactionPoolBase = NULL;
-    m_MdiArea = NULL;
+    m_mdiArea = NULL;
 }
 
 void FMainWindow::appendAction(QAction *a)
 {
     m_wActions.append(a);
-    ui->menuView->addAction(a);
-    ui->actionsWindowsToolbar->addAction(a);
+    m_ui->menuView->addAction(a);
+    m_ui->actionsWindowsToolbar->addAction(a);
 }
 
 template <typename TContainerBase> void FMainWindow::addMdiSubWindow(const QString &title, const QIcon &icon)
 {
-    TMDIChild<TContainerBase> * sw = new TMDIChild<TContainerBase>(title, icon, m_MdiArea);
+    TMDIChild<TContainerBase> * sw = new TMDIChild<TContainerBase>(title, icon, m_mdiArea);
     sw->init();
     sw->setIndex(m_mdiChilds.count());
     connect(sw, SIGNAL(closing(int)), this, SLOT(mdiClose(int)));
     m_mdiChilds.append(sw);
-    m_MdiArea->addSubWindow(sw);
+    m_mdiArea->addSubWindow(sw);
     sw->show();
 }
 
@@ -141,8 +141,8 @@ void FMainWindow::changeViewMode(bool mdi)
     if(mdi)
     {
         setObjectName("MainWindowMDI");
-        m_MdiArea = new QMdiArea(this);
-        setCentralWidget(m_MdiArea);
+        m_mdiArea = new QMdiArea(this);
+        setCentralWidget(m_mdiArea);
         appendAction(tools::actions::constructAction(HACC_ICONS->icon(tools::icons::iThing          , tools::icons::oNewWindow),
                                                     tr("Things")                  , tr("New window of things")                  , this, SLOT(newThingBaseMdiChild())              ));
         appendAction(tools::actions::constructAction(HACC_ICONS->icon(tools::icons::iTag            , tools::icons::oNewWindow),
@@ -159,6 +159,8 @@ void FMainWindow::changeViewMode(bool mdi)
                                                     tr("Valuables")               , tr("New window of valuables")               , this, SLOT(newValuablesBaseMdiChild())          ));
         appendAction(tools::actions::constructAction(HACC_ICONS->icon(tools::icons::iMovement       , tools::icons::oNewWindow),
                                                     tr("Movement")                , tr("New window of movement")                , this, SLOT(newMovementBaseMdiChild())           ));
+        appendAction(tools::actions::constructAction(HACC_ICONS->icon(tools::icons::iCurrency       , tools::icons::oNewWindow),
+                                                    tr("Currency")                , tr("New window of currency")                , this, SLOT(newCurrencyBaseMdiChild())           ));
     }
     else
     {
@@ -174,6 +176,7 @@ void FMainWindow::changeViewMode(bool mdi)
         addDock<ui::item::simple::WSimpleEnumeratedThingTypeBase> (tr("Things enumeration types"), HACC_ICONS->icon(tools::icons::iEnumerated)  );
         addDock<ui::item::expanded::WExpandedValuableBase       > (tr("Valuables"),                HACC_ICONS->icon(tools::icons::iValuable)    );
         addDock<ui::item::simple::WSimpleMovementBase           > (tr("Movement"),                 HACC_ICONS->icon(tools::icons::iMovement)    );
+        addDock<ui::item::simple::WSimpleCurrencyBase           > (tr("Currency"),                 HACC_ICONS->icon(tools::icons::iCurrency)    );
     }
     HACC_RESTORE_DIALOG;
 }
@@ -186,13 +189,14 @@ void FMainWindow::newEnumeratedThingTypeBaseMdiChild() { addMdiSubWindow<ui::ite
 void FMainWindow::newTransactionPoolBaseMdiChild    () { addMdiSubWindow<ui::item::expanded::WExpandedTransactionPoolBase> (tr("Transaction pools"),        HACC_ICONS->icon(tools::icons::iTransactionPool)); }
 void FMainWindow::newValuablesBaseMdiChild          () { addMdiSubWindow<ui::item::expanded::WExpandedValuableBase       > (tr("Valuables"),                HACC_ICONS->icon(tools::icons::iValuable)       ); }
 void FMainWindow::newMovementBaseMdiChild           () { addMdiSubWindow<ui::item::simple::WSimpleMovementBase           > (tr("Movement"),                 HACC_ICONS->icon(tools::icons::iMovement)       ); }
+void FMainWindow::newCurrencyBaseMdiChild           () { addMdiSubWindow<ui::item::simple::WSimpleCurrencyBase           > (tr("Currency"),                 HACC_ICONS->icon(tools::icons::iCurrency)       ); }
 
 void FMainWindow::mdiClose(int index)
 {
     if(0 <= index && index < m_mdiChilds.count())
     {
         FMDIChild *w = m_mdiChilds.takeAt(index);
-        m_MdiArea->removeSubWindow(w);
+        m_mdiArea->removeSubWindow(w);
         delete w;
     }
 }

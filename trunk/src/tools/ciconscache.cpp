@@ -83,6 +83,7 @@ const QIcon & CIconsCache::icon(const EIcons &eIcon)
             case iThing          : file=":/items/thing.png"           ; break;
             case iAccount        : file=":/items/account.png"         ; break;
             case iMovement       : file=":/items/movement.png"        ; break;
+            case iCurrency       : file=":/items/currency.png"        ; break;
             case iValuable       : file=":/items/valuable.png"        ; break;
             case iContractor     : file=":/items/contractor.png"      ; break;
             case iEnumerated     : file=":/items/enumerated.png"      ; break;

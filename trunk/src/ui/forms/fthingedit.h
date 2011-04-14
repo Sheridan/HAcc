@@ -41,7 +41,7 @@ private slots:
     void on_tbClearImage_clicked();
 
 private:
-    Ui::FThingEdit *ui;
+    Ui::FThingEdit *m_ui;
 };
 
 }

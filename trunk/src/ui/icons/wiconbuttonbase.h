@@ -13,14 +13,9 @@ class WIconButtonBase : public QToolButton, public hacc::CIDItem
 {
     Q_OBJECT
 public:
-    explicit WIconButtonBase(const hacc::TDBID &iconId, QWidget *parent = 0);
+    WIconButtonBase(const hacc::TDBID &iconId, QWidget *parent = 0);
     ~WIconButtonBase();
     void setID(const hacc::TDBID & id);
-
-signals:
-
-public slots:
-
 };
 
 }

@@ -22,6 +22,7 @@ enum EIcons
     iAccount,        //!< Счет
     iMovement,       //!< Перемещение
     iValuable,       //!< Ценность
+    iCurrency,       //!< Валюта
     iContractor,     //!< Контрагент
     iEnumerated,     //!< Перечисляемое
     iDescription,    //!< Описание
@@ -52,13 +53,13 @@ class CIconsCache
 public:
     CIconsCache();
     ~CIconsCache();
-    const QIcon & icon(const EIcons &eIcon, const EOverlays &eOverlay);
-    const QIcon & icon(const int& tagID);
-    const QIcon & icon(const EIcons &eIcon);
+    const QIcon & icon(const EIcons &eIcon, const EOverlays &eOverlay); //!< Иконка из иконки сущности и оверлея
+    const QIcon & icon(const int& tagID);                               //!< Иконка для некоторых тегов
+    const QIcon & icon(const EIcons &eIcon);                            //!< Иконка сущностей
 private:
-    int id(const EIcons &eIcon, const EOverlays &eOverlay);
-    QMap<int, QIcon *> m_icons;
-    QMap<EIcons, QIcon *> m_eIcons;
+    int id(const EIcons &eIcon, const EOverlays &eOverlay);             //!< Вычисление идентификатора
+    QMap<int   , QIcon *> m_icons ;                                     //!< Кеш иконок с вычисленым идентификатором
+    QMap<EIcons, QIcon *> m_eIcons;                                     //!< Кеш иконок сущностей
 };
 
 }

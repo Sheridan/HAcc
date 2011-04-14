@@ -162,7 +162,12 @@ SOURCES += src/main.cpp \
     src/ui/widgets/items/wexpandedtransactionthingsellitem.cpp \
     src/ui/widgets/items/wexpandedtransactionthingsellcontainer.cpp \
     src/ui/widgets/items/wexpandedtransactionthingsellbase.cpp \
-    src/ui/widgets/items/wexpandedtransactionthingitem.cpp
+    src/ui/widgets/items/wexpandedtransactionthingitem.cpp \
+    src/model/ccurrency.cpp \
+    src/model/ccurrencyes.cpp \
+    src/ui/widgets/items/wsimplecurrencybase.cpp \
+    src/ui/widgets/items/wsimplecurrencycontainer.cpp \
+    src/ui/widgets/items/wsimplecurrencyitem.cpp
 
 HEADERS += src/ui/fmainwindow.h \
     src/db/cdatabase.h \
@@ -320,7 +325,12 @@ HEADERS += src/ui/fmainwindow.h \
     src/ui/widgets/items/wexpandedtransactionthingsellcontainer.h \
     src/ui/widgets/items/wexpandedtransactionthingsellbase.h \
     src/ui/widgets/items/wexpandedtransactionthingitem.h \
-    src/db/hacc_db_defines.h
+    src/db/hacc_db_defines.h \
+    src/model/ccurrency.h \
+    src/model/ccurrencyes.h \
+    src/ui/widgets/items/wsimplecurrencybase.h \
+    src/ui/widgets/items/wsimplecurrencycontainer.h \
+    src/ui/widgets/items/wsimplecurrencyitem.h
 
 FORMS += src/ui/fmainwindow.ui \
     src/ui/forms/faccountedit.ui \
