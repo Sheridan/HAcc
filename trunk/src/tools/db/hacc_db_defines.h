@@ -45,9 +45,9 @@
         exec("insert into contractors (id, name, icon_id, own_account) values (?,?,?,?)", \
         QVariantList() << ++contractorID << _name << _icon << _own);
 
-#define HDB_APPEND_ACCOUNT(_name, _icon) \
+#define HDB_APPEND_ACCOUNT(_name, _icon, _currency) \
         exec("insert into accounts (id, name, icon_id, contractor_id, currency_id) values (?,?,?,?,?)" , \
-        QVariantList() << ++accountID << _name << _icon << contractorID << 1);
+        QVariantList() << ++accountID << _name << _icon << contractorID << _currency);
 
 #define HDB_APPEND_MANUFACTURER_FULL(_name, _description, _icon) \
         exec("insert into manufacturers (id, name, icon_id) values (?,?,?)", \

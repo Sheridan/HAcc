@@ -560,50 +560,96 @@ void CDatabase::createDatabase()
     exec("insert into thing_enumerated_types (id,name,precision) values (11,?,0)", QVariantList() << tr("count"));
 
     // Заполнение таблицы валют
-    HDB_APPEND_CURRENCY(tr("American dollar"), HACC_UTF8_STRING("$") , true , "usa" );
-    HDB_APPEND_CURRENCY(tr("Euro")           , HACC_UTF8_STRING("€") , false, "euro");
-    HDB_APPEND_CURRENCY(tr("Russian ruble")  , HACC_UTF8_STRING("р."), false, "ru"  );
+    HDB_APPEND_CURRENCY(tr("Brasil real")         , HACC_UTF8_STRING("R$") , false, "brl"); // id: 1
+    HDB_APPEND_CURRENCY(tr("Hungary forint")      , HACC_UTF8_STRING("Ft") , false, "huf"); // id: 2
+    HDB_APPEND_CURRENCY(tr("Honduras lempira")    , HACC_UTF8_STRING("L")  , false, "hnl"); // id: 3
+    HDB_APPEND_CURRENCY(tr("Hong Kong dollar")    , HACC_UTF8_STRING("HK$"), false, "hkd"); // id: 4
+    HDB_APPEND_CURRENCY(tr("Dansk krone")         , HACC_UTF8_STRING("kr."), false, "dkk"); // id: 5
+    HDB_APPEND_CURRENCY(tr("Israeli shekel")      , HACC_UTF8_STRING("₪")  , false, "ils"); // id: 6
+    HDB_APPEND_CURRENCY(tr("Indian rupee")        , HACC_UTF8_STRING("Rs") , false, "inr"); // id: 7
+    HDB_APPEND_CURRENCY(tr("Indonesian rupee")    , HACC_UTF8_STRING("Rp") , false, "idr"); // id: 8
+    HDB_APPEND_CURRENCY(tr("Icelandic krone")     , HACC_UTF8_STRING("kr") , false, "isk"); // id: 9
+    HDB_APPEND_CURRENCY(tr("Chinese yuan")        , HACC_UTF8_STRING("¥")  , true , "cny"); // id: 10
+    HDB_APPEND_CURRENCY(tr("South Korean won")    , HACC_UTF8_STRING("₩")  , true , "krw"); // id: 11
+    HDB_APPEND_CURRENCY(tr("Latvian lats")        , HACC_UTF8_STRING("Ls") , false, "lvl"); // id: 12
+    HDB_APPEND_CURRENCY(tr("Malaysian ringgit")   , HACC_UTF8_STRING("RM") , false, "myr"); // id: 13
+    HDB_APPEND_CURRENCY(tr("Mexican peso")        , HACC_UTF8_STRING("$")  , true , "mxn"); // id: 14
+    HDB_APPEND_CURRENCY(tr("New Zealand dollar")  , HACC_UTF8_STRING("NZ$"), false, "nzd"); // id: 15
+    HDB_APPEND_CURRENCY(tr("Norwegian krone")     , HACC_UTF8_STRING("kr") , false, "nok"); // id: 16
+    HDB_APPEND_CURRENCY(tr("Pakistani rupee")     , HACC_UTF8_STRING("Rs") , false, "pkr"); // id: 17
+    HDB_APPEND_CURRENCY(tr("Polish zloty")        , HACC_UTF8_STRING("zł") , false, "pln"); // id: 18
+    HDB_APPEND_CURRENCY(tr("Russian ruble")       , HACC_UTF8_STRING("р.") , false, "rub"); // id: 19
+    HDB_APPEND_CURRENCY(tr("Singapore dollar")    , HACC_UTF8_STRING("S$") , false, "sgd"); // id: 20
+    HDB_APPEND_CURRENCY(tr("Taiwan dollar")       , HACC_UTF8_STRING("$")  , true , "twd"); // id: 21
+    HDB_APPEND_CURRENCY(tr("Thai baht")           , HACC_UTF8_STRING("฿")  , true , "thb"); // id: 22
+    HDB_APPEND_CURRENCY(tr("Turkish lira")        , HACC_UTF8_STRING("₤")  , false, "try"); // id: 23
+    HDB_APPEND_CURRENCY(tr("Fijian dollar")       , HACC_UTF8_STRING("FJ$"), false, "fjd"); // id: 24
+    HDB_APPEND_CURRENCY(tr("Philippine peso")     , HACC_UTF8_STRING("₱")  , false, "php"); // id: 25
+    HDB_APPEND_CURRENCY(tr("Czech koruna")        , HACC_UTF8_STRING("Kč") , false, "czk"); // id: 26
+    HDB_APPEND_CURRENCY(tr("Chilean peso")        , HACC_UTF8_STRING("$")  , false, "clp"); // id: 27
+    HDB_APPEND_CURRENCY(tr("Swedish krona")       , HACC_UTF8_STRING("kr") , false, "sek"); // id: 28
+    HDB_APPEND_CURRENCY(tr("Swiss franc")         , HACC_UTF8_STRING("Fr") , false, "chf"); // id: 29
+    HDB_APPEND_CURRENCY(tr("South African rand")  , HACC_UTF8_STRING("R")  , false, "zar"); // id: 30
+    HDB_APPEND_CURRENCY(tr("United States dollar"), HACC_UTF8_STRING("$")  , true , "usd"); // id: 31
+    HDB_APPEND_CURRENCY(tr("Euro")                , HACC_UTF8_STRING("€")  , false, "eur"); // id: 32
+    HDB_APPEND_CURRENCY(tr("Japanese yen")        , HACC_UTF8_STRING("¥")  , false, "jpy"); // id: 33
+    HDB_APPEND_CURRENCY(tr("Ukrainian hryvnia")   , HACC_UTF8_STRING("₴")  , false, "uah"); // id: 34
+
 
     // Создание базовых счетов
     HDB_APPEND_MANUFACTURER_FULL(tr("Unknown manufacturer"), tr("Some unknown manufacturer"), 11);
     HDB_APPEND_THING(tr("Unknown thing"), 7, 1, HACC_TAG_ID_OBJECT);
 
     // Контрагент "Ничто" со счетом "Нигде". Нужен для списания и прочих действий типа "проебали 50 рублей"
-    //! \todo Добавить счет для каждой валюты и впредь при добавлении валюты добавлять сюда счет с такой валютой
+    // Для этого контрагента необходимо иметь счет на каждую валюту
+    //! \todo Отследить по родителю и не дать удалять счета "Нигде".
     HDB_APPEND_CONTRACTOR(tr("Nothing"), 1, false);
-    HDB_APPEND_ACCOUNT(tr("Nowhere")   , 1);
+    QSqlQuery cres = query("select id, name, reduction from currencyes order by name");
+    while(cres.next())
+    {
+        HDB_APPEND_ACCOUNT(tr("Nowhere (%0 (%1))")
+                                    .arg(HACC_DB_2_STRG(cres, 1))
+                                    .arg(HACC_DB_2_STRG(cres, 2)),
+                           1,
+                           HACC_DB_2_DBID(cres, 0));
+    }
 
     // Контрагент "Семья" со счетами
     HDB_APPEND_CONTRACTOR(tr("Family"), 9, true);
-    HDB_APPEND_ACCOUNT(tr("Cash money")        , 13);
-    HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19);
-    HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21);
+    HDB_APPEND_ACCOUNT(tr("Cash money")        , 13, 31);
+    HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, 31);
+    HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, 31);
 
     exec("insert into db_options (name, value) values (?,?)", QVariantList() << "database version" << HACC_DATABASE_VERSION);
 
     // Всякие данные для тестов
     #ifdef HACC_DEBUG_DB
+        // Подкинем рублевых счетов к базовому контрагенту
+        HDB_APPEND_ACCOUNT(tr("Cash money")        , 13, 19);
+        HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, 19);
+        HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, 19);
+
         contractorID = accountID = manufacturerID = thingID = 100;
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Жена"), 30, true);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Деньги")           , 13);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Банковская карта") , 18);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Шкатулка")         , 17);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Деньги")           , 13, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Банковская карта") , 18, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Шкатулка")         , 17, 19);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Висточ"), 29, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Сигма"), 3, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 23);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 23, 19);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Консультант+"), 29, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 24);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 24, 19);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("ООО 'Опт-Торг'"), 30, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 26);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 26, 19);
 
         HDB_APPEND_MANUFACTURER(HACC_UTF8_STRING("Уральский металлургический"), 11);
         HDB_APPEND_THING(HACC_UTF8_STRING("Молоток")    , 11, 2, HACC_TAG_ID_OBJECT    );

@@ -1,5 +1,4 @@
 #include "ccurrencyes.h"
-//#include "fcontractoredit.h"
 #include "st.h"
 #include "icons.h"
 
@@ -22,6 +21,7 @@ QAction * CCurrencyes::addAction()
 
 void CCurrencyes::add()
 {
+    //! \todo Не забыть добавить счет "Ничто"
 //    ui::form::FContractorEdit *dialog =
 //            new ui::form::FContractorEdit(isSelf);
 //    if(dialog->exec() == QDialog::Accepted)
@@ -43,6 +43,7 @@ void CCurrencyes::remove(const hacc::TDBID & id)
 {
     if(id > 0)
     {
+        //! \todo Не забыть удалить счет "Ничто"
 //        QSqlQuery q = HACC_DB->query("select name from contractors where id=?", QVariantList() << id);
 //        q.next();
 //        if(QMessageBox::question(

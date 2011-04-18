@@ -78,10 +78,39 @@
         <file alias="contractor-1.png">icons/usefull/contractor-1.png</file>
     </qresource>
     <qresource prefix="/flags">
-        <file alias="eng.png">icons/flags/eng.png</file>
-        <file alias="euro.png">icons/flags/euro.png</file>
-        <file alias="jp.png">icons/flags/jp.png</file>
-        <file alias="ru.png">icons/flags/ru.png</file>
-        <file alias="usa.png">icons/flags/usa.png</file>
+        <file alias="brl.png">icons/flags/brl.png</file>
+        <file alias="huf.png">icons/flags/huf.png</file>
+        <file alias="hnl.png">icons/flags/hnl.png</file>
+        <file alias="hkd.png">icons/flags/hkd.png</file>
+        <file alias="dkk.png">icons/flags/dkk.png</file>
+        <file alias="ils.png">icons/flags/ils.png</file>
+        <file alias="inr.png">icons/flags/inr.png</file>
+        <file alias="idr.png">icons/flags/idr.png</file>
+        <file alias="isk.png">icons/flags/isk.png</file>
+        <file alias="cny.png">icons/flags/cny.png</file>
+        <file alias="krw.png">icons/flags/krw.png</file>
+        <file alias="lvl.png">icons/flags/lvl.png</file>
+        <file alias="myr.png">icons/flags/myr.png</file>
+        <file alias="mxn.png">icons/flags/mxn.png</file>
+        <file alias="nzd.png">icons/flags/nzd.png</file>
+        <file alias="nok.png">icons/flags/nok.png</file>
+        <file alias="pkr.png">icons/flags/pkr.png</file>
+        <file alias="pln.png">icons/flags/pln.png</file>
+        <file alias="rub.png">icons/flags/rub.png</file>
+        <file alias="sgd.png">icons/flags/sgd.png</file>
+        <file alias="twd.png">icons/flags/twd.png</file>
+        <file alias="thb.png">icons/flags/thb.png</file>
+        <file alias="try.png">icons/flags/try.png</file>
+        <file alias="fjd.png">icons/flags/fjd.png</file>
+        <file alias="czk.png">icons/flags/czk.png</file>
+        <file alias="php.png">icons/flags/php.png</file>
+        <file alias="clp.png">icons/flags/clp.png</file>
+        <file alias="sek.png">icons/flags/sek.png</file>
+        <file alias="chf.png">icons/flags/chf.png</file>
+        <file alias="zar.png">icons/flags/zar.png</file>
+        <file alias="usd.png">icons/flags/usd.png</file>
+        <file alias="eur.png">icons/flags/eur.png</file>
+        <file alias="jpy.png">icons/flags/jpy.png</file>
+        <file alias="uah.png">icons/flags/uah.png</file>
     </qresource>
 </RCC>
