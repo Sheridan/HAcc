@@ -33,7 +33,7 @@ void WSimpleEnumeratedThingTypeItem::enumeratedThingTypeUpdated()
                                  "thing_enumerated_types.name "
                                  "from thing_enumerated_types "
                                  "where thing_enumerated_types.id=?",
-                                 QVariantList() << id());
+                                 QVariantList() << itemID());
     if(q.next())
     {
         setItemData(HACC_DB_2_STRG(q, 1),
@@ -43,12 +43,12 @@ void WSimpleEnumeratedThingTypeItem::enumeratedThingTypeUpdated()
 
 hacc::TDBID WSimpleEnumeratedThingTypeItem::itemID()
 {
-    return id();
+    return hacc::model::CEnumeratedThingType::id();
 }
 
 void WSimpleEnumeratedThingTypeItem::assignActions()
 {
-    if(!HACC_ENUMERATED_THING_TYPES->checkSpetialEnumeratedType(id()))
+    if(!HACC_ENUMERATED_THING_TYPES->checkSpetialEnumeratedType(itemID()))
     {
         controlLabel(0, 0)->addAction(hacc::model::CEnumeratedThingType::editAction());
         controlLabel(0, 0)->addAction(hacc::model::CEnumeratedThingType::removeAction());

@@ -38,7 +38,7 @@ void WExpandedManufacturerItem::buildExpanderUIEvent()
     appendDescriptionTab();
     appendTagsTab < ui::tag::TTagContainer <hacc::model::CManufacturer, hacc::model::CManufacturers> >();
 
-    QSqlQuery q = HACC_DB->query("select description, image from manufacturers where id=?", QVariantList() << id());
+    QSqlQuery q = HACC_DB->query("select description, image from manufacturers where id=?", QVariantList() << itemID());
     if(q.next())
     {
         setMoreData(HACC_DB_2_STRG(q, 0), q.value(1));
@@ -48,14 +48,14 @@ void WExpandedManufacturerItem::buildExpanderUIEvent()
 void WExpandedManufacturerItem::assignActions()
 {
     controlLabel(0, 0)->addAction(hacc::model::CManufacturer::editAction());
-    if(id() > 1) { controlLabel(0, 0)->addAction(hacc::model::CManufacturer::removeAction()); }
+    if(itemID() > 1) { controlLabel(0, 0)->addAction(hacc::model::CManufacturer::removeAction()); }
     controlLabel(0, 0)->addAction(hacc::model::CManufacturer::tagsEditAction());
 }
 
 void WExpandedManufacturerItem::manufacturerUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id, description, image from manufacturers where id=?",
-                                 QVariantList() << id());
+                                 QVariantList() << itemID());
     if(q.next())
     {
         setManufacturerData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
@@ -69,7 +69,7 @@ void WExpandedManufacturerItem::manufacturerUpdated()
 
 hacc::TDBID WExpandedManufacturerItem::itemID()
 {
-    return id();
+    return hacc::model::CManufacturer::id();
 }
 
 }

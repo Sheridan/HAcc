@@ -34,7 +34,7 @@ void WSimpleCurrencyItem::assignActions()
 void WSimpleCurrencyItem:: currencyUpdated()
 {
 
-    QSqlQuery q = HACC_DB->query("select name, reduction from currencyes where id=?", QVariantList() << id());
+    QSqlQuery q = HACC_DB->query("select name, reduction from currencyes where id=?", QVariantList() << itemID());
     if(q.next())
     {
         setCurrencyData(
@@ -46,7 +46,7 @@ void WSimpleCurrencyItem:: currencyUpdated()
 
 hacc::TDBID WSimpleCurrencyItem::itemID()
 {
-    return id();
+    return hacc::model::CCurrency::id();
 }
 
 }

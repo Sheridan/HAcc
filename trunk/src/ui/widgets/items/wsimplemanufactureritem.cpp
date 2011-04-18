@@ -28,7 +28,7 @@ void WSimpleManufacturerItem::setItemData(const hacc::TDBID &mIconId, const QStr
 void WSimpleManufacturerItem::manufacturerUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from manufacturers where id=?",
-                                 QVariantList() << hacc::model::CManufacturer::id());
+                                 QVariantList() << itemID());
     if(q.next())
     {
         setItemData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
@@ -37,7 +37,7 @@ void WSimpleManufacturerItem::manufacturerUpdated()
 
 hacc::TDBID WSimpleManufacturerItem::itemID()
 {
-    return id();
+    return hacc::model::CManufacturer::id();
 }
 
 void WSimpleManufacturerItem::assignActions()

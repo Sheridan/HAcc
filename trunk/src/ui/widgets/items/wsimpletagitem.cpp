@@ -28,7 +28,7 @@ void WSimpleTagItem::setItemData(const QString &name)
 void WSimpleTagItem::assignActions()
 {
     controlLabel(0, 0)->addAction(hacc::model::CTag::editAction());
-    if(!HACC_TAGS->checkSpetialPurposeTag(id())) // Неизменные теги. Трогать нельзя.
+    if(!HACC_TAGS->checkSpetialPurposeTag(itemID())) // Неизменные теги. Трогать нельзя.
     {
         controlLabel(0, 0)->addAction(hacc::model::CTag::removeAction());
     }
@@ -36,12 +36,12 @@ void WSimpleTagItem::assignActions()
 
 void WSimpleTagItem:: tagUpdated()
 {
-    setItemData(HACC_TAGS->tagName(id()));
+    setItemData(HACC_TAGS->tagName(itemID()));
 }
 
 hacc::TDBID WSimpleTagItem::itemID()
 {
-    return id();
+    return hacc::model::CTag::id();
 }
 
 }

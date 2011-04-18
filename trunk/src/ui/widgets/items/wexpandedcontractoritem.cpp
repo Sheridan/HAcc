@@ -23,7 +23,7 @@ WExpandedContractorItem::~WExpandedContractorItem()
 
 void WExpandedContractorItem::buildExpanderUIEvent()
 {
-    appendContainer(new ui::item::expanded::WExpandedAccountBase(id()),
+    appendContainer(new ui::item::expanded::WExpandedAccountBase(itemID()),
                     HACC_ICONS->icon(tools::icons::iAccount),
                     QObject::tr("Accounts"));
     appendTagsTab < ui::tag::TTagContainer <hacc::model::CContractor, hacc::model::CContractors> >();
@@ -44,7 +44,7 @@ void WExpandedContractorItem::setItemData(const hacc::TDBID &iconId, const QStri
 
 void WExpandedContractorItem::contractorUpdated()
 {
-    QSqlQuery q = HACC_DB->query("select name, icon_id from contractors where id=?", QVariantList() << id());
+    QSqlQuery q = HACC_DB->query("select name, icon_id from contractors where id=?", QVariantList() << itemID());
     if(q.next())
     {
         setItemData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
@@ -53,7 +53,7 @@ void WExpandedContractorItem::contractorUpdated()
 
 hacc::TDBID WExpandedContractorItem::itemID()
 {
-    return id();
+    return hacc::model::CContractor::id();
 }
 
 }
