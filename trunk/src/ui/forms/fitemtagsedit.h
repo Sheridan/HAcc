@@ -12,6 +12,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование тегов сущности
 class FItemTagsEdit : public QDialog, public hacc::CIDItem
 {
     Q_OBJECT

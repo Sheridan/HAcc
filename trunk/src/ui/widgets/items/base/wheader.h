@@ -8,6 +8,7 @@ namespace ui
 {
 namespace item
 {
+//! Базовые классы для грида
 namespace base
 {
 

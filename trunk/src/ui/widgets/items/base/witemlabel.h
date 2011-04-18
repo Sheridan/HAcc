@@ -13,7 +13,7 @@ namespace item
 namespace base
 {
 
-//!< Ячейка грида
+//! Ячейка грида
 class WItemLabel : public ui::widget::WStyledWidget
 {
     Q_OBJECT

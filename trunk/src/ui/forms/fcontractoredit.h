@@ -11,6 +11,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование контрагента
 class FContractorEdit : public QDialog
 {
     Q_OBJECT

@@ -11,6 +11,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование производителя
 class FManufacturerEdit : public QDialog
 {
     Q_OBJECT

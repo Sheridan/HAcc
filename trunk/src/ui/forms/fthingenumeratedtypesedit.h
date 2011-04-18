@@ -10,6 +10,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование перечисляемого типа вещи
 class FThingEnumeratedTypesEdit : public QDialog
 {
     Q_OBJECT

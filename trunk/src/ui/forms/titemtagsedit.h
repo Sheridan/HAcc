@@ -8,6 +8,7 @@ namespace ui
 namespace form
 {
 
+//! Универсальный диалог редактирования тегов сущностей
 template <typename TagsContainer> class TItemTagsEdit : public FItemTagsEdit
 {
 public:

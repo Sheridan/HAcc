@@ -10,6 +10,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование тега
 class FTagEdit : public QDialog
 {
     Q_OBJECT

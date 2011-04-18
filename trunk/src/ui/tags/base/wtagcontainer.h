@@ -10,8 +10,10 @@
 
 namespace ui
 {
+//! Отображение/редактирование тегов
 namespace tag
 {
+//! Базовые классы для отображения/редактирования тегов
 namespace base
 {
 
@@ -30,8 +32,8 @@ public:
 private:
     ui::layout::LFlowLayout *m_baseLayout;
     hacc::TIDList            m_tagIDList;
-    QString m_searchText;
-    bool m_editMode;
+    QString                  m_searchText;
+    bool                     m_editMode;
     void buildUi();
     void clear();
     QMap<hacc::TDBID, WTagLabel *> m_tagLabels;

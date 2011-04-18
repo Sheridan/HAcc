@@ -11,10 +11,10 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование вещи
 class FThingEdit : public QDialog
 {
     Q_OBJECT
-
 public:
     explicit FThingEdit(QWidget *parent = 0);
     FThingEdit(const hacc::TDBID &id, QWidget *parent = 0);

@@ -13,6 +13,7 @@ namespace ui
 {
 namespace selector
 {
+//! Базовые классы для выбора из списка
 namespace base
 {
 

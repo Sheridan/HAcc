@@ -64,7 +64,7 @@ public: \
 */
 class CSingleTone
 {
-    //! Объекты-синглтоны
+    //! @name Объекты-синглтоны
     //! @{
     HACC_SIMPLE_ST(tools::db::CDatabase              , db                  );
     HACC_SIMPLE_ST(tools::icons::CDBIconsCache       , dbIcons             );

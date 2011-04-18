@@ -8,6 +8,7 @@ namespace ui
 namespace form
 {
 
+//! Универсальный диалог MDI окон сущностей
 template <typename TContainerBase>class TMDIChild : public FMDIChild
 {
 public:

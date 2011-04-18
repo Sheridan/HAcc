@@ -10,6 +10,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Транзакция покупки вещи
 class FTransactionBuyThingEdit : public QDialog
 {
     Q_OBJECT

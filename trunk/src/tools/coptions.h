@@ -14,12 +14,18 @@ namespace tools
 namespace options
 {
 
+//! Настройки приложения
+/**
+Дает возможность чтото сохранить и прочитать обратно
+  */
 class COptions : public QSettings
 {
 Q_OBJECT
 public:
     COptions();
     ~COptions();
+    //! @name Секция-ключ-значение
+    //! @{
     QStringList sectionKeys        (const QString & section);
     void        removeSection      (const QString & section);
     void        removeSectionValue (const QString & section, const QString & key);
@@ -27,12 +33,16 @@ public:
     void        setSectionValue    (const QString & section, const QString & key, const QVariant & value        = QVariant() );
     QString     text               (const QString & section, const QString & key, const QString  & value        = QString () );
     void        setText            (const QString & section, const QString & key, const QString  & value);
+    //! @}
+    //! @name Сохранение состояния некоторых контролов
+    //! @{
     void        restoreState       (QWidget  *widget);
     void        restoreState       (QMainWindow  *mw);
     void        restoreState       (QTableWidget *tw);
     void        saveState          (QWidget  *widget);
     void        saveState          (QMainWindow  *mw);
     void        saveState          (QTableWidget *tw);
+    //! @}
 
 signals:
     void        optionChanged      (const QString & section, const QString & key, const QVariant &);

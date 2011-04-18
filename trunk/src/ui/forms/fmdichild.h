@@ -9,6 +9,7 @@ namespace ui
 namespace form
 {
 
+//! Дочернее окно основного окна при MDI интерфейсе
 class FMDIChild : public QMdiSubWindow
 {
     Q_OBJECT

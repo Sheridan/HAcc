@@ -8,6 +8,7 @@ namespace ui
 {
 namespace item
 {
+//! Простой, нераскрывыающийся грид
 namespace simple
 {
 

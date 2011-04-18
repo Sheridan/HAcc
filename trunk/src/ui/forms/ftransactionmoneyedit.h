@@ -12,6 +12,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Денежная транзакция. Трансфер
 class FTransactionMoneyEdit : public QDialog
 {
     Q_OBJECT

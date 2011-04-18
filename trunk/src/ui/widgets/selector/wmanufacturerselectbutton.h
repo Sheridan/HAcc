@@ -6,6 +6,7 @@
 #include "wicon.h"
 namespace ui
 {
+//! Выбор из списка
 namespace selector
 {
 

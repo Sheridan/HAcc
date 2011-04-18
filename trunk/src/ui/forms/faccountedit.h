@@ -10,6 +10,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование счета
 class FAccountEdit : public QDialog
 {
     Q_OBJECT
