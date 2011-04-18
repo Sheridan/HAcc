@@ -10,4 +10,6 @@ void _class::changeEvent(QEvent *e) \
     default: break; } \
 }
 
+#define HACC_UTF8_STRING(_str) QString::fromUtf8(_str)
+
 #endif // UI_DEFINES_H

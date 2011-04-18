@@ -5,6 +5,8 @@
 #include <QSqlDriver>
 #include "st.h"
 #include "hacc_db_defines.h"
+#include "ui_defines.h"
+
 namespace tools
 {
 namespace db
@@ -545,9 +547,9 @@ void CDatabase::createDatabase()
     exec("insert into thing_enumerated_types (id,name,precision) values (19,?,0)", QVariantList() << tr("byte(s)"));
     exec("insert into thing_enumerated_types (id,name,precision) values (11,?,0)", QVariantList() << tr("count"));
 
-    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (1,?,?,?)", QVariantList() << tr("American dollar") << "$"  << true );
-    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (2,?,?,?)", QVariantList() << tr("Euro")            << "€"  << false);
-    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (3,?,?,?)", QVariantList() << tr("Russian ruble")   << "р." << false);
+    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (1,?,?,?)", QVariantList() << tr("American dollar") << HACC_UTF8_STRING("$")  << true );
+    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (2,?,?,?)", QVariantList() << tr("Euro")            << HACC_UTF8_STRING("€")  << false);
+    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (3,?,?,?)", QVariantList() << tr("Russian ruble")   << HACC_UTF8_STRING("р.") << false);
 
     int contractorID, accountID, manufacturerID, thingID; contractorID = accountID = manufacturerID = thingID = 0;
     HDB_APPEND_MANUFACTURER_FULL(tr("Unknown manufacturer"), tr("Some unknown manufacturer"), 11);
@@ -568,41 +570,44 @@ void CDatabase::createDatabase()
     #ifdef HACC_DEBUG_DB
         contractorID = accountID = manufacturerID = thingID = 100;
 
-        HDB_APPEND_CONTRACTOR(tr("Wife"), 30, true);
-        HDB_APPEND_ACCOUNT(tr("Money"), 13);
-        HDB_APPEND_ACCOUNT(tr("Card") , 18);
-        HDB_APPEND_ACCOUNT(tr("Nest") , 17);
+        HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Жена"), 30, true);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Деньги")           , 13);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Банковская карта") , 18);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Шкатулка")         , 17);
 
-        HDB_APPEND_CONTRACTOR(tr("Vistotch"), 29, false);
-        HDB_APPEND_ACCOUNT(tr("Base account"), 24);
+        HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Висточ"), 29, false);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
 
-        HDB_APPEND_CONTRACTOR(tr("Sigma"), 3, false);
-        HDB_APPEND_ACCOUNT(tr("Account"), 23);
+        HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Сигма"), 3, false);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 23);
 
-        HDB_APPEND_CONTRACTOR(tr("Consultant+"), 29, false);
-        HDB_APPEND_ACCOUNT(tr("Account"), 24);
+        HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Консультант+"), 29, false);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет"), 24);
 
-        HDB_APPEND_CONTRACTOR(tr("OPT-Torg"), 30, false);
-        HDB_APPEND_ACCOUNT(tr("Account"), 26);
+        HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("ООО 'Опт-Торг'"), 30, false);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет"), 26);
 
-        HDB_APPEND_MANUFACTURER(tr("Ural Metall"), 11);
-        HDB_APPEND_THING(tr("Hammer"), 11, 2, HACC_TAG_ID_OBJECT    );
-        HDB_APPEND_THING(tr("Pliers"), 11, 2, HACC_TAG_ID_OBJECT    );
-        HDB_APPEND_THING(tr("Nails") , 11, 5, HACC_TAG_ID_EXPENDABLE);
-        HDB_APPEND_THING(tr("Chain") , 11, 9, HACC_TAG_ID_EXPENDABLE);
+        HDB_APPEND_MANUFACTURER(HACC_UTF8_STRING("Уральский металлургический"), 11);
+        HDB_APPEND_THING(HACC_UTF8_STRING("Молоток")    , 11, 2, HACC_TAG_ID_OBJECT    );
+        HDB_APPEND_THING(HACC_UTF8_STRING("Плоскогубцы"), 11, 2, HACC_TAG_ID_OBJECT    );
+        HDB_APPEND_THING(HACC_UTF8_STRING("Гвозди")     , 11, 5, HACC_TAG_ID_EXPENDABLE);
+        HDB_APPEND_THING(HACC_UTF8_STRING("Цепь")       , 11, 9, HACC_TAG_ID_EXPENDABLE);
 
-        HDB_APPEND_MANUFACTURER(tr("Transcend"), 5);
-        HDB_APPEND_THING(tr("Flash card"), 5, 2, HACC_TAG_ID_OBJECT);
-        HDB_APPEND_THING(tr("USB hub")   , 8, 2, HACC_TAG_ID_OBJECT);
+        HDB_APPEND_MANUFACTURER("Transcend", 5);
+        HDB_APPEND_THING("Flash card", 5, 2, HACC_TAG_ID_OBJECT);
+        HDB_APPEND_THING("USB hub"   , 8, 2, HACC_TAG_ID_OBJECT);
 
         HDB_APPEND_MANUFACTURER(tr("Silicon Image"), 5);
-        HDB_APPEND_THING(tr("Flash card"), 12, 2, HACC_TAG_ID_OBJECT);
-        HDB_APPEND_THING(tr("USB hub")   ,  8, 2, HACC_TAG_ID_OBJECT);
+        HDB_APPEND_THING("Flash card", 12, 2, HACC_TAG_ID_OBJECT);
+        HDB_APPEND_THING("USB hub"   ,  8, 2, HACC_TAG_ID_OBJECT);
 
-        HDB_APPEND_MANUFACTURER(tr("Sigma"), 12);
-        HDB_APPEND_THING(tr("Toner Fill")      , 5 , 3, HACC_TAG_ID_SERVICE);
-        HDB_APPEND_THING(tr("HDD restore")     , 8 , 3, HACC_TAG_ID_SERVICE);
-        HDB_APPEND_THING(tr("Printer flushing"), 15, 3, HACC_TAG_ID_SERVICE);
+        HDB_APPEND_MANUFACTURER(HACC_UTF8_STRING("Сигма"), 12);
+        HDB_APPEND_THING(HACC_UTF8_STRING("Заправка тонера")   , 5 , 3, HACC_TAG_ID_SERVICE);
+        HDB_APPEND_THING(HACC_UTF8_STRING("Восстановление HDD"), 8 , 3, HACC_TAG_ID_SERVICE);
+        HDB_APPEND_THING(HACC_UTF8_STRING("Промывка принтера") , 15, 3, HACC_TAG_ID_SERVICE);
 
     #endif
 }
