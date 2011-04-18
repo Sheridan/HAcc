@@ -569,6 +569,7 @@ void CDatabase::createDatabase()
     HDB_APPEND_THING(tr("Unknown thing"), 7, 1, HACC_TAG_ID_OBJECT);
 
     // Контрагент "Ничто" со счетом "Нигде". Нужен для списания и прочих действий типа "проебали 50 рублей"
+    //! \todo Добавить счет для каждой валюты и впредь при добавлении валюты добавлять сюда счет с такой валютой
     HDB_APPEND_CONTRACTOR(tr("Nothing"), 1, false);
     HDB_APPEND_ACCOUNT(tr("Nowhere")   , 1);
 
