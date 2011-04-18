@@ -1,10 +1,10 @@
-//    Author: Sheridan <sheridan@stavcom.ru>, (C) 2006
-//    Copyright: See COPYING file that comes with this distribution
-//
 #include "coptions.h"
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QHeaderView>
+
+namespace tools
+{
 namespace options
 {
 
@@ -124,4 +124,5 @@ void COptions::removeSection(const QString & section)
     endGroup();
 }
 
+}
 }

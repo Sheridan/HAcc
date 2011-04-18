@@ -15,7 +15,7 @@ SOURCES += src/main.cpp \
     src/ui/fmainwindow.cpp \
     src/tools/db/cdatabase.cpp \
     src/csingletone.cpp \
-    src/coptions.cpp \
+    src/tools/coptions.cpp \
     src/capplication.cpp \
     src/model/caccounts.cpp \
     src/ui/forms/faccountedit.cpp \
@@ -173,7 +173,7 @@ HEADERS += src/ui/fmainwindow.h \
     src/tools/db/cdatabase.h \
     src/st.h \
     src/csingletone.h \
-    src/coptions.h \
+    src/tools/coptions.h \
     src/capplication.h \
     src/hacc_types.h \
     src/model/caccounts.h \

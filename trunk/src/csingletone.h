@@ -20,6 +20,11 @@
 #include "ctags.h"
 #include "hacc_debug.h"
 
+//! Объявляет и реализует обычный синглтон
+/**
+  Не забыть добавтиь в конструктор и деструктор CSingleTone init_?() и destroy_?() методы.
+  Автоматически создает объект при первом обращении. Далее использует уже существующий
+  */
 #define HACC_SIMPLE_ST(_class, _variable) \
 private:\
     _class *_##_variable; \
@@ -37,6 +42,11 @@ public: \
         return _##_variable; \
     }
 
+//! Объявляет и реализует преинициализированный синглтон
+/**
+  Не забыть добавтиь в конструктор и деструктор CSingleTone init_?() и destroy_?() методы.
+  Создает объект при вызове конструктора CSingleTone. Его и использует впоследствии.
+  */
 #define HACC_PRECREATED_ST(_class, _variable) \
     _class *_##_variable; \
     void init_##_variable()    { _##_variable = new _class(); } \
@@ -54,22 +64,25 @@ public: \
 */
 class CSingleTone
 {
-    HACC_SIMPLE_ST(tools::db::CDatabase              , db);
-    HACC_SIMPLE_ST(tools::icons::CDBIconsCache       , dbIcons);
-    HACC_SIMPLE_ST(tools::icons::CIconsCache         , icons);
-    HACC_SIMPLE_ST(ui::form::FMainWindow             , window);
-    HACC_SIMPLE_ST(hacc::model::CTags                , tags);
-    HACC_SIMPLE_ST(hacc::model::CThings              , things);
-    HACC_SIMPLE_ST(hacc::model::CAccounts            , accounts);
-    HACC_SIMPLE_ST(hacc::model::CValuables           , valuables);
-    HACC_SIMPLE_ST(hacc::model::CMovements           , movements);
-    HACC_SIMPLE_ST(hacc::model::CCurrencyes          , currencyes);
-    HACC_SIMPLE_ST(hacc::model::CContractors         , contractors);
-    HACC_SIMPLE_ST(hacc::model::CTransactions        , transactions);
-    HACC_SIMPLE_ST(hacc::model::CManufacturers       , manufacturers);
-    HACC_SIMPLE_ST(hacc::model::CTransactionsPools   , transactionsPools);
+    //! Объекты-синглтоны
+    //! @{
+    HACC_SIMPLE_ST(tools::db::CDatabase              , db                  );
+    HACC_SIMPLE_ST(tools::icons::CDBIconsCache       , dbIcons             );
+    HACC_SIMPLE_ST(tools::icons::CIconsCache         , icons               );
+    HACC_SIMPLE_ST(ui::form::FMainWindow             , window              );
+    HACC_SIMPLE_ST(hacc::model::CTags                , tags                );
+    HACC_SIMPLE_ST(hacc::model::CThings              , things              );
+    HACC_SIMPLE_ST(hacc::model::CAccounts            , accounts            );
+    HACC_SIMPLE_ST(hacc::model::CValuables           , valuables           );
+    HACC_SIMPLE_ST(hacc::model::CMovements           , movements           );
+    HACC_SIMPLE_ST(hacc::model::CCurrencyes          , currencyes          );
+    HACC_SIMPLE_ST(hacc::model::CContractors         , contractors         );
+    HACC_SIMPLE_ST(hacc::model::CTransactions        , transactions        );
+    HACC_SIMPLE_ST(hacc::model::CManufacturers       , manufacturers       );
+    HACC_SIMPLE_ST(hacc::model::CTransactionsPools   , transactionsPools   );
     HACC_SIMPLE_ST(hacc::model::CEnumeratedThingTypes, enumeratedThingTypes);
-    HACC_PRECREATED_ST(options::COptions             , options);
+    HACC_PRECREATED_ST(tools::options::COptions      , options             );
+    //! @}
 
 private:
     CApplication *_application;
@@ -77,10 +90,10 @@ private:
 public:
     CSingleTone();
     ~CSingleTone();
-    void setCommandLine(int & argc, char ** argv);
+    void setCommandLine(int & argc, char ** argv); //!< Обработка коммандной строки
     CApplication *application();
 
-    static CSingleTone *instance();
+    static CSingleTone *instance();                //!< Экземпляр синглтона.
 };
 #endif
 

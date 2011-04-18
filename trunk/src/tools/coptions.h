@@ -8,7 +8,9 @@
 #include <QMainWindow>
 #include <QTableWidget>
 
-//! \todo Перенести в tools
+namespace tools
+{
+//! Настройки
 namespace options
 {
 
@@ -36,5 +38,6 @@ signals:
     void        optionChanged      (const QString & section, const QString & key, const QVariant &);
 };
 
+}
 }
 #endif // __COPTIONS_H__
