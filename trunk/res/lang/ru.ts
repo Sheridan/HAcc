@@ -554,7 +554,7 @@
     </message>
 </context>
 <context>
-    <name>db::CDatabase</name>
+    <name>tools::db::CDatabase</name>
     <message>
         <source>Unknown manufacturer</source>
         <translation>Неизвестный производитель</translation>

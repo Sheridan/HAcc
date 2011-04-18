@@ -575,7 +575,6 @@ WARN_LOGFILE           =
 
 INPUT                  = \
 src/ \
-src/db \
 src/ui \
 src/ui/docks \
 src/ui/forms \
@@ -590,6 +589,7 @@ src/ui/widgets/items/base \
 src/ui/widgets/selector \
 src/ui/widgets/selector/base \
 src/tools \
+src/tools/db \
 src/model \
 src/model/base \
 src/model/composite
@@ -1251,7 +1251,6 @@ SEARCH_INCLUDES        = YES
 
 INCLUDE_PATH           = \
 src/ \
-src/db \
 src/ui \
 src/ui/docks \
 src/ui/forms \
@@ -1266,6 +1265,7 @@ src/ui/widgets/items/base \
 src/ui/widgets/selector \
 src/ui/widgets/selector/base \
 src/tools \
+src/tools/db \
 src/model \
 src/model/base \
 src/model/composite

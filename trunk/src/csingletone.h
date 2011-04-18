@@ -54,7 +54,7 @@ public: \
 */
 class CSingleTone
 {
-    HACC_SIMPLE_ST(db::CDatabase                     , db);
+    HACC_SIMPLE_ST(tools::db::CDatabase              , db);
     HACC_SIMPLE_ST(tools::icons::CDBIconsCache       , dbIcons);
     HACC_SIMPLE_ST(tools::icons::CIconsCache         , icons);
     HACC_SIMPLE_ST(ui::form::FMainWindow             , window);

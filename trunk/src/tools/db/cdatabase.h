@@ -12,7 +12,9 @@
 #define HACC_TAG_TABLE_ID_NAME(_table) #_table "_id "
 #define HACC_DB_PREPARED_ICONS 29
 
-//! \todo Перенести в tools
+namespace tools
+{
+//! Работа с БД
 namespace db
 {
 //! Класс работы с БД
@@ -63,5 +65,6 @@ signals:
 
 };
 
+}
 }
 #endif // CDATABASE_H

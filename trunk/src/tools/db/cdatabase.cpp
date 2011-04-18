@@ -5,7 +5,8 @@
 #include <QSqlDriver>
 #include "st.h"
 #include "hacc_db_defines.h"
-
+namespace tools
+{
 namespace db
 {
 
@@ -606,4 +607,5 @@ void CDatabase::createDatabase()
     #endif
 }
 
+}
 }

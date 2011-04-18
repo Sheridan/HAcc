@@ -13,7 +13,7 @@ RCC_DIR = ../build/rcc
 
 SOURCES += src/main.cpp \
     src/ui/fmainwindow.cpp \
-    src/db/cdatabase.cpp \
+    src/tools/db/cdatabase.cpp \
     src/csingletone.cpp \
     src/coptions.cpp \
     src/capplication.cpp \
@@ -129,7 +129,7 @@ SOURCES += src/main.cpp \
     src/ui/widgets/items/wexpandedvaluablecontainer.cpp \
     src/ui/widgets/items/wexpandedvaluableitem.cpp \
     src/ui/forms/ftransactionpoolthingedit.cpp \
-    src/db/cdbiconscache.cpp \
+    src/tools/cdbiconscache.cpp \
     src/tools/ciconscache.cpp \
     src/ui/forms/ftransactionmoneyedit.cpp \
     src/ui/widgets/items/wexpandedtransactionpoolthingitem.cpp \
@@ -170,7 +170,7 @@ SOURCES += src/main.cpp \
     src/ui/widgets/items/wsimplecurrencyitem.cpp
 
 HEADERS += src/ui/fmainwindow.h \
-    src/db/cdatabase.h \
+    src/tools/db/cdatabase.h \
     src/st.h \
     src/csingletone.h \
     src/coptions.h \
@@ -291,7 +291,7 @@ HEADERS += src/ui/fmainwindow.h \
     src/ui/widgets/items/wexpandedvaluableitem.h \
     src/model/base/spetial_tags_types.h \
     src/ui/forms/ftransactionpoolthingedit.h \
-    src/db/cdbiconscache.h \
+    src/tools/cdbiconscache.h \
     src/tools/ciconscache.h \
     src/ui/forms/ftransactionmoneyedit.h \
     src/ui/widgets/items/wexpandedtransactionpoolthingitem.h \
@@ -325,7 +325,7 @@ HEADERS += src/ui/fmainwindow.h \
     src/ui/widgets/items/wexpandedtransactionthingsellcontainer.h \
     src/ui/widgets/items/wexpandedtransactionthingsellbase.h \
     src/ui/widgets/items/wexpandedtransactionthingitem.h \
-    src/db/hacc_db_defines.h \
+    src/tools/db/hacc_db_defines.h \
     src/model/ccurrency.h \
     src/model/ccurrencyes.h \
     src/ui/widgets/items/wsimplecurrencybase.h \
@@ -350,7 +350,6 @@ FORMS += src/ui/fmainwindow.ui \
     src/ui/forms/ftransactionsellthingedit.ui
 
 INCLUDEPATH += src \
-    src/db \
     src/ui \
     src/ui/docks \
     src/ui/forms \
@@ -365,6 +364,7 @@ INCLUDEPATH += src \
     src/ui/widgets/selector \
     src/ui/widgets/selector/base \
     src/tools \
+    src/tools/db \
     src/model \
     src/model/base \
     src/model/composite
@@ -373,9 +373,7 @@ RESOURCES += res/hacc.qrc
 
 OTHER_FILES += \
     res/styles/application.qss \
-    doc/TODO.txt \
     res/styles/item.qss \
     res/styles/taglabel.qss \
     res/lang/ru.ts \
-    doc/transactions.txt \
     doc/Doxyfile 
