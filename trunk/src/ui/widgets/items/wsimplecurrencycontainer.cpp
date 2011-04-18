@@ -16,10 +16,10 @@ WSimpleCurrencyContainer::WSimpleCurrencyContainer(QWidget *parent) : ui::item::
 WSimpleCurrencyContainer::~WSimpleCurrencyContainer()
 {}
 
-void WSimpleCurrencyContainer::appendCurrency(const hacc::TDBID &id, const QString &name, const QString &reduction)
+void WSimpleCurrencyContainer::appendCurrency(const hacc::TDBID &id, const hacc::TDBID &iconID, const QString &name, const QString &reduction)
 {
     WSimpleCurrencyItem *i = new WSimpleCurrencyItem(id);
-    i->setCurrencyData(name, reduction);
+    i->setCurrencyData(iconID, name, reduction);
     appendItem(i);
 }
 
@@ -28,7 +28,7 @@ void WSimpleCurrencyContainer::refresh(const hacc::TDBID &createdID)
     if(!createdID) { cleanItems(); }
     QVariantList parametres;
     QString where = "";
-    QString sql = "select id, name, reduction from currencyes ";
+    QString sql = "select id, name, reduction, icon_id from currencyes ";
     if(!m_searchText.isEmpty())
     {
         where += QString( " (  upper(name)      like upper(\"%%%0%%\")"
@@ -46,6 +46,7 @@ void WSimpleCurrencyContainer::refresh(const hacc::TDBID &createdID)
     {
         appendCurrency(
                     HACC_DB_2_DBID(q, 0),
+                    HACC_DB_2_DBID(q, 3),
                     HACC_DB_2_STRG(q, 1),
                     HACC_DB_2_STRG(q, 2)
                     );

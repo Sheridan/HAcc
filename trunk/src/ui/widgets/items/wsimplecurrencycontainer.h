@@ -17,7 +17,7 @@ public:
     ~WSimpleCurrencyContainer();
 
 private:
-    void appendCurrency(const hacc::TDBID &id, const QString &name, const QString &reduction);
+    void appendCurrency(const hacc::TDBID &id, const hacc::TDBID &iconID, const QString &name, const QString &reduction);
 
 public slots:
     void refresh(const hacc::TDBID &id = 0);

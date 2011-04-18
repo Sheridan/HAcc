@@ -18,7 +18,7 @@ class WSimpleCurrencyItem :
 public:
     WSimpleCurrencyItem(const hacc::TDBID &currencyID);
     ~WSimpleCurrencyItem();
-    void setCurrencyData(const QString &name, const QString &reduction);
+    void setCurrencyData(const hacc::TDBID &iconID, const QString &name, const QString &reduction);
     hacc::TDBID itemID();
 
 private:

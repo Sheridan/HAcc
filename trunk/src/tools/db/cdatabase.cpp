@@ -464,6 +464,7 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_TABLE_BEGIN(currencyes)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER // id
             HACC_DB_UNIQUE_NAME_FIELD                                   HACC_DB_FIELD_DELIMITER // Имя
+            HACC_DB_ICON_FIELD                                          HACC_DB_FIELD_DELIMITER // Иконка, флаг (id)
             HACC_DB_TEXT(reduction)                                     HACC_DB_FIELD_DELIMITER // Краткое обозначение, символ валюты
             HACC_DB_BOOL(show_reduction_before_value)                                           // Показывать символ валюты до числа?
     HACC_DB_CREATE_TABLE_END;
@@ -542,6 +543,9 @@ void CDatabase::createDatabase()
         exec("insert into tags (id,name) values (?,?)", QVariantList() << i << tag);
     }
 
+    int contractorID, accountID, manufacturerID, thingID, currencyID;
+        contractorID= accountID= manufacturerID= thingID= currencyID = 0;
+
     // Заполнение таблицы перечислений
     exec("insert into thing_enumerated_types (id,name,precision) values ( 1,?,0)", QVariantList() << tr("n/a"));          // Специальный тип перечисления
     exec("insert into thing_enumerated_types (id,name,precision) values ( 2,?,0)", QVariantList() << tr("item(s)"));      // Специальный тип перечисления
@@ -556,12 +560,11 @@ void CDatabase::createDatabase()
     exec("insert into thing_enumerated_types (id,name,precision) values (11,?,0)", QVariantList() << tr("count"));
 
     // Заполнение таблицы валют
-    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (1,?,?,?)", QVariantList() << tr("American dollar") << HACC_UTF8_STRING("$")  << true );
-    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (2,?,?,?)", QVariantList() << tr("Euro")            << HACC_UTF8_STRING("€")  << false);
-    exec("insert into currencyes (id,name,reduction,show_reduction_before_value) values (3,?,?,?)", QVariantList() << tr("Russian ruble")   << HACC_UTF8_STRING("р.") << false);
+    HDB_APPEND_CURRENCY(tr("American dollar"), HACC_UTF8_STRING("$") , true , "usa" );
+    HDB_APPEND_CURRENCY(tr("Euro")           , HACC_UTF8_STRING("€") , false, "euro");
+    HDB_APPEND_CURRENCY(tr("Russian ruble")  , HACC_UTF8_STRING("р."), false, "ru"  );
 
     // Создание базовых счетов
-    int contractorID, accountID, manufacturerID, thingID; contractorID = accountID = manufacturerID = thingID = 0;
     HDB_APPEND_MANUFACTURER_FULL(tr("Unknown manufacturer"), tr("Some unknown manufacturer"), 11);
     HDB_APPEND_THING(tr("Unknown thing"), 7, 1, HACC_TAG_ID_OBJECT);
 
@@ -621,6 +624,8 @@ void CDatabase::createDatabase()
         HDB_APPEND_THING(HACC_UTF8_STRING("Промывка принтера") , 15, 3, HACC_TAG_ID_SERVICE);
 
     #endif
+
+    HACC_DB_ICONS->freezePredeclaredIconsCount();
 }
 
 }

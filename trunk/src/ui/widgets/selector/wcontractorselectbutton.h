@@ -16,7 +16,7 @@ class WContractorSelectButton : public base::WSelectorButton
 {
     Q_OBJECT
 public:
-    explicit WContractorSelectButton(QWidget *parent = 0);
+    WContractorSelectButton(QWidget *parent = 0);
     ~WContractorSelectButton();
     void setSelfFilter(hacc::model::EContractorFilter filter);
 

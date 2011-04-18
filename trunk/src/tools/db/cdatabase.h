@@ -10,7 +10,6 @@
 #define HACC_DATABASE_VERSION 1
 #define HACC_TAG_TABLE_NAME(_table)    #_table "s_tags "
 #define HACC_TAG_TABLE_ID_NAME(_table) #_table "_id "
-#define HACC_DB_PREPARED_ICONS 29
 
 namespace tools
 {

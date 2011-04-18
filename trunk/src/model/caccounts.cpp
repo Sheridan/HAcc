@@ -25,20 +25,21 @@ void CAccounts::add(const hacc::TDBID & contractorID)
     ui::form::FAccountEdit *dialog = new ui::form::FAccountEdit();
     if(dialog->exec() == QDialog::Accepted)
     {
-        execAddAccount(contractorID, dialog->name(), dialog->iconId());
+        execAddAccount(contractorID, dialog->name(), dialog->iconId(), dialog->currencyID());
     }
     delete dialog;
 }
 
-void CAccounts::execAddAccount(const hacc::TDBID & contractorID, const QString &name, const hacc::TDBID & iconID)
+void CAccounts::execAddAccount(const hacc::TDBID & contractorID, const QString &name, const hacc::TDBID & iconID, const hacc::TDBID &currencyID)
 {
     hacc::TDBID newID = nextID();
-    HACC_DB->exec("insert into accounts (id,name,icon_id,contractor_id) values (?,?,?,?)",
+    HACC_DB->exec("insert into accounts (id,name,icon_id,contractor_id,currency_id) values (?,?,?,?,?)",
                   QVariantList()
                   << newID
                   << name
                   << iconID
-                  << contractorID);
+                  << contractorID
+                  << currencyID);
     emit created(newID);
 }
 
@@ -86,9 +87,10 @@ void CAccounts::edit(const hacc::TDBID & id)
         ui::form::FAccountEdit *dialog = new ui::form::FAccountEdit(id);
         if(dialog->exec() == QDialog::Accepted)
         {
-            HACC_DB->exec("update accounts set name=?, icon_id=? where id=?", QVariantList()
+            HACC_DB->exec("update accounts set name=?, icon_id=?, currency_id=? where id=?", QVariantList()
                           << dialog->name()
                           << dialog->iconId()
+                          << dialog->currencyID()
                           << id);
             emit updated(id);
         }

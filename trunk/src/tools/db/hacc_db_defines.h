@@ -4,9 +4,9 @@
 
 #define HACC_DB_CREATE_TABLE_BEGIN(_table) exec("create table " #_table "("
 
-#define HACC_DB_FIELD_DELIMITER ","
-#define HACC_DB_FIELD_NOT_NULL " not null"
-#define HACC_DB_FIELD_UNIQUE " unique"
+#define HACC_DB_FIELD_DELIMITER         ","
+#define HACC_DB_FIELD_NOT_NULL          " not null"
+#define HACC_DB_FIELD_UNIQUE            " unique"
 #define HACC_DB_FIELD_DEFAULT(_default) " default(" #_default ")"
 
 #define HACC_DB_INTEGER(_name)  #_name " integer"
@@ -20,12 +20,11 @@
 
 #define HACC_DB_CREATE_TABLE_END ");");
 
-
-#define HACC_DB_ID_FIELD          HACC_DB_ID(id) " primary key"
-#define HACC_DB_ICON_FIELD        HACC_DB_ID(icon_id) HACC_DB_FIELD_DEFAULT(1)
-#define HACC_DB_CURRENCY_FIELD    HACC_DB_ID(currency_id) HACC_DB_FIELD_DEFAULT(1)
-#define HACC_DB_NAME_FIELD        HACC_DB_TEXT(name)  HACC_DB_FIELD_NOT_NULL
-#define HACC_DB_UNIQUE_NAME_FIELD HACC_DB_NAME_FIELD  HACC_DB_FIELD_UNIQUE
+#define HACC_DB_ID_FIELD          HACC_DB_ID(id)            " primary key"
+#define HACC_DB_ICON_FIELD        HACC_DB_ID(icon_id)       HACC_DB_FIELD_DEFAULT(1)
+#define HACC_DB_CURRENCY_FIELD    HACC_DB_ID(currency_id)   HACC_DB_FIELD_DEFAULT(1)
+#define HACC_DB_NAME_FIELD        HACC_DB_TEXT(name)        HACC_DB_FIELD_NOT_NULL
+#define HACC_DB_UNIQUE_NAME_FIELD HACC_DB_NAME_FIELD        HACC_DB_FIELD_UNIQUE
 #define HACC_DB_FULL_DESCRIPTION  HACC_DB_TEXT(description) HACC_DB_FIELD_DELIMITER HACC_DB_BLOB(image)
 
 #define HACC_DB_CREATE_INDEX(_table,_field) \
@@ -60,6 +59,10 @@
         exec("insert into things (id, name, icon_id, manufacturer_id, enumerated_type_id) values (?,?,?,?,?)", \
         QVariantList() << ++thingID << _name << _icon << manufacturerID << _enumerated); \
         HACC_THINGS->attachTag(_thing_type, thingID);
+
+#define HDB_APPEND_CURRENCY(_name, _reduction, _before_value, _icon) \
+    exec("insert into currencyes (id,name,reduction,show_reduction_before_value,icon_id) values (?,?,?,?,?)", \
+              QVariantList() << ++currencyID << _name << _reduction  << _before_value << HACC_DB_ICONS->add(":/flags/" _icon ".png"  ));
 
 
 #endif // HACC_DB_DEFINES_H

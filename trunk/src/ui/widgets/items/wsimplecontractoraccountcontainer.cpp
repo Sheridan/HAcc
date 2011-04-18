@@ -21,6 +21,7 @@ WSimpleContractorAccountContainer::~WSimpleContractorAccountContainer()
 
 void WSimpleContractorAccountContainer::refresh(const hacc::TDBID &createdID)
 {
+    //! \todo Добавить валюту счета
     if(!createdID) { cleanItems(); }
     QVariantList parametres;
     QString sql = "select "

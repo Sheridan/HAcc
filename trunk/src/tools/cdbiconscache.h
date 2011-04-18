@@ -17,10 +17,12 @@ class CDBIconsCache : public QObject
 public:
     CDBIconsCache();
     ~CDBIconsCache();
-    void add          (const QString &fileName);
+    hacc::TDBID add   (const QString &fileName);
     void remove       (const hacc::TDBID &id);
     void replace      (const hacc::TDBID &id, const QString &fileName);
     const QIcon & icon(const hacc::TDBID &id);
+    void freezePredeclaredIconsCount(); //!< Заморозка количества предопределенных иконок
+    const uint & predeclaredIconsCount() const;
 
 public slots:
     void removeUnused();
@@ -28,6 +30,9 @@ public slots:
 private:
     QMap<hacc::TDBID, QIcon *> m_icons;
     hacc::TDBID m_maxID;
+    //! Количество предопределенных иконок
+    /** Предопределенные иконки нельзя удалять, их можно только заменить */
+    uint        m_predeclaredIcons;
     hacc::TDBID nextID();
 
 signals:

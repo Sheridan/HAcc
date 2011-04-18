@@ -13,15 +13,15 @@ WSimpleCurrencyItem::WSimpleCurrencyItem(const hacc::TDBID &currencyID)
       hacc::model::CCurrency()
 {
     setID(currencyID);
-    setIcon(0, 0, HACC_ICONS->icon(tools::icons::iCurrency));
     HACC_INIT_ITEM;
 }
 
 WSimpleCurrencyItem::~WSimpleCurrencyItem()
 {}
 
-void WSimpleCurrencyItem::setCurrencyData(const QString &name, const QString &reduction)
+void WSimpleCurrencyItem::setCurrencyData(const hacc::TDBID &iconID, const QString &name, const QString &reduction)
 {
+    setIcon(0, 0, iconID);
     setText(0, 0, QString("%0 (%1)").arg(name).arg(reduction));
 }
 
@@ -34,12 +34,13 @@ void WSimpleCurrencyItem::assignActions()
 void WSimpleCurrencyItem:: currencyUpdated()
 {
 
-    QSqlQuery q = HACC_DB->query("select name, reduction from currencyes where id=?", QVariantList() << itemID());
+    QSqlQuery q = HACC_DB->query("select name, reduction, icon_id from currencyes where id=?", QVariantList() << itemID());
     if(q.next())
     {
         setCurrencyData(
-                    HACC_DB_2_STRG(q, 1),
-                    HACC_DB_2_STRG(q, 2)
+                    HACC_DB_2_DBID(q, 2),
+                    HACC_DB_2_STRG(q, 0),
+                    HACC_DB_2_STRG(q, 1)
                     );
     }
 }

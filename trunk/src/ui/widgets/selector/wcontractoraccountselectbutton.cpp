@@ -39,6 +39,9 @@ WContractorAccountSelectButton::~WContractorAccountSelectButton()
 
 void WContractorAccountSelectButton::idChanged()
 {
+    /** \todo Отслеживать валюту счета контрагента. Продавец должен выбирать любую валюту, а счета покупателя должны
+              выбираться с такойже валютой как и у продавца. Нет валюты такой в счетах - нет покупки.
+    */
     QSqlQuery q = HACC_DB->query("select "
                                  "accounts.name,"
                                  "accounts.icon_id,"

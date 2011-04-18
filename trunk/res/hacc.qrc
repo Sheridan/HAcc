@@ -77,4 +77,11 @@
         <file alias="contractor-2.png">icons/usefull/contractor-2.png</file>
         <file alias="contractor-1.png">icons/usefull/contractor-1.png</file>
     </qresource>
+    <qresource prefix="/flags">
+        <file alias="eng.png">icons/flags/eng.png</file>
+        <file alias="euro.png">icons/flags/euro.png</file>
+        <file alias="jp.png">icons/flags/jp.png</file>
+        <file alias="ru.png">icons/flags/ru.png</file>
+        <file alias="usa.png">icons/flags/usa.png</file>
+    </qresource>
 </RCC>

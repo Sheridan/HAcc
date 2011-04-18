@@ -24,7 +24,7 @@ public:
     void remove(const hacc::TDBID & id);
     void edit(const hacc::TDBID & id);
     void add(const hacc::TDBID & contractorID);
-    void execAddAccount(const hacc::TDBID & contractorID, const QString &name, const hacc::TDBID & iconID);
+    void execAddAccount(const hacc::TDBID & contractorID, const QString &name, const hacc::TDBID & iconID, const hacc::TDBID &currencyID);
     void removeContractorAccounts(const hacc::TDBID & contractorID); //!< Удаляет счета контрагента
     void tagsEdit(const hacc::TDBID & id);
     hacc::TDBID contractor(const hacc::TDBID & accountID); //!< Возвращает контрагента - владельца счета

@@ -53,7 +53,8 @@ void CContractors::add(bool isSelf)
                       << dialog->name()
                       << dialog->iconId()
                       << isSelf);
-        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconId());
+        //! \todo Добавить валюту по умолчанию
+        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconId(), 1);
         emit created(newID);
     }
     delete dialog;

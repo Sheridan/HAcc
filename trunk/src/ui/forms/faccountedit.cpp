@@ -13,6 +13,7 @@ FAccountEdit::FAccountEdit(QWidget *parent) : QDialog(parent), m_ui(new Ui::FAcc
     init();
     setObjectName(objectName()+"_new");
     m_ui->pwIcons->setID(2);
+    m_ui->pwCurrencySelectButton->setID(1); //! \todo Добавить валюту по умолчанию
     HACC_RESTORE_DIALOG;
 }
 
@@ -21,10 +22,12 @@ FAccountEdit::FAccountEdit(const hacc::TDBID & id, QWidget *parent) : QDialog(pa
     init();
     setObjectName(objectName()+"_edit");
 
-    QSqlQuery q = HACC_DB->query("select name, icon_id from accounts where id=?", QVariantList() << id);
+    QSqlQuery q = HACC_DB->query("select name, icon_id, currency_id from accounts where id=?", QVariantList() << id);
     q.next();
     m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
     m_ui->pwIcons->setID  (HACC_DB_2_DBID(q, 1));
+    m_ui->pwCurrencySelectButton->setID(HACC_DB_2_DBID(q, 2));
+
     HACC_RESTORE_DIALOG;
 }
 
@@ -37,6 +40,7 @@ FAccountEdit::~FAccountEdit()
 void FAccountEdit::init()
 {
     m_ui->setupUi(this);
+    m_ui->pwCurrencySelectButton->init();
 }
 
 QString FAccountEdit::name()
@@ -47,6 +51,11 @@ QString FAccountEdit::name()
 hacc::TDBID FAccountEdit::iconId()
 {
     return m_ui->pwIcons->id();
+}
+
+hacc::TDBID FAccountEdit::currencyID()
+{
+    return m_ui->pwCurrencySelectButton->id();
 }
 
 }

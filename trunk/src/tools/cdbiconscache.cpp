@@ -10,6 +10,7 @@ namespace icons
 CDBIconsCache::CDBIconsCache() : QObject()
 {
     m_maxID = 0;
+    m_predeclaredIcons = 0;
 }
 
 CDBIconsCache::~CDBIconsCache()
@@ -18,13 +19,15 @@ CDBIconsCache::~CDBIconsCache()
     m_icons.clear();
 }
 
-void CDBIconsCache::add (const QString &fileName)
+hacc::TDBID CDBIconsCache::add (const QString &fileName)
 {
+    hacc::TDBID nID = nextID();
     QPixmap pixmap(fileName);
     HACC_DB->exec("insert into icons (id, icon) values (?,?)",
                   QVariantList()
-                  << nextID()
+                  << nID
                   << ui::images::pixmap2ByteArray(pixmap));
+    return nID;
 }
 
 void CDBIconsCache::remove (const hacc::TDBID & id )
@@ -76,7 +79,7 @@ void CDBIconsCache::removeUnused()
         while(q.next())
         {
             iid = HACC_DB_2_DBID(q, 0);
-            if(iid <= HACC_DB_PREPARED_ICONS || list.contains(iid))
+            if(iid <= m_predeclaredIcons || list.contains(iid))
             {
                 list.removeOne(iid);
             }
@@ -96,6 +99,16 @@ hacc::TDBID CDBIconsCache::nextID()
         m_maxID = HACC_DB->nextID("icons");
     }
     return m_maxID++;
+}
+
+void CDBIconsCache::freezePredeclaredIconsCount()
+{
+    m_predeclaredIcons = m_maxID;
+}
+
+const uint & CDBIconsCache::predeclaredIconsCount() const
+{
+    return m_predeclaredIcons;
 }
 
 }

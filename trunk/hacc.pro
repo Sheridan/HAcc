@@ -167,7 +167,9 @@ SOURCES += src/main.cpp \
     src/model/ccurrencyes.cpp \
     src/ui/widgets/items/wsimplecurrencybase.cpp \
     src/ui/widgets/items/wsimplecurrencycontainer.cpp \
-    src/ui/widgets/items/wsimplecurrencyitem.cpp
+    src/ui/widgets/items/wsimplecurrencyitem.cpp \
+    src/ui/widgets/selector/wcurrencyelectbutton.cpp \
+    src/ui/widgets/selector/wcurrencyselectpopup.cpp
 
 HEADERS += src/ui/fmainwindow.h \
     src/tools/db/cdatabase.h \
@@ -330,7 +332,9 @@ HEADERS += src/ui/fmainwindow.h \
     src/model/ccurrencyes.h \
     src/ui/widgets/items/wsimplecurrencybase.h \
     src/ui/widgets/items/wsimplecurrencycontainer.h \
-    src/ui/widgets/items/wsimplecurrencyitem.h
+    src/ui/widgets/items/wsimplecurrencyitem.h \
+    src/ui/widgets/selector/wcurrencyelectbutton.h \
+    src/ui/widgets/selector/wcurrencyselectpopup.h
 
 FORMS += src/ui/fmainwindow.ui \
     src/ui/forms/faccountedit.ui \

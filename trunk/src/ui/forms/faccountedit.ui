@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>224</width>
-    <height>88</height>
+    <width>223</width>
+    <height>128</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -68,6 +68,16 @@
     </layout>
    </item>
    <item>
+    <widget class="QLabel" name="label_3">
+     <property name="text">
+      <string>Currency</string>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="ui::selector::WCurrencyelectButton" name="pwCurrencySelectButton" native="true"/>
+   </item>
+   <item>
     <widget class="QDialogButtonBox" name="buttonBox">
      <property name="orientation">
       <enum>Qt::Horizontal</enum>
@@ -84,6 +94,12 @@
    <class>ui::icons::WIconSelect</class>
    <extends>QWidget</extends>
    <header>wiconselect.h</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>ui::selector::WCurrencyelectButton</class>
+   <extends>QWidget</extends>
+   <header>wcurrencyelectbutton.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

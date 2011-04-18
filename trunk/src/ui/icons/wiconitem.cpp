@@ -15,7 +15,7 @@ WIconItem::WIconItem(const hacc::TDBID &iconId, QWidget *parent) : WIconButtonBa
 
     m_menu = new QMenu(this);
     m_menu->addAction(HACC_ICONS->icon(tools::icons::iIcon       , tools::icons::oEdit),   tr("Replace"), this, SLOT(edit()));
-    if(iconId >= HACC_DB_PREPARED_ICONS)
+    if(iconId >= HACC_DB_ICONS->predeclaredIconsCount())
     {
         m_menu->addAction(HACC_ICONS->icon(tools::icons::iIcon   , tools::icons::oRemove), tr("Delete" ), this, SLOT(remove()));
     }

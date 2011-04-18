@@ -20,6 +20,7 @@ public:
     ~FAccountEdit();
     QString name();
     hacc::TDBID iconId();
+    hacc::TDBID currencyID();
 
 protected:
     void changeEvent(QEvent *e);
