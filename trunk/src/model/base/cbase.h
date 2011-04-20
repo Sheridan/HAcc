@@ -51,6 +51,10 @@ protected slots:
 }
 }
 
+//! @name Слежение за изменениями
+//! @{
+
+//! Объявление слотов и виртуальных функций, реализация вызовов
 #define HACC_MODEL_BASE_EVENTS_DECLARE(_type) \
     private slots: \
         void updated(const hacc::TDBID & inID) { if(inID == id()) { _type##Updated(); } } \
@@ -59,8 +63,9 @@ protected slots:
         virtual void _type##Updated() {}; \
         virtual void _type##Removed() {};
 
+//! Прикручивание слотов к сигналам.
 #define HACC_MODEL_BASE_EVENTS_INITIALIZE(_bases) \
     connect(_bases, SIGNAL(updated(const hacc::TDBID &)), this, SLOT(updated(const hacc::TDBID &))); \
     connect(_bases, SIGNAL(removed(const hacc::TDBID &)), this, SLOT(removed(const hacc::TDBID &)));
-
+//! @}
 #endif // CBASES_H

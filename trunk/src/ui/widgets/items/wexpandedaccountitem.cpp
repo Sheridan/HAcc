@@ -33,10 +33,25 @@ void WExpandedAccountItem::buildExpanderUIEvent()
     appendTagsTab < ui::tag::TTagContainer <hacc::model::CAccount, hacc::model::CAccounts> >();
 }
 
+/**
+  Если счет - это счет контрагента "Ничто" или количество счетов контрагента - один, то удалять нельзя
+  */
 void WExpandedAccountItem::assignActions()
 {
     controlLabel(0, 0)->addAction(hacc::model::CAccount::editAction());
-    controlLabel(0, 0)->addAction(hacc::model::CAccount::removeAction());
+
+    QSqlQuery q = HACC_DB->query("select "
+                          /* 0*/ "(acc_base.contractor_id > 1) as is_not_nothing, "
+                          /* 1*/ "(count(acc_cnt.id) > 1) as not_one "
+                                 "from accounts acc_base "
+                                 "left join accounts acc_cnt on acc_cnt.contractor_id = acc_base.contractor_id "
+                                 "where acc_base.id=?",
+                                 QVariantList() << itemID());
+    q.next();
+    if(HACC_DB_2_BOOL(q, 0) && HACC_DB_2_BOOL(q, 1))
+    {
+        controlLabel(0, 0)->addAction(hacc::model::CAccount::removeAction());
+    }
     controlLabel(0, 0)->addAction(hacc::model::CAccount::tagsEditAction());
 }
 

@@ -23,6 +23,8 @@ public:
     //! @}
     base::CBases  *worker();
 
+
+
 public slots:
     void edit();
     void remove();
