@@ -43,6 +43,7 @@ void WExpandedValuableItem::setManufacturerData(const hacc::TDBID &iconId, const
 
 void WExpandedValuableItem::setTransactionData(const hacc::TMoney &cost, const QDateTime &purchaseDate)
 {
+    //! \todo Добавить валюту в сумму
     setText(2, 0, tools::convert::moneyToString(cost));
     setText(3, 0, tools::convert::datetimeToDateString(purchaseDate));
 }

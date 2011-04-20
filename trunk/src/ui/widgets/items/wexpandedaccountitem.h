@@ -3,6 +3,7 @@
 
 #include "witem.h"
 #include "caccount.h"
+#include "ccurrency.h"
 
 namespace ui
 {
@@ -12,13 +13,16 @@ namespace expanded
 {
 
 class WExpandedAccountContainer;
-class WExpandedAccountItem : public ui::item::base::WItem,
-                     public hacc::model::CAccount
+class WExpandedAccountItem :
+                     public ui::item::base::WItem,
+                     public hacc::model::CAccount,
+                     public hacc::model::CCurrency
 {
 public:
-    WExpandedAccountItem(const hacc::TDBID &id);
+    WExpandedAccountItem(const hacc::TDBID &accountID, const hacc::TDBID &currencyID);
     ~WExpandedAccountItem();
-    void setAccountData(const hacc::TDBID &iconId, const QString &name);
+    void setAccountData (const hacc::TDBID &iconID , const QString &name);
+    void setCurrencyData(const hacc::TDBID &iconID , const QString &name);
     hacc::TDBID itemID();
 
 private:
@@ -28,6 +32,7 @@ private:
 
 private slots:
     void accountUpdated();
+    void currencyUpdated();
 };
 
 }

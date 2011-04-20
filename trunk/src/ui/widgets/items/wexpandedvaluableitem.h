@@ -23,7 +23,7 @@ class WExpandedValuableItem : public ui::item::base::WItem,
                    public hacc::model::CValuable,
                    public hacc::model::CThing,
                    public hacc::model::CManufacturer,
-                   public  hacc::model::CTransaction
+                   public hacc::model::CTransaction
 {
 public:
     WExpandedValuableItem(const hacc::TDBID &valID, const hacc::TDBID &thingID,

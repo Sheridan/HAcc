@@ -21,18 +21,21 @@ WSimpleContractorAccountContainer::~WSimpleContractorAccountContainer()
 
 void WSimpleContractorAccountContainer::refresh(const hacc::TDBID &createdID)
 {
-    //! \todo Добавить валюту счета
     if(!createdID) { cleanItems(); }
     QVariantList parametres;
     QString sql = "select "
-            "accounts.id, "
-            "accounts.name, "
-            "accounts.icon_id, "
-            "contractors.id, "
-            "contractors.name, "
-            "contractors.icon_id "
+     /* 0*/ "accounts.id, "
+     /* 1*/ "accounts.name, "
+     /* 2*/ "accounts.icon_id, "
+     /* 3*/ "contractors.id, "
+     /* 4*/ "contractors.name, "
+     /* 5*/ "contractors.icon_id, "
+     /* 6*/ "currencyes.id, "
+     /* 7*/ "currencyes.name, "
+     /* 8*/ "currencyes.icon_id "
             "from contractors "
-            "left join accounts on contractors.id=accounts.contractor_id";
+            "left join accounts on contractors.id=accounts.contractor_id "
+            "left join currencyes on currencyes.id=accounts.currency_id";
     QString where = "";
     switch (m_filter)
     {
@@ -57,24 +60,28 @@ void WSimpleContractorAccountContainer::refresh(const hacc::TDBID &createdID)
     QSqlQuery q = HACC_DB->query(sql, parametres);
     while(q.next())
     {
-        appendContractorAcount(
+        appendRow(
                     HACC_DB_2_DBID(q, 0),
                     HACC_DB_2_STRG(q, 1),
                     HACC_DB_2_DBID(q, 2),
                     HACC_DB_2_DBID(q, 3),
                     HACC_DB_2_STRG(q, 4),
-                    HACC_DB_2_DBID(q, 5)
-                    );
+                    HACC_DB_2_DBID(q, 5),
+                    HACC_DB_2_DBID(q, 6),
+                    HACC_DB_2_STRG(q, 7),
+                    HACC_DB_2_DBID(q, 8)
+                 );
     }
 }
 
-void WSimpleContractorAccountContainer::appendContractorAcount(const hacc::TDBID &accountId, const QString &accountName,
-                                                            const hacc::TDBID &accountIconId,  const hacc::TDBID &contractorID,
-                                                            const QString &contractorName, const hacc::TDBID &contractorIconId)
+void WSimpleContractorAccountContainer::appendRow(const hacc::TDBID &accountID   , const QString &accountName   , const hacc::TDBID &accountIconID,
+                                                  const hacc::TDBID &contractorID, const QString &contractorName, const hacc::TDBID &contractorIconID,
+                                                  const hacc::TDBID &currencyID  , const QString &currencyName  , const hacc::TDBID &currencyIconID)
 {
-    WSimpleContractorAccountItem *i = new WSimpleContractorAccountItem(accountId, contractorID);
-    i->setAccountData(accountIconId, accountName);
-    i->setContractorData(contractorIconId, contractorName);
+    WSimpleContractorAccountItem *i = new WSimpleContractorAccountItem(accountID, contractorID, currencyID);
+    i->setAccountData   (accountIconID   , accountName   );
+    i->setContractorData(contractorIconID, contractorName);
+    i->setCurrencyData  (currencyIconID  , currencyName  );
     appendItem(i);
 }
 

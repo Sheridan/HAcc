@@ -20,6 +20,7 @@ WExpandedTransactionThingSellContainer::~WExpandedTransactionThingSellContainer(
 
 void WExpandedTransactionThingSellContainer::refresh(const hacc::TDBID &createdID)
 {
+    //! \todo Добавить валюту в сумму
     if(!createdID) { cleanItems(); }
     QVariantList parametres;
     QString sql = "select "

@@ -17,10 +17,10 @@ WExpandedValuableContainer::WExpandedValuableContainer(QWidget *parent) : ui::it
 WExpandedValuableContainer::~WExpandedValuableContainer()
 {}
 
-void WExpandedValuableContainer::appendValuable(const hacc::TDBID &valuableID, const QString &serial,
-                                                const hacc::TDBID &thingId   , const hacc::TDBID &thingIconId, const QString &thingName,
-                                                const hacc::TDBID &manId     , const hacc::TDBID &manIconId  , const QString &manName,
-                                                const hacc::TDBID &transId   , const hacc::TMoney &cost      , const QDateTime &purchaseDate)
+void WExpandedValuableContainer::appendValuable(const hacc::TDBID &valuableID, const QString      &serial,
+                                                const hacc::TDBID &thingId   , const hacc::TDBID  &thingIconId, const QString   &thingName,
+                                                const hacc::TDBID &manId     , const hacc::TDBID  &manIconId  , const QString   &manName,
+                                                const hacc::TDBID &transId   , const hacc::TMoney &cost       , const QDateTime &purchaseDate)
 {
     WExpandedValuableItem *i = new WExpandedValuableItem(valuableID, thingId, manId, transId);
     i->setThingData(thingIconId, thingName);
@@ -32,6 +32,7 @@ void WExpandedValuableContainer::appendValuable(const hacc::TDBID &valuableID, c
 
 void WExpandedValuableContainer::refresh(const hacc::TDBID &createdID)
 {
+    //! \todo Добавить валюту в сумму
     if(!createdID) { cleanItems(); }
     QVariantList parametres;
     QString where = "";

@@ -40,6 +40,7 @@ void WExpandedTransactionThingBuyItem::assignActions()
 
 void WExpandedTransactionThingBuyItem::transactionUpdated()
 {
+    //! \todo Добавить валюту в сумму
     QSqlQuery q = HACC_DB->query("select "
                           /* 0*/ "transactions.money, "
                           /* 1*/ "transactions_things.amount, "

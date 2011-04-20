@@ -70,6 +70,7 @@ void WExpandedTransactionPoolContainer::appendTransactionPool(const hacc::TDBID 
 
 void WExpandedTransactionPoolContainer::refresh(const hacc::TDBID &createdID)
 {
+    //! \todo Добавить валюту в сумму
     if(!createdID) { cleanItems(); }
     QVariantList parametres;
     QString where = HACC_TRANSACTIONS_POOLS->whereTagsInPurposeTags();// "transactions_pools_tags.tag_id in (4,5,6,7,8,9)";

@@ -19,7 +19,7 @@ public:
     ~WSimpleMovementContainer();
 
 private:
-    void appendMovement(const hacc::TDBID &movementID             , const QDateTime &datetime,
+    void appendMovement(const hacc::TDBID &movementID             , const QDateTime   &datetime,
                         const hacc::TDBID &sourceContractorID     , const hacc::TDBID &sourceContractorIconID     , const QString &sourceContractorName,
                         const hacc::TDBID &destinationContractorID, const hacc::TDBID &destinationContractorIconID, const QString &destinationContractorName,
                         const hacc::TDBID &manufacturerID         , const hacc::TDBID &manufacturerIconID         , const QString &manufacturerName,

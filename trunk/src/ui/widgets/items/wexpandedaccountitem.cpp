@@ -8,11 +8,13 @@ namespace item
 namespace expanded
 {
 
-WExpandedAccountItem::WExpandedAccountItem(const hacc::TDBID &id)
-    : ui::item::base::WItem(1, 1, true),
-      hacc::model::CAccount()
+WExpandedAccountItem::WExpandedAccountItem(const hacc::TDBID &accountID, const hacc::TDBID &currencyID)
+    : ui::item::base::WItem(2, 1, true),
+      hacc::model::CAccount(),
+      hacc::model::CCurrency()
 {
-    setID(id);
+    hacc::model::CAccount ::setID( accountID);
+    hacc::model::CCurrency::setID(currencyID);
     m_baseLayout = NULL;
     HACC_INIT_ITEM;
 }
@@ -22,10 +24,16 @@ WExpandedAccountItem::~WExpandedAccountItem()
     delete m_baseLayout;
 }
 
-void WExpandedAccountItem::setAccountData(const hacc::TDBID &iconId, const QString &name)
+void WExpandedAccountItem::setAccountData(const hacc::TDBID &iconID , const QString &name)
 {
-    setIcon(0, 0, iconId);
+    setIcon(0, 0, iconID);
     setText(0, 0, name);
+}
+
+void WExpandedAccountItem::setCurrencyData(const hacc::TDBID &iconID , const QString &name)
+{
+    setIcon(1, 0, iconID);
+    setText(1, 0, name);
 }
 
 void WExpandedAccountItem::buildExpanderUIEvent()
@@ -39,7 +47,6 @@ void WExpandedAccountItem::buildExpanderUIEvent()
 void WExpandedAccountItem::assignActions()
 {
     controlLabel(0, 0)->addAction(hacc::model::CAccount::editAction());
-
     QSqlQuery q = HACC_DB->query("select "
                           /* 0*/ "(acc_base.contractor_id > 1) as is_not_nothing, "
                           /* 1*/ "(count(acc_cnt.id) > 1) as not_one "
@@ -53,12 +60,24 @@ void WExpandedAccountItem::assignActions()
         controlLabel(0, 0)->addAction(hacc::model::CAccount::removeAction());
     }
     controlLabel(0, 0)->addAction(hacc::model::CAccount::tagsEditAction());
+
+    controlLabel(1, 0)->addAction(hacc::model::CCurrency::editAction());
 }
 
 void WExpandedAccountItem::accountUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from accounts where id=?",
                                  QVariantList() << hacc::model::CAccount::id());
+    if(q.next())
+    {
+        setAccountData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
+    }
+}
+
+void WExpandedAccountItem::currencyUpdated()
+{
+    QSqlQuery q = HACC_DB->query("select name, icon_id from currencyes where id=?",
+                                 QVariantList() << hacc::model::CCurrency::id());
     if(q.next())
     {
         setAccountData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));

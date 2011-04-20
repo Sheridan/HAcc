@@ -41,7 +41,7 @@ ui::item::base::WContainer *WSimpleContractorAccountBase::buidContainer()
 
 void WSimpleContractorAccountBase::constructHeader(base::WHeader *header)
 {
-    header->setLabels(2,1,QStringList() << tr("Contractor") << tr("Account"));
+    header->setLabels(2, 1, QStringList() << tr("Contractor") << tr("Account") << tr("Currency"));
 }
 
 }

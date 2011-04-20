@@ -20,9 +20,9 @@ public:
 
 private:
     hacc::model::EContractorFilter m_filter;
-    void appendContractorAcount(const hacc::TDBID &accountId, const QString &accountName,
-                                const hacc::TDBID &accountIconId,  const hacc::TDBID &contractorID,
-                                const QString &contractorName, const hacc::TDBID &contractorIconId);
+    void appendRow(const hacc::TDBID &accountID   , const QString &accountName   , const hacc::TDBID &accountIconID,
+                   const hacc::TDBID &contractorID, const QString &contractorName, const hacc::TDBID &contractorIconID,
+                   const hacc::TDBID &currencyID  , const QString &currencyName  , const hacc::TDBID &currencyIconID);
 
 public slots:
     void refresh(const hacc::TDBID &createdID = 0);

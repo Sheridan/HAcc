@@ -100,6 +100,7 @@ void WExpandedTransactionPoolItem::assignActions()
 
 void WExpandedTransactionPoolItem::transactionPoolUpdated()
 {
+    //! \todo Добавить валюту в сумму
     QSqlQuery q = HACC_DB->query("select "
                            /*0*/ "transactions_pool.date_time ,"
                            /*1*/ "count(transactions.id) as trcnt, "

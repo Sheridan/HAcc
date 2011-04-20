@@ -18,7 +18,8 @@ public:
     ~WExpandedAccountContainer();
 
 private:
-    void appendAcount(const hacc::TDBID &id, const hacc::TDBID &iconId, const QString &name);
+    void appendRow(const hacc::TDBID &accountID , const hacc::TDBID &accountIconID , const QString &accountName ,
+                   const hacc::TDBID &currencyID, const hacc::TDBID &currencyIconID, const QString &currencyName);
     hacc::TDBID m_parentContractor;
 
 public slots:

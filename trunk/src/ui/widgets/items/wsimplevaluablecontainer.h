@@ -17,9 +17,9 @@ public:
     explicit WSimpleValuableContainer(QWidget *parent = 0);
     ~WSimpleValuableContainer();
 private:
-    void appendValuable(const hacc::TDBID &thingId, const hacc::TDBID &thingIconId, const QString &thingName,
-                        const hacc::TDBID &manId, const hacc::TDBID &manIconId, const QString &manName,
-                        const hacc::TDBID &valuableId, const QString &serial);
+    void appendRow(const hacc::TDBID &thingId   , const hacc::TDBID &thingIconId, const QString &thingName,
+                   const hacc::TDBID &manId     , const hacc::TDBID &manIconId  , const QString &manName,
+                   const hacc::TDBID &valuableId, const QString &serial);
 
 public slots:
     void refresh(const hacc::TDBID &createdID = 0);

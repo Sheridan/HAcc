@@ -18,14 +18,14 @@ WSimpleValuableContainer::~WSimpleValuableContainer()
 {
 
 }
-void WSimpleValuableContainer::appendValuable(const hacc::TDBID &thingId, const hacc::TDBID &thingIconId, const QString &thingName,
-                                              const hacc::TDBID &manId, const hacc::TDBID &manIconId, const QString &manName,
-                                              const hacc::TDBID &valuableId, const QString &serial)
+void WSimpleValuableContainer::appendRow(const hacc::TDBID &thingId   , const hacc::TDBID &thingIconId, const QString &thingName,
+                                         const hacc::TDBID &manId     , const hacc::TDBID &manIconId  , const QString &manName,
+                                         const hacc::TDBID &valuableId, const QString &serial)
 {
     WSimpleValuableItem *i = new WSimpleValuableItem(thingId, manId, valuableId);
-    i->setThingData(thingIconId, thingName);
+    i->setThingData       (thingIconId, thingName);
     i->setManufacturerData(manIconId, manName);
-    i->setValuableData(serial);
+    i->setValuableData    (serial);
     appendItem(i);
 }
 
@@ -65,7 +65,7 @@ void WSimpleValuableContainer::refresh(const hacc::TDBID &createdID)
     QSqlQuery q = HACC_DB->query(sql, parametres);
     while(q.next())
     {
-        appendValuable(
+        appendRow(
                     HACC_DB_2_DBID(q, 0),
                     HACC_DB_2_DBID(q, 1),
                     HACC_DB_2_STRG(q, 2),

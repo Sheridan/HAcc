@@ -604,14 +604,10 @@ void CDatabase::createDatabase()
     // Для этого контрагента необходимо иметь счет на каждую валюту
     //! \todo Отследить по родителю и не дать удалять счета "Нигде".
     HDB_APPEND_CONTRACTOR(tr("Nothing"), 1, false);
-    QSqlQuery cres = query("select id, name, reduction from currencyes order by name");
+    QSqlQuery cres = query("select id from currencyes order by name");
     while(cres.next())
     {
-        HDB_APPEND_ACCOUNT(tr("Nowhere (%0 (%1))")
-                                    .arg(HACC_DB_2_STRG(cres, 1))
-                                    .arg(HACC_DB_2_STRG(cres, 2)),
-                           1,
-                           HACC_DB_2_DBID(cres, 0));
+        HDB_APPEND_ACCOUNT(tr("Nowhere"), 1, HACC_DB_2_DBID(cres, 0));
     }
 
     // Контрагент "Семья" со счетами

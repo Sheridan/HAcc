@@ -28,7 +28,7 @@ base::WContainer *WExpandedAccountBase::buidContainer()
 
 void WExpandedAccountBase::constructHeader(base::WHeader *header)
 {
-    header->setLabels(1,1,QStringList() << QObject::tr("Name"));
+    header->setLabels(2, 1, QStringList() << QObject::tr("Name") << QObject::tr("Currency"));
 }
 
 }

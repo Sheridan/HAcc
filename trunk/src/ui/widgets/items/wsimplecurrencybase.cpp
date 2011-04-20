@@ -26,7 +26,7 @@ ui::item::base::WContainer *WSimpleCurrencyBase::buidContainer()
 
 void WSimpleCurrencyBase::constructHeader(base::WHeader *header)
 {
-    header->setLabels(1,1,QStringList() << tr("Name (reduction)"));
+    header->setLabels(2, 1, QStringList() << tr("Name") << tr("Reduction"));
 }
 
 }

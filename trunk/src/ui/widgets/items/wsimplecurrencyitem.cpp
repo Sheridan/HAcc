@@ -9,7 +9,7 @@ namespace simple
 {
 
 WSimpleCurrencyItem::WSimpleCurrencyItem(const hacc::TDBID &currencyID)
-    : ui::item::base::WItem(1, 1),
+    : ui::item::base::WItem(2, 1),
       hacc::model::CCurrency()
 {
     setID(currencyID);
@@ -22,7 +22,8 @@ WSimpleCurrencyItem::~WSimpleCurrencyItem()
 void WSimpleCurrencyItem::setCurrencyData(const hacc::TDBID &iconID, const QString &name, const QString &reduction)
 {
     setIcon(0, 0, iconID);
-    setText(0, 0, QString("%0 (%1)").arg(name).arg(reduction));
+    setText(0, 0, name);
+    setText(1, 0, reduction);
 }
 
 void WSimpleCurrencyItem::assignActions()

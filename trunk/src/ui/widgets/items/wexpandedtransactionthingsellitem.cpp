@@ -64,6 +64,8 @@ void WExpandedTransactionThingSellItem::assignActions()
 
 void WExpandedTransactionThingSellItem::transactionUpdated()
 {
+    //! \todo Добавить валюту в сумму
+    //! \todo Реализовать апдейт
 //    QSqlQuery q = HACC_DB->query("select "
 //                          /* 0*/ "transactions.money, "
 //                          /* 1*/ "transactions_things.amount, "

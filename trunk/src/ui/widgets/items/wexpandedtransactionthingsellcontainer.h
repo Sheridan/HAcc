@@ -22,13 +22,6 @@ private:
                            const hacc::TDBID &manufactiurerID, const QString &manufactiurerName, const hacc::TDBID &manufactiurerIconID,
                            const hacc::TDBID &ownerID        , const QString &ownerName        , const hacc::TDBID &ownerIconID,
                            const hacc::TDBID &valuableID     , const QString &serial);
-    /*
-    void setTransactionData(const hacc::TMoney &buyMoney, const hacc::TMoney &sellMoney);
-    void setOwnerData   (const hacc::TDBID &iconID, const QString &name);
-    void setValuableData(const QString &serial);
-    void setThingData(const QString &thingName, const hacc::TDBID &thingIconId);
-    void setManufacturerData(const QString &manufactiurerName, const hacc::TDBID &manufactiurerIconID);
-      */
     hacc::TDBID m_parentPool;
 
 public slots:
