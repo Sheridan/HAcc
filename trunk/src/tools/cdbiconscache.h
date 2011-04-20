@@ -37,7 +37,7 @@ private:
 
 signals:
     void updated();
-    void updated(hacc::TDBID /*iconId*/);
+    void updated(hacc::TDBID /*iconID*/);
 };
 
 }

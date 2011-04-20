@@ -22,7 +22,7 @@ class WExpandedContractorItem : public ui::item::base::WItem,
 public:
     WExpandedContractorItem(const hacc::TDBID &id);
     ~WExpandedContractorItem();
-    void setItemData(const hacc::TDBID &iconId, const QString &name);
+    void setItemData(const hacc::TDBID &iconID, const QString &name);
     hacc::TDBID itemID();
 
 private:

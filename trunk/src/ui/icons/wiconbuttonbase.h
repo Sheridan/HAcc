@@ -13,7 +13,7 @@ class WIconButtonBase : public QToolButton, public hacc::CIDItem
 {
     Q_OBJECT
 public:
-    WIconButtonBase(const hacc::TDBID &iconId, QWidget *parent = 0);
+    WIconButtonBase(const hacc::TDBID &iconID, QWidget *parent = 0);
     ~WIconButtonBase();
     void setID(const hacc::TDBID & id);
 };

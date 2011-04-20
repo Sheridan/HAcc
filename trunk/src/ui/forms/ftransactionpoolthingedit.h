@@ -21,8 +21,8 @@ public:
     explicit FTransactionPoolThingEdit(int poolType, QWidget *parent = 0);
     FTransactionPoolThingEdit(const hacc::TDBID &id, int poolType, QWidget *parent = 0);
     ~FTransactionPoolThingEdit();
-    hacc::TDBID seller(); //!< account id
-    hacc::TDBID buyer();  //!< account id
+    hacc::TDBID sellerAccountID();
+    hacc::TDBID buyerAccountID();
     QDateTime   datetime();
 
 protected:

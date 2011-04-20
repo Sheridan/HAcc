@@ -17,7 +17,7 @@ public:
     WExpandedTransactionThingBuyItem(const hacc::TDBID &transactionID, const hacc::TDBID &thingID, const hacc::TDBID &manufactiurerID);
     ~WExpandedTransactionThingBuyItem();
     void setTransactionData(const hacc::TMoney &money, const hacc::TAmount &amount,
-                            const int &precision     , const QString &eTTName);
+                            const int &precision     , const QString &enumeratedThingTypeName);
 
 private:
     void assignActions();

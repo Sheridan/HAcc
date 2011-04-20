@@ -18,7 +18,7 @@ public:
     ~WSimpleEnumeratedThingTypeContainer();
 
 private:
-    void appendThingEnumerateType(const hacc::TDBID &eTTypeId, const QString &eTTypeName, const int &precision);
+    void appendThingEnumerateType(const hacc::TDBID &enumeratedThingTypeID, const QString &enumeratedThingTypeName, const int &precision);
 
 public slots:
     void refresh(const hacc::TDBID &createdID = 0);

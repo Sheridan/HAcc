@@ -35,7 +35,7 @@ void CManufacturers::add()
                       << newID
                       << dialog->name()
                       << dialog->description()
-                      << dialog->iconId()
+                      << dialog->iconID()
                       << (dialog->hasImage() ? QVariant(dialog->pixmapData()) : QVariant(QVariant::ByteArray)));
         emit created(newID);
     }
@@ -71,7 +71,7 @@ void CManufacturers::edit(const hacc::TDBID & id)
                           QVariantList()
                           << dialog->name()
                           << dialog->description()
-                          << dialog->iconId()
+                          << dialog->iconID()
                           << (dialog->hasImage() ? QVariant(dialog->pixmapData()) : QVariant(QVariant::ByteArray))
                           << id);
             emit updated(id);

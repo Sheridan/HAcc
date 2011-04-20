@@ -19,10 +19,10 @@ public:
     FTransactionGiftEdit(const int &gType, QWidget *parent = 0);
     FTransactionGiftEdit(const hacc::TDBID & id, const int &gType, QWidget *parent = 0);
     ~FTransactionGiftEdit();
-    hacc::TDBID source();
-    hacc::TDBID destination();
-    hacc::TDBID thing();
-    hacc::TDBID valuable();
+    hacc::TDBID sourceAccountID();
+    hacc::TDBID destinationAccountID();
+    hacc::TDBID thingID();
+    hacc::TDBID valuableID();
     QDateTime   datetime();
 
 protected:

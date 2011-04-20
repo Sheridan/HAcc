@@ -87,7 +87,7 @@ QString FManufacturerEdit::description()
     return m_ui->teDescription->toPlainText();
 }
 
-hacc::TDBID FManufacturerEdit::iconId()
+hacc::TDBID FManufacturerEdit::iconID()
 {
     return m_ui->pwIcons->id();
 }

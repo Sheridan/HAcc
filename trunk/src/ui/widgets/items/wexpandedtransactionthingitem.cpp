@@ -28,9 +28,9 @@ WExpandedTransactionThingItem::~WExpandedTransactionThingItem()
 {
 }
 
-void WExpandedTransactionThingItem::setThingData(const QString &thingName, const hacc::TDBID &thingIconId)
+void WExpandedTransactionThingItem::setThingData(const QString &thingName, const hacc::TDBID &thingIconID)
 {
-    setIcon(HACC_TTI_THING_PLACE, thingIconId);
+    setIcon(HACC_TTI_THING_PLACE, thingIconID);
     setText(HACC_TTI_THING_PLACE, thingName);
 }
 

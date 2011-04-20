@@ -121,12 +121,12 @@ void FTransactionMoneyEdit::init(const int &trType)
 
 }
 
-hacc::TDBID FTransactionMoneyEdit::source()
+hacc::TDBID FTransactionMoneyEdit::sourceAccountID()
 {
     return m_ui->pwAccountFrom->id();
 }
 
-hacc::TDBID FTransactionMoneyEdit::destination()
+hacc::TDBID FTransactionMoneyEdit::destinationAccountID()
 {
     return m_ui->pwAccountTo->id();
 }

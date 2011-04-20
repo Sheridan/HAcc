@@ -6,7 +6,7 @@ namespace ui
 namespace icons
 {
 
-WIconButtonBase::WIconButtonBase(const hacc::TDBID &iconId, QWidget *parent) : QToolButton(parent), hacc::CIDItem(iconId)
+WIconButtonBase::WIconButtonBase(const hacc::TDBID &iconID, QWidget *parent) : QToolButton(parent), hacc::CIDItem(iconID)
 {
     setIcon(HACC_DB_ICONS->icon(id()));
 }

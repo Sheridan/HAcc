@@ -30,7 +30,7 @@ public slots:
     void refresh();
 
 signals:
-    void selected(hacc::TDBID /*iconId*/);
+    void selected(hacc::TDBID /*iconID*/);
 };
 
 }

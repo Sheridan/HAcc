@@ -16,10 +16,10 @@ WSimpleEnumeratedThingTypeContainer::WSimpleEnumeratedThingTypeContainer(QWidget
 WSimpleEnumeratedThingTypeContainer::~WSimpleEnumeratedThingTypeContainer()
 {}
 
-void WSimpleEnumeratedThingTypeContainer::appendThingEnumerateType(const hacc::TDBID &eTTypeId, const QString &eTTypeName, const int &precision)
+void WSimpleEnumeratedThingTypeContainer::appendThingEnumerateType(const hacc::TDBID &enumeratedThingTypeID, const QString &enumeratedThingTypeName, const int &precision)
 {
-    WSimpleEnumeratedThingTypeItem *i = new WSimpleEnumeratedThingTypeItem(eTTypeId);
-    i->setItemData(eTTypeName, precision);
+    WSimpleEnumeratedThingTypeItem *i = new WSimpleEnumeratedThingTypeItem(enumeratedThingTypeID);
+    i->setItemData(enumeratedThingTypeName, precision);
     appendItem(i);
 }
 

@@ -31,9 +31,9 @@ void CCurrencyes::add()
 //                      QVariantList()
 //                      << newID
 //                      << dialog->name()
-//                      << dialog->iconId()
+//                      << dialog->iconID()
 //                      << isSelf);
-//        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconId());
+//        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconID());
 //        emit created(newID);
 //    }
 //    delete dialog;
@@ -69,7 +69,7 @@ void CCurrencyes::edit(const hacc::TDBID & id)
 //        {
 //            HACC_DB->exec("update contractors set name=?, icon_id=? where id=?", QVariantList()
 //                          << dialog->name()
-//                          << dialog->iconId()
+//                          << dialog->iconID()
 //                          << id);
 //            emit updated(id);
 //        }

@@ -20,7 +20,7 @@ public:
     ~WExpandedContractorContainer();
 private:
     WExpandedContractorItem *contractorItem(const hacc::TDBID &id);
-    void appendContractor(const hacc::TDBID &id, const hacc::TDBID &iconId, const QString &name);
+    void appendContractor(const hacc::TDBID &id, const hacc::TDBID &iconID, const QString &name);
     hacc::model::EContractorFilter m_contractorFilter;
 
 public slots:

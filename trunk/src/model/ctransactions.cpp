@@ -46,7 +46,7 @@ void CTransactions::addThingBuyTransaction(const hacc::TDBID & poolId)
         HACC_DB->exec("insert into transactions_things (id, thing_id, amount) values (?,?,?)",
                       QVariantList()
                       << newID
-                      << dialog->thing()
+                      << dialog->thingID()
                       << dialog->amount());
         emit created(newID);
     }
@@ -62,7 +62,7 @@ void CTransactions::addThingSellTransaction(const hacc::TDBID & poolId)
         HACC_DB->exec("insert into transactions_valuables (id, valuable_id) values (?,?)",
                       QVariantList()
                       << newID
-                      << dialog->valuable());
+                      << dialog->valuableID());
         emit created(newID);
     }
     delete dialog;
@@ -105,7 +105,7 @@ void CTransactions::editThingBuyTransaction(const hacc::TDBID & transactionID)
             hacc::TAmount oldAmount = HACC_DB->queryCell("select amount from transactions_things where id=?", 0, QVariantList() << transactionID).toInt();
             HACC_DB->exec("update transactions_things set thing_id=?, amount=? where id=?",
                           QVariantList()
-                          << dialog->thing()
+                          << dialog->thingID()
                           << dialog->amount()
                           << transactionID);
             if(dialog->amount() != oldAmount)
@@ -402,10 +402,10 @@ void CTransactions::cleanAfterRemoveTransactionPool(const hacc::TDBID & poolId)
     }
 }
 
-void CTransactions::cleanAfterThingRemove(const hacc::TDBID & thingId)
+void CTransactions::cleanAfterThingRemove(const hacc::TDBID & thingID)
 {
-    hacc::TIDList list = HACC_DB->listID("transactions_things", "thing_id=?", QVariantList() << thingId);
-    HACC_DB->exec("update transactions_things set thing_id=1 where thing_id=?", QVariantList() << thingId);
+    hacc::TIDList list = HACC_DB->listID("transactions_things", "thing_id=?", QVariantList() << thingID);
+    HACC_DB->exec("update transactions_things set thing_id=1 where thing_id=?", QVariantList() << thingID);
     foreach(hacc::TDBID id, list)
     {
         emit updated(id);

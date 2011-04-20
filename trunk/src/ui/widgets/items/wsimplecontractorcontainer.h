@@ -20,7 +20,7 @@ public:
 
 private:
     hacc::model::EContractorFilter m_filter;
-    void appendContractor(const hacc::TDBID &contractorID, const QString &contractorName, const hacc::TDBID &contractorIconId);
+    void appendContractor(const hacc::TDBID &contractorID, const QString &contractorName, const hacc::TDBID &contractorIconID);
 
 public slots:
     void refresh(const hacc::TDBID &createdID = 0);

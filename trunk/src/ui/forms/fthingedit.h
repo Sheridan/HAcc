@@ -21,9 +21,9 @@ public:
     ~FThingEdit();
     QString name();
     QString description();
-    hacc::TDBID iconId();
-    hacc::TDBID enumeratedTypeThingId();
-    hacc::TDBID manufacturerId();
+    hacc::TDBID iconID();
+    hacc::TDBID enumeratedThingTypeID();
+    hacc::TDBID manufacturerID();
     QByteArray pixmapData();
     bool hasImage();
     int expiration();

@@ -59,10 +59,10 @@ void WSimpleContractorContainer::refresh(const hacc::TDBID &createdID)
     }
 }
 
-void WSimpleContractorContainer::appendContractor(const hacc::TDBID &contractorID, const QString &contractorName, const hacc::TDBID &contractorIconId)
+void WSimpleContractorContainer::appendContractor(const hacc::TDBID &contractorID, const QString &contractorName, const hacc::TDBID &contractorIconID)
 {
     WSimpleContractorItem *i = new WSimpleContractorItem(contractorID);
-    i->setContractorData(contractorIconId, contractorName);
+    i->setContractorData(contractorIconID, contractorName);
     appendItem(i);
 }
 

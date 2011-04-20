@@ -6,7 +6,7 @@ namespace ui
 namespace icons
 {
 
-WIconSelect::WIconSelect(const hacc::TDBID &iconId, QWidget *parent) : WIconButtonBase(iconId, parent)
+WIconSelect::WIconSelect(const hacc::TDBID &iconID, QWidget *parent) : WIconButtonBase(iconID, parent)
 {
     connect(this, SIGNAL(clicked()), this, SLOT(select()));
 }

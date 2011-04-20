@@ -51,10 +51,10 @@ void CContractors::add(bool isSelf)
                       QVariantList()
                       << newID
                       << dialog->name()
-                      << dialog->iconId()
+                      << dialog->iconID()
                       << isSelf);
         //! \todo Добавить валюту по умолчанию
-        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconId(), 1);
+        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconID(), 1);
         emit created(newID);
     }
     delete dialog;
@@ -89,7 +89,7 @@ void CContractors::edit(const hacc::TDBID & id)
         {
             HACC_DB->exec("update contractors set name=?, icon_id=? where id=?", QVariantList()
                           << dialog->name()
-                          << dialog->iconId()
+                          << dialog->iconID()
                           << id);
             emit updated(id);
         }

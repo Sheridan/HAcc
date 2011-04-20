@@ -17,7 +17,7 @@ public:
     explicit WExpandedManufacturerContainer(QWidget *parent = 0);
     ~WExpandedManufacturerContainer();
 private:
-    void appendManufacturer(const hacc::TDBID &mId, const hacc::TDBID &mIconId, const QString &mName);
+    void appendManufacturer(const hacc::TDBID &manufacturerID, const hacc::TDBID &manufacturerIconID, const QString &manufacturerName);
 
 public slots:
     void refresh(const hacc::TDBID &createdID = 0);

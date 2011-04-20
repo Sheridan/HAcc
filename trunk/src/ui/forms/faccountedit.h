@@ -19,7 +19,7 @@ public:
     FAccountEdit(const hacc::TDBID & id, QWidget *parent = 0);
     ~FAccountEdit();
     QString name();
-    hacc::TDBID iconId();
+    hacc::TDBID iconID();
     hacc::TDBID currencyID();
 
 protected:

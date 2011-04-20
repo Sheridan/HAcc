@@ -24,8 +24,8 @@ public:
 private:
     void idChanged();
     base::WSelectorPopup * constructPopup();
-    void setData(const hacc::TDBID &contractor_icon, const QString &contractor_name,
-                 const hacc::TDBID &account_icon   , const QString &account_name   );
+    void setData(const hacc::TDBID &contractorIconID, const QString &contractorName,
+                 const hacc::TDBID &accountIconID   , const QString &accountName   );
     QHBoxLayout *m_layout;
     QLabel      *m_contractorName;
     QLabel      *m_accountName;

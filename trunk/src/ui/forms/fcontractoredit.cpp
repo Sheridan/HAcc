@@ -59,7 +59,7 @@ QString FContractorEdit::name()
     return m_ui->leName->text();
 }
 
-hacc::TDBID FContractorEdit::iconId()
+hacc::TDBID FContractorEdit::iconID()
 {
     return m_ui->pwIcons->id();
 }

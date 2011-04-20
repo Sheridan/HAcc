@@ -17,13 +17,13 @@ WExpandedThingContainer::WExpandedThingContainer(QWidget *parent) : ui::item::ba
 WExpandedThingContainer::~WExpandedThingContainer()
 {}
 
-void WExpandedThingContainer::appendThing(const hacc::TDBID &thingId, const hacc::TDBID &thingIconId,
-                                  const QString &thingName, const hacc::TDBID &manId,
-                                  const hacc::TDBID &manIconId, const QString &manName)
+void WExpandedThingContainer::appendThing(const hacc::TDBID &thingID, const hacc::TDBID &thingIconID,
+                                  const QString &thingName, const hacc::TDBID &manufacturerID,
+                                  const hacc::TDBID &manufacturerIconID, const QString &manufacturerName)
 {
-    WExpandedThingItem *i = new WExpandedThingItem(thingId, manId);
-    i->setThingData(thingIconId, thingName);
-    i->setManufacturerData(manIconId, manName);
+    WExpandedThingItem *i = new WExpandedThingItem(thingID, manufacturerID);
+    i->setThingData(thingIconID, thingName);
+    i->setManufacturerData(manufacturerIconID, manufacturerName);
     appendItem(i);
 }
 

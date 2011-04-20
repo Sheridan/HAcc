@@ -19,7 +19,7 @@ public:
 private:
     void appendTransaction(const hacc::TDBID &transactionID  , const hacc::TMoney &money       , const hacc::TAmount &amount,
                            const hacc::TDBID &thingID        , const QString &thingName        , const hacc::TDBID &thingIconID,
-                           const int &precision              , const QString &eTTName          ,
+                           const int &precision              , const QString &enumeratedThingTypeName          ,
                            const hacc::TDBID &anufactiurerID, const QString &manufactiurerName, const hacc::TDBID &manufactiurerIconID);
     hacc::TDBID m_parentPool;
 

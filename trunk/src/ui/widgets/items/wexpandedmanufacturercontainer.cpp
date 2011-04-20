@@ -17,10 +17,10 @@ WExpandedManufacturerContainer::WExpandedManufacturerContainer(QWidget *parent) 
 WExpandedManufacturerContainer::~WExpandedManufacturerContainer()
 {}
 
-void WExpandedManufacturerContainer::appendManufacturer(const hacc::TDBID &mId, const hacc::TDBID &mIconId, const QString &mName)
+void WExpandedManufacturerContainer::appendManufacturer(const hacc::TDBID &manufacturerID, const hacc::TDBID &manufacturerIconID, const QString &manufacturerName)
 {
-    WExpandedManufacturerItem *i = new WExpandedManufacturerItem(mId);
-    i->setManufacturerData(mIconId, mName);
+    WExpandedManufacturerItem *i = new WExpandedManufacturerItem(manufacturerID);
+    i->setManufacturerData(manufacturerIconID, manufacturerName);
     appendItem(i);
 }
 

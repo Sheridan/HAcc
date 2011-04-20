@@ -70,12 +70,12 @@ void WExpandedTransactionThingBuyContainer::refresh(const hacc::TDBID &createdID
 
 void WExpandedTransactionThingBuyContainer::appendTransaction (const hacc::TDBID &transactionID  , const hacc::TMoney &money       , const hacc::TAmount &amount,
                                                                const hacc::TDBID &thingID        , const QString &thingName        , const hacc::TDBID &thingIconID,
-                                                               const int &precision              , const QString &eTTName          ,
+                                                               const int &precision              , const QString &enumeratedThingTypeName          ,
                                                                const hacc::TDBID &manufactiurerID, const QString &manufactiurerName, const hacc::TDBID &manufactiurerIconID)
 {
     WExpandedTransactionThingBuyItem *i = new WExpandedTransactionThingBuyItem(transactionID, thingID, manufactiurerID);
     i->setThingData(thingName, thingIconID);
-    i->setTransactionData(money, amount, precision, eTTName);
+    i->setTransactionData(money, amount, precision, enumeratedThingTypeName);
     i->setManufacturerData(manufactiurerName, manufactiurerIconID);
     appendItem(i);
 }

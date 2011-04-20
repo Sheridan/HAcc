@@ -136,7 +136,7 @@ void CValuables::edit(const hacc::TDBID & id)
 //        {
 //            HACC_DB->exec("update accounts set name=?, icon_id=? where id=?", QVariantList()
 //                          << dialog->name()
-//                          << dialog->iconId()
+//                          << dialog->iconID()
 //                          << id);
 //            emit updated(id);
 //        }

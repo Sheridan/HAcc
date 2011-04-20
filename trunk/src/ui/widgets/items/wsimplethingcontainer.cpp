@@ -18,13 +18,13 @@ WSimpleThingContainer::~WSimpleThingContainer()
 {
 
 }
-void WSimpleThingContainer::appendThing(const hacc::TDBID &thingId, const hacc::TDBID &thingIconId,
-                                     const QString &thingName, const hacc::TDBID &manId,
-                                     const hacc::TDBID &manIconId, const QString &manName)
+void WSimpleThingContainer::appendThing(const hacc::TDBID &thingID, const hacc::TDBID &thingIconID,
+                                     const QString &thingName, const hacc::TDBID &manufacturerID,
+                                     const hacc::TDBID &manufacturerIconID, const QString &manufacturerName)
 {
-    WSimpleThingItem *i = new WSimpleThingItem(thingId, manId);
-    i->setThingData(thingIconId, thingName);
-    i->setManufacturerData(manIconId, manName);
+    WSimpleThingItem *i = new WSimpleThingItem(thingID, manufacturerID);
+    i->setThingData(thingIconID, thingName);
+    i->setManufacturerData(manufacturerIconID, manufacturerName);
     appendItem(i);
 }
 

@@ -20,7 +20,7 @@ public:
     FContractorEdit(const hacc::TDBID & id, QWidget *parent = 0);
     ~FContractorEdit();
     QString name();
-    hacc::TDBID iconId();
+    hacc::TDBID iconID();
     bool ownAccount();
 
 protected:

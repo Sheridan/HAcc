@@ -75,7 +75,7 @@ void FTransactionBuyThingEdit::validateData()
 
 void FTransactionBuyThingEdit::on_tbClearMoney_clicked () { m_ui->leMoney ->setText("0.00"); }
 void FTransactionBuyThingEdit::on_tbClearAmount_clicked() { m_ui->leAmount->setText("0.00"); }
-hacc::TDBID   FTransactionBuyThingEdit::thing () { return m_ui->pwThingSelector->id(); }
+hacc::TDBID   FTransactionBuyThingEdit::thingID () { return m_ui->pwThingSelector->id(); }
 hacc::TMoney  FTransactionBuyThingEdit::money () { return tools::convert::stringToMoney( m_ui->leMoney ->text()); }
 hacc::TAmount FTransactionBuyThingEdit::amount() { return tools::convert::stringToAmount(m_ui->leAmount->text()); }
 

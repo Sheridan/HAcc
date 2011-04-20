@@ -16,7 +16,7 @@ class WSimpleEnumeratedThingTypeItem : public base::WItem, public hacc::model::C
 public:
     explicit WSimpleEnumeratedThingTypeItem(const hacc::TDBID &id);
     ~WSimpleEnumeratedThingTypeItem();
-    void setItemData(const QString &eTTypeName, const int &precision);
+    void setItemData(const QString &enumeratedThingTypeName, const int &precision);
     hacc::TDBID itemID();
 private:
     void enumeratedThingTypeUpdated();

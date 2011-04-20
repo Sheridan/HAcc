@@ -81,8 +81,8 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
                     HACC_DB->exec("update transactions_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
                                   QVariantList()
                                   << dialog->datetime()
-                                  << dialog->buyer()
-                                  << dialog->seller()
+                                  << dialog->buyerAccountID()
+                                  << dialog->sellerAccountID()
                                   << id);
                     emit updated(id);
                 }
@@ -98,7 +98,7 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
                 if(dialog->exec() == QDialog::Accepted)
                 {
                     HACC_DB->exec("update transactions_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
-                                  QVariantList() << dialog->datetime() << dialog->source() << dialog->destination() << dialog->basePoolID());
+                                  QVariantList() << dialog->datetime() << dialog->sourceAccountID() << dialog->destinationAccountID() << dialog->basePoolID());
                     bool reallyHasCommission = dialog->commission() == 0 ? false : dialog->hasCommission();
                     hacc::TDBID commissionPoolID = dialog->commissionPoolID();
                     if(reallyHasCommission)
@@ -106,11 +106,11 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
                         if(commissionPoolID)
                         {
                             HACC_DB->exec("update transactions_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
-                                          QVariantList() << dialog->datetime() << dialog->source() << dialog->commissionTo() << commissionPoolID);
+                                          QVariantList() << dialog->datetime() << dialog->sourceAccountID() << dialog->commissionTo() << commissionPoolID);
                         }
                         else
                         {
-                            commissionPoolID = execAddTransactionPool(HACC_TAG_ID_COMMISSION, dialog->datetime(), dialog->source(), dialog->commissionTo());
+                            commissionPoolID = execAddTransactionPool(HACC_TAG_ID_COMMISSION, dialog->datetime(), dialog->sourceAccountID(), dialog->commissionTo());
                         }
                     }
                     else
@@ -162,11 +162,11 @@ void CTransactionsPools::execCreateTransactionPoolMoney(const int &transactionPo
     if(dialog->exec() == QDialog::Accepted)
     {
         hacc::TDBID commID = 0;
-        hacc::TDBID baseID = execAddTransactionPool(transactionPoolType, dialog->datetime(), dialog->source(), dialog->destination());
+        hacc::TDBID baseID = execAddTransactionPool(transactionPoolType, dialog->datetime(), dialog->sourceAccountID(), dialog->destinationAccountID());
         bool reallyHasCommission = dialog->commission() == 0 ? false : dialog->hasCommission();
         if(reallyHasCommission)
         {
-            commID = execAddTransactionPool(HACC_TAG_ID_COMMISSION, dialog->datetime(), dialog->source(), dialog->commissionTo());
+            commID = execAddTransactionPool(HACC_TAG_ID_COMMISSION, dialog->datetime(), dialog->sourceAccountID(), dialog->commissionTo());
         }
         HACC_TRANSACTIONS->addTransferTransaction(transactionPoolType, baseID, commID,
                                                   dialog->money(), reallyHasCommission, dialog->commissionAlreadyInMoney(),
@@ -188,9 +188,9 @@ void CTransactionsPools::execCreateTransactionPoolThing(const int &transactionPo
     {
 //        HACC_DEBUG("execCreateTransactionPoolThing" << dialog->source() << dialog->destination());
 //        HACC_DEBUG("execCreateTransactionPoolThing" << HACC_ACCOUNTS->contractor(dialog->source()) << HACC_ACCOUNTS->contractor(dialog->destination()));
-        hacc::TDBID newID = execAddTransactionPool(transactionPoolType, dialog->datetime(), dialog->buyer(), dialog->seller());
+        hacc::TDBID newID = execAddTransactionPool(transactionPoolType, dialog->datetime(), dialog->buyerAccountID(), dialog->sellerAccountID());
         HACC_TRANSACTIONS->commitThingsTransactions(newID, transactionPoolType,
-                                                    HACC_ACCOUNTS->contractor(dialog->buyer()), HACC_ACCOUNTS->contractor(dialog->seller()),
+                                                    HACC_ACCOUNTS->contractor(dialog->buyerAccountID()), HACC_ACCOUNTS->contractor(dialog->sellerAccountID()),
                                                     dialog->datetime());
         emit created(newID);
     }

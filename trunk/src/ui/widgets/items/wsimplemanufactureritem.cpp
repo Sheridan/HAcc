@@ -19,10 +19,10 @@ WSimpleManufacturerItem::WSimpleManufacturerItem(const hacc::TDBID &id)
 WSimpleManufacturerItem::~WSimpleManufacturerItem()
 {}
 
-void WSimpleManufacturerItem::setItemData(const hacc::TDBID &mIconId, const QString &mName)
+void WSimpleManufacturerItem::setItemData(const hacc::TDBID &manufacturerIconID, const QString &manufacturerName)
 {
-    setIcon(0, 0, mIconId);
-    setText(0, 0, mName);
+    setIcon(0, 0, manufacturerIconID);
+    setText(0, 0, manufacturerName);
 }
 
 void WSimpleManufacturerItem::manufacturerUpdated()

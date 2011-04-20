@@ -18,7 +18,7 @@ class WExpandedManufacturerItem : public ui::item::base::WItem,
 public:
     explicit WExpandedManufacturerItem(const hacc::TDBID &id);
     ~WExpandedManufacturerItem();
-    void setManufacturerData(const hacc::TDBID &mIconId, const QString &mName);
+    void setManufacturerData(const hacc::TDBID &manufacturerIconID, const QString &manufacturerName);
     hacc::TDBID itemID();
 
 private:

@@ -29,15 +29,15 @@ WExpandedValuableItem::~WExpandedValuableItem()
 {
 }
 
-void WExpandedValuableItem::setThingData(const hacc::TDBID &iconId, const QString &name)
+void WExpandedValuableItem::setThingData(const hacc::TDBID &iconID, const QString &name)
 {
-    setIcon(0, 0, iconId);
+    setIcon(0, 0, iconID);
     setText(0, 0, name);
 }
 
-void WExpandedValuableItem::setManufacturerData(const hacc::TDBID &iconId, const QString &name)
+void WExpandedValuableItem::setManufacturerData(const hacc::TDBID &iconID, const QString &name)
 {
-    setIcon(1, 0, iconId);
+    setIcon(1, 0, iconID);
     setText(1, 0, name);
 }
 

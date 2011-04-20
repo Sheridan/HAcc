@@ -57,7 +57,7 @@ public slots:
     void setSearchText(QString text);
 
 signals:
-    void selected(const hacc::TDBID &/*iconId*/);
+    void selected(const hacc::TDBID &/*iconID*/);
 
 private slots:
     void tagClicked(const hacc::TDBID &tagID);

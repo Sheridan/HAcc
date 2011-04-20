@@ -85,12 +85,12 @@ void FTransactionPoolThingEdit::init()
     }
 }
 
-hacc::TDBID FTransactionPoolThingEdit::buyer()      // account id
+hacc::TDBID FTransactionPoolThingEdit::buyerAccountID()      // account id
 {
     return m_ui->pwBuyerAccount->id();
 }
 
-hacc::TDBID FTransactionPoolThingEdit::seller() // account id
+hacc::TDBID FTransactionPoolThingEdit::sellerAccountID() // account id
 {
     return m_ui->pwSellerAccount->id();
 }

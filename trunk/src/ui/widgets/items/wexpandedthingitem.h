@@ -23,8 +23,8 @@ class WExpandedThingItem : public ui::item::base::WItem,
 public:
     WExpandedThingItem(const hacc::TDBID &id, const hacc::TDBID &manufacturerID);
     ~WExpandedThingItem();
-    void setThingData(const hacc::TDBID &iconId, const QString &name);
-    void setManufacturerData(const hacc::TDBID &iconId, const QString &name);
+    void setThingData       (const hacc::TDBID &iconID, const QString &name);
+    void setManufacturerData(const hacc::TDBID &iconID, const QString &name);
     hacc::TDBID itemID();
 
 private:

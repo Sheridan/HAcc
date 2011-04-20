@@ -27,7 +27,7 @@ public:
                                   const hacc::TDBID &thingID,
                                   const hacc::TDBID &manufactiurerID);
     ~WExpandedTransactionThingItem();
-    void setThingData(const QString &thingName, const hacc::TDBID &thingIconId);
+    void setThingData(const QString &thingName, const hacc::TDBID &thingIconID);
     void setManufacturerData(const QString &manufactiurerName, const hacc::TDBID &manufactiurerIconID);
     hacc::TDBID itemID();
 

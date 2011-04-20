@@ -20,7 +20,7 @@ public:
     FTransactionSellThingEdit(QWidget *parent = 0);
     FTransactionSellThingEdit(const hacc::TDBID &valuableID, QWidget *parent = 0);
     ~FTransactionSellThingEdit();
-    hacc::TDBID valuable();
+    hacc::TDBID valuableID();
     hacc::TMoney money();
 
 protected:

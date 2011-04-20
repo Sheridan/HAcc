@@ -25,7 +25,7 @@ void CAccounts::add(const hacc::TDBID & contractorID)
     ui::form::FAccountEdit *dialog = new ui::form::FAccountEdit();
     if(dialog->exec() == QDialog::Accepted)
     {
-        execAddAccount(contractorID, dialog->name(), dialog->iconId(), dialog->currencyID());
+        execAddAccount(contractorID, dialog->name(), dialog->iconID(), dialog->currencyID());
     }
     delete dialog;
 }
@@ -89,7 +89,7 @@ void CAccounts::edit(const hacc::TDBID & id)
         {
             HACC_DB->exec("update accounts set name=?, icon_id=?, currency_id=? where id=?", QVariantList()
                           << dialog->name()
-                          << dialog->iconId()
+                          << dialog->iconID()
                           << dialog->currencyID()
                           << id);
             emit updated(id);

@@ -48,7 +48,7 @@ QString FAccountEdit::name()
     return m_ui->leName->text();
 }
 
-hacc::TDBID FAccountEdit::iconId()
+hacc::TDBID FAccountEdit::iconID()
 {
     return m_ui->pwIcons->id();
 }

@@ -29,8 +29,8 @@ public:
     WExpandedValuableItem(const hacc::TDBID &valID, const hacc::TDBID &thingID,
                           const hacc::TDBID &manufacturerID, const hacc::TDBID &transactionID);
     ~WExpandedValuableItem();
-    void setThingData(const hacc::TDBID &iconId, const QString &name);
-    void setManufacturerData(const hacc::TDBID &iconId, const QString &name);
+    void setThingData(const hacc::TDBID &iconID, const QString &name);
+    void setManufacturerData(const hacc::TDBID &iconID, const QString &name);
     void setTransactionData(const hacc::TMoney &cost, const QDateTime &purchaseDate);
     void setValuableData(const QString &serial);
     hacc::TDBID itemID();

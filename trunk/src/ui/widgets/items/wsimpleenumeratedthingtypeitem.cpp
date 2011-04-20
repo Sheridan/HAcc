@@ -20,9 +20,9 @@ WSimpleEnumeratedThingTypeItem::WSimpleEnumeratedThingTypeItem(const hacc::TDBID
 WSimpleEnumeratedThingTypeItem::~WSimpleEnumeratedThingTypeItem()
 {}
 
-void WSimpleEnumeratedThingTypeItem::setItemData(const QString &eTTypeName, const int &precision)
+void WSimpleEnumeratedThingTypeItem::setItemData(const QString &enumeratedThingTypeName, const int &precision)
 {
-    setText(0, 0, eTTypeName);
+    setText(0, 0, enumeratedThingTypeName);
     setText(1, 0, QString::number(precision));
 }
 

@@ -30,7 +30,7 @@ public:
     //! @{
     QAction * addAction();
     //! @}
-    QString thingEnumerateTypeName(const hacc::TDBID & id);
+    QString thingEnumerateTypeName(const hacc::TDBID &id);
     bool checkSpetialEnumeratedType(const hacc::TDBID &typeID);
     bool checkDivisibleEnumeratedType(const hacc::TDBID &typeID);
 

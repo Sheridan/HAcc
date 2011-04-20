@@ -20,8 +20,8 @@ public:
     explicit FTransactionMoneyEdit(const int &trType, QWidget *parent = 0);
     explicit FTransactionMoneyEdit(const hacc::TDBID &id, const int &trType, QWidget *parent = 0);
     ~FTransactionMoneyEdit();
-    hacc::TDBID source();
-    hacc::TDBID destination();
+    hacc::TDBID sourceAccountID();
+    hacc::TDBID destinationAccountID();
     hacc::TMoney money();
     QDateTime datetime();
 

@@ -20,10 +20,10 @@ WExpandedManufacturerItem::WExpandedManufacturerItem(const hacc::TDBID &id)
 WExpandedManufacturerItem::~WExpandedManufacturerItem()
 {}
 
-void WExpandedManufacturerItem::setManufacturerData(const hacc::TDBID &mIconId, const QString &mName)
+void WExpandedManufacturerItem::setManufacturerData(const hacc::TDBID &manufacturerIconID, const QString &manufacturerName)
 {
-    setIcon(0, 0, mIconId);
-    setText(0, 0, mName);
+    setIcon(0, 0, manufacturerIconID);
+    setText(0, 0, manufacturerName);
 }
 
 void WExpandedManufacturerItem::setMoreData(const QString &description, const QVariant &logo)

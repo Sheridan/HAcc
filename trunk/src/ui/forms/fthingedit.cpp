@@ -108,17 +108,17 @@ QString FThingEdit::description()
     return m_ui->teDescription->toPlainText();
 }
 
-hacc::TDBID FThingEdit::iconId()
+hacc::TDBID FThingEdit::iconID()
 {
     return m_ui->pwIcons->id();
 }
 
-hacc::TDBID FThingEdit::enumeratedTypeThingId()
+hacc::TDBID FThingEdit::enumeratedThingTypeID()
 {
     return m_ui->pwEnumerateType->id();
 }
 
-hacc::TDBID FThingEdit::manufacturerId()
+hacc::TDBID FThingEdit::manufacturerID()
 {
     return m_ui->pwManufacturer->id();
 }

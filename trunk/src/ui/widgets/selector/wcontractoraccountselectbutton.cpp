@@ -57,13 +57,13 @@ void WContractorAccountSelectButton::idChanged()
     }
 }
 
-void WContractorAccountSelectButton::setData(const hacc::TDBID &contractor_icon, const QString &contractor_name,
-                                             const hacc::TDBID &account_icon   , const QString &account_name   )
+void WContractorAccountSelectButton::setData(const hacc::TDBID &contractorIconID, const QString &contractorName,
+                                             const hacc::TDBID &accountIconID   , const QString &accountName   )
 {
-    m_contractorName->setText(contractor_name);
-    m_accountName   ->setText(account_name   );
-    m_contractorIcon->setIcon(contractor_icon);
-    m_accountIcon   ->setIcon(account_icon   );
+    m_contractorName->setText(contractorName);
+    m_accountName   ->setText(accountName   );
+    m_contractorIcon->setIcon(contractorIconID);
+    m_accountIcon   ->setIcon(accountIconID   );
 }
 
 void WContractorAccountSelectButton::setSelfFilter(hacc::model::EContractorFilter filter)

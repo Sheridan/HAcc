@@ -36,9 +36,9 @@ void WExpandedContractorItem::assignActions()
     controlLabel(0, 0)->addAction(hacc::model::CContractor::tagsEditAction());
 }
 
-void WExpandedContractorItem::setItemData(const hacc::TDBID &iconId, const QString &name)
+void WExpandedContractorItem::setItemData(const hacc::TDBID &iconID, const QString &name)
 {
-    setIcon(0, 0, iconId);
+    setIcon(0, 0, iconID);
     setText(0, 0, name);
 }
 

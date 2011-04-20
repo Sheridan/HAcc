@@ -13,14 +13,14 @@ class WIconItem : public WIconButtonBase
 {
     Q_OBJECT
 public:
-    WIconItem(const hacc::TDBID &iconId, QWidget *parent = 0);
+    WIconItem(const hacc::TDBID &iconID, QWidget *parent = 0);
     virtual ~WIconItem();
 
 private:
     QMenu   *m_menu;
 
 signals:
-    void selected(hacc::TDBID /*iconId*/);
+    void selected(hacc::TDBID /*iconID*/);
 
 private slots:
     void emitSelected();

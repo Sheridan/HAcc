@@ -18,13 +18,13 @@ WExpandedValuableContainer::~WExpandedValuableContainer()
 {}
 
 void WExpandedValuableContainer::appendValuable(const hacc::TDBID &valuableID, const QString      &serial,
-                                                const hacc::TDBID &thingId   , const hacc::TDBID  &thingIconId, const QString   &thingName,
-                                                const hacc::TDBID &manId     , const hacc::TDBID  &manIconId  , const QString   &manName,
+                                                const hacc::TDBID &thingID   , const hacc::TDBID  &thingIconID, const QString   &thingName,
+                                                const hacc::TDBID &manufacturerID     , const hacc::TDBID  &manufacturerIconID  , const QString   &manufacturerName,
                                                 const hacc::TDBID &transId   , const hacc::TMoney &cost       , const QDateTime &purchaseDate)
 {
-    WExpandedValuableItem *i = new WExpandedValuableItem(valuableID, thingId, manId, transId);
-    i->setThingData(thingIconId, thingName);
-    i->setManufacturerData(manIconId, manName);
+    WExpandedValuableItem *i = new WExpandedValuableItem(valuableID, thingID, manufacturerID, transId);
+    i->setThingData(thingIconID, thingName);
+    i->setManufacturerData(manufacturerIconID, manufacturerName);
     i->setTransactionData(cost, purchaseDate);
     i->setValuableData(serial);
     appendItem(i);

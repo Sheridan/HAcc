@@ -29,9 +29,9 @@ void WIcon::setIcon(const QIcon &icon, int extent)
     setPixmap(icon.pixmap(extent), extent);
 }
 
-void WIcon::setIcon(const hacc::TDBID &iconId)
+void WIcon::setIcon(const hacc::TDBID &iconID)
 {
-    setID(iconId);
+    setID(iconID);
     if (!m_connected)
     {
         m_connected = connect(HACC_DB_ICONS, SIGNAL(updated(hacc::TDBID)), this, SLOT(updated(hacc::TDBID)));
@@ -49,9 +49,9 @@ void WIcon::setIcon(const QString &iconFile, int extent)
     setPixmap(iconFile, extent);
 }
 
-void WIcon::updated(hacc::TDBID iconId)
+void WIcon::updated(hacc::TDBID iconID)
 {
-    if (iconId == id())
+    if (iconID == id())
     {
         refreshIdIcon();
     }

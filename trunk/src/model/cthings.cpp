@@ -47,10 +47,10 @@ void CThings::add()
                       << newID
                       << dialog->name()
                       << dialog->description()
-                      << dialog->iconId()
+                      << dialog->iconID()
                       << (dialog->hasImage() ? QVariant(dialog->pixmapData()) : QVariant(QVariant::ByteArray))
-                      << dialog->enumeratedTypeThingId()
-                      << dialog->manufacturerId()
+                      << dialog->enumeratedThingTypeID()
+                      << dialog->manufacturerID()
                       << dialog->expiration()
                       << dialog->guarantee());
         attachTag(HACC_TAG_ID_SERVICE   , newID, dialog->thingType() == HACC_TAG_ID_SERVICE   );
@@ -102,10 +102,10 @@ void CThings::edit(const hacc::TDBID & id)
                           QVariantList()
                           << dialog->name()
                           << dialog->description()
-                          << dialog->iconId()
+                          << dialog->iconID()
                           << (dialog->hasImage() ? QVariant(dialog->pixmapData()) : QVariant(QVariant::ByteArray))
-                          << dialog->enumeratedTypeThingId()
-                          << dialog->manufacturerId()
+                          << dialog->enumeratedThingTypeID()
+                          << dialog->manufacturerID()
                           << dialog->expiration()
                           << dialog->guarantee()
                           << id);
@@ -119,20 +119,20 @@ void CThings::edit(const hacc::TDBID & id)
     }
 }
 
-void CThings::removeEnumeratedType(const hacc::TDBID & etId)
+void CThings::removeEnumeratedType(const hacc::TDBID & enumeratedThingTypeID)
 {
-    hacc::TIDList list = HACC_DB->listID("things", "enumerated_type_id=?", QVariantList() << etId);
-    HACC_DB->exec("update things set enumerated_type_id=1 where enumerated_type_id=?", QVariantList() << etId);
+    hacc::TIDList list = HACC_DB->listID("things", "enumerated_type_id=?", QVariantList() << enumeratedThingTypeID);
+    HACC_DB->exec("update things set enumerated_type_id=1 where enumerated_type_id=?", QVariantList() << enumeratedThingTypeID);
     foreach(hacc::TDBID id, list)
     {
         emit updated(id);
     }
 }
 
-void CThings::removeManufacturer(const hacc::TDBID & mId)
+void CThings::removeManufacturer(const hacc::TDBID & manufacturerID)
 {
-    hacc::TIDList list = HACC_DB->listID("things", "manufacturer_id=?", QVariantList() << mId);
-    HACC_DB->exec("update things set manufacturer_id=1 where manufacturer_id=?", QVariantList() << mId);
+    hacc::TIDList list = HACC_DB->listID("things", "manufacturer_id=?", QVariantList() << manufacturerID);
+    HACC_DB->exec("update things set manufacturer_id=1 where manufacturer_id=?", QVariantList() << manufacturerID);
     foreach(hacc::TDBID id, list)
     {
         emit updated(id);

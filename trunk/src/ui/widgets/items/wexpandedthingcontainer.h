@@ -18,9 +18,9 @@ public:
     ~WExpandedThingContainer();
 
 private:
-    void appendThing(const hacc::TDBID &thingId, const hacc::TDBID &thingIconId,
-                     const QString &thingName, const hacc::TDBID &manId,
-                     const hacc::TDBID &manIconId, const QString &manName);
+    void appendThing(const hacc::TDBID &thingID, const hacc::TDBID &thingIconID,
+                     const QString &thingName, const hacc::TDBID &manufacturerID,
+                     const hacc::TDBID &manufacturerIconID, const QString &manufacturerName);
 
 public slots:
     void refresh(const hacc::TDBID &createdID = 0);

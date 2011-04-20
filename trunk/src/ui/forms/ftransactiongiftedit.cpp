@@ -49,22 +49,22 @@ void FTransactionGiftEdit::init(const int &gType)
     }
 }
 
-hacc::TDBID FTransactionGiftEdit::source()
+hacc::TDBID FTransactionGiftEdit::sourceAccountID()
 {
     return m_ui->pwAccountFrom->id();
 }
 
-hacc::TDBID FTransactionGiftEdit::destination()
+hacc::TDBID FTransactionGiftEdit::destinationAccountID()
 {
     return m_ui->pwAccountTo->id();
 }
 
-hacc::TDBID FTransactionGiftEdit::thing()
+hacc::TDBID FTransactionGiftEdit::thingID()
 {
     return m_ui->pwThingSelector->id();
 }
 
-hacc::TDBID FTransactionGiftEdit::valuable()
+hacc::TDBID FTransactionGiftEdit::valuableID()
 {
     return m_ui->pwValuableSelector->id();
 }

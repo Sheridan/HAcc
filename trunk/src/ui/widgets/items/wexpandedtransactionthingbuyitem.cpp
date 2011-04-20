@@ -23,9 +23,9 @@ WExpandedTransactionThingBuyItem::~WExpandedTransactionThingBuyItem()
 }
 
 void WExpandedTransactionThingBuyItem::setTransactionData(const hacc::TMoney &money, const hacc::TAmount &amount,
-                                                          const int &precision     , const QString &eTTName)
+                                                          const int &precision     , const QString &enumeratedThingTypeName)
 {
-    setText(HACC_TTI_AMONT_PLACE, tools::convert::amountToString(amount, precision) + " " + eTTName);
+    setText(HACC_TTI_AMONT_PLACE, tools::convert::amountToString(amount, precision) + " " + enumeratedThingTypeName);
     setText(HACC_TTI_MONEY_PLACE, tools::convert::moneyToString(money));
 }
 

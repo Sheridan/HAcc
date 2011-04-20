@@ -19,7 +19,7 @@ public:
     FTransactionBuyThingEdit(QWidget *parent = 0);
     FTransactionBuyThingEdit(const hacc::TDBID &id, QWidget *parent = 0);
     ~FTransactionBuyThingEdit();
-    hacc::TDBID thing();
+    hacc::TDBID thingID();
     hacc::TMoney money();
     hacc::TAmount amount();
 

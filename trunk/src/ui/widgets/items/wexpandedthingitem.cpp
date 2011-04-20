@@ -23,15 +23,15 @@ WExpandedThingItem::~WExpandedThingItem()
 {
 }
 
-void WExpandedThingItem::setThingData(const hacc::TDBID &iconId, const QString &name)
+void WExpandedThingItem::setThingData(const hacc::TDBID &iconID, const QString &name)
 {
-    setIcon(0, 0, iconId);
+    setIcon(0, 0, iconID);
     setText(0, 0, name);
 }
 
-void WExpandedThingItem::setManufacturerData(const hacc::TDBID &iconId, const QString &name)
+void WExpandedThingItem::setManufacturerData(const hacc::TDBID &iconID, const QString &name)
 {
-    setIcon(1, 0, iconId);
+    setIcon(1, 0, iconID);
     setText(1, 0, name);
 }
 

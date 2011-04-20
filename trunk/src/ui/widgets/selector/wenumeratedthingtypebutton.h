@@ -21,7 +21,7 @@ public:
 private:
     void idChanged();
     base::WSelectorPopup * constructPopup();
-    void setData(const QString &eTThingName);
+    void setData(const QString &enumeratedThingTypeName);
     QHBoxLayout      *m_layout;
     QLabel           *m_eTThingName;
     ui::icons::WIcon *m_eTThingIcon;

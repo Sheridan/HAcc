@@ -18,13 +18,13 @@ WSimpleValuableContainer::~WSimpleValuableContainer()
 {
 
 }
-void WSimpleValuableContainer::appendRow(const hacc::TDBID &thingId   , const hacc::TDBID &thingIconId, const QString &thingName,
-                                         const hacc::TDBID &manId     , const hacc::TDBID &manIconId  , const QString &manName,
-                                         const hacc::TDBID &valuableId, const QString &serial)
+void WSimpleValuableContainer::appendRow(const hacc::TDBID &thingID       , const hacc::TDBID &thingIconID       , const QString &thingName,
+                                         const hacc::TDBID &manufacturerID, const hacc::TDBID &manufacturerIconID, const QString &manufacturerName,
+                                         const hacc::TDBID &valuableID    , const QString &serial)
 {
-    WSimpleValuableItem *i = new WSimpleValuableItem(thingId, manId, valuableId);
-    i->setThingData       (thingIconId, thingName);
-    i->setManufacturerData(manIconId, manName);
+    WSimpleValuableItem *i = new WSimpleValuableItem(thingID, manufacturerID, valuableID);
+    i->setThingData       (thingIconID, thingName);
+    i->setManufacturerData(manufacturerIconID, manufacturerName);
     i->setValuableData    (serial);
     appendItem(i);
 }

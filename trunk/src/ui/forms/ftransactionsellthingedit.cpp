@@ -22,6 +22,7 @@ FTransactionSellThingEdit::FTransactionSellThingEdit(const hacc::TDBID &valuable
     QDialog(parent),
     m_ui(new Ui::FTransactionSellThingEdit)
 {
+    //! \todo Реализовать заполнение формы ценности
     init();
 }
 
@@ -36,7 +37,7 @@ void FTransactionSellThingEdit::init()
     m_ui->pwValuableSelector->init();
 }
 
-hacc::TDBID FTransactionSellThingEdit::valuable()
+hacc::TDBID FTransactionSellThingEdit::valuableID()
 {
     return m_ui->pwValuableSelector->id();
 }

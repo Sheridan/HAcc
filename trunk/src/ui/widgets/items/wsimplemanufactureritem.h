@@ -16,7 +16,7 @@ class WSimpleManufacturerItem : public ui::item::base::WItem, public hacc::model
 public:
     explicit WSimpleManufacturerItem(const hacc::TDBID &id);
     ~WSimpleManufacturerItem();
-    void setItemData(const hacc::TDBID &mIconId, const QString &mName);
+    void setItemData(const hacc::TDBID &manufacturerIconID, const QString &manufacturerName);
     hacc::TDBID itemID();
 private:
     void manufacturerUpdated();

@@ -22,7 +22,7 @@ public:
     ~FManufacturerEdit();
     QString name();
     QString description();
-    hacc::TDBID iconId();
+    hacc::TDBID iconID();
     QByteArray pixmapData();
     bool hasImage();
 

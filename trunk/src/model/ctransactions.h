@@ -36,7 +36,7 @@ public:
                                   const QDateTime   &datetime);         //!< Подтверждение транзакций при подтверждении пула
     void cleanAfterRemoveTransactionPool(const hacc::TDBID & poolId);   //!< Очистка после удаления пула транзакций
     void removeUncommitedTransactions();
-    void cleanAfterThingRemove(const hacc::TDBID & thingId);
+    void cleanAfterThingRemove(const hacc::TDBID & thingID);
     bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();

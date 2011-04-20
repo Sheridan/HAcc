@@ -43,9 +43,9 @@ base::WSelectorPopup * WEnumeratedThingTypeButton::constructPopup()
     return new WEnumeratedThingTypePopup(this);
 }
 
-void WEnumeratedThingTypeButton::setData(const QString &eTThingName)
+void WEnumeratedThingTypeButton::setData(const QString &enumeratedThingTypeName)
 {
-    m_eTThingName->setText(eTThingName);
+    m_eTThingName->setText(enumeratedThingTypeName);
 }
 
 void WEnumeratedThingTypeButton::eTTCreated(const hacc::TDBID &eTTID)

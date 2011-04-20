@@ -9,13 +9,13 @@ namespace ui
 namespace icons
 {
 
-WIconItem::WIconItem(const hacc::TDBID &iconId, QWidget *parent) : WIconButtonBase(iconId, parent)
+WIconItem::WIconItem(const hacc::TDBID &iconID, QWidget *parent) : WIconButtonBase(iconID, parent)
 {
 //    setProperty("btype", "icon");
 
     m_menu = new QMenu(this);
     m_menu->addAction(HACC_ICONS->icon(tools::icons::iIcon       , tools::icons::oEdit),   tr("Replace"), this, SLOT(edit()));
-    if(iconId >= HACC_DB_ICONS->predeclaredIconsCount())
+    if(iconID >= HACC_DB_ICONS->predeclaredIconsCount())
     {
         m_menu->addAction(HACC_ICONS->icon(tools::icons::iIcon   , tools::icons::oRemove), tr("Delete" ), this, SLOT(remove()));
     }

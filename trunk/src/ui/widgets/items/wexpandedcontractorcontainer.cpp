@@ -54,10 +54,10 @@ void WExpandedContractorContainer::refresh(const hacc::TDBID &createdID)
     }
 }
 
-void WExpandedContractorContainer::appendContractor(const hacc::TDBID &id, const hacc::TDBID &iconId, const QString &name)
+void WExpandedContractorContainer::appendContractor(const hacc::TDBID &id, const hacc::TDBID &iconID, const QString &name)
 {
     WExpandedContractorItem *i = new WExpandedContractorItem(id);
-    i->setItemData(iconId, name);
+    i->setItemData(iconID, name);
     appendItem(i);
 }
 
