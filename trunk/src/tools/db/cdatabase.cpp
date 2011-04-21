@@ -6,6 +6,7 @@
 #include "st.h"
 #include "hacc_db_defines.h"
 #include "ui_defines.h"
+#include "hacc_options.h"
 
 namespace tools
 {
@@ -595,6 +596,7 @@ void CDatabase::createDatabase()
     HDB_APPEND_CURRENCY(tr("Japanese yen")        , HACC_UTF8_STRING("¥")  , false, "jpy"); // id: 33
     HDB_APPEND_CURRENCY(tr("Ukrainian hryvnia")   , HACC_UTF8_STRING("₴")  , false, "uah"); // id: 34
 
+    hacc::TDBID defaultCurrencyID = HACC_O_DEFAULT_CURRENCY;
 
     // Создание базовых счетов
     HDB_APPEND_MANUFACTURER_FULL(tr("Unknown manufacturer"), tr("Some unknown manufacturer"), 11);
@@ -612,40 +614,40 @@ void CDatabase::createDatabase()
 
     // Контрагент "Семья" со счетами
     HDB_APPEND_CONTRACTOR(tr("Family"), 9, true);
-    HDB_APPEND_ACCOUNT(tr("Cash money")        , 13, 31);
-    HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, 31);
-    HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, 31);
+    HDB_APPEND_ACCOUNT(tr("Cash money")        , 13, defaultCurrencyID);
+    HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, defaultCurrencyID);
+    HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, defaultCurrencyID);
 
     exec("insert into db_options (name, value) values (?,?)", QVariantList() << "database version" << HACC_DATABASE_VERSION);
 
     // Всякие данные для тестов
     #ifdef HACC_DEBUG_DB
-        // Подкинем рублевых счетов к базовому контрагенту
-        HDB_APPEND_ACCOUNT(tr("Cash money")        , 13, 19);
-        HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, 19);
-        HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, 19);
+        // Подкинем валютных счетов к базовому контрагенту
+        HDB_APPEND_ACCOUNT(tr("Cash money")        , 13, 32);
+        HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, 31);
+        HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, 33);
 
         contractorID = accountID = manufacturerID = thingID = 100;
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Жена"), 30, true);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Деньги")           , 13, 19);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Банковская карта") , 18, 19);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Шкатулка")         , 17, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Деньги")           , 13, defaultCurrencyID);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Банковская карта") , 18, defaultCurrencyID);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Шкатулка")         , 17, defaultCurrencyID);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Висточ"), 29, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, defaultCurrencyID);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Сигма"), 3, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 23, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, defaultCurrencyID);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 23, defaultCurrencyID);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Консультант+"), 29, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 24, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, defaultCurrencyID);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 24, defaultCurrencyID);
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("ООО 'Опт-Торг'"), 30, false);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, 19);
-        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 26, 19);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Касса"), 24, defaultCurrencyID);
+        HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Счет") , 26, defaultCurrencyID);
 
         HDB_APPEND_MANUFACTURER(HACC_UTF8_STRING("Уральский металлургический"), 11);
         HDB_APPEND_THING(HACC_UTF8_STRING("Молоток")    , 11, 2, HACC_TAG_ID_OBJECT    );

@@ -2,6 +2,7 @@
 #define DOPTIONS_H
 
 #include <QDialog>
+#include "hacc_types.h"
 
 namespace Ui { class DOptions; }
 
@@ -22,7 +23,7 @@ protected:
     void changeEvent(QEvent *e);
 
 private slots:
-    void on_buttonBox_accepted();
+    void defaultCurrencySet(const hacc::TDBID &currencyID);
 
 private:
     Ui::DOptions *m_ui;

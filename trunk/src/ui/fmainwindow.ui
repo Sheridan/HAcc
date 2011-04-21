@@ -30,7 +30,7 @@
      <x>0</x>
      <y>0</y>
      <width>592</width>
-     <height>22</height>
+     <height>24</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuBook">
@@ -41,6 +41,8 @@
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionClose"/>
+    <addaction name="separator"/>
+    <addaction name="actionOptions"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -152,6 +154,15 @@
    </property>
    <property name="text">
     <string>MDI mode</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="icon">
+    <iconset resource="../../res/hacc.qrc">
+     <normaloff>:/main/icons/dialog-ok.png</normaloff>:/main/icons/dialog-ok.png</iconset>
+   </property>
+   <property name="text">
+    <string>Options</string>
    </property>
   </action>
  </widget>

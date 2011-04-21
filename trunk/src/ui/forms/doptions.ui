@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>179</width>
-    <height>60</height>
+    <width>209</width>
+    <height>102</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -15,39 +15,70 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QCheckBox" name="cbMDIFace">
+    <widget class="QLabel" name="label">
      <property name="text">
-      <string>MDI Interface</string>
+      <string>Default currency</string>
      </property>
     </widget>
    </item>
    <item>
-    <widget class="QDialogButtonBox" name="buttonBox">
-     <property name="orientation">
-      <enum>Qt::Horizontal</enum>
-     </property>
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Cancel|QDialogButtonBox::Ok</set>
-     </property>
-    </widget>
+    <widget class="ui::selector::WCurrencyelectButton" name="pwCurrencySelectButton" native="true"/>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>Close</string>
+       </property>
+       <property name="icon">
+        <iconset resource="../../../res/hacc.qrc">
+         <normaloff>:/main/icons/dialog-cancel.png</normaloff>:/main/icons/dialog-cancel.png</iconset>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </item>
   </layout>
  </widget>
- <resources/>
+ <customwidgets>
+  <customwidget>
+   <class>ui::selector::WCurrencyelectButton</class>
+   <extends>QWidget</extends>
+   <header>wcurrencyelectbutton.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="../../../res/hacc.qrc"/>
+ </resources>
  <connections>
   <connection>
-   <sender>buttonBox</sender>
-   <signal>rejected()</signal>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
    <receiver>DOptions</receiver>
-   <slot>reject()</slot>
+   <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>174</x>
-     <y>55</y>
+     <x>131</x>
+     <y>80</y>
     </hint>
     <hint type="destinationlabel">
-     <x>178</x>
-     <y>59</y>
+     <x>54</x>
+     <y>64</y>
     </hint>
    </hints>
   </connection>

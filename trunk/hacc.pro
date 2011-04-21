@@ -334,7 +334,8 @@ HEADERS += src/ui/fmainwindow.h \
     src/ui/widgets/items/wsimplecurrencycontainer.h \
     src/ui/widgets/items/wsimplecurrencyitem.h \
     src/ui/widgets/selector/wcurrencyelectbutton.h \
-    src/ui/widgets/selector/wcurrencyselectpopup.h
+    src/ui/widgets/selector/wcurrencyselectpopup.h \
+    src/hacc_options.h
 
 FORMS += src/ui/fmainwindow.ui \
     src/ui/forms/faccountedit.ui \

@@ -71,6 +71,7 @@ private slots:
     void dbClosing();
     void dbIsOpen();
     void on_actionMDI_mode_triggered(bool checked);
+    void on_actionOptions_triggered();
 };
 
 }

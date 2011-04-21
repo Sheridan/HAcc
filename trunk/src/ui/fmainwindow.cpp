@@ -7,6 +7,8 @@
 #include "ui_defines.h"
 #include "actions.h"
 #include "icons.h"
+#include "doptions.h"
+#include "hacc_options.h"
 #include "st.h"
 
 namespace ui
@@ -63,7 +65,7 @@ FMainWindow::FMainWindow(QWidget *parent) :
     m_transactionPoolBase = NULL;
     m_mdiArea = NULL;
 
-    bool mdi = HACC_OPTIONS->sectionValue("view", "mdi", false).toBool();
+    bool mdi = HACC_O_MDI;
     m_ui->actionMDI_mode->setChecked(mdi);
     changeViewMode(mdi);
 }
@@ -244,8 +246,14 @@ void FMainWindow::dbIsOpen()
 
 void FMainWindow::on_actionMDI_mode_triggered(bool checked)
 {
-    HACC_OPTIONS->setSectionValue("view", "mdi", checked);
+    HACC_O_MDI_SET(checked);
     changeViewMode(checked);
+}
+
+void FMainWindow::on_actionOptions_triggered()
+{
+    DOptions dlg(this);
+    dlg.exec();
 }
 
 }
