@@ -544,8 +544,8 @@ void CDatabase::createDatabase()
         exec("insert into tags (id,name) values (?,?)", QVariantList() << i << tag);
     }
 
-    int contractorID, accountID, manufacturerID, thingID, currencyID;
-        contractorID= accountID= manufacturerID= thingID= currencyID = 0;
+    int contractorID, manufacturerID, thingID;
+        contractorID= manufacturerID= thingID = 0;
 
     // Заполнение таблицы перечислений
     exec("insert into thing_enumerated_types (id,name,precision) values ( 1,?,0)", QVariantList() << tr("n/a"));          // Специальный тип перечисления
@@ -571,7 +571,7 @@ void CDatabase::createDatabase()
     HDB_APPEND_CURRENCY(tr("Indonesian rupee")    , HACC_UTF8_STRING("Rp") , false, "idr"); // id: 8
     HDB_APPEND_CURRENCY(tr("Icelandic krone")     , HACC_UTF8_STRING("kr") , false, "isk"); // id: 9
     HDB_APPEND_CURRENCY(tr("Chinese yuan")        , HACC_UTF8_STRING("¥")  , true , "cny"); // id: 10
-    HDB_APPEND_CURRENCY(tr("South Korean won")    , HACC_UTF8_STRING("₩")  , true , "krw"); // id: 11
+    HDB_APPEND_CURRENCY(tr("South Korean won")    , HACC_UTF8_STRING("₩") , true , "krw"); // id: 11
     HDB_APPEND_CURRENCY(tr("Latvian lats")        , HACC_UTF8_STRING("Ls") , false, "lvl"); // id: 12
     HDB_APPEND_CURRENCY(tr("Malaysian ringgit")   , HACC_UTF8_STRING("RM") , false, "myr"); // id: 13
     HDB_APPEND_CURRENCY(tr("Mexican peso")        , HACC_UTF8_STRING("$")  , true , "mxn"); // id: 14
@@ -604,13 +604,13 @@ void CDatabase::createDatabase()
 
     // Контрагент "Ничто" со счетом "Нигде". Нужен для списания и прочих действий типа "проебали 50 рублей"
     // Для этого контрагента необходимо иметь счет на каждую валюту
-    //! \todo Отследить по родителю и не дать удалять счета "Нигде".
+    // Счета в "Ничто" добавляются при создании валюты
     HDB_APPEND_CONTRACTOR(tr("Nothing"), 1, false);
-    QSqlQuery cres = query("select id from currencyes order by name");
-    while(cres.next())
-    {
-        HDB_APPEND_ACCOUNT(tr("Nowhere"), 1, HACC_DB_2_DBID(cres, 0));
-    }
+//    QSqlQuery cres = query("select id from currencyes order by name");
+//    while(cres.next())
+//    {
+//        HDB_APPEND_ACCOUNT(tr("Nowhere"), 1, HACC_DB_2_DBID(cres, 0));
+//    }
 
     // Контрагент "Семья" со счетами
     HDB_APPEND_CONTRACTOR(tr("Family"), 9, true);
@@ -627,7 +627,7 @@ void CDatabase::createDatabase()
         HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, 31);
         HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, 33);
 
-        contractorID = accountID = manufacturerID = thingID = 100;
+        contractorID = manufacturerID = thingID = 100;
 
         HDB_APPEND_CONTRACTOR(HACC_UTF8_STRING("Жена"), 30, true);
         HDB_APPEND_ACCOUNT(HACC_UTF8_STRING("Деньги")           , 13, defaultCurrencyID);

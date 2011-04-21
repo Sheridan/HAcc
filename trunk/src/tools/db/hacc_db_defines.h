@@ -1,6 +1,7 @@
 #ifndef HACC_DB_DEFINES_H
 #define HACC_DB_DEFINES_H
 
+#include "st.h"
 
 #define HACC_DB_CREATE_TABLE_BEGIN(_table) exec("create table " #_table "("
 
@@ -46,8 +47,7 @@
         QVariantList() << ++contractorID << _name << _icon << _own);
 
 #define HDB_APPEND_ACCOUNT(_name, _icon, _currency) \
-        exec("insert into accounts (id, name, icon_id, contractor_id, currency_id) values (?,?,?,?,?)" , \
-        QVariantList() << ++accountID << _name << _icon << contractorID << _currency);
+        HACC_ACCOUNTS->execAddAccount(contractorID, _name, _icon, _currency);
 
 #define HDB_APPEND_MANUFACTURER_FULL(_name, _description, _icon) \
         exec("insert into manufacturers (id, name, icon_id) values (?,?,?)", \
@@ -61,8 +61,7 @@
         HACC_THINGS->attachTag(_thing_type, thingID);
 
 #define HDB_APPEND_CURRENCY(_name, _reduction, _before_value, _icon) \
-    exec("insert into currencyes (id,name,reduction,show_reduction_before_value,icon_id) values (?,?,?,?,?)", \
-              QVariantList() << ++currencyID << _name << _reduction  << _before_value << HACC_DB_ICONS->add(":/flags/" _icon ".png"  ));
+    HACC_CURRENCYES->execAddCurrency(_name,_reduction,_before_value,HACC_DB_ICONS->add(":/flags/" _icon ".png"  ));
 
 
 #endif // HACC_DB_DEFINES_H

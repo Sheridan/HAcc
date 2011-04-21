@@ -23,14 +23,17 @@ class CCurrencyes :
 public:
     CCurrencyes();
     ~CCurrencyes();
-    void add();
     void remove(const hacc::TDBID & id);
     void edit(const hacc::TDBID & id);
+    void execAddCurrency(const QString &name, const QString &reduction,
+                         const bool &reductionBeforeNumber, const hacc::TDBID iconID);
     //! @ingroup singletoneQActionsGenerators
     //! @{
     QAction * addAction();
     //! @}
 
+public slots:
+    void add();
 
 private:
     QAction * generateAction(base::EActionsTypes atype, QObject *reciever, const char * method);

@@ -3,6 +3,7 @@
 #include "titemtagsedit.h"
 #include "st.h"
 #include "icons.h"
+#include "hacc_options.h"
 
 #include "ttagcontainer.h"
 #include "ccontractor.h"
@@ -53,8 +54,7 @@ void CContractors::add(bool isSelf)
                       << dialog->name()
                       << dialog->iconID()
                       << isSelf);
-        //! \todo Добавить валюту по умолчанию
-        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconID(), 1);
+        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconID(), HACC_O_DEFAULT_CURRENCY);
         emit created(newID);
     }
     delete dialog;

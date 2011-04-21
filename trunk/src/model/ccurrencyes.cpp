@@ -1,4 +1,5 @@
 #include "ccurrencyes.h"
+#include "fcurrencyedit.h"
 #include "st.h"
 #include "icons.h"
 
@@ -21,22 +22,13 @@ QAction * CCurrencyes::addAction()
 
 void CCurrencyes::add()
 {
-    //! \todo Не забыть добавить счет "Ничто"
-//    ui::form::FContractorEdit *dialog =
-//            new ui::form::FContractorEdit(isSelf);
-//    if(dialog->exec() == QDialog::Accepted)
-//    {
-//        hacc::TDBID newID = nextID();
-//        HACC_DB->exec("insert into contractors (id,name,icon_id,own_account) values (?,?,?,?)",
-//                      QVariantList()
-//                      << newID
-//                      << dialog->name()
-//                      << dialog->iconID()
-//                      << isSelf);
-//        HACC_ACCOUNTS->execAddAccount(newID, tr("Master account"), dialog->iconID());
-//        emit created(newID);
-//    }
-//    delete dialog;
+    ui::form::FCurrencyEdit *dialog =
+            new ui::form::FCurrencyEdit();
+    if(dialog->exec() == QDialog::Accepted)
+    {
+        execAddCurrency(dialog->name(), dialog->reduction(), dialog->reductionBeforeNumber(), dialog->iconID());
+    }
+    delete dialog;
 }
 
 void CCurrencyes::remove(const hacc::TDBID & id)
@@ -64,17 +56,34 @@ void CCurrencyes::edit(const hacc::TDBID & id)
 {
     if(id > 0)
     {
-//        ui::form::FContractorEdit *dialog = new ui::form::FContractorEdit(id);
-//        if(dialog->exec() == QDialog::Accepted)
-//        {
-//            HACC_DB->exec("update contractors set name=?, icon_id=? where id=?", QVariantList()
-//                          << dialog->name()
-//                          << dialog->iconID()
-//                          << id);
-//            emit updated(id);
-//        }
-//        delete dialog;
+        ui::form::FCurrencyEdit *dialog = new ui::form::FCurrencyEdit(id);
+        if(dialog->exec() == QDialog::Accepted)
+        {
+            HACC_DB->exec("update currencyes set name=?, icon_id=?, reduction=?, show_reduction_before_value=? where id=?", QVariantList()
+                          << dialog->name()
+                          << dialog->iconID()
+                          << dialog->reduction()
+                          << dialog->reductionBeforeNumber()
+                          << id);
+            emit updated(id);
+        }
+        delete dialog;
     }
+}
+
+void CCurrencyes::execAddCurrency(const QString &name, const QString &reduction,
+                                  const bool &reductionBeforeNumber, const hacc::TDBID iconID)
+{
+    hacc::TDBID newID = nextID();
+    HACC_DB->exec("insert into currencyes (id,name,icon_id,reduction,show_reduction_before_value) values (?,?,?,?,?)",
+                  QVariantList()
+                  << newID
+                  << name
+                  << iconID
+                  << reduction
+                  << reductionBeforeNumber);
+    HACC_ACCOUNTS->execAddAccount(1, tr("Nowhere"), 1, newID);
+    emit created(newID);
 }
 
 hacc::TDBID CCurrencyes::maxDBID() { return HACC_DB->nextID("currencyes"); }

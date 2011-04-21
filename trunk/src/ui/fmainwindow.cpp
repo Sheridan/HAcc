@@ -34,6 +34,7 @@ FMainWindow::FMainWindow(QWidget *parent) :
     m_ui->mainToolBar->addAction(HACC_TAGS->addAction());
     m_ui->mainToolBar->addAction(HACC_MANUFACTURERS->addAction());
     m_ui->mainToolBar->addAction(HACC_ENUMERATED_THING_TYPES->addAction());
+    m_ui->mainToolBar->addAction(HACC_CURRENCYES->addAction());
 
     m_ui->menuManage->addSeparator();
     m_ui->menuManage->addAction(HACC_CONTRACTORS->addAction());
