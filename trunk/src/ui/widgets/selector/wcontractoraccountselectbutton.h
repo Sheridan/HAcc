@@ -25,12 +25,15 @@ private:
     void idChanged();
     base::WSelectorPopup * constructPopup();
     void setData(const hacc::TDBID &contractorIconID, const QString &contractorName,
-                 const hacc::TDBID &accountIconID   , const QString &accountName   );
+                 const hacc::TDBID &accountIconID   , const QString &accountName   ,
+                 const hacc::TDBID &currencyIconID  , const QString &currencyName);
     QHBoxLayout *m_layout;
     QLabel      *m_contractorName;
     QLabel      *m_accountName;
+    QLabel      *m_currencyName;
     ui::icons::WIcon *m_contractorIcon;
     ui::icons::WIcon *m_accountIcon;
+    ui::icons::WIcon *m_currencytIcon;
     hacc::model::EContractorFilter m_filter;
 
 private slots:

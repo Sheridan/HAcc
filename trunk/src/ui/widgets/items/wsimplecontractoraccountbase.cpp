@@ -23,7 +23,7 @@ void WSimpleContractorAccountBase::constructControls(QToolBar *tb)
 {
     switch(m_filter)
     {
-        case hacc::model::ctSelf: tb->addAction(HACC_CONTRACTORS->addSelfAction()); break;
+        case hacc::model::ctSelf:  tb->addAction(HACC_CONTRACTORS->addSelfAction()); break;
         case hacc::model::ctOther: tb->addAction(HACC_CONTRACTORS->addAction()); break;
         case hacc::model::ctAll:
         {
