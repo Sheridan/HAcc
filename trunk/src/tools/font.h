@@ -10,7 +10,7 @@ namespace tools
 //! Работа с шрифтом
 namespace font
 {
-    int fontHeight(const QFont &font);
+    int fontHeight(const QFont &font); //!< Вычисление высоты шрифта
 }
 }
 

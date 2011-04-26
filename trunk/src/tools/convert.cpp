@@ -3,7 +3,6 @@
 
 namespace tools
 {
-//! Конвертирование
 namespace convert
 {
 

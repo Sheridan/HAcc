@@ -7,6 +7,7 @@ namespace tools
 namespace date
 {
 
+//! Ключи периодов времени
 enum ETimePeriods
 {
     tpDays   = 0,
@@ -15,15 +16,16 @@ enum ETimePeriods
     tpYears  = 3
 };
 
+//! Периоды времени
 struct STimePeriod
 {
     int days;
     ETimePeriods period;
 };
 
-int daysFrom(const int &number, const ETimePeriods &period);
-int daysFrom(const int &number, const int &period);
-STimePeriod daysTo(const int &days);
+int daysFrom(const int &number, const ETimePeriods &period); //!< Количество дней за период
+int daysFrom(const int &number, const int &period);          //!< Количество дней за период
+STimePeriod daysTo(const int &days);                         //!< Вычисление периода, исходя из количества дней
 
 }
 }

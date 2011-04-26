@@ -7,17 +7,18 @@
 
 namespace tools
 {
+//! Конвертеры значений
 namespace convert
 {
-QString moneyToString (const hacc::TMoney  &money);
-QString amountToString(const hacc::TAmount &amount, const int &precision);
+QString moneyToString (const hacc::TMoney  &money);                        //!< Деньги в строку
+QString amountToString(const hacc::TAmount &amount, const int &precision); //!< Количество в строку
 
-QString datetimeToString    (const QDateTime &datetime);
-QString datetimeToDateString(const QDateTime &datetime);
-QString datetimeToTimeString(const QDateTime &datetime);
+QString datetimeToString    (const QDateTime &datetime);                   //!< Дата/время в строку
+QString datetimeToDateString(const QDateTime &datetime);                   //!< Датв в строку
+QString datetimeToTimeString(const QDateTime &datetime);                   //!< Время в строку
 
-hacc::TMoney  stringToMoney (QString string);
-hacc::TAmount stringToAmount(QString string);
+hacc::TMoney  stringToMoney (QString string);                              //!< Строка в деньги
+hacc::TAmount stringToAmount(QString string);                              //!< Строка в количество
 }
 }
 #endif // CONVERT_H

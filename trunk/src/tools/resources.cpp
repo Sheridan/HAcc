@@ -9,9 +9,10 @@ namespace tools
 namespace resources
 {
 
-static QMap<QString, QString> resources;
+static QMap<QString, QString> resources; //!< Кеш текстовых ресурсов
 QString & readTextResource(const QString &name)
 {
+    //! \todo Выяснить - а на самом ли деле быстрее взять из кеша, чем заново прочитать из ресурсов
     if(!resources.contains(name))
     {
         QFile file(name);

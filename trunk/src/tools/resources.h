@@ -9,7 +9,7 @@ namespace tools
 namespace resources
 {
 
-QString & readTextResource(const QString &name);
+QString & readTextResource(const QString &name); //!< Читает, сохраняя в кеше и возвращает текстовый ресурс.
 
 }
 }
