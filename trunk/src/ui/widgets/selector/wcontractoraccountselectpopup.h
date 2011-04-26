@@ -16,10 +16,13 @@ class WContractorAccountSelectPopup : public base::WSelectorPopup
 public:
     explicit WContractorAccountSelectPopup(const hacc::model::EContractorFilter &filter, QWidget *parent = 0);
     ~WContractorAccountSelectPopup();
+    void setCurrencyFilter(const hacc::TDBID &currencyID);
 
 private:
     ui::item::base::WBase *createContainer();
     hacc::model::EContractorFilter m_filter;
+    hacc::TDBID m_currencyID;
+    ui::item::base::WBase *m_ccOntainer;
 };
 
 }

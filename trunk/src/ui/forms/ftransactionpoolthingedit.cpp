@@ -64,6 +64,10 @@ ui::item::base::WBase *FTransactionPoolThingEdit::constructContainer(const hacc:
     return NULL;
 }
 
+/**
+   Доступные счета продавцов фильтруются по валюте счета покупателя. (connect(...currencyIDChanged...setCurrencyFilter...))
+   \todo Организовать сброс значения, если у продавца выбрана валюта раньше покупателя, а покупатель выбрал другую валюту
+  */
 void FTransactionPoolThingEdit::init()
 {
     m_ui->setupUi(this);
@@ -75,23 +79,27 @@ void FTransactionPoolThingEdit::init()
         {
             m_ui->pwBuyerAccount ->setSelfFilter(hacc::model::ctOther);
             m_ui->pwSellerAccount->setSelfFilter(hacc::model::ctSelf);
+            connect(m_ui->pwSellerAccount, SIGNAL(currencyIDChanged(const hacc::TDBID &)),
+                    m_ui->pwBuyerAccount, SLOT(setCurrencyFilter(const hacc::TDBID &)));
         }
         break;
         case HACC_TAG_ID_BUYING:
         {
             m_ui->pwBuyerAccount ->setSelfFilter(hacc::model::ctSelf);
             m_ui->pwSellerAccount->setSelfFilter(hacc::model::ctOther);
+            connect(m_ui->pwBuyerAccount, SIGNAL(currencyIDChanged(const hacc::TDBID &)),
+                    m_ui->pwSellerAccount, SLOT(setCurrencyFilter(const hacc::TDBID &)));
         }
         break;
     }
 }
 
-hacc::TDBID FTransactionPoolThingEdit::buyerAccountID()      // account id
+hacc::TDBID FTransactionPoolThingEdit::buyerAccountID()
 {
     return m_ui->pwBuyerAccount->id();
 }
 
-hacc::TDBID FTransactionPoolThingEdit::sellerAccountID() // account id
+hacc::TDBID FTransactionPoolThingEdit::sellerAccountID()
 {
     return m_ui->pwSellerAccount->id();
 }

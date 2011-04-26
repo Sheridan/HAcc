@@ -13,6 +13,7 @@ WSimpleContractorAccountContainer::WSimpleContractorAccountContainer(hacc::model
     : ui::item::base::WContainer(parent)
 {
     m_filter = filter;
+    m_currencyID = 0;
     HACC_CONTAINER_CONNECT_CREATED_REMOVED(HACC_CONTRACTORS);
 }
 
@@ -43,6 +44,12 @@ void WSimpleContractorAccountContainer::refresh(const hacc::TDBID &createdID)
         case hacc::model::ctOther: where += " contractors.own_account='false' "; break;
         case hacc::model::ctAll:
         default: break;
+    }
+    if(m_currencyID)
+    {
+        if(!where.isEmpty()) { where += " and "; }
+        where += " currencyes.id=? ";
+        parametres << m_currencyID;
     }
     if(!m_searchText.isEmpty())
     {
@@ -83,6 +90,12 @@ void WSimpleContractorAccountContainer::appendRow(const hacc::TDBID &accountID  
     i->setContractorData(contractorIconID, contractorName);
     i->setCurrencyData  (currencyIconID  , currencyName  );
     appendItem(i);
+}
+
+void WSimpleContractorAccountContainer::setCurrencyFilter(const hacc::TDBID &currencyID)
+{
+    m_currencyID = currencyID;
+    refresh();
 }
 
 }

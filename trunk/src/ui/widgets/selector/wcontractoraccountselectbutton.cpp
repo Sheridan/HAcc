@@ -8,6 +8,9 @@ namespace selector
 
 WContractorAccountSelectButton::WContractorAccountSelectButton(QWidget *parent) : base::WSelectorButton(parent)
 {
+    m_popup = NULL;
+    m_currencyID = 0;
+
     m_layout = new QHBoxLayout();
 
     m_contractorIcon = new ui::icons::WIcon(this);
@@ -46,16 +49,14 @@ WContractorAccountSelectButton::~WContractorAccountSelectButton()
 
 void WContractorAccountSelectButton::idChanged()
 {
-    /** \todo Отслеживать валюту счета контрагента. Продавец должен выбирать любую валюту, а счета покупателя должны
-              выбираться с такойже валютой как и у продавца. Нет валюты такой в счетах - нет покупки.
-    */
     QSqlQuery q = HACC_DB->query("select "
                           /* 0*/ "accounts.name, "
                           /* 1*/ "accounts.icon_id, "
                           /* 2*/ "contractors.name, "
                           /* 3*/ "contractors.icon_id, "
                           /* 4*/ "currencyes.name, "
-                          /* 5*/ "currencyes.icon_id "
+                          /* 5*/ "currencyes.icon_id, "
+                          /* 6*/ "currencyes.id "
                                  "from accounts "
                                  "left join contractors on contractors.id=accounts.contractor_id "
                                  "left join currencyes on currencyes.id=accounts.currency_id "
@@ -72,6 +73,7 @@ void WContractorAccountSelectButton::idChanged()
                 HACC_DB_2_DBID(q, 5),
                 HACC_DB_2_STRG(q, 4)
                );
+        emit currencyIDChanged(HACC_DB_2_DBID(q, 6));
     }
 }
 
@@ -93,9 +95,21 @@ void WContractorAccountSelectButton::setSelfFilter(hacc::model::EContractorFilte
     init();
 }
 
+void WContractorAccountSelectButton::setCurrencyFilter(const hacc::TDBID &currencyID)
+{
+    m_currencyID = currencyID;
+    if(m_popup)
+    {
+        static_cast<WContractorAccountSelectPopup *>(m_popup)->setCurrencyFilter(m_currencyID);
+    }
+}
+
 base::WSelectorPopup * WContractorAccountSelectButton::constructPopup()
 {
-    return new WContractorAccountSelectPopup(m_filter, this);
+    //! \todo Чегото слишком дохуя шагов setCurrencyFilter надо чтобы добраться до испонителя. Архитектуру бы подумать...
+    m_popup = new WContractorAccountSelectPopup(m_filter, this);
+    static_cast<WContractorAccountSelectPopup *>(m_popup)->setCurrencyFilter(m_currencyID);
+    return m_popup;
 }
 
 void WContractorAccountSelectButton::contractorCreated(const hacc::TDBID &contractorID)

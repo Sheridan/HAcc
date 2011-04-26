@@ -12,6 +12,8 @@ WSimpleContractorAccountBase::WSimpleContractorAccountBase(hacc::model::EContrac
     : ui::item::base::WBase(parent)
 {
     m_filter = filter;
+    m_currencyID = 0;
+    m_wContainer = NULL;
 }
 
 WSimpleContractorAccountBase::~WSimpleContractorAccountBase()
@@ -34,9 +36,20 @@ void WSimpleContractorAccountBase::constructControls(QToolBar *tb)
     }
 }
 
+void WSimpleContractorAccountBase::setCurrencyFilter(const hacc::TDBID &currencyID)
+{
+    m_currencyID = currencyID;
+    if(m_wContainer)
+    {
+        static_cast<WSimpleContractorAccountContainer *>(m_wContainer)->setCurrencyFilter(m_currencyID);
+    }
+}
+
 ui::item::base::WContainer *WSimpleContractorAccountBase::buidContainer()
 {
-    return new WSimpleContractorAccountContainer(m_filter, this);
+    m_wContainer = new WSimpleContractorAccountContainer(m_filter, this);
+    static_cast<WSimpleContractorAccountContainer *>(m_wContainer)->setCurrencyFilter(m_currencyID);
+    return m_wContainer;
 }
 
 void WSimpleContractorAccountBase::constructHeader(base::WHeader *header)

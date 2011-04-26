@@ -17,9 +17,11 @@ class WSimpleContractorAccountContainer : public ui::item::base::WContainer
 public:
     explicit WSimpleContractorAccountContainer(hacc::model::EContractorFilter filter, QWidget *parent = 0);
     ~WSimpleContractorAccountContainer();
+    void setCurrencyFilter(const hacc::TDBID &currencyID);
 
 private:
     hacc::model::EContractorFilter m_filter;
+    hacc::TDBID m_currencyID;
     void appendRow(const hacc::TDBID &accountID   , const QString &accountName   , const hacc::TDBID &accountIconID,
                    const hacc::TDBID &contractorID, const QString &contractorName, const hacc::TDBID &contractorIconID,
                    const hacc::TDBID &currencyID  , const QString &currencyName  , const hacc::TDBID &currencyIconID);

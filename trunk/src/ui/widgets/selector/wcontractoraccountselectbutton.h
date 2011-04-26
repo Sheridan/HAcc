@@ -21,6 +21,9 @@ public:
     virtual ~WContractorAccountSelectButton();
     void setSelfFilter(hacc::model::EContractorFilter filter);
 
+public slots:
+    void setCurrencyFilter(const hacc::TDBID &currencyID);
+
 private:
     void idChanged();
     base::WSelectorPopup * constructPopup();
@@ -35,9 +38,14 @@ private:
     ui::icons::WIcon *m_accountIcon;
     ui::icons::WIcon *m_currencytIcon;
     hacc::model::EContractorFilter m_filter;
+    hacc::TDBID m_currencyID;
+    base::WSelectorPopup * m_popup;
 
 private slots:
     void contractorCreated(const hacc::TDBID &contractorID);
+
+signals:
+    void currencyIDChanged(const hacc::TDBID & /*currencyID*/);
 };
 
 }

@@ -17,9 +17,13 @@ class WSimpleContractorAccountBase : public ui::item::base::WBase
 public:
     explicit WSimpleContractorAccountBase(hacc::model::EContractorFilter filter, QWidget *parent = 0);
     ~WSimpleContractorAccountBase();
+    void setCurrencyFilter(const hacc::TDBID &currencyID);
+
 private:
     void constructControls(QToolBar *tb);
     hacc::model::EContractorFilter m_filter;
+    hacc::TDBID m_currencyID;
+    ui::item::base::WContainer *m_wContainer;
     ui::item::base::WContainer *buidContainer();
     void constructHeader(base::WHeader *header);
 
