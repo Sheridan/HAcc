@@ -38,7 +38,7 @@ void WExpandedThingItem::setManufacturerData(const hacc::TDBID &iconID, const QS
 void WExpandedThingItem::setMoreData(const QString &description, const QVariant &image)
 {
     setDescription(description);
-    setImage(ui::images::byteArray2Pixmap(image.toByteArray()));
+    setImage(tools::images::byteArray2Pixmap(image.toByteArray()));
 }
 
 void WExpandedThingItem::buildExpanderUIEvent()

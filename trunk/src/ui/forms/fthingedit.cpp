@@ -55,7 +55,7 @@ FThingEdit::FThingEdit(const hacc::TDBID &id, QWidget *parent) : QDialog(parent)
         m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
         m_ui->pwIcons->setID(HACC_DB_2_DBID(q, 2));
         m_ui->teDescription->appendPlainText(HACC_DB_2_STRG(q, 1));
-        m_ui->lImage->setPixmap(ui::images::byteArray2Pixmap(q.value(3).toByteArray()), 128);
+        m_ui->lImage->setPixmap(tools::images::byteArray2Pixmap(q.value(3).toByteArray()), 128);
         m_ui->pwEnumerateType->setID(HACC_DB_2_DBID(q, 4));
         m_ui->pwManufacturer ->setID(HACC_DB_2_DBID(q, 5));
         HACC_PERIOD_ASSIGN(HACC_DB_2_PERD(q ,6), cbExpiration, cbExpCount, sbExpDays);
@@ -126,7 +126,7 @@ hacc::TDBID FThingEdit::manufacturerID()
 
 QByteArray FThingEdit::pixmapData()
 {
-    return ui::images::pixmap2ByteArray(m_ui->lImage->pixmap());
+    return tools::images::pixmap2ByteArray(m_ui->lImage->pixmap());
 }
 
 bool FThingEdit::hasImage()

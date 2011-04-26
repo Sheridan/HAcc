@@ -43,7 +43,7 @@ SOURCES += src/main.cpp \
     src/model/cthing.cpp \
     src/model/cthings.cpp \
     src/ui/forms/fthingedit.cpp \
-    src/ui/images/images.cpp \
+    src/tools/images.cpp \
     src/model/ctransactionpool.cpp \
     src/model/ctransactionspools.cpp \
     src/model/ctransaction.cpp \
@@ -207,7 +207,7 @@ HEADERS += src/ui/fmainwindow.h \
     src/model/cthing.h \
     src/model/cthings.h \
     src/ui/forms/fthingedit.h \
-    src/ui/images/images.h \
+    src/tools/images.h \
     src/model/ctransactionpool.h \
     src/model/ctransactionspools.h \
     src/model/ctransaction.h \

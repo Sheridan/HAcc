@@ -60,7 +60,7 @@ void WExpandedValuableItem::setValuableData(const QString &serial)
 void WExpandedValuableItem::setMoreData(const QString &description, const QVariant &image)
 {
     setDescription(description);
-    setImage(ui::images::byteArray2Pixmap(image.toByteArray()));
+    setImage(tools::images::byteArray2Pixmap(image.toByteArray()));
 }
 
 void WExpandedValuableItem::buildExpanderUIEvent()

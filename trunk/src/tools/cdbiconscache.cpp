@@ -27,7 +27,7 @@ hacc::TDBID CDBIconsCache::add (const QString &fileName)
     HACC_DB->exec("insert into icons (id, icon) values (?,?)",
                   QVariantList()
                   << nID
-                  << ui::images::pixmap2ByteArray(pixmap));
+                  << tools::images::pixmap2ByteArray(pixmap));
     return nID;
 }
 
@@ -47,7 +47,7 @@ void CDBIconsCache::remove (const hacc::TDBID & id )
 void CDBIconsCache::replace(const hacc::TDBID & id, const QString &fileName)
 {
     QPixmap pixmap(fileName);
-    HACC_DB->exec("update icons set icon=? where id=?", QVariantList() << ui::images::pixmap2ByteArray(pixmap) << id);
+    HACC_DB->exec("update icons set icon=? where id=?", QVariantList() << tools::images::pixmap2ByteArray(pixmap) << id);
     delete m_icons[id];
     m_icons[id] = new QIcon(pixmap);
     emit updated(id);
@@ -60,7 +60,7 @@ const QIcon & CDBIconsCache::icon( const hacc::TDBID & id )
         QSqlQuery q = HACC_DB->query("select icon from icons where id=?", QVariantList() << id);
         if(HACC_QUERY_DATA_AVIALABLE(q))
         {
-            m_icons[id] = new QIcon(ui::images::byteArray2Pixmap(q.value(0).toByteArray()));
+            m_icons[id] = new QIcon(tools::images::byteArray2Pixmap(q.value(0).toByteArray()));
         }
         else
         {

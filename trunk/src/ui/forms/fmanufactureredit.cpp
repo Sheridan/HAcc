@@ -43,7 +43,7 @@ FManufacturerEdit::FManufacturerEdit(const hacc::TDBID &id, QWidget *parent) :
         m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
         m_ui->pwIcons->setID  (HACC_DB_2_DBID(q, 1));
         m_ui->teDescription->appendPlainText(HACC_DB_2_STRG(q, 2));
-        m_ui->lLogo->setPixmap(ui::images::byteArray2Pixmap(q.value(3).toByteArray()), 128);
+        m_ui->lLogo->setPixmap(tools::images::byteArray2Pixmap(q.value(3).toByteArray()), 128);
     }
     HACC_RESTORE_DIALOG;
 }
@@ -95,7 +95,7 @@ hacc::TDBID FManufacturerEdit::iconID()
 
 QByteArray FManufacturerEdit::pixmapData()
 {
-    return ui::images::pixmap2ByteArray(m_ui->lLogo->pixmap());
+    return tools::images::pixmap2ByteArray(m_ui->lLogo->pixmap());
 }
 
 bool FManufacturerEdit::hasImage()

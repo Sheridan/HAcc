@@ -29,7 +29,7 @@ void WExpandedManufacturerItem::setManufacturerData(const hacc::TDBID &manufactu
 void WExpandedManufacturerItem::setMoreData(const QString &description, const QVariant &logo)
 {
     setDescription(description);
-    setImage(ui::images::byteArray2Pixmap(logo.toByteArray()));
+    setImage(tools::images::byteArray2Pixmap(logo.toByteArray()));
 }
 
 

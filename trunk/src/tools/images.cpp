@@ -2,7 +2,7 @@
 #include <QIODevice>
 #include <QBuffer>
 
-namespace ui
+namespace tools
 {
 namespace images
 {
