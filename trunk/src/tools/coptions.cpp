@@ -2,6 +2,8 @@
 #include <QApplication>
 #include <QDesktopWidget>
 #include <QHeaderView>
+#include "doptions.h"
+#include "hacc_options.h"
 
 namespace tools
 {
@@ -119,9 +121,17 @@ void COptions::removeSectionValue(const QString &section, const QString & key)
 void COptions::removeSection(const QString & section)
 {
     beginGroup ( section );
-    foreach(QString key, childKeys()) {
-        remove ( key ); }
+    foreach(QString key, childKeys()) { remove ( key ); }
     endGroup();
+}
+
+void COptions::checkFirstStart()
+{
+    if(HACC_O_DEFAULT_CURRENCY == 0)
+    {
+        ui::form::DOptions dialog;
+        dialog.exec();
+    }
 }
 
 }

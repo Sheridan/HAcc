@@ -44,6 +44,8 @@ public:
     void        saveState          (QTableWidget *tw);
     //! @}
 
+    void checkFirstStart(); //!< Проверка на первый запуск, вызывается после создания БД
+
 signals:
     void        optionChanged      (const QString & section, const QString & key, const QVariant &);
 };

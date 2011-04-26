@@ -1,6 +1,7 @@
 #include "cdbiconscache.h"
 #include "images.h"
 #include "st.h"
+#include "hacc_options.h"
 
 namespace tools
 {
@@ -10,7 +11,7 @@ namespace icons
 CDBIconsCache::CDBIconsCache() : QObject()
 {
     m_maxID = 0;
-    m_predeclaredIcons = 0;
+    m_predeclaredIcons = HACC_O_PREDECLARED_ICONS;
 }
 
 CDBIconsCache::~CDBIconsCache()
@@ -104,6 +105,7 @@ hacc::TDBID CDBIconsCache::nextID()
 void CDBIconsCache::freezePredeclaredIconsCount()
 {
     m_predeclaredIcons = m_maxID;
+    HACC_O_PREDECLARED_ICONS_SET(m_predeclaredIcons);
 }
 
 const uint & CDBIconsCache::predeclaredIconsCount() const

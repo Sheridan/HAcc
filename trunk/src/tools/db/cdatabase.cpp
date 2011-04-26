@@ -45,7 +45,11 @@ bool CDatabase::open(const QString &filename, bool create)
                               lastErrorToLogDescription(m_db.lastError(), QString("Connect to %1").arg(m_fileName), QVariantList()));
         return false;
     }
-    if(create) { createDatabase(); }
+    if(create)
+    {
+        createDatabase();
+        fillDatabase();
+    }
     HACC_OPTIONS->setSectionValue("db", "file", m_fileName);
     HACC_DEBUG("Opened database:" << m_fileName);
     emit stateChange(true);
@@ -287,8 +291,7 @@ hacc::TIDList CDatabase::listID(const QString &table, const QString &where, cons
 }
 
 /**
-  Создает базу данных, заполняет начальными данными некоторые таблицы, генерирует базовые записи
-  В режиме отладки также генерирует несколько сущностей для более удобного тестирования
+  Создает базу данных
   \todo Обеспечить версионность БД и возможность конвертирования из более ранней версии в более позднююю
   */
 void CDatabase::createDatabase()
@@ -472,11 +475,6 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_UNIQNAME_ID_INDEX(currencyes);
 
 //######################################################################################################
-//## Опции БД
-//######################################################################################################
-    exec("create table db_options (name text not null primary key, value text not null);");
-
-//######################################################################################################
 //## Создание таблиц соответствий тегов и сущностей
 //######################################################################################################
     HACC_DB_CREATE_TAGS_TABLE(thing);
@@ -488,6 +486,19 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_TAGS_TABLE(manufacturer);
     HACC_DB_CREATE_TAGS_TABLE(transactions_pool);
 
+//######################################################################################################
+//## Опции БД
+//######################################################################################################
+    exec("create table db_options (name text not null primary key, value text not null);");
+    exec("insert into db_options (name, value) values (?,?)", QVariantList() << "database version" << HACC_DATABASE_VERSION);
+}
+
+/** Заполняет начальными данными некоторые таблицы, генерирует базовые записи
+  В режиме отладки также генерирует несколько сущностей для более удобного тестирования
+  \todo Обеспечить версионность БД и возможность конвертирования из более ранней версии в более позднююю
+  */
+void CDatabase::fillDatabase()
+{
     // Заполнение таблицы иконок иконками из ресурсов
     HACC_DB_ICONS->add(":/main/icons/item-empty.png" ); // id: 1
     HACC_DB_ICONS->add(":/items/account.png"         ); // id: 2
@@ -521,7 +532,7 @@ void CDatabase::createDatabase()
     HACC_DB_ICONS->add(":/usefull/contractor-2.png"  ); // id: 30
 
     // Заполнение таблицы тегов
-    int i=0;
+    int tagID=0;
     foreach(QString tag, QStringList()
          /* 1*/ << tr("Service")     // Специальный тег для вещей
          /* 2*/ << tr("Object")      // Специальный тег для вещей
@@ -540,8 +551,8 @@ void CDatabase::createDatabase()
          << tr("Music")    << tr("Video")     << tr("Book")   << tr("Computer")
          << tr("Software") << tr("Hardware")  << tr("Audio")  << tr("Gadget"))
     {
-        i++;
-        exec("insert into tags (id,name) values (?,?)", QVariantList() << i << tag);
+        tagID++;
+        exec("insert into tags (id,name) values (?,?)", QVariantList() << tagID << tag);
     }
 
     int contractorID, manufacturerID, thingID;
@@ -571,7 +582,7 @@ void CDatabase::createDatabase()
     HDB_APPEND_CURRENCY(tr("Indonesian rupee")    , HACC_UTF8_STRING("Rp") , false, "idr"); // id: 8
     HDB_APPEND_CURRENCY(tr("Icelandic krone")     , HACC_UTF8_STRING("kr") , false, "isk"); // id: 9
     HDB_APPEND_CURRENCY(tr("Chinese yuan")        , HACC_UTF8_STRING("¥")  , true , "cny"); // id: 10
-    HDB_APPEND_CURRENCY(tr("South Korean won")    , HACC_UTF8_STRING("₩") , true , "krw"); // id: 11
+    HDB_APPEND_CURRENCY(tr("South Korean won")    , HACC_UTF8_STRING("₩")  , true , "krw"); // id: 11
     HDB_APPEND_CURRENCY(tr("Latvian lats")        , HACC_UTF8_STRING("Ls") , false, "lvl"); // id: 12
     HDB_APPEND_CURRENCY(tr("Malaysian ringgit")   , HACC_UTF8_STRING("RM") , false, "myr"); // id: 13
     HDB_APPEND_CURRENCY(tr("Mexican peso")        , HACC_UTF8_STRING("$")  , true , "mxn"); // id: 14
@@ -596,6 +607,7 @@ void CDatabase::createDatabase()
     HDB_APPEND_CURRENCY(tr("Japanese yen")        , HACC_UTF8_STRING("¥")  , false, "jpy"); // id: 33
     HDB_APPEND_CURRENCY(tr("Ukrainian hryvnia")   , HACC_UTF8_STRING("₴")  , false, "uah"); // id: 34
 
+    HACC_OPTIONS->checkFirstStart();              // Проверка на первый запуск и вывод окошка настроек если так.
     hacc::TDBID defaultCurrencyID = HACC_O_DEFAULT_CURRENCY;
 
     // Создание базовых счетов
@@ -606,19 +618,12 @@ void CDatabase::createDatabase()
     // Для этого контрагента необходимо иметь счет на каждую валюту
     // Счета в "Ничто" добавляются при создании валюты
     HDB_APPEND_CONTRACTOR(tr("Nothing"), 1, false);
-//    QSqlQuery cres = query("select id from currencyes order by name");
-//    while(cres.next())
-//    {
-//        HDB_APPEND_ACCOUNT(tr("Nowhere"), 1, HACC_DB_2_DBID(cres, 0));
-//    }
 
     // Контрагент "Семья" со счетами
     HDB_APPEND_CONTRACTOR(tr("Family"), 9, true);
     HDB_APPEND_ACCOUNT(tr("Cash money")        , 13, defaultCurrencyID);
     HDB_APPEND_ACCOUNT(tr("Husband Bank Card") , 19, defaultCurrencyID);
     HDB_APPEND_ACCOUNT(tr("Wife Bank Card")    , 21, defaultCurrencyID);
-
-    exec("insert into db_options (name, value) values (?,?)", QVariantList() << "database version" << HACC_DATABASE_VERSION);
 
     // Всякие данные для тестов
     #ifdef HACC_DEBUG_DB
@@ -670,7 +675,7 @@ void CDatabase::createDatabase()
 
     #endif
 
-    HACC_DB_ICONS->freezePredeclaredIconsCount();
+    HACC_DB_ICONS->freezePredeclaredIconsCount(); // Иконки с идентификаторами меньше, чем сейчас - удалить будет нельзя.
 }
 
 }

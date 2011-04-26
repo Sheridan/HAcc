@@ -56,6 +56,7 @@ private:
     QString readableSql(QString sql);                                                     //!< перобразует sql запрос в читабельный формат
     QString parametresToString(const QVariantList &parameters);                           //!< Конвертирует параметры запроса в строку.
     void createDatabase();                                                                //!< Создание базы данных
+    void fillDatabase();                                                                  //!< Заполнение БД начальными значениями
 
 signals:
     void stateChange(bool);                                                               //!< Сигнал смены состояния БД
