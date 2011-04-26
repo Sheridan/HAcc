@@ -34,6 +34,12 @@ public:
     QString     text               (const QString & section, const QString & key, const QString  & value        = QString () );
     void        setText            (const QString & section, const QString & key, const QString  & value);
     //! @}
+    //! @name Настройки, хранящиеся в БД
+    //! @{
+    void     setDBValue    (const QString & key, const QVariant & value);
+    QVariant dbValue       (const QString & key, const QVariant & defaultValue = QVariant() );
+    void     removeDBValue (const QString & key);
+    //! @}
     //! @name Сохранение состояния некоторых контролов
     //! @{
     void        restoreState       (QWidget  *widget);

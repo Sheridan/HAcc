@@ -4,6 +4,7 @@
 #include <QHeaderView>
 #include "doptions.h"
 #include "hacc_options.h"
+#include "st.h"
 
 namespace tools
 {
@@ -102,7 +103,7 @@ void COptions::saveState(QTableWidget *tw)
     saveState(static_cast<QWidget *>(tw));
 }
 
-QStringList    COptions::sectionKeys(const QString & section)
+QStringList COptions::sectionKeys(const QString & section)
 {
     beginGroup ( section );
     QStringList keys = childKeys();
@@ -132,6 +133,34 @@ void COptions::checkFirstStart()
         ui::form::DOptions dialog;
         dialog.exec();
     }
+}
+
+void COptions::setDBValue(const QString & key, const QVariant & value)
+{
+    QSqlQuery q = HACC_DB->query("select value from db_options where name=?", QVariantList() << key);
+    if(q.next() && q.size())
+    {
+        HACC_DB->exec("update db_options set value=? where name=?", QVariantList() << value << key);
+    }
+    else
+    {
+        HACC_DB->exec("insert into db_options (name, value) values (?,?)", QVariantList() << key << value);
+    }
+}
+
+QVariant COptions::dbValue(const QString & key, const QVariant & defaultValue)
+{
+    QSqlQuery q = HACC_DB->query("select value from db_options where name=?", QVariantList() << key);
+    if(q.next() && q.size())
+    {
+        return q.value(0);
+    }
+    return defaultValue;
+}
+
+void COptions::removeDBValue(const QString & key)
+{
+    HACC_DB->exec("delete from db_options where name=?", QVariantList() << key);
 }
 
 }
