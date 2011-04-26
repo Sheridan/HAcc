@@ -25,8 +25,8 @@ public:
     WBase(QWidget *parent = 0);
     virtual ~WBase();
     void buildUi();
-    int contentHeight();
-    WContainer *container();
+    int contentHeight();     //!< Высота содержимого подложки
+    WContainer *container(); //!< Собственно, грид
 
 protected:
     virtual void constructControls(QToolBar *tb) = 0; //!< Для создания элементов тулбара
@@ -35,10 +35,10 @@ protected:
 
 private:
     QVBoxLayout   *m_layout;
-    WHeader       *m_header;
-    WContainer    *m_container;
-    QToolBar      *m_toolBar;
-    int            m_height;
+    WHeader       *m_header;    //!< Заголовок грида
+    WContainer    *m_container; //!< Собственно, грид
+    QToolBar      *m_toolBar;   //!< Панелька с кнопкаме и всякиме фильтраме
+    int            m_height;    //!< Высота содержимого подложки
 };
 
 }

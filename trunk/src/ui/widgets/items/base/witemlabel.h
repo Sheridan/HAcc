@@ -14,17 +14,18 @@ namespace base
 {
 
 //! Ячейка грида
+/** Грубо - Иконка+текст*/
 class WItemLabel : public ui::widget::WStyledWidget
 {
     Q_OBJECT
 public:
     WItemLabel(QWidget *parent = 0);
     ~WItemLabel();
-    void setText(const QString     &text);
-    void setIcon(const QIcon       &icon);
-    void setIcon(const QString     &file);
-    void setIcon(const hacc::TDBID &id  );
-    ui::widget::WControlLabel * label();
+    void setText(const QString     &text); //!< Установка текста
+    void setIcon(const QIcon       &icon); //!< Установка иконки
+    void setIcon(const QString     &file); //!< Установка иконки из файла
+    void setIcon(const hacc::TDBID &id  ); //!< Установка иконки из БД по идентификатору
+    ui::widget::WControlLabel * label();    //!< Установка иконки возвращает метку
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
 

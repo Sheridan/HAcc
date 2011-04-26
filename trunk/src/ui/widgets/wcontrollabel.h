@@ -13,21 +13,22 @@ namespace widget
 {
 
 //! Метка с всплывающими иконками-кнопками
+/** Иконка + метка + всплывающие кнопки*/
 class WControlLabel : public QLabel
 {
     Q_OBJECT
 public:
     explicit WControlLabel(QWidget *parent = 0);
     ~WControlLabel();
-    void setButtonsVisible(bool visible);
-    void addAction(QAction *action);
+    void setButtonsVisible(bool visible);  //!< Сдклать дополнительные кнопки видимыми?
+    void addAction(QAction *action);       //!< Добавление действия.
 
 private:
-    QList< ui::widget::WIconButton *> m_wicons;
+    QList< ui::widget::WIconButton *> m_wicons; //!< Список всплывающих кнопок
     void enterEvent ( QEvent * event );
     void leaveEvent( QEvent * event );
     void resizeEvent ( QResizeEvent * event );
-    void fixButtonsPosition();
+    void fixButtonsPosition();             //!< Исправление положения кнопок
 };
 
 }

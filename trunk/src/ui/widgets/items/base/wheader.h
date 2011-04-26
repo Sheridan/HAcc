@@ -21,7 +21,7 @@ class WHeader :
 public:
     explicit WHeader(QWidget *parent = 0);
     ~WHeader();
-    void setLabels(const int &columns, const int &rows, const QStringList& strings);
+    void setLabels(const int &columns, const int &rows, const QStringList& strings); //!< Установка заголовков
 
 private:
     QGridLayout *m_layout;

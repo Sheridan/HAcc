@@ -61,6 +61,9 @@ void WControlLabel::setButtonsVisible(bool visible)
     }
 }
 
+/**
+  Добавляет всплывающую кнопку и привязывает к ней данное действие
+  */
 void WControlLabel::addAction(QAction *action)
 {
     ui::widget::WIconButton *wicon = new ui::widget::WIconButton(action->icon(), this);

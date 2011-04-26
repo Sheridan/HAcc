@@ -24,6 +24,11 @@ WHeader::~WHeader()
     delete m_layout;
 }
 
+/**
+  @param columns Количество столбцов
+  @param rows    Количество строк
+  @param strings Список строк-заголовков
+*/
 void WHeader::setLabels(const int &columns, const int &rows, const QStringList& strings)
 {
     initialize(columns, rows, this, m_layout);

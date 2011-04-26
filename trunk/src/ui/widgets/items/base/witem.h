@@ -30,29 +30,29 @@ public:
     ~WItem();
     ui::widget::WIconButton *expandButton();
     virtual hacc::TDBID itemID() = 0;
-    void setAlternateBackground(bool alternate);
-    void setHeightDelta(int delta);
+    void setAlternateBackground(bool alternate);  //!< Установка альтернативного цвета подложки. Для полосатости.
+    void setHeightDelta(int delta);               //!< Установка дельты высоты развернутой строки
     QSize minimumSizeHint() const;
     QSize sizeHint() const;
     void updateGeometry();
 
 private:
     QGridLayout             *m_layout;
-    ui::widget::WIconButton *m_button;
+    ui::widget::WIconButton *m_button;            //!< Кнопка разорачивания строки
     void mousePressEvent ( QMouseEvent * ev );
     void mouseDoubleClickEvent(QMouseEvent * ev);
     QSize m_sizeHint;
-    bool  m_expandingAllowed;
-    int   m_heightDelta;
+    bool  m_expandingAllowed;                     //!< Разворачивание строки разрешено?
+    int   m_heightDelta;                          //!< Дельта высоты развернутой строки. @see m_resizer
 
-    ui::widget::WResizer *m_resizer;
+    ui::widget::WResizer *m_resizer;              //!< Плашка изменения высоты развернутой строки. @see m_heightDelta
 
-    bool m_firstOpen;
-    bool m_expanderOpen;
+    bool m_firstOpen;                             //!< Это первое открытие?
+    bool m_expanderOpen;                          //!< Строка развернута?
 
-    void changeStyle();
-    void constructExpander();
-    bool expanderConstructed();
+    void changeStyle();                           //!< Смена стиля строки при раскрытии/сворачивании
+    void constructExpander();                     //!< Создание контролов в расширителе, если еще они не созданы
+    bool expanderConstructed();                   //!< Созданы ли контролы расширителя?
 
 
 protected:
@@ -61,38 +61,36 @@ protected:
     void resizeEvent(QResizeEvent *e);
 
     virtual void buildExpanderUIEvent();        //!< Для создания гуя в дочерних классах
-    bool expanded();
+    bool expanded();                            //!< Строка развернута?
 
 signals:
     void clicked(const hacc::TDBID & /*id*/);
     void doubleClicked(const hacc::TDBID & /*id*/);
 
 private slots:
-    void switchExpand();
+    void switchExpand();                         //!< Переключатель развернутости строки
 
 
     // tabs
 protected:
-    void appendContainer(WBase *containerBase, const QIcon& icon, const QString &label);
-    WBase *expandingContainerBase();
+    void appendContainer(WBase *containerBase, const QIcon& icon, const QString &label); //!< Добавление таба-грида
+    WBase *expandingContainerBase();                                                     //!< Грид из таба
 
-    template <typename TContainerTags> void appendTagsTab();
-    void refreshTags();
+    template <typename TContainerTags> void appendTagsTab();                             //!< Добавление таба-списка тегов
+    void refreshTags();                                                                  //!< Обновление списка тегов
 
-    void appendDescriptionTab();
-    void setDescription(const QString &text);
-    void setImage(const QPixmap &pixmap);
+    void appendDescriptionTab();                                                         //!< Добавление таба с описанием (текст+картинка)
+    void setDescription(const QString &text);                                            //!< Присваивание текста описания
+    void setImage(const QPixmap &pixmap);                                                //!< Присваивание картинки описания
 
 private:
-    QTabWidget                   *m_tabs;
-    ui::tag::base::WTagContainer *m_tags;
-    ui::widget::WItemDescription *m_description;
-    WBase                        *m_containerBase;
-
-
-
+    QTabWidget                   *m_tabs;          //!< Табвиджет, собсно
+    ui::tag::base::WTagContainer *m_tags;          //!< Таб-теги
+    ui::widget::WItemDescription *m_description;   //!< Таб-описание
+    WBase                        *m_containerBase; //!< Таб-грид
 };
 
+//! Инициализатор. Вставлять макрос в конструктор каждого верхнего потомка WItem
 #define HACC_INIT_ITEM initializeItem();
 
 }
