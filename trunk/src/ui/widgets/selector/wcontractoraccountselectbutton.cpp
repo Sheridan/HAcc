@@ -51,8 +51,9 @@ void WContractorAccountSelectButton::idChanged()
                                  "left join contractors on contractors.id=accounts.contractor_id "
                                  "where accounts.id=?",
                                  QVariantList() << id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setData(HACC_DB_2_DBID(q, 3), HACC_DB_2_STRG(q, 2), HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }

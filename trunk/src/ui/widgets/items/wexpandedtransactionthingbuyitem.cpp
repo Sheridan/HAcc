@@ -57,8 +57,9 @@ void WExpandedTransactionThingBuyItem::transactionUpdated()
                                  "left join manufacturers on manufacturers.id=things.manufacturer_id "
                                  "where transactions.id=?",
                                  QVariantList() << hacc::model::CTransaction::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setTransactionData (HACC_DB_2_MONY(q, 0),
                             HACC_DB_2_AMNT(q, 1),
                             HACC_DB_2_PREC(q, 4),

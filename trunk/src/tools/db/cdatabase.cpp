@@ -222,7 +222,7 @@ bool CDatabase::exec(const QString &sql, const QVariantList &parameters)
 QVariant CDatabase::queryCell(const QString &sql, const QVariant & defaultValue, const QVariantList &parameters)
 {
     QSqlQuery q = query(sql, parameters);
-    if(q.next()) { return q.value(0); }
+    if(HACC_QUERY_DATA_AVIALABLE(q)) { return q.value(0); }
     return defaultValue;
 }
 

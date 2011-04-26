@@ -48,8 +48,9 @@ void WSimpleValuableItem::thingUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from things where id=?",
                                  QVariantList() << hacc::model::CThing::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setThingData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }
@@ -58,8 +59,9 @@ void WSimpleValuableItem::manufacturerUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from manufacturers where id=?",
                                  QVariantList() << hacc::model::CManufacturer::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setManufacturerData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }
@@ -68,8 +70,9 @@ void WSimpleValuableItem::valuableUpdated()
 {
     QSqlQuery q = HACC_DB->query("select serial_number from valuables where id=?",
                                  QVariantList() << hacc::model::CValuable::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setValuableData(HACC_DB_2_STRG(q, 0));
     }
 }

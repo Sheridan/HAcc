@@ -58,7 +58,7 @@ const QIcon & CDBIconsCache::icon( const hacc::TDBID & id )
     if(!m_icons.contains(id))
     {
         QSqlQuery q = HACC_DB->query("select icon from icons where id=?", QVariantList() << id);
-        if(q.next())
+        if(HACC_QUERY_DATA_AVIALABLE(q))
         {
             m_icons[id] = new QIcon(ui::images::byteArray2Pixmap(q.value(0).toByteArray()));
         }

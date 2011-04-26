@@ -10,6 +10,7 @@
 #define HACC_DATABASE_VERSION 1
 #define HACC_TAG_TABLE_NAME(_table)    #_table "s_tags "
 #define HACC_TAG_TABLE_ID_NAME(_table) #_table "_id "
+#define HACC_QUERY_DATA_AVIALABLE(_q) (_q.next() && _q.size())
 
 namespace tools
 {
@@ -45,9 +46,9 @@ public:
                          const QVariantList &parameters = QVariantList());                //!< Возвращает список идентификаторов
 
 private:
-    QSqlDatabase m_db;     //!< Собственно, БД
-    QString m_sessionName; //!< Имя сессии БД
-    QString m_fileName;    //!< Имя файла БД
+    QSqlDatabase m_db;                                                                    //!< Собственно, БД
+    QString m_sessionName;                                                                //!< Имя сессии БД
+    QString m_fileName;                                                                   //!< Имя файла БД
     QSqlQuery execQuery(const QString &sql,
                         const QVariantList &parameters = QVariantList(),
                         bool isExec = false);                                             //!< Исполняет запросы к БД

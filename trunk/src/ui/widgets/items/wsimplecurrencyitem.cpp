@@ -28,6 +28,7 @@ void WSimpleCurrencyItem::setCurrencyData(const hacc::TDBID &iconID, const QStri
 
 void WSimpleCurrencyItem::assignActions()
 {
+    //! \todo Нельзя удалять валюту, которая используется не только в "Ничто"
     controlLabel(0, 0)->addAction(hacc::model::CCurrency::editAction());
     controlLabel(0, 0)->addAction(hacc::model::CCurrency::removeAction());
 }
@@ -36,8 +37,9 @@ void WSimpleCurrencyItem:: currencyUpdated()
 {
 
     QSqlQuery q = HACC_DB->query("select name, reduction, icon_id from currencyes where id=?", QVariantList() << itemID());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setCurrencyData(
                     HACC_DB_2_DBID(q, 2),
                     HACC_DB_2_STRG(q, 0),

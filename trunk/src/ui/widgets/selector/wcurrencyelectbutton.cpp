@@ -35,8 +35,9 @@ void WCurrencyelectButton::idChanged()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id, reduction from currencyes where id=?",
                                  QVariantList() << id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setCurrencyData(HACC_DB_2_DBID(q, 1),
                         HACC_DB_2_STRG(q, 0),
                         HACC_DB_2_STRG(q, 2));

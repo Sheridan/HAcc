@@ -37,8 +37,9 @@ FManufacturerEdit::FManufacturerEdit(const hacc::TDBID &id, QWidget *parent) :
                                  "from manufacturers "
                                  "where id=?",
                                  QVariantList() << id);
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
         m_ui->pwIcons->setID  (HACC_DB_2_DBID(q, 1));
         m_ui->teDescription->appendPlainText(HACC_DB_2_STRG(q, 2));

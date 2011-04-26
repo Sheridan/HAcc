@@ -34,8 +34,9 @@ FTransactionPoolThingEdit::FTransactionPoolThingEdit(const hacc::TDBID &id, int 
                                  "from transactions_pool "
                                  "where transactions_pool.id=?",
                                  QVariantList() << id);
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         m_ui->dtDateTime->setDateTime(HACC_DB_2_DATI(q, 0));
         m_ui->pwBuyerAccount  ->setID(HACC_DB_2_DBID(q, 1));
         m_ui->pwSellerAccount ->setID(HACC_DB_2_DBID(q, 2));

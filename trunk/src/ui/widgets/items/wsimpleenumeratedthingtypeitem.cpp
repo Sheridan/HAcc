@@ -34,8 +34,9 @@ void WSimpleEnumeratedThingTypeItem::enumeratedThingTypeUpdated()
                                  "from thing_enumerated_types "
                                  "where thing_enumerated_types.id=?",
                                  QVariantList() << itemID());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setItemData(HACC_DB_2_STRG(q, 1),
                     HACC_DB_2_PREC(q, 0));
     }

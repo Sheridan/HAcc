@@ -48,7 +48,7 @@ void CValuables::thingUpdated(const hacc::TDBID & thingID)
         hacc::TDBID transactionID = HACC_DB_2_DBID(q, 0);
         QSqlQuery inq = HACC_DB->query("select id from valuables where transaction_id=?",
                                      QVariantList() << transactionID);
-        hacc::TDBID valID = inq.next() ? HACC_DB_2_DBID(inq, 0) : 0;
+        hacc::TDBID valID = HACC_QUERY_DATA_AVIALABLE(inq) ? HACC_DB_2_DBID(inq, 0) : 0;
         if(HACC_THINGS->tagAttached(HACC_TAG_ID_OBJECT, thingID))
         {
             if(!valID)

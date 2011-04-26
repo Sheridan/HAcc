@@ -42,9 +42,12 @@ FTransactionMoneyEdit::FTransactionMoneyEdit(const hacc::TDBID &id, const int &t
                                      .arg(HACC_TAG_ID_OUTGOING)
                                      .arg(HACC_TAG_ID_TRANSFER),
                                      QVariantList() << id);
-        qp.next();
-        m_basePoolID          = HACC_DB_2_DBID(qp, 1);
-        m_transactionPoolType = HACC_DB_2_TYPE(qp, 0);
+        if(HACC_QUERY_DATA_AVIALABLE(qp))
+        {
+            //! \todo Добавить действие, если запрос не вернет данных
+            m_basePoolID          = HACC_DB_2_DBID(qp, 1);
+            m_transactionPoolType = HACC_DB_2_TYPE(qp, 0);
+        }
     }
 
     QSqlQuery q = HACC_DB->query("select "
@@ -65,25 +68,27 @@ FTransactionMoneyEdit::FTransactionMoneyEdit(const hacc::TDBID &id, const int &t
                                  "left join transactions_commisions on transactions_commisions.base_pool_id = base_tp.id "
                                  "left join transactions comm_t on comm_t.id = transactions_commisions.id "
                                  "where base_tp.id=?", QVariantList() << m_basePoolID);
-    q.next();
-
-    init(m_transactionPoolType);
-    m_baseTransactionID = HACC_DB_2_DBID(q, 11);
-    m_ui->dtDateTime->setDateTime(HACC_DB_2_DATI(q, 0));
-    m_ui->leMoney->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 4)));
-    bool thisHasCommission = !q.value(5).isNull();
-    m_ui->gbCommission->setChecked(thisHasCommission);
-    if(thisHasCommission)
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
-        m_commissionTransactionID = HACC_DB_2_DBID(q, 10);
-        m_commissionPoolID = HACC_DB_2_DBID(q, 3);
-        m_ui->leCommission->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 9)));
-        m_ui->cbCommisionInMoney->setChecked(HACC_DB_2_BOOL(q, 8));
-        m_ui->pwCommissionTo->setID(HACC_DB_2_DBID(q, 6));
-        m_ui->cbPercent->setChecked(HACC_DB_2_BOOL(q, 7));
+        //! \todo Добавить действие, если запрос не вернет данных
+        init(m_transactionPoolType);
+        m_baseTransactionID = HACC_DB_2_DBID(q, 11);
+        m_ui->dtDateTime->setDateTime(HACC_DB_2_DATI(q, 0));
+        m_ui->leMoney->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 4)));
+        bool thisHasCommission = !q.value(5).isNull();
+        m_ui->gbCommission->setChecked(thisHasCommission);
+        if(thisHasCommission)
+        {
+            m_commissionTransactionID = HACC_DB_2_DBID(q, 10);
+            m_commissionPoolID = HACC_DB_2_DBID(q, 3);
+            m_ui->leCommission->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 9)));
+            m_ui->cbCommisionInMoney->setChecked(HACC_DB_2_BOOL(q, 8));
+            m_ui->pwCommissionTo->setID(HACC_DB_2_DBID(q, 6));
+            m_ui->cbPercent->setChecked(HACC_DB_2_BOOL(q, 7));
+        }
+        m_ui->pwAccountFrom->setID(HACC_DB_2_DBID(q, 1));
+        m_ui->pwAccountTo->setID(HACC_DB_2_DBID(q, 2));
     }
-    m_ui->pwAccountFrom->setID(HACC_DB_2_DBID(q, 1));
-    m_ui->pwAccountTo->setID(HACC_DB_2_DBID(q, 2));
 }
 
 FTransactionMoneyEdit::~FTransactionMoneyEdit()

@@ -28,8 +28,9 @@ FThingEnumeratedTypesEdit::FThingEnumeratedTypesEdit(const hacc::TDBID &id, QWid
     QSqlQuery q = HACC_DB->query("select name, precision "
                                  "from thing_enumerated_types where id=?",
                                  QVariantList() << id);
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
         m_ui->sbPrecision->setValue(HACC_DB_2_PREC(q, 1));
     }

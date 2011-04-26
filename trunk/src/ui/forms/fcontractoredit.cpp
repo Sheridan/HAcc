@@ -26,8 +26,9 @@ FContractorEdit::FContractorEdit(const hacc::TDBID & id, QWidget *parent) :  QDi
     setObjectName(objectName()+"_edit");
 
     QSqlQuery q = HACC_DB->query("select name, icon_id, own_account from contractors where id=?", QVariantList() << id);
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
         m_ui->pwIcons->setID  (HACC_DB_2_DBID(q, 1));
 

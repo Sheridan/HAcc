@@ -112,8 +112,9 @@ void WExpandedTransactionPoolItem::transactionPoolUpdated()
                                  "where transactions_pool.id=? and " + HACC_TRANSACTIONS_POOLS->whereTagsInPurposeTags() + " "
                                  "group by transactions.pool_id ",
                                  QVariantList() << hacc::model::CTransactionPool::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setTransactionPoolData(
                     HACC_DB_2_DATI(q, 0),
                     HACC_DB_2_DBID(q, 1),
@@ -127,8 +128,9 @@ void WExpandedTransactionPoolItem::sourceContractorUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from contractors where id=?",
                                  QVariantList() << hacc::model::composite::CContractorAccountSource::contractorID());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setSourceContractorData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }
@@ -137,8 +139,9 @@ void WExpandedTransactionPoolItem::sourceAccountUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from accounts where id=?",
                                  QVariantList() << hacc::model::composite::CContractorAccountSource::accountID());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setSourceAccountData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }
@@ -147,8 +150,9 @@ void WExpandedTransactionPoolItem::destinationContractorUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from contractors where id=?",
                                  QVariantList() << hacc::model::composite::CContractorAccountDestination::contractorID());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setDestinationContractorData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }
@@ -157,8 +161,9 @@ void WExpandedTransactionPoolItem::destinationAccountUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from accounts where id=?",
                                  QVariantList() << hacc::model::composite::CContractorAccountDestination::accountID());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setDestinationAccountData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }

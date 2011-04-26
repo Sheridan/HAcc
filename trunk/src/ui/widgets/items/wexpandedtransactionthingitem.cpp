@@ -64,8 +64,9 @@ void WExpandedTransactionThingItem::thingUpdated()
                                  "from things "
                                  "where things.id=?",
                                  QVariantList() << hacc::model::CThing::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setThingData(HACC_DB_2_STRG(q, 0),
                      HACC_DB_2_DBID(q, 1));
     }
@@ -79,8 +80,9 @@ void WExpandedTransactionThingItem::manufacturerUpdated()
                                  "from manufacturers "
                                  "where manufacturers.id=?",
                                  QVariantList() << hacc::model::CManufacturer::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setManufacturerData(HACC_DB_2_STRG(q, 0),
                             HACC_DB_2_DBID(q, 1));
     }

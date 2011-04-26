@@ -48,8 +48,9 @@ void WThingSelectButton::idChanged()
                                  "left join manufacturers on manufacturers.id=things.manufacturer_id "
                                  "where things.id=?",
                                  QVariantList() << id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setThingData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
         setManufacturergData(HACC_DB_2_DBID(q, 3), HACC_DB_2_STRG(q, 2));
     }

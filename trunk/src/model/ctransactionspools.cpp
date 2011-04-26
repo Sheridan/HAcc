@@ -49,8 +49,9 @@ void CTransactionsPools::remove(const hacc::TDBID & id)
                                          "from transactions "
                                          "left join transactions_commisions on transactions_commisions.id=transactions.id "
                                          "where transactions_commisions.base_pool_id = ?", QVariantList() << id);
-            if(q.next() && !q.value(0).isNull())
+            if(HACC_QUERY_DATA_AVIALABLE(q) && !q.value(0).isNull())
             {
+                    //! \todo Добавить действие, если запрос не вернет данных
                 HACC_DB->exec("delete from transactions_pool where id=?", QVariantList() << HACC_DB_2_DBID(q, 0));
             }
 

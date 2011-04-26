@@ -142,14 +142,17 @@ void CTransactions::editThingBuyTransaction(const hacc::TDBID & transactionID)
                                                  "left join accounts src_acc on src_acc.id=transactions_pool.source_account_id "
                                                  "left join accounts dst_acc on dst_acc.id=transactions_pool.destination_account_id "
                                                  "where transactions.id=?", QVariantList() << transactionID);
-                    q.next();
-                    transactionBuyValuablesAppend(dialog->amount() - oldAmount,
-                                                  transactionID,
-                                                  HACC_DB_2_DBID(q, 0),
-                                                  HACC_DB_2_DBID(q, 1),
-                                                  HACC_DB_2_DBID(q, 3),
-                                                  HACC_DB_2_DATI(q, 2),
-                                                  HACC_TAG_ID_BUYING);
+                    if(HACC_QUERY_DATA_AVIALABLE(q))
+                    {
+                        //! \todo Добавить действие, если запрос не вернет данных
+                        transactionBuyValuablesAppend(dialog->amount() - oldAmount,
+                                                      transactionID,
+                                                      HACC_DB_2_DBID(q, 0),
+                                                      HACC_DB_2_DBID(q, 1),
+                                                      HACC_DB_2_DBID(q, 3),
+                                                      HACC_DB_2_DATI(q, 2),
+                                                      HACC_TAG_ID_BUYING);
+                    }
                 }
             }
             emit updated(transactionID);
@@ -213,8 +216,9 @@ void CTransactions::commitThingsTransactions(const hacc::TDBID &poolID          
                                              "from transactions_things "
                                              "left join things on things.id=transactions_things.thing_id "
                                              "where transactions_things.id=?", QVariantList() << id);
-                if(q.next())
+                if(HACC_QUERY_DATA_AVIALABLE(q))
                 {
+                    //! \todo Добавить действие, если запрос не вернет данных
                     int amount = HACC_ENUMERATED_THING_TYPES->checkDivisibleEnumeratedType(HACC_DB_2_DBID(q, 1))
                             ? HACC_DB_2_AMNT(q, 0)
                             : 1;
@@ -229,8 +233,9 @@ void CTransactions::commitThingsTransactions(const hacc::TDBID &poolID          
                                           "from transactions_valuables "
                                           "left join valuables on valuables.id=transactions_valuables.valuable_id "
                                           "where transactions_valuables.id=?", QVariantList() << id);
-                if(q.next())
+                if(HACC_QUERY_DATA_AVIALABLE(q))
                 {
+                    //! \todo Добавить действие, если запрос не вернет данных
                     hacc::TDBID valID = HACC_DB_2_DBID(q, 0);
                     HACC_VALUABLES->changeValuableOwner(valID, sourceContractor);
                     HACC_MOVEMENTS->moveThing(destinationContractor, sourceContractor, valID, datetime, transactionType);

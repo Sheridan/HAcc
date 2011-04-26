@@ -2,6 +2,7 @@
 #include "ui_faccountedit.h"
 #include "ui_defines.h"
 #include "st.h"
+
 namespace ui
 {
 namespace form
@@ -23,11 +24,13 @@ FAccountEdit::FAccountEdit(const hacc::TDBID & id, QWidget *parent) : QDialog(pa
     setObjectName(objectName()+"_edit");
 
     QSqlQuery q = HACC_DB->query("select name, icon_id, currency_id from accounts where id=?", QVariantList() << id);
-    q.next();
-    m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
-    m_ui->pwIcons->setID  (HACC_DB_2_DBID(q, 1));
-    m_ui->pwCurrencySelectButton->setID(HACC_DB_2_DBID(q, 2));
-
+    if(HACC_QUERY_DATA_AVIALABLE(q))
+    {
+        //! \todo Добавить действие, если запрос не вернет данных
+        m_ui->leName ->setText(HACC_DB_2_STRG(q, 0));
+        m_ui->pwIcons->setID  (HACC_DB_2_DBID(q, 1));
+        m_ui->pwCurrencySelectButton->setID(HACC_DB_2_DBID(q, 2));
+    }
     HACC_RESTORE_DIALOG;
 }
 

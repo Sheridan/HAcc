@@ -54,10 +54,13 @@ void WExpandedAccountItem::assignActions()
                                  "left join accounts acc_cnt on acc_cnt.contractor_id = acc_base.contractor_id "
                                  "where acc_base.id=?",
                                  QVariantList() << itemID());
-    q.next();
-    if(HACC_DB_2_BOOL(q, 0) && HACC_DB_2_BOOL(q, 1))
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
-        controlLabel(0, 0)->addAction(hacc::model::CAccount::removeAction());
+        //! \todo Добавить действие, если запрос не вернет данных
+        if(HACC_DB_2_BOOL(q, 0) && HACC_DB_2_BOOL(q, 1))
+        {
+            controlLabel(0, 0)->addAction(hacc::model::CAccount::removeAction());
+        }
     }
     controlLabel(0, 0)->addAction(hacc::model::CAccount::tagsEditAction());
 
@@ -68,8 +71,9 @@ void WExpandedAccountItem::accountUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from accounts where id=?",
                                  QVariantList() << hacc::model::CAccount::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setAccountData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }
@@ -78,8 +82,9 @@ void WExpandedAccountItem::currencyUpdated()
 {
     QSqlQuery q = HACC_DB->query("select name, icon_id from currencyes where id=?",
                                  QVariantList() << hacc::model::CCurrency::id());
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         setAccountData(HACC_DB_2_DBID(q, 1), HACC_DB_2_STRG(q, 0));
     }
 }

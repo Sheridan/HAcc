@@ -33,8 +33,9 @@ FTransactionBuyThingEdit::FTransactionBuyThingEdit(const hacc::TDBID &id, QWidge
                                  "left join thing_enumerated_types on thing_enumerated_types.id=things.enumerated_type_id "
                                  "where transactions.id=?",
                                  QVariantList() << id);
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         m_ui->leMoney ->setText(tools::convert::moneyToString(HACC_DB_2_MONY(q, 1)));
         m_ui->leAmount->setText(tools::convert::amountToString(HACC_DB_2_AMNT(q, 2), HACC_DB_2_PREC(q, 3)));
         m_ui->pwThingSelector->setID(HACC_DB_2_DBID(q, 0));

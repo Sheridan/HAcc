@@ -16,7 +16,7 @@
 
 //! @name Количество предопределенных иконок
 //! @{
-#define HACC_O_PREDECLARED_ICONS_PATH        HACC_OPTION_DB_PATH(predeclaredicons)
+#define HACC_O_PREDECLARED_ICONS_PATH        HACC_OPTION_DB_PATH(predeclaredIcons)
 #define HACC_O_PREDECLARED_ICONS             (HACC_OPTIONS->dbValue(HACC_O_PREDECLARED_ICONS_PATH, 0).toUInt())
 #define HACC_O_PREDECLARED_ICONS_SET(_count) HACC_OPTIONS->setDBValue(HACC_O_PREDECLARED_ICONS_PATH, _count);
 //! @}

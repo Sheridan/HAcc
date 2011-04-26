@@ -23,8 +23,9 @@ FCurrencyEdit::FCurrencyEdit(const hacc::TDBID &currencyID, QWidget *parent) :
     init();
     QSqlQuery q = HACC_DB->query("select name, icon_id, reduction, show_reduction_before_value from currencyes where id=?",
                                  QVariantList() << currencyID);
-    if(q.next())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
+        //! \todo Добавить действие, если запрос не вернет данных
         m_ui->leName->setText(HACC_DB_2_STRG(q, 0));
         m_ui->pwIcons->setID(HACC_DB_2_DBID(q, 1));
         m_ui->leReduction->setText(HACC_DB_2_STRG(q, 2));

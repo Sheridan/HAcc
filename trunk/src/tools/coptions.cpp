@@ -138,7 +138,7 @@ void COptions::checkFirstStart()
 void COptions::setDBValue(const QString & key, const QVariant & value)
 {
     QSqlQuery q = HACC_DB->query("select value from db_options where name=?", QVariantList() << key);
-    if(q.next() && q.size())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
         HACC_DB->exec("update db_options set value=? where name=?", QVariantList() << value << key);
     }
@@ -151,7 +151,7 @@ void COptions::setDBValue(const QString & key, const QVariant & value)
 QVariant COptions::dbValue(const QString & key, const QVariant & defaultValue)
 {
     QSqlQuery q = HACC_DB->query("select value from db_options where name=?", QVariantList() << key);
-    if(q.next() && q.size())
+    if(HACC_QUERY_DATA_AVIALABLE(q))
     {
         return q.value(0);
     }
