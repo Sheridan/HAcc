@@ -1,6 +1,6 @@
-//    Author: Sheridan <sheridan@stavcom.ru>, (C) 2006
-//    Copyright: See COPYING file that comes with this distribution
-//
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef __COPTIONS_H__
 #define __COPTIONS_H__
 #include <QSettings>

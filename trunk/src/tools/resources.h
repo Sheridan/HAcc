@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef RESOURCES_H
 #define RESOURCES_H
 

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WMANUFACTURERITEM_Hs
 #define WMANUFACTURERITEM_Hs
 

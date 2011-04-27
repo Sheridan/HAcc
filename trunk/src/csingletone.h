@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CSINGLETONE_H
 #define CSINGLETONE_H
 

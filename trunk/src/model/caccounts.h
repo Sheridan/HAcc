@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CACCOUNTS_H
 #define CACCOUNTS_H
 #include "cbases.h"

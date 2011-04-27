@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WMANUFACTURERSELECTBUTTON_H
 #define WMANUFACTURERSELECTBUTTON_H
 

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CFILEDIALOGS_H
 #define CFILEDIALOGS_H
 #include <QFileDialog>

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WICONITEM_H
 #define WICONITEM_H
 
@@ -9,6 +12,7 @@ namespace ui
 namespace icons
 {
 
+//! Кнопка-иконка с меню для удаления\редактирования иконки
 class WIconItem : public WIconButtonBase
 {
     Q_OBJECT

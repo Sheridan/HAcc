@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CTRANSACTION_H
 #define CTRANSACTION_H
 

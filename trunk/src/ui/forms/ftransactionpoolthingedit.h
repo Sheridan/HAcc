@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FTRANSACTIONPOOLEDIT_H
 #define FTRANSACTIONPOOLEDIT_H
 

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WCONTROLLABEL_H
 #define WCONTROLLABEL_H
 

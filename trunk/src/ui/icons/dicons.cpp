@@ -4,6 +4,8 @@
 #include "cfiledialogs.h"
 #include "icons.h"
 #include "st.h"
+#include "hacc_options.h"
+
 namespace ui
 {
 namespace icons

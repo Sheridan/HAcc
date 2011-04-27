@@ -1,3 +1,7 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  \author Qt Software
+  */
 #ifndef LFLOWLAYOUT_H
 #define LFLOWLAYOUT_H
 

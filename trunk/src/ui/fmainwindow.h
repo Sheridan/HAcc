@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FMAINWINDOW_H
 #define FMAINWINDOW_H
 

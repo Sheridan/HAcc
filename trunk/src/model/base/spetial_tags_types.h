@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef SPETIAL_TAGS_TYPES_H
 #define SPETIAL_TAGS_TYPES_H
 

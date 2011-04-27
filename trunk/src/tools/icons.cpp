@@ -47,7 +47,7 @@ QIcon stratificateIcons(const QString &sourceFile, const QString &layerFile)
   @param sourceFile Имя файла иконки, на которую надо наложить оверлей
   @param layer Иконка оверлея
   */
-QIcon stratificateIcons (const QString &sourceFile  , const QIcon &layer)
+QIcon stratificateIcons (const QString &sourceFile, const QIcon &layer)
 {
     return stratificateIcons(QIcon(sourceFile), layer);
 }

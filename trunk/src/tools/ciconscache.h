@@ -1,4 +1,7 @@
 #ifndef CICONSCACHE_H
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #define CICONSCACHE_H
 
 #include <QMap>

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WEXPANDEDTRANSACTIONPOOLTHINGITEM_H
 #define WEXPANDEDTRANSACTIONPOOLTHINGITEM_H
 

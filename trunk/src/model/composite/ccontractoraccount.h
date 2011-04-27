@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CCONTRACTORACCOUNT_H
 #define CCONTRACTORACCOUNT_H
 

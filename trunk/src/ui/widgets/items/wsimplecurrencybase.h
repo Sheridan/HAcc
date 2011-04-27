@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSIMPLECURRENCYBASE_H
 #define WSIMPLECURRENCYBASE_H
 

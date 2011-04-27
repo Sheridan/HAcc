@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WVALUABLESELECTBUTTON_H
 #define WVALUABLESELECTBUTTON_H
 

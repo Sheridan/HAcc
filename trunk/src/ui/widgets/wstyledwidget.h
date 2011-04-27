@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSTYLEDWIDGET_H
 #define WSTYLEDWIDGET_H
 

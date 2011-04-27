@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef TMDICHILD_H
 #define TMDICHILD_H
 #include "fmdichild.h"

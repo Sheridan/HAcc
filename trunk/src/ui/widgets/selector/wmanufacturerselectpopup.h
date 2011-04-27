@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WMANUFACTURERSELECTPOPUP_H
 #define WMANUFACTURERSELECTPOPUP_H
 

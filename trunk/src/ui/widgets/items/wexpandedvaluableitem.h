@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WEXPANDEDVALUABLEITEM_H
 #define WEXPANDEDVALUABLEITEM_H
 

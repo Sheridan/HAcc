@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WICONBUTTON_H
 #define WICONBUTTON_H
 

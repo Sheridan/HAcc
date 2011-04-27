@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WCONTRACTORCONTAINER_He
 #define WCONTRACTORCONTAINER_He
 

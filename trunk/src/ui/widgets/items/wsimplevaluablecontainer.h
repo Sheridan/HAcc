@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSIMPLEVALUABLECONTAINER_H
 #define WSIMPLEVALUABLECONTAINER_H
 

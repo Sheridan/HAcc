@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WCURRENCYELECTBUTTON_H
 #define WCURRENCYELECTBUTTON_H
 

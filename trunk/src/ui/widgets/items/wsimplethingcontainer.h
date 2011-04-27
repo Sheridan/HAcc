@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WTHINGCONTAINER_Hs
 #define WTHINGCONTAINER_Hs
 

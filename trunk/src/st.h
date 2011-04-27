@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef __ST_H__
 #define __ST_H__
 
@@ -26,10 +29,4 @@
 #define HACC_ENUMERATED_THING_TYPES HACC_ST(enumeratedThingTypes)  //!< Перечисляемые типы
 //! @}
 
-// options
-#define HACC_SAVE_STATE(_thing)    HACC_OPTIONS->saveState(_thing);    //!< Сохраняет статус объекта
-#define HACC_RESTORE_STATE(_thing) HACC_OPTIONS->restoreState(_thing); //!< Восстанавливает сатус объекта
-
-#define HACC_SAVE_DIALOG    HACC_SAVE_STATE(this);                     //!< Сохраняет статус диалога
-#define HACC_RESTORE_DIALOG HACC_RESTORE_STATE(this);                  //!< Восстанавливает сатус диалога
 #endif // __ST_H__

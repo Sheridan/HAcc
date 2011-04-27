@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CITEMLABELS_H
 #define CITEMLABELS_H
 

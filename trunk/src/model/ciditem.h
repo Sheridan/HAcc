@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CIDITEM_H
 #define CIDITEM_H
 #include "hacc_types.h"

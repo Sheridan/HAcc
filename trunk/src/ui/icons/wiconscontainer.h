@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WICONSCONTAINER_H
 #define WICONSCONTAINER_H
 
@@ -12,6 +15,8 @@ namespace icons
 {
 
 class WIconItem;
+
+//! Контейнер для списка иконок
 class WIconsContainer : public ui::widget::WAbstractScrollArea
 {
     Q_OBJECT

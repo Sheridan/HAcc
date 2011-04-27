@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CDBICONSCACHE_H
 #define CDBICONSCACHE_H
 #include <QMap>
@@ -17,19 +20,19 @@ class CDBIconsCache : public QObject
 public:
     CDBIconsCache();
     ~CDBIconsCache();
-    hacc::TDBID add   (const QString &fileName);
-    void remove       (const hacc::TDBID &id);
-    void replace      (const hacc::TDBID &id, const QString &fileName);
-    const QIcon & icon(const hacc::TDBID &id);
+    hacc::TDBID add   (const QString &fileName); //!< Добвляет иконку в БД
+    void remove       (const hacc::TDBID &id);   //!< Удаляет иконку из БД
+    void replace      (const hacc::TDBID &id, const QString &fileName); //!< Заменяет иконку
+    const QIcon & icon(const hacc::TDBID &id);   //!< Иконка из БД
     void freezePredeclaredIconsCount(); //!< Заморозка количества предопределенных иконок
     const uint & predeclaredIconsCount() const;
 
 public slots:
-    void removeUnused();
+    void removeUnused(); //!< Удаляет неиспользуемые иконки из БД
 
 private:
-    QMap<hacc::TDBID, QIcon *> m_icons;
-    hacc::TDBID m_maxID;
+    QMap<hacc::TDBID, QIcon *> m_icons; //!< Кеш иконок
+    hacc::TDBID m_maxID;                //!< Максимальный идентификатор в БД
     //! Количество предопределенных иконок
     /** Предопределенные иконки нельзя удалять, их можно только заменить */
     uint        m_predeclaredIcons;

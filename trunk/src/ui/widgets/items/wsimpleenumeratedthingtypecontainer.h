@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WENUMERATEDTHINGTYPECONTAINER_Hs
 #define WENUMERATEDTHINGTYPECONTAINER_Hs
 

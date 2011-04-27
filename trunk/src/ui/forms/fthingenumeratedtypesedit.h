@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FTHINGENUMERATEDTYPESEDIT_H
 #define FTHINGENUMERATEDTYPESEDIT_H
 

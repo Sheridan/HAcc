@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef QLABELBUTTON_H
 #define QLABELBUTTON_H
 
@@ -9,12 +12,15 @@ namespace widget
 {
 
 //! Метка-кнопка
+/**
+  Отсылает сигнал и вызывает виртфункцию при клике на себе.
+*/
 class WLabelButton : public QLabel
 {
     Q_OBJECT
 public:
     explicit WLabelButton(QWidget *parent = 0);
-    void enableHandCursor(bool enable);
+    void enableHandCursor(bool enable); //!< Указатель-рука вместо обычной стрелки
 
 private:
     void mousePressEvent ( QMouseEvent * ev );

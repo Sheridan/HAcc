@@ -4,6 +4,7 @@
 #include "cfiledialogs.h"
 #include "images.h"
 #include "st.h"
+#include "hacc_options.h"
 
 namespace ui
 {

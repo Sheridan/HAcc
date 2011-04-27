@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CCURRENCYES_H
 #define CCURRENCYES_H
 

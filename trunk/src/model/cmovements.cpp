@@ -27,6 +27,7 @@ void CMovements::add()
 
 void CMovements::thingRemoved(const hacc::TDBID & thingID)
 {
+    //! \todo Реализовать действие при удалении вещи
 //    QSqlQuery q = HACC_DB->query("select "
 //                                 "transactions_things.id "
 //                                 "from transactions_things "
@@ -40,7 +41,7 @@ void CMovements::thingRemoved(const hacc::TDBID & thingID)
 
 void CMovements::remove(const hacc::TDBID & id)
 {
-
+    //! \todo Реализовать удаление перемещения. А надо ли?
 //    if(id > 0)
 //    {
 //        QSqlQuery q = HACC_DB->query("select name from accounts where id=?", QVariantList() << id);
@@ -72,6 +73,7 @@ void CMovements::execRemove(const QString &where, const QVariantList &parameters
 
 void CMovements::edit(const hacc::TDBID & id)
 {
+    //! \todo Реализовать редактирование перемещения. Надо ли?
 //    if(id > 0)
 //    {
 //        ui::form::FAccountEdit *dialog = new ui::form::FAccountEdit(id);
@@ -89,6 +91,7 @@ void CMovements::edit(const hacc::TDBID & id)
 
 void CMovements::execMoveGift(const int &movementType)
 {
+    //! \todo Реализовать перемещение подарка
 //    ui::form::FTransactionGiftEdit *dialog = new ui::form::FTransactionGiftEdit(tpType);
 //    if(dialog->exec() == QDialog::Accepted)
 //    {

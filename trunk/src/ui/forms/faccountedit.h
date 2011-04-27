@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FACCOUNTEDIT_H
 #define FACCOUNTEDIT_H
 

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WTHINGBASE_Hs
 #define WTHINGBASE_Hs
 

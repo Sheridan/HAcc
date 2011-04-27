@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSIMPLEMOVEMENTCONTAINER_H
 #define WSIMPLEMOVEMENTCONTAINER_H
 

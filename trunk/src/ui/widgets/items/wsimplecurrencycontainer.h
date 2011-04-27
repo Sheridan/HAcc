@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSIMPLECURRENCYCONTAINER_H
 #define WSIMPLECURRENCYCONTAINER_H
 #include "wcontainer.h"

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WITEMDESCRIPTION_H
 #define WITEMDESCRIPTION_H
 

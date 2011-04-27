@@ -4,6 +4,9 @@
 #include <QString>
 #include <QSqlDatabase>
 #include <QSqlQuery>
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #include <QVariantList>
 #include "hacc_types.h"
 

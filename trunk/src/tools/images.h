@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef IMAGES_H
 #define IMAGES_H
 #include <QPixmap>

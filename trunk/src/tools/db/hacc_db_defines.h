@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef HACC_DB_DEFINES_H
 #define HACC_DB_DEFINES_H
 

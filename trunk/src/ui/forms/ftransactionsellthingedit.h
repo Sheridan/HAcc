@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FTRANSACTIONSELLTHINGEDIT_H
 #define FTRANSACTIONSELLTHINGEDIT_H
 

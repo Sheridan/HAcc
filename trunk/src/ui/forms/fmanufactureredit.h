@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FMANUFACTUREREDIT_H
 #define FMANUFACTUREREDIT_H
 

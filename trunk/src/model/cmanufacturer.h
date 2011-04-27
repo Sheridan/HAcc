@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CMANUFACTURER_H
 #define CMANUFACTURER_H
 

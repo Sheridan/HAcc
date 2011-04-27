@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WTAGCONTAINER_Hs
 #define WTAGCONTAINER_Hs
 #include "wcontainer.h"

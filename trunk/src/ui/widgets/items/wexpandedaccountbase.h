@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WACCOUNTBASE_He
 #define WACCOUNTBASE_He
 

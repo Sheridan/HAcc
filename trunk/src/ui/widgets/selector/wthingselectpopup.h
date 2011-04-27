@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WTHINGSELECTPOPUP_H
 #define WTHINGSELECTPOPUP_H
 #include "wselectorpopup.h"

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WEXPANDEDTRANSACTIONPOOLMONEYITEM_H
 #define WEXPANDEDTRANSACTIONPOOLMONEYITEM_H
 

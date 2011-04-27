@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FTHINGEDIT_H
 #define FTHINGEDIT_H
 

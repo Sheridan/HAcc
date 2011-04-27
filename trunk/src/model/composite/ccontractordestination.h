@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CCONTRACTORDESTINATION_H
 #define CCONTRACTORDESTINATION_H
 #include "ccontractor.h"

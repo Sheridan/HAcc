@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WTHINGITEM_Hs
 #define WTHINGITEM_Hs
 

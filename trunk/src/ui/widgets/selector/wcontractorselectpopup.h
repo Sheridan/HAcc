@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WCONTRACTORSELECTPOPUP_H
 #define WCONTRACTORSELECTPOPUP_H
 

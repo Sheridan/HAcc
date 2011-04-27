@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef TTAGCONTAINER_H
 #define TTAGCONTAINER_H
 // --------------------------------------------------- h -----------------------------------------

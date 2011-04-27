@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSIMPLEVALUABLEBASE_H
 #define WSIMPLEVALUABLEBASE_H
 #include "wbase.h"

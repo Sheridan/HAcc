@@ -2,6 +2,7 @@
 #include "ui_fthingenumeratedtypesedit.h"
 #include "ui_defines.h"
 #include "st.h"
+#include "hacc_options.h"
 
 namespace ui
 {

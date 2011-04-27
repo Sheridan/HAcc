@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef TDWCONTAINERBASE_H
 #define TDWCONTAINERBASE_H
 //----------------------------------------------------------- h ----------------------------------------------

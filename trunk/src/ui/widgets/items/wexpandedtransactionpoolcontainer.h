@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WTRANSACTIONPOOLCONTAINER_He
 #define WTRANSACTIONPOOLCONTAINER_He
 

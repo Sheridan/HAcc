@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef ACTIONS_H
 #define ACTIONS_H
 #include <QAction>

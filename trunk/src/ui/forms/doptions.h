@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef DOPTIONS_H
 #define DOPTIONS_H
 

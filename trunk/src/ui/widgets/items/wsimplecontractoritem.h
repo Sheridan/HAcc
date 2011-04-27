@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSIMPLECONTRACTORITEM_H
 #define WSIMPLECONTRACTORITEM_H
 

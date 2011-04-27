@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef TITEMTAGSEDIT_H
 #define TITEMTAGSEDIT_H
 #include "fitemtagsedit.h"

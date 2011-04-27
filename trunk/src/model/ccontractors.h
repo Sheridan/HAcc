@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CCONTRACTORS_H
 #define CCONTRACTORS_H
 #include <QString>

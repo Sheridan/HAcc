@@ -5,6 +5,7 @@
 #include "images.h"
 #include "st.h"
 #include "hacc_date.h"
+#include "hacc_options.h"
 
 #define HACC_PERIOD_ASSIGN(_value,_checkBox,_comboBox,_spinBox) \
 { \

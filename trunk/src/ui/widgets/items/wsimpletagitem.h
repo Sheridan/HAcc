@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WTAGITEM_Hs
 #define WTAGITEM_Hs
 

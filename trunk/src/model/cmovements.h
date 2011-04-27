@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CMOVEMENTS_H
 #define CMOVEMENTS_H
 

@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSELECTORPOPUP_H
 #define WSELECTORPOPUP_H
 
@@ -13,7 +16,10 @@ namespace ui
 {
 namespace selector
 {
-//! Базовые классы для выбора из списка
+//! Меню-селектор. База
+/**
+  @see WSelectorButton
+*/
 namespace base
 {
 
@@ -31,11 +37,11 @@ protected:
 
 private:
     QVBoxLayout           *m_layout;
-    QLineEdit             *m_leSearchText;
-    ui::item::base::WBase *m_container;
+    QLineEdit             *m_leSearchText; //!< Текст для фильтрации
+    ui::item::base::WBase *m_container;    //!< Контейнер с гридом
 
 public slots:
-    void popup();
+    void popup(); //!< Покажись! :)
 
 signals:
     void selected(hacc::TDBID /*itemId*/);

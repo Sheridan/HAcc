@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WVALUABLESELECTPOPUP_H
 #define WVALUABLESELECTPOPUP_H
 

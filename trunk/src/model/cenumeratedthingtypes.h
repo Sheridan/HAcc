@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CENUMERATEDTHINGTYPES_H
 #define CENUMERATEDTHINGTYPES_H
 

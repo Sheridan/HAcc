@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSELECTORBUTTON_H
 #define WSELECTORBUTTON_H
 
@@ -13,6 +16,11 @@ namespace base
 {
 
 class WSelectorPopup;
+//! Кнопка-селектор, база
+/**
+  Логика такая: Есть кнопка WSelectorButton, при нажатии на нее всплывает WSelectorPopup с гридом для выбора.
+  При клике на грид меню закрывается и на кнопке отображается то что выбрали.
+*/
 class WSelectorButton : public ui::widget::WStyledWidget, public hacc::CIDItem
 {
     Q_OBJECT
@@ -26,10 +34,10 @@ public slots:
 
 protected:
     virtual WSelectorPopup * constructPopup() = 0;
-    virtual void idChanged() = 0;
+    virtual void idChanged() = 0; //!< Сменен идентификатор, надо обновить данные на кнопке
 
 private:
-    WSelectorPopup *m_popup;
+    WSelectorPopup *m_popup; //!< Всплывающее меню
     void mousePressEvent ( QMouseEvent * ev );
 
 signals:

@@ -2,6 +2,8 @@
 #include "ui_fcontractoredit.h"
 #include "ui_defines.h"
 #include "st.h"
+#include "hacc_options.h"
+
 namespace ui
 {
 namespace form

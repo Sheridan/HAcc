@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FITEMTAGSEDIT_H
 #define FITEMTAGSEDIT_H
 // -------------------------------  h ----------------------------------------

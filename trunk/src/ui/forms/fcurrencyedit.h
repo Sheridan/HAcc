@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef FCURRENCYEDIT_H
 #define FCURRENCYEDIT_H
 

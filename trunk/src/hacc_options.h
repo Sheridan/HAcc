@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef HACC_OPTIONS_H
 #define HACC_OPTIONS_H
 
@@ -29,4 +32,12 @@
 #define HACC_O_MDI_SET(_mdi) HACC_OPTIONS->setSectionValue(HACC_O_MDI_PATH, _mdi);
 //! @}
 
+//! @name Набор макросов для сохранения/восстановления состояния контролов
+//! @{
+#define HACC_SAVE_STATE(_thing)    HACC_OPTIONS->saveState(_thing);    //!< Сохраняет статус объекта
+#define HACC_RESTORE_STATE(_thing) HACC_OPTIONS->restoreState(_thing); //!< Восстанавливает сатус объекта
+
+#define HACC_SAVE_DIALOG    HACC_SAVE_STATE(this);                     //!< Сохраняет статус диалога
+#define HACC_RESTORE_DIALOG HACC_RESTORE_STATE(this);                  //!< Восстанавливает сатус диалога
+//! @}
 #endif // HACC_OPTIONS_H

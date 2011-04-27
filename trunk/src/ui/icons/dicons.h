@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef DICONS_H
 #define DICONS_H
 
@@ -11,6 +14,7 @@ namespace ui
 namespace icons
 {
 
+//! Диалог редактирования иконок
 class DIcons : public QDialog
 {
     Q_OBJECT

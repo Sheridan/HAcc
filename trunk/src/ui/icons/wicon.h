@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WICON_H
 #define WICON_H
 
@@ -12,12 +15,13 @@ namespace ui
 namespace icons
 {
 
+//! Виджет-иконка
 class WIcon : public ui::images::WImage, public hacc::CIDItem
 {
     Q_OBJECT
 public:
-    explicit WIcon(QWidget *parent = 0);
-    explicit WIcon(int side, QWidget *parent = 0);
+    WIcon(QWidget *parent = 0);
+    WIcon(int side, QWidget *parent = 0);
     ~WIcon();
     void setIcon(const QIcon &icon, int extent = 16);
     void setIcon(const hacc::TDBID &iconID);

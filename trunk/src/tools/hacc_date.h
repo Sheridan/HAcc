@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef HACC_DATE_H
 #define HACC_DATE_H
 

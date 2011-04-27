@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef WSIMPLECURRENCYITEM_H
 #define WSIMPLECURRENCYITEM_H
 

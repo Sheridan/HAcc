@@ -2,6 +2,7 @@
 #include "ui_faccountedit.h"
 #include "ui_defines.h"
 #include "st.h"
+#include "hacc_options.h"
 
 namespace ui
 {

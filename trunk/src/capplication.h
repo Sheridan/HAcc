@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef CAPPLLICATION_H
 #define CAPPLLICATION_H
 

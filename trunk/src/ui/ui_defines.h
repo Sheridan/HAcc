@@ -1,3 +1,6 @@
+/**
+  \author Горлов Максим <sheridan@sheridan-home.ru
+  */
 #ifndef UI_DEFINES_H
 #define UI_DEFINES_H
 
