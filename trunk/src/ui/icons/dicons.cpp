@@ -14,7 +14,7 @@ HACC_STD_TRANSLATE_UI(DIcons, QDialog)
 
 DIcons::DIcons(QWidget *parent) : QDialog(parent), m_ui(new Ui::DIcons)
 {
-    selectedId = 0;
+    m_selectedId = 0;
     m_ui->setupUi(this);
     m_ui->tbAdd->setIcon(HACC_ICONS->icon(tools::icons::iIcon, tools::icons::oNew));
     connect(m_ui->tbRefresh       , SIGNAL(clicked())            , m_ui->pwIconsContainer, SLOT(refresh())            );
@@ -48,12 +48,12 @@ void DIcons::add()
 
 hacc::TDBID DIcons::selected()
 {
-    return selectedId;
+    return m_selectedId;
 }
 
 void DIcons::selected(hacc::TDBID id)
 {
-    selectedId = id;
+    m_selectedId = id;
     accept();
 }
 

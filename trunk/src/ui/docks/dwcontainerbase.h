@@ -33,7 +33,7 @@ protected:
 
 private:
     ui::item::base::WBase *m_containerBase;
-    Ui::DWContainerBase *ui;
+    Ui::DWContainerBase *m_ui;
 };
 
 }

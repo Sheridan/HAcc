@@ -21,6 +21,7 @@ WIcon::~WIcon()
 
 void WIcon::init()
 {
+    m_connected = false;
     setEmptyText(tr("--"));
 }
 

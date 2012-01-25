@@ -1,13 +1,13 @@
 #include "csingletone.h"
 
-CSingleTone *_instance = NULL;
+CSingleTone *singletone_instance = NULL;
 
 CSingleTone::CSingleTone()
 {
-    _instance = this;
-    HACC_DEBUG_CLASS_INFO("new CSingleTone [" << _instance << "]");
+    singletone_instance = this;
+    HACC_DEBUG_CLASS_INFO("new CSingleTone [" << singletone_instance << "]");
 
-    _application = NULL;
+    m_application = NULL;
     init_options();
     init_db();
     init_tags();
@@ -46,28 +46,28 @@ CSingleTone::~CSingleTone()
     destroy_enumeratedThingTypes();
     destroy_db();
     destroy_options();
-    delete _application;
-    HACC_DEBUG_CLASS_INFO("delete CSingleTone [" << _instance << "]");
+    delete m_application;
+    HACC_DEBUG_CLASS_INFO("delete CSingleTone [" << singletone_instance << "]");
 }
 
 CSingleTone *CSingleTone::instance()
 {
-    if(_instance)
+    if(singletone_instance)
     {
-        HACC_DEBUG_CLASS_INFO("->CSingleTone [" << _instance << "]");
-        return _instance;
+        HACC_DEBUG_CLASS_INFO("->CSingleTone [" << singletone_instance << "]");
+        return singletone_instance;
     }
     return new CSingleTone();
 }
 
 void CSingleTone::setCommandLine(int & argc, char ** argv)
 {
-    _application = new CApplication(argc, argv);
+    m_application = new CApplication(argc, argv);
 }
 
 CApplication *CSingleTone::application()
 {
-    HACC_DEBUG_CLASS_INFO("->CApplication [" << _application << "]");
-    return _application;
+    HACC_DEBUG_CLASS_INFO("->CApplication [" << m_application << "]");
+    return m_application;
 }
 

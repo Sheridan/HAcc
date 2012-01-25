@@ -29,7 +29,7 @@ protected:
 
 private:
     Ui::DIcons *m_ui;
-    hacc::TDBID selectedId;
+    hacc::TDBID m_selectedId;
 
 private slots:
     void selected(hacc::TDBID id);

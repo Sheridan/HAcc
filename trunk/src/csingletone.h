@@ -30,19 +30,19 @@
   */
 #define HACC_SIMPLE_ST(_class, _variable) \
 private:\
-    _class *_##_variable; \
-    void init_##_variable()    { _##_variable = NULL;                     } \
-    void destroy_##_variable() { HACC_DEBUG_CLASS_INFO("delete " #_class); delete _##_variable; init_##_variable(); } \
+    _class *m_##_variable; \
+    void init_##_variable()    { m_##_variable = NULL;                     } \
+    void destroy_##_variable() { HACC_DEBUG_CLASS_INFO("delete " #_class); delete m_##_variable; init_##_variable(); } \
 public: \
     _class *_variable () \
     { \
-        if(!_##_variable) \
+        if(!m_##_variable) \
         { \
-            _##_variable = new _class(); \
+            m_##_variable = new _class(); \
             HACC_DEBUG_CLASS_INFO("new " #_class); \
         } \
-        HACC_DEBUG_CLASS_INFO("->" #_class << " [" << _##_variable << "]"); \
-        return _##_variable; \
+        HACC_DEBUG_CLASS_INFO("->" #_class << " [" << m_##_variable << "]"); \
+        return m_##_variable; \
     }
 
 //! Объявляет и реализует преинициализированный синглтон
@@ -51,14 +51,14 @@ public: \
   Создает объект при вызове конструктора CSingleTone. Его и использует впоследствии.
   */
 #define HACC_PRECREATED_ST(_class, _variable) \
-    _class *_##_variable; \
-    void init_##_variable()    { _##_variable = new _class(); } \
-    void destroy_##_variable() { delete _##_variable;         } \
+    _class *m_##_variable; \
+    void init_##_variable()    { m_##_variable = new _class(); } \
+    void destroy_##_variable() { delete m_##_variable;         } \
 public: \
     _class *_variable () \
     { \
-        HACC_DEBUG_CLASS_INFO("->" #_class << " [" << _##_variable << "]"); \
-        return _##_variable; \
+        HACC_DEBUG_CLASS_INFO("->" #_class << " [" << m_##_variable << "]"); \
+        return m_##_variable; \
     }
 
 //! Синглтон приложения.
@@ -88,7 +88,7 @@ class CSingleTone
     //! @}
 
 private:
-    CApplication *_application;
+    CApplication *m_application;
 
 public:
     CSingleTone();

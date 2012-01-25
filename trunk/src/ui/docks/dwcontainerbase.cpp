@@ -12,9 +12,9 @@ namespace dock
 
 DWContainerBase::DWContainerBase(const QString &title, const QIcon &icon, QWidget *parent) :
     QDockWidget(parent),
-    ui(new Ui::DWContainerBase)
+    m_ui(new Ui::DWContainerBase)
 {
-    ui->setupUi(this);
+    m_ui->setupUi(this);
     setWindowTitle(title);
     setWindowIcon(icon);
     m_containerBase = NULL;
@@ -23,7 +23,7 @@ DWContainerBase::DWContainerBase(const QString &title, const QIcon &icon, QWidge
 DWContainerBase::~DWContainerBase()
 {
     delete m_containerBase;
-    delete ui;
+    delete m_ui;
 }
 
 void DWContainerBase::init()
