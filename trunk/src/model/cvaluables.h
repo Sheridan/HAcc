@@ -27,7 +27,7 @@ public:
     CValuables();
     ~CValuables();
     void remove(const hacc::TDBID & id);
-    void execRemove(const QString &where, const QVariantList &parameters = QVariantList());
+    void remove(const hacc::TIDList & idList);
     void edit(const hacc::TDBID & id);
     void tagsEdit(const hacc::TDBID & id);
     bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
@@ -47,6 +47,7 @@ private:
     QAction * generateAction(base::EActionsTypes atype, QObject *reciever, const char * method);
     hacc::TDBID maxDBID();
     QString idToSerial(const hacc::TDBID & valuableID); //!< Генерирует виртуальный серийный номер из идентификатора записи
+    void execRemove(const QString &where, const QVariantList &parameters = QVariantList());
 };
 
 }

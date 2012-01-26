@@ -1,6 +1,7 @@
 #include "cmovements.h"
 #include "titemtagsedit.h"
 #include "icons.h"
+#include "convert.h"
 #include "st.h"
 
 #include "ttagcontainer.h"
@@ -59,15 +60,25 @@ void CMovements::remove(const hacc::TDBID & id)
 //    }
 }
 
-void CMovements::execRemove(const QString &where, const QVariantList &parameters)
+void CMovements::remove(const hacc::TIDList & idList)
 {
-    hacc::TIDList idList = HACC_DB->listID("movements", where, parameters);
-    HACC_DB->exec("delete from movements where " + where, parameters);
+    HACC_DB->exec("delete from movements where id in (" + tools::convert::idListToString(idList) + ")");
     foreach(hacc::TDBID id, idList)
     {
+        //! \todo проследить, чтобы удалились перемещения
         detachTags(id);
         emit removed(id);
     }
+}
+
+void CMovements::removeValuableMovements(const hacc::TIDList & idListValuables)
+{
+    remove(HACC_DB->listID("movements", "valuable_id in (" + tools::convert::idListToString(idListValuables) + ")"));
+}
+
+void CMovements::execRemove(const QString &where, const QVariantList &parameters)
+{
+    remove(HACC_DB->listID("movements", where, parameters));
 }
 
 

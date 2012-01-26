@@ -1,5 +1,6 @@
 #include "convert.h"
 #include <QRegExp>
+#include <QStringList>
 
 namespace tools
 {
@@ -33,6 +34,15 @@ hacc::TAmount stringToAmount(QString string)
             );
 }
 
+QString idListToString(const hacc::TIDList & idList)
+{
+    QStringList ids;
+    foreach(hacc::TDBID id, idList)
+    {
+        ids.append(QString::number(id));
+    }
+    return ids.join(",");
+}
 
 }
 }

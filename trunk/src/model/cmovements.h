@@ -27,7 +27,8 @@ public:
     CMovements();
     ~CMovements();
     void remove(const hacc::TDBID & id);
-    void execRemove(const QString &where, const QVariantList &parameters = QVariantList());
+    void remove(const hacc::TIDList & idList);
+    void removeValuableMovements(const hacc::TIDList & idListValuables);
     void edit(const hacc::TDBID & id);
     void tagsEdit(const hacc::TDBID & id);
     bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
@@ -54,6 +55,7 @@ private:
     QAction * generateAction(base::EActionsTypes atype, QObject *reciever, const char * method);
     hacc::TDBID maxDBID();
     void execMoveGift(const int &movementType);
+    void execRemove(const QString &where, const QVariantList &parameters = QVariantList());
 };
 
 }

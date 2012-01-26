@@ -1,6 +1,7 @@
 #include "cvaluables.h"
 #include "titemtagsedit.h"
 #include "icons.h"
+#include "convert.h"
 #include "st.h"
 
 #include "ttagcontainer.h"
@@ -84,14 +85,7 @@ void CValuables::thingRemoved(const hacc::TDBID & thingID)
 
 void CValuables::execRemove(const QString &where, const QVariantList &parameters)
 {
-    hacc::TIDList idList = HACC_DB->listID("valuables", where, parameters);
-    HACC_DB->exec("delete from valuables where " + where, parameters);
-    foreach(hacc::TDBID id, idList)
-    {
-        //! \todo проследить, чтобы удалились перемещения
-        detachTags(id);
-        emit removed(id);
-    }
+    remove(HACC_DB->listID("valuables", where, parameters));
 }
 
 /**
@@ -125,6 +119,16 @@ void CValuables::remove(const hacc::TDBID & id)
 //    }
 }
 
+void CValuables::remove(const hacc::TIDList & idList)
+{
+    HACC_DB->exec("delete from valuables where id in (" + tools::convert::idListToString(idList) + ")");
+    foreach(hacc::TDBID id, idList)
+    {
+        //! \todo проследить, чтобы удалились перемещения
+        detachTags(id);
+        emit removed(id);
+    }
+}
 
 void CValuables::edit(const hacc::TDBID & id)
 {

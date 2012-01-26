@@ -22,6 +22,8 @@ QString datetimeToTimeString(const QDateTime &datetime);                   //!< 
 
 hacc::TMoney  stringToMoney (QString string);                              //!< Строка в деньги
 hacc::TAmount stringToAmount(QString string);                              //!< Строка в количество
+
+QString idListToString(const hacc::TIDList & idList);                      //!< Массив идентификаторов в строку
 }
 }
 #endif // CONVERT_H

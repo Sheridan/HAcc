@@ -78,12 +78,18 @@ hacc::TDBID CEnumeratedThingTypes::maxDBID() { return HACC_DB->nextID("thing_enu
 
 bool CEnumeratedThingTypes::checkSpetialEnumeratedType(const hacc::TDBID &typeID)
 {
-    return typeID <= 3;
+    return typeID <= HACC_THING_SPETIAL_ENUMERATE_MAX;
 }
 
 bool CEnumeratedThingTypes::checkDivisibleEnumeratedType(const hacc::TDBID &typeID)
 {
-    return typeID >= 2 && typeID <=3;
+    switch(typeID)
+    {
+        case HACC_THING_SPETIAL_ENUMERATE_ITEMS:
+        case HACC_THING_SPETIAL_ENUMERATE_TIMES:
+            return true;
+    }
+    return false;
 }
 
 QAction * CEnumeratedThingTypes::generateAction(base::EActionsTypes atype, QObject *reciever, const char * method)

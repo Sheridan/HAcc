@@ -113,20 +113,13 @@ void CTransactions::editThingBuyTransaction(const hacc::TDBID & transactionID)
                 // найти количество ценностей без дополнительных перемещений (допустимо одно, покупка) --- в диалоге, установить минимум
                 if(dialog->amount() < oldAmount)
                 {
-                    hacc::TIDList valuablesList = HACC_VALUABLES->listVithoutMoving("valuables.transaction_id=?", QVariantList() << transactionID);
-                    QStringList ids;
-                    int deleteCount = oldAmount - dialog->amount();
-                    while(deleteCount)
-                    {
-                        ids.append(QString::number(valuablesList.takeFirst()));
-                        deleteCount--;
-                    }
-                    QString strIDs = ids.join(",");
+                    hacc::TIDList valuablesList = HACC_VALUABLES->listVithoutMoving("valuables.transaction_id=?", QVariantList() << transactionID)
+                                                  .mid(0, oldAmount - dialog->amount());
 
                      // удалить из ценностей все связанные ценности
-                    HACC_VALUABLES->execRemove("id in (" + strIDs + ")");
+                    HACC_VALUABLES->remove(valuablesList);
                     // удалить из перемещений все связанные перемещения
-                    HACC_MOVEMENTS->execRemove("valuable_id in (" + strIDs + ")");
+                    HACC_MOVEMENTS->removeValuableMovements(valuablesList);
                 }
                 else
                 {

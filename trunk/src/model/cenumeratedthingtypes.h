@@ -6,15 +6,16 @@
 
 #include "cbases.h"
 
-#define HACC_THING_ENUMERATE_NA    1
-#define HACC_THING_ENUMERATE_ITEMS 2
-#define HACC_THING_ENUMERATE_TIMES 3
+#define HACC_THING_SPETIAL_ENUMERATE_NA    1
+#define HACC_THING_SPETIAL_ENUMERATE_ITEMS 2
+#define HACC_THING_SPETIAL_ENUMERATE_TIMES 3
+#define HACC_THING_SPETIAL_ENUMERATE_MAX HACC_THING_SPETIAL_ENUMERATE_TIMES
 
 namespace hacc
 {
 namespace model
 {
-//! Синглон перечисляемых типов вещей
+//! Синглтон перечисляемых типов вещей
 /*!
  Например, штуки, литры.
  Управляет перечисляемыми типами. Непосредственно управляет таблицами
