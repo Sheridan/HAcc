@@ -32,6 +32,10 @@ public:
 protected:
     virtual void sourceContractorUpdated();
     virtual void sourceContractorRemoved();
+
+private:
+    void contractorUpdated();
+    void contractorRemoved();
 };
 
 }

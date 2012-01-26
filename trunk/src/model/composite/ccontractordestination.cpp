@@ -18,8 +18,11 @@ QAction *CContractorDestination::destinationContractorEditAction    () { return 
 QAction *CContractorDestination::destinationCcontractorRemoveAction () { return removeAction(); }
 QAction *CContractorDestination::destinationContractorTagsEditAction() { return tagsEditAction(); }
 
-void CContractorDestination::destinationContractorUpdated() { contractorUpdated(); }
-void CContractorDestination::destinationContractorRemoved() { contractorRemoved(); }
+void CContractorDestination::contractorUpdated() { destinationContractorUpdated(); }
+void CContractorDestination::contractorRemoved() { destinationContractorRemoved(); }
+
+void CContractorDestination::destinationContractorUpdated() { }
+void CContractorDestination::destinationContractorRemoved() { }
 
 }
 }

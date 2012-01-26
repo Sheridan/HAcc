@@ -31,6 +31,9 @@ public:
 protected:
     virtual void destinationContractorUpdated();
     virtual void destinationContractorRemoved();
+private:
+    virtual void contractorUpdated();
+    virtual void contractorRemoved();
 };
 
 }

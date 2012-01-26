@@ -19,8 +19,11 @@ QAction *CContractorSource::sourceContractorRemoveAction  () { return removeActi
 QAction *CContractorSource::sourceContractorTagsEditAction() { return tagsEditAction(); }
 
 
-void CContractorSource::sourceContractorUpdated() { contractorUpdated(); }
-void CContractorSource::sourceContractorRemoved() { contractorRemoved(); }
+void CContractorSource::contractorUpdated() { sourceContractorUpdated(); }
+void CContractorSource::contractorRemoved() { sourceContractorRemoved(); }
+
+void CContractorSource::sourceContractorUpdated() { }
+void CContractorSource::sourceContractorRemoved() { }
 
 }
 }
