@@ -127,13 +127,13 @@ void CTransactions::editThingBuyTransaction(const hacc::TDBID & transactionID)
                     QSqlQuery q = HACC_DB->query("select  "
                                           /* 0*/ "src_acc.contractor_id as src_contractor_id, "
                                           /* 1*/ "dst_acc.contractor_id as dst_contractor_id, "
-                                          /* 2*/ "transactions_pool.date_time, "
+                                          /* 2*/ "transaction_pool.date_time, "
                                           /* 3*/ "transactions_things.thing_id "
                                                  "from transactions "
                                                  "left join transactions_things on transactions_things.id=transactions.id "
-                                                 "left join transactions_pool on transactions_pool.id=transactions.pool_id "
-                                                 "left join accounts src_acc on src_acc.id=transactions_pool.source_account_id "
-                                                 "left join accounts dst_acc on dst_acc.id=transactions_pool.destination_account_id "
+                                                 "left join transaction_pool on transaction_pool.id=transactions.pool_id "
+                                                 "left join accounts src_acc on src_acc.id=transaction_pool.source_account_id "
+                                                 "left join accounts dst_acc on dst_acc.id=transaction_pool.destination_account_id "
                                                  "where transactions.id=?", QVariantList() << transactionID);
                     if(HACC_QUERY_DATA_AVIALABLE(q))
                     {

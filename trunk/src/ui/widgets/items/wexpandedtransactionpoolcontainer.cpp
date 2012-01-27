@@ -73,11 +73,11 @@ void WExpandedTransactionPoolContainer::refresh(const hacc::TDBID &createdID)
     //! \todo Добавить валюту в сумму
     if(!createdID) { cleanItems(); }
     QVariantList parametres;
-    QString where = HACC_TRANSACTIONS_POOLS->whereTagsInPurposeTags();// "transactions_pools_tags.tag_id in (4,5,6,7,8,9)";
+    QString where = HACC_TRANSACTIONS_POOLS->whereTagsInPurposeTags();// "transaction_pools_tags.tag_id in (4,5,6,7,8,9)";
     QString groupBy = " transactions.pool_id ";
     QString sql =  "select "
-            /* 0*/ "transactions_pool.id, "
-            /* 1*/ "transactions_pool.date_time, "
+            /* 0*/ "transaction_pool.id, "
+            /* 1*/ "transaction_pool.date_time, "
             /* 2*/ "count(transactions.id) as trcnt, "
             /* 3*/ "sum(transactions.money) as trsum, "
             /* 4*/ "accsrc.id as accsrc_id, "
@@ -92,18 +92,18 @@ void WExpandedTransactionPoolContainer::refresh(const hacc::TDBID &createdID)
             /*13*/ "condst.id as condst_id, "
             /*14*/ "condst.name as condst_name, "
             /*15*/ "condst.icon_id as condst_icon_id, "
-            /*16*/ "transactions_pools_tags.tag_id "
-            "from transactions_pool "
-            "left join transactions on transactions.pool_id=transactions_pool.id "
-            "left join accounts accsrc on transactions_pool.source_account_id=accsrc.id "
-            "left join accounts accdst on transactions_pool.destination_account_id=accdst.id "
+            /*16*/ "transaction_pools_tags.tag_id "
+            "from transaction_pool "
+            "left join transactions on transactions.pool_id=transaction_pool.id "
+            "left join accounts accsrc on transaction_pool.source_account_id=accsrc.id "
+            "left join accounts accdst on transaction_pool.destination_account_id=accdst.id "
             "left join contractors consrc on accsrc.contractor_id=consrc.id "
             "left join contractors condst on accdst.contractor_id=condst.id "
-            "left join transactions_pools_tags on transactions_pools_tags.transactions_pool_id=transactions_pool.id ";
+            "left join transaction_pools_tags on transaction_pools_tags.transaction_pool_id=transaction_pool.id ";
     if(createdID)
     {
         if(!where.isEmpty()) { where += " and "; }
-        where += "transactions_pool.id=?";
+        where += "transaction_pool.id=?";
         parametres << createdID;
     }
     if(!where.isEmpty()) { sql += " where " + where; }

@@ -1,8 +1,8 @@
 /**
   \author Горлов Максим <sheridan@sheridan-home.ru
   */
-#ifndef CTRANSACTIONSPOOLS_H
-#define CTRANSACTIONSPOOLS_H
+#ifndef CTRANSACTIONPOOLS_H
+#define CTRANSACTIONPOOLS_H
 
 #include "cbases.h"
 #include "ctagged.h"
@@ -15,17 +15,17 @@ namespace model
 //! Синглон пула транзакций
 /*!
  Управляет пулами транзакций. Непосредственно управляет таблицами
-     - transactions_pool
+     - transaction_pool
  @see CTransactionPool
 */
-class CTransactionsPools :
+class CTransactionPools :
         public base::CBases,
         public hacc::model::CTagged
 {
     Q_OBJECT
 public:
-    CTransactionsPools();
-    ~CTransactionsPools();
+    CTransactionPools();
+    ~CTransactionPools();
     void remove(const hacc::TDBID & id);
     void edit(const hacc::TDBID & id);
     void tagsEdit(const hacc::TDBID & id);
@@ -65,4 +65,4 @@ private slots:
 
 }
 }
-#endif // CTRANSACTIONSPOOLS_H
+#endif // CTRANSACTIONPOOLS_H

@@ -31,13 +31,13 @@ FTransactionMoneyEdit::FTransactionMoneyEdit(const hacc::TDBID &id, const int &t
     if(m_transactionPoolType == HACC_TAG_ID_COMMISSION)
     {
         QSqlQuery qp = HACC_DB->query(QString("select "
-                                     "transactions_pools_tags.tag_id, "
-                                     "transactions_pool.id "
+                                     "transaction_pools_tags.tag_id, "
+                                     "transaction_pool.id "
                                      "from transactions "
                                      "left join  transactions_commisions on transactions_commisions.id=transactions.id "
-                                     "left join  transactions_pool on transactions_pool.id=transactions_commisions.base_pool_id "
-                                     "left join transactions_pools_tags on transactions_pools_tags.transactions_pool_id = transactions_pool.id "
-                                     "where transactions.pool_id=? and transactions_pools_tags.tag_id in (%0, %1, %2)")
+                                     "left join  transaction_pool on transaction_pool.id=transactions_commisions.base_pool_id "
+                                     "left join transaction_pools_tags on transaction_pools_tags.transaction_pool_id = transaction_pool.id "
+                                     "where transactions.pool_id=? and transaction_pools_tags.tag_id in (%0, %1, %2)")
                                      .arg(HACC_TAG_ID_INCOMING)
                                      .arg(HACC_TAG_ID_OUTGOING)
                                      .arg(HACC_TAG_ID_TRANSFER),
@@ -63,7 +63,7 @@ FTransactionMoneyEdit::FTransactionMoneyEdit(const hacc::TDBID &id, const int &t
                            /*9*/ "transactions_commisions.commission_value, "
                            /*10*/"comm_t.id as comm_t_id, "
                            /*11*/"base_t.id as base_t_id "
-                                 "from transactions_pool base_tp "
+                                 "from transaction_pool base_tp "
                                  "left join transactions base_t on base_t.pool_id = base_tp.id "
                                  "left join transactions_commisions on transactions_commisions.base_pool_id = base_tp.id "
                                  "left join transactions comm_t on comm_t.id = transactions_commisions.id "

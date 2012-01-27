@@ -35,7 +35,7 @@ void WExpandedTransactionPoolThingItem::buildExpanderUIEvent()
                     HACC_ICONS->icon(tools::icons::iTransaction),
                     QObject::tr("Transactions"));
     }
-    appendTagsTab < ui::tag::TTagContainer <hacc::model::CTransactionPool, hacc::model::CTransactionsPools> >();
+    appendTagsTab < ui::tag::TTagContainer <hacc::model::CTransactionPool, hacc::model::CTransactionPools> >();
 }
 
 }

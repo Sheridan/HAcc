@@ -82,7 +82,7 @@ class CSingletone
     HACC_SIMPLE_ST(hacc::model::CContractors         , contractors         )
     HACC_SIMPLE_ST(hacc::model::CTransactions        , transactions        )
     HACC_SIMPLE_ST(hacc::model::CManufacturers       , manufacturers       )
-    HACC_SIMPLE_ST(hacc::model::CTransactionsPools   , transactionsPools   )
+    HACC_SIMPLE_ST(hacc::model::CTransactionPools   , transactionsPools   )
     HACC_SIMPLE_ST(hacc::model::CEnumeratedThingTypes, enumeratedThingTypes)
     HACC_PRECREATED_ST(tools::options::COptions      , options             )
     //! @}

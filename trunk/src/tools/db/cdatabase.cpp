@@ -392,14 +392,14 @@ void CDatabase::createDatabase()
 //######################################################################################################
 //## Пулы транзакций
 //######################################################################################################
-    HACC_DB_CREATE_TABLE_BEGIN(transactions_pool)
+    HACC_DB_CREATE_TABLE_BEGIN(transaction_pool)
             HACC_DB_ID_FIELD                                            HACC_DB_FIELD_DELIMITER // id
             HACC_DB_DATETIME(date_time) HACC_DB_FIELD_NOT_NULL          HACC_DB_FIELD_DELIMITER // Дата и время транзакций
             HACC_DB_ID(source_account_id)                               HACC_DB_FIELD_DELIMITER // Счет (id), с которого списываются деньги
             HACC_DB_ID(destination_account_id)                                                  // Счет (id), на который зачисляются деньги
     HACC_DB_CREATE_TABLE_END;
-    HACC_DB_CREATE_INDEX(transactions_pool, source_account_id);
-    HACC_DB_CREATE_INDEX(transactions_pool, destination_account_id);
+    HACC_DB_CREATE_INDEX(transaction_pool, source_account_id);
+    HACC_DB_CREATE_INDEX(transaction_pool, destination_account_id);
 
 //######################################################################################################
 //## Транзакции
@@ -484,7 +484,7 @@ void CDatabase::createDatabase()
     HACC_DB_CREATE_TAGS_TABLE(contractor);
     HACC_DB_CREATE_TAGS_TABLE(transaction);
     HACC_DB_CREATE_TAGS_TABLE(manufacturer);
-    HACC_DB_CREATE_TAGS_TABLE(transactions_pool);
+    HACC_DB_CREATE_TAGS_TABLE(transaction_pool);
 
 //######################################################################################################
 //## Опции БД

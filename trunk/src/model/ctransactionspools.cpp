@@ -14,26 +14,26 @@ namespace hacc
 namespace model
 {
 
-CTransactionsPools::CTransactionsPools()
+CTransactionPools::CTransactionPools()
     : base::CBases(),
-    hacc::model::CTagged(HACC_TAG_TABLE_NAME(transactions_pool), HACC_TAG_TABLE_ID_NAME(transactions_pool))
+    hacc::model::CTagged(HACC_TAG_TABLE_NAME(transaction_pool), HACC_TAG_TABLE_ID_NAME(transaction_pool))
 {
     connect(HACC_TRANSACTIONS, SIGNAL(updated(const hacc::TDBID &)), this, SLOT(transactionUpdate(const hacc::TDBID &)));
     connect(HACC_TRANSACTIONS, SIGNAL(removed(const hacc::TDBID &)), this, SLOT(transactionUpdate(const hacc::TDBID &)));
     connect(HACC_TRANSACTIONS, SIGNAL(created(const hacc::TDBID &)), this, SLOT(transactionUpdate(const hacc::TDBID &)));
 }
 
-CTransactionsPools::~CTransactionsPools()
+CTransactionPools::~CTransactionPools()
 {}
 
-void CTransactionsPools::add()
+void CTransactionPools::add()
 {}
 
-void CTransactionsPools::remove(const hacc::TDBID & id)
+void CTransactionPools::remove(const hacc::TDBID & id)
 {
     if(id > 0)
     {
-        QSqlQuery q = HACC_DB->query("select date_time from transactions_pool where id=?", QVariantList() << id);
+        QSqlQuery q = HACC_DB->query("select date_time from transaction_pool where id=?", QVariantList() << id);
         q.next();
         if(QMessageBox::question(
                 HACC_WINDOW,
@@ -43,7 +43,7 @@ void CTransactionsPools::remove(const hacc::TDBID & id)
                 QMessageBox::Yes | QMessageBox::No)
             == QMessageBox::Yes)
         {
-            HACC_DB->exec("delete from transactions_pool where id=?", QVariantList() << id);
+            HACC_DB->exec("delete from transaction_pool where id=?", QVariantList() << id);
             QSqlQuery q = HACC_DB->query("select "
                                          "transactions.pool_id "
                                          "from transactions "
@@ -52,7 +52,7 @@ void CTransactionsPools::remove(const hacc::TDBID & id)
             if(HACC_QUERY_DATA_AVIALABLE(q) && !q.value(0).isNull())
             {
                     //! \todo Добавить действие, если запрос не вернет данных
-                HACC_DB->exec("delete from transactions_pool where id=?", QVariantList() << HACC_DB_2_DBID(q, 0));
+                HACC_DB->exec("delete from transaction_pool where id=?", QVariantList() << HACC_DB_2_DBID(q, 0));
             }
 
             HACC_TRANSACTIONS->cleanAfterRemoveTransactionPool(id);
@@ -61,15 +61,15 @@ void CTransactionsPools::remove(const hacc::TDBID & id)
     }
 }
 
-void CTransactionsPools::edit(const hacc::TDBID & id)
+void CTransactionPools::edit(const hacc::TDBID & id)
 {
     if(id > 0)
     {
         int rType = HACC_DB->queryCell("select "
-                                       "transactions_pools_tags.tag_id "
-                                       "from transactions_pool "
-                                       "left join transactions_pools_tags on transactions_pools_tags.transactions_pool_id = transactions_pool.id "
-                                       "where transactions_pool.id=? and " + whereTagsInPurposeTags(), 0,
+                                       "transaction_pools_tags.tag_id "
+                                       "from transaction_pool "
+                                       "left join transaction_pools_tags on transaction_pools_tags.transaction_pool_id = transaction_pool.id "
+                                       "where transaction_pool.id=? and " + whereTagsInPurposeTags(), 0,
                                        QVariantList() << id).toInt();
         switch(rType)
         {
@@ -79,7 +79,7 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
                 ui::form::FTransactionPoolThingEdit *dialog = new ui::form::FTransactionPoolThingEdit(id, rType);
                 if(dialog->exec() == QDialog::Accepted)
                 {
-                    HACC_DB->exec("update transactions_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
+                    HACC_DB->exec("update transaction_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
                                   QVariantList()
                                   << dialog->datetime()
                                   << dialog->buyerAccountID()
@@ -98,7 +98,7 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
                 ui::form::FTransactionMoneyEdit *dialog = new ui::form::FTransactionMoneyEdit(id, rType);
                 if(dialog->exec() == QDialog::Accepted)
                 {
-                    HACC_DB->exec("update transactions_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
+                    HACC_DB->exec("update transaction_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
                                   QVariantList() << dialog->datetime() << dialog->sourceAccountID() << dialog->destinationAccountID() << dialog->basePoolID());
                     bool reallyHasCommission = dialog->commission() == 0 ? false : dialog->hasCommission();
                     hacc::TDBID commissionPoolID = dialog->commissionPoolID();
@@ -106,7 +106,7 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
                     {
                         if(commissionPoolID)
                         {
-                            HACC_DB->exec("update transactions_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
+                            HACC_DB->exec("update transaction_pool set date_time=?,source_account_id=?,destination_account_id=? where id=?",
                                           QVariantList() << dialog->datetime() << dialog->sourceAccountID() << dialog->commissionTo() << commissionPoolID);
                         }
                         else
@@ -116,7 +116,7 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
                     }
                     else
                     {
-                        HACC_DB->exec("delete from transactions_pool where id=?", QVariantList() << commissionPoolID);
+                        HACC_DB->exec("delete from transaction_pool where id=?", QVariantList() << commissionPoolID);
                     }
                     HACC_TRANSACTIONS->editTransferTransaction(dialog->baseTransactionID()       , dialog->commissionTransactionID(),
                                                                dialog->basePoolID()              , commissionPoolID,
@@ -136,7 +136,7 @@ void CTransactionsPools::edit(const hacc::TDBID & id)
     }
 }
 
-void CTransactionsPools::transactionUpdate(const hacc::TDBID & transactionId)
+void CTransactionPools::transactionUpdate(const hacc::TDBID & transactionId)
 {
     hacc::TDBID poolId = HACC_DB->queryCell("select pool_id from transactions where id-?",
                                             0,
@@ -147,17 +147,17 @@ void CTransactionsPools::transactionUpdate(const hacc::TDBID & transactionId)
     }
 }
 
-hacc::TDBID CTransactionsPools::execAddTransactionPool(const int &transactionPoolType, const QDateTime &datetime,
+hacc::TDBID CTransactionPools::execAddTransactionPool(const int &transactionPoolType, const QDateTime &datetime,
                                                        const hacc::TDBID &source     , const hacc::TDBID &destination)
 {
     hacc::TDBID newID = nextID();
-    HACC_DB->exec("insert into transactions_pool (id,date_time,source_account_id,destination_account_id) values (?,?,?,?)",
+    HACC_DB->exec("insert into transaction_pool (id,date_time,source_account_id,destination_account_id) values (?,?,?,?)",
                   QVariantList() << newID << datetime << source << destination);
     attachTag(transactionPoolType, newID);
     return newID;
 }
 
-void CTransactionsPools::execCreateTransactionPoolMoney(const int &transactionPoolType)
+void CTransactionPools::execCreateTransactionPoolMoney(const int &transactionPoolType)
 {
     ui::form::FTransactionMoneyEdit *dialog = new ui::form::FTransactionMoneyEdit(transactionPoolType);
     if(dialog->exec() == QDialog::Accepted)
@@ -182,7 +182,7 @@ void CTransactionsPools::execCreateTransactionPoolMoney(const int &transactionPo
     delete dialog;
 }
 
-void CTransactionsPools::execCreateTransactionPoolThing(const int &transactionPoolType)
+void CTransactionPools::execCreateTransactionPoolThing(const int &transactionPoolType)
 {
     ui::form::FTransactionPoolThingEdit *dialog = new ui::form::FTransactionPoolThingEdit(transactionPoolType);
     if(dialog->exec() == QDialog::Accepted)
@@ -202,23 +202,23 @@ void CTransactionsPools::execCreateTransactionPoolThing(const int &transactionPo
     delete dialog;
 }
 
-void CTransactionsPools::addTransactionSell         () { execCreateTransactionPoolThing(HACC_TAG_ID_SELLING ); }
-void CTransactionsPools::addTransactionBuy          () { execCreateTransactionPoolThing(HACC_TAG_ID_BUYING  ); }
-void CTransactionsPools::addTransactionMoneyIncoming() { execCreateTransactionPoolMoney(HACC_TAG_ID_INCOMING); }
-void CTransactionsPools::addTransactionMoneyOutgoing() { execCreateTransactionPoolMoney(HACC_TAG_ID_OUTGOING); }
-void CTransactionsPools::addTransactionLocal        () { execCreateTransactionPoolMoney(HACC_TAG_ID_TRANSFER); }
+void CTransactionPools::addTransactionSell         () { execCreateTransactionPoolThing(HACC_TAG_ID_SELLING ); }
+void CTransactionPools::addTransactionBuy          () { execCreateTransactionPoolThing(HACC_TAG_ID_BUYING  ); }
+void CTransactionPools::addTransactionMoneyIncoming() { execCreateTransactionPoolMoney(HACC_TAG_ID_INCOMING); }
+void CTransactionPools::addTransactionMoneyOutgoing() { execCreateTransactionPoolMoney(HACC_TAG_ID_OUTGOING); }
+void CTransactionPools::addTransactionLocal        () { execCreateTransactionPoolMoney(HACC_TAG_ID_TRANSFER); }
 
-void CTransactionsPools::tagsEdit(const hacc::TDBID & id)
+void CTransactionPools::tagsEdit(const hacc::TDBID & id)
 {
-    ui::form::TItemTagsEdit< ui::tag::TTagContainer < CTransactionPool, CTransactionsPools > > *dialog =
-            new ui::form::TItemTagsEdit< ui::tag::TTagContainer < CTransactionPool, CTransactionsPools > >(id);
+    ui::form::TItemTagsEdit< ui::tag::TTagContainer < CTransactionPool, CTransactionPools > > *dialog =
+            new ui::form::TItemTagsEdit< ui::tag::TTagContainer < CTransactionPool, CTransactionPools > >(id);
     if(dialog->exec() == QDialog::Accepted)
     {
     }
     delete dialog;
 }
 
-bool CTransactionsPools::checkSpecialPurposeTag(const hacc::TDBID &tagID)
+bool CTransactionPools::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     switch(tagID)
     {
@@ -234,7 +234,7 @@ bool CTransactionsPools::checkSpecialPurposeTag(const hacc::TDBID &tagID)
     return false;
 }
 
-QString CTransactionsPools::purposeTagsIDString()
+QString CTransactionPools::purposeTagsIDString()
 {
     return QString("%0,%1,%2,%3,%4,%5,%6")
             .arg(HACC_TAG_ID_BUYING    )
@@ -246,17 +246,17 @@ QString CTransactionsPools::purposeTagsIDString()
             .arg(HACC_TAG_ID_TAX       );
 }
 
-       bool CTransactionsPools::hasPurposeTags() { return true; }
-hacc::TDBID CTransactionsPools::maxDBID       () { return HACC_DB->nextID("transactions_pool"); }
+       bool CTransactionPools::hasPurposeTags() { return true; }
+hacc::TDBID CTransactionPools::maxDBID       () { return HACC_DB->nextID("transaction_pool"); }
 
-QAction *CTransactionsPools::addAction                        () { return CBases::addAction(0, this, SLOT(add())); }
-QAction *CTransactionsPools::addTransactionSellAction         () { return constructAction(base::atTransactionSell         , 0, this, SLOT(addTransactionSell())         ); }
-QAction *CTransactionsPools::addTransactionBuyAction          () { return constructAction(base::atTransactionBuy          , 0, this, SLOT(addTransactionBuy())          ); }
-QAction *CTransactionsPools::addTransactionMoneyIncomingAction() { return constructAction(base::atTransactionMoneyIncoming, 0, this, SLOT(addTransactionMoneyIncoming())); }
-QAction *CTransactionsPools::addTransactionMoneyOutgoingAction() { return constructAction(base::atTransactionMoneyOutgoing, 0, this, SLOT(addTransactionMoneyOutgoing())); }
-QAction *CTransactionsPools::addTransactionLocalAction        () { return constructAction(base::atTransactionLocal        , 0, this, SLOT(addTransactionLocal())        ); }
+QAction *CTransactionPools::addAction                        () { return CBases::addAction(0, this, SLOT(add())); }
+QAction *CTransactionPools::addTransactionSellAction         () { return constructAction(base::atTransactionSell         , 0, this, SLOT(addTransactionSell())         ); }
+QAction *CTransactionPools::addTransactionBuyAction          () { return constructAction(base::atTransactionBuy          , 0, this, SLOT(addTransactionBuy())          ); }
+QAction *CTransactionPools::addTransactionMoneyIncomingAction() { return constructAction(base::atTransactionMoneyIncoming, 0, this, SLOT(addTransactionMoneyIncoming())); }
+QAction *CTransactionPools::addTransactionMoneyOutgoingAction() { return constructAction(base::atTransactionMoneyOutgoing, 0, this, SLOT(addTransactionMoneyOutgoing())); }
+QAction *CTransactionPools::addTransactionLocalAction        () { return constructAction(base::atTransactionLocal        , 0, this, SLOT(addTransactionLocal())        ); }
 
-QAction * CTransactionsPools::generateAction(base::EActionsTypes atype, QObject *reciever, const char * method)
+QAction * CTransactionPools::generateAction(base::EActionsTypes atype, QObject *reciever, const char * method)
 {
     switch(atype)
     {

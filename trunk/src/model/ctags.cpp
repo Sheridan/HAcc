@@ -15,7 +15,7 @@ CTags::CTags() : base::CBases()
                 << HACC_TAG_TABLE_NAME(contractor)
                 << HACC_TAG_TABLE_NAME(transaction)
                 << HACC_TAG_TABLE_NAME(manufacturer)
-                << HACC_TAG_TABLE_NAME(transactions_pool);
+                << HACC_TAG_TABLE_NAME(transaction_pool);
 }
 
 CTags::~CTags()
@@ -124,14 +124,14 @@ QAction * CTags::generateAction(base::EActionsTypes atype, QObject *reciever, co
 //  count(manufacturers_tags.tag_id) as manufacturers_count,
 //  count(things_tags.tag_id) as things_count,
 //  count(transactions_tags.tag_id) as transactions_count,
-//  count(transactions_pools_tags.tag_id) as transactions_tags
+//  count(transaction_pools_tags.tag_id) as transactions_tags
 //from tags
 //left join accounts_tags on accounts_tags.tag_id=tags.id
 //left join contractors_tags on contractors_tags.tag_id=tags.id
 //left join manufacturers_tags on manufacturers_tags.tag_id=tags.id
 //left join things_tags on things_tags.tag_id=tags.id
 //left join transactions_tags on transactions_tags.tag_id=tags.id
-//left join transactions_pools_tags on transactions_pools_tags.tag_id=tags.id
+//left join transaction_pools_tags on transaction_pools_tags.tag_id=tags.id
 //group by tags.id
 
 }

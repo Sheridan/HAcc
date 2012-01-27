@@ -40,7 +40,7 @@ void WExpandedValuableContainer::refresh(const hacc::TDBID &createdID)
            /* 0*/ "valuables.id, "
            /* 1*/ "valuables.transaction_id, "
            /* 2*/ "(transactions.money /  transactions_things.amount) as cost, "
-           /* 3*/ "transactions_pool.date_time, "
+           /* 3*/ "transaction_pool.date_time, "
            /* 4*/ "things.id, "
            /* 5*/ "things.icon_id, "
            /* 6*/ "things.name, "
@@ -51,7 +51,7 @@ void WExpandedValuableContainer::refresh(const hacc::TDBID &createdID)
                   "from valuables "
                   "left join transactions on transactions.id = valuables.transaction_id "
                   "left join transactions_things on transactions_things.id=transactions.id "
-                  "left join transactions_pool on transactions_pool.id = transactions.pool_id "
+                  "left join transaction_pool on transaction_pool.id = transactions.pool_id "
                   "left join things on things.id = transactions_things.thing_id "
                   "left join manufacturers on manufacturers.id=things.manufacturer_id ";
     if(createdID)

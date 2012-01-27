@@ -28,11 +28,11 @@ FTransactionPoolThingEdit::FTransactionPoolThingEdit(const hacc::TDBID &id, int 
     m_transactions = constructContainer(id);
     init();
     QSqlQuery q = HACC_DB->query("select "
-                                 "transactions_pool.date_time, "
-                                 "transactions_pool.source_account_id, "
-                                 "transactions_pool.destination_account_id "
-                                 "from transactions_pool "
-                                 "where transactions_pool.id=?",
+                                 "transaction_pool.date_time, "
+                                 "transaction_pool.source_account_id, "
+                                 "transaction_pool.destination_account_id "
+                                 "from transaction_pool "
+                                 "where transaction_pool.id=?",
                                  QVariantList() << id);
     if(HACC_QUERY_DATA_AVIALABLE(q))
     {

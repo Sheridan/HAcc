@@ -906,7 +906,7 @@
     </message>
 </context>
 <context>
-    <name>hacc::model::CTransactionsPools</name>
+    <name>hacc::model::CTransactionPools</name>
     <message>
         <source>New transaction pool</source>
         <translation>Новый пул транзакций</translation>

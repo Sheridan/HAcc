@@ -102,14 +102,14 @@ void WExpandedTransactionPoolItem::transactionPoolUpdated()
 {
     //! \todo Добавить валюту в сумму
     QSqlQuery q = HACC_DB->query("select "
-                           /*0*/ "transactions_pool.date_time ,"
+                           /*0*/ "transaction_pool.date_time ,"
                            /*1*/ "count(transactions.id) as trcnt, "
                            /*2*/ "sum(transactions.money) as trsum, "
-                           /*3*/ "transactions_pools_tags.tag_id "
-                                 "from transactions_pool "
-                                 "left join transactions on transactions.pool_id=transactions_pool.id "
-                                 "left join transactions_pools_tags on transactions_pools_tags.transactions_pool_id=transactions_pool.id "
-                                 "where transactions_pool.id=? and " + HACC_TRANSACTIONS_POOLS->whereTagsInPurposeTags() + " "
+                           /*3*/ "transaction_pools_tags.tag_id "
+                                 "from transaction_pool "
+                                 "left join transactions on transactions.pool_id=transaction_pool.id "
+                                 "left join transaction_pools_tags on transaction_pools_tags.transaction_pool_id=transaction_pool.id "
+                                 "where transaction_pool.id=? and " + HACC_TRANSACTIONS_POOLS->whereTagsInPurposeTags() + " "
                                  "group by transactions.pool_id ",
                                  QVariantList() << hacc::model::CTransactionPool::id());
     if(HACC_QUERY_DATA_AVIALABLE(q))
