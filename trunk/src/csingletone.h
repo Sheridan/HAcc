@@ -25,7 +25,7 @@
 
 //! Объявляет и реализует обычный синглтон
 /**
-  Не забыть добавтиь в конструктор и деструктор CSingleTone init_?() и destroy_?() методы.
+  Не забыть добавтиь в конструктор и деструктор CSingletone init_?() и destroy_?() методы.
   Автоматически создает объект при первом обращении. Далее использует уже существующий
   */
 #define HACC_SIMPLE_ST(_class, _variable) \
@@ -47,8 +47,8 @@ public: \
 
 //! Объявляет и реализует преинициализированный синглтон
 /**
-  Не забыть добавтиь в конструктор и деструктор CSingleTone init_?() и destroy_?() методы.
-  Создает объект при вызове конструктора CSingleTone. Его и использует впоследствии.
+  Не забыть добавтиь в конструктор и деструктор CSingletone init_?() и destroy_?() методы.
+  Создает объект при вызове конструктора CSingletone. Его и использует впоследствии.
   */
 #define HACC_PRECREATED_ST(_class, _variable) \
     _class *m_##_variable; \
@@ -65,7 +65,7 @@ public: \
 /**
   Обеспечивает доступ к синглтонам сущностей и прочим синглтонам.
 */
-class CSingleTone
+class CSingletone
 {
     //! @name Объекты-синглтоны
     //! @{
@@ -89,16 +89,16 @@ class CSingleTone
 
 private:
     CApplication *m_application;
-    CSingleTone(const CSingleTone&);
-    CSingleTone& operator=(const CSingleTone&);
+    CSingletone(const CSingletone&);
+    CSingletone& operator=(const CSingletone&);
 
 public:
-    CSingleTone();
-    ~CSingleTone();
+    CSingletone();
+    ~CSingletone();
     void setCommandLine(int & argc, char ** argv); //!< Обработка коммандной строки
     CApplication *application();
 
-    static CSingleTone *instance();                //!< Экземпляр синглтона.
+    static CSingletone *instance();                //!< Экземпляр синглтона.
 };
 #endif
 

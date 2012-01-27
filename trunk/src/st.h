@@ -7,7 +7,7 @@
 #include "csingletone.h"
 //! @defgroup singletones Синглтоны приложения
 //! @{
-#define HACC_SINGLETONE             CSingleTone::instance()        //!< Синглтон
+#define HACC_SINGLETONE             CSingletone::instance()        //!< Синглтон
 #define HACC_ST(_variable)          HACC_SINGLETONE->_variable()   //!< Шаблон для остальных
 #define HACC_APPLICATION            HACC_SINGLETONE->application() //!< Приложение
 #define HACC_OPTIONS                HACC_ST(options)               //!< Настройки приложения
