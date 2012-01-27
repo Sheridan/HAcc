@@ -23,7 +23,7 @@ private:
     hacc::TDBID itemID();
     void commitEvent();
     hacc::model::TItemTags & itemTags();
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     TBases *m_worker;
 };
 
@@ -53,9 +53,9 @@ template <typename TBase, typename TBases>hacc::model::TItemTags & TTagContainer
     return m_worker->tags(TBase::id());
 }
 
-template <typename TBase, typename TBases>bool TTagContainer<TBase,TBases>::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+template <typename TBase, typename TBases>bool TTagContainer<TBase,TBases>::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
-    return m_worker->checkSpetialPurposeTag(tagID);
+    return m_worker->checkSpecialPurposeTag(tagID);
 }
 
 template <typename TBase, typename TBases>void TTagContainer<TBase,TBases>::setItemID(const hacc::TDBID &itemID)

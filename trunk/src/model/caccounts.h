@@ -31,7 +31,7 @@ public:
     void removeContractorAccounts(const hacc::TDBID & contractorID); //!< Удаляет счета контрагента
     void tagsEdit(const hacc::TDBID & id);
     hacc::TDBID contractor(const hacc::TDBID & accountID); //!< Возвращает контрагента - владельца счета
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();
 

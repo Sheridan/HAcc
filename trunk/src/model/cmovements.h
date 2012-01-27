@@ -31,7 +31,7 @@ public:
     void removeValuableMovements(const hacc::TIDList & idListValuables);
     void edit(const hacc::TDBID & id);
     void tagsEdit(const hacc::TDBID & id);
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();
     void thingRemoved(const hacc::TDBID & thingID);

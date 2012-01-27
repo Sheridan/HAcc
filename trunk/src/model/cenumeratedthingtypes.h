@@ -6,10 +6,10 @@
 
 #include "cbases.h"
 
-#define HACC_THING_SPETIAL_ENUMERATE_NA    1
-#define HACC_THING_SPETIAL_ENUMERATE_ITEMS 2
-#define HACC_THING_SPETIAL_ENUMERATE_TIMES 3
-#define HACC_THING_SPETIAL_ENUMERATE_MAX HACC_THING_SPETIAL_ENUMERATE_TIMES
+#define HACC_THING_SPECIAL_ENUMERATE_NA    1
+#define HACC_THING_SPECIAL_ENUMERATE_ITEMS 2
+#define HACC_THING_SPECIAL_ENUMERATE_TIMES 3
+#define HACC_THING_SPECIAL_ENUMERATE_MAX HACC_THING_SPECIAL_ENUMERATE_TIMES
 
 namespace hacc
 {
@@ -35,7 +35,7 @@ public:
     QAction * addAction();
     //! @}
     QString thingEnumerateTypeName(const hacc::TDBID &id);
-    bool checkSpetialEnumeratedType(const hacc::TDBID &typeID);
+    bool checkSpecialEnumeratedType(const hacc::TDBID &typeID);
     bool checkDivisibleEnumeratedType(const hacc::TDBID &typeID);
 
 public slots:

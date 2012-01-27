@@ -106,7 +106,7 @@ void CContractors::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CContractors::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CContractors::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     Q_UNUSED(tagID);
     return false;

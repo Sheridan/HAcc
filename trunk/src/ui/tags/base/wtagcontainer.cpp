@@ -83,7 +83,7 @@ void WTagContainer::refresh()
 void WTagContainer::appendTag(const hacc::TDBID &id, const QString &name, const bool &attached)
 {
     WTagLabel *tag = execAppendTagLabel(id, name, attached);
-    if(!m_editMode || checkSpetialPurposeTag(id))
+    if(!m_editMode || checkSpecialPurposeTag(id))
     {
         tag->enableHandCursor(false);
     }
@@ -95,7 +95,7 @@ void WTagContainer::appendTag(const hacc::TDBID &id, const QString &name, const 
 
 void WTagContainer::tagClicked(const hacc::TDBID &tagID)
 {
-    if(!checkSpetialPurposeTag(tagID))
+    if(!checkSpecialPurposeTag(tagID))
     {
         bool contains = m_tagIDList.contains(tagID);
         if(contains)

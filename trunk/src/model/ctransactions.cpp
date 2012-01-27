@@ -419,7 +419,7 @@ void CTransactions::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CTransactions::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CTransactions::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     switch(tagID)
     {

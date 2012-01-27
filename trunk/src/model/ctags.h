@@ -33,7 +33,7 @@ public:
     QAction * addAction();
     //! @}
     QString tagName(const hacc::TDBID & id);
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
 
 public slots:
     void add();

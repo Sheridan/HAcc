@@ -37,7 +37,7 @@ public:
     void removeEnumeratedType(const hacc::TDBID & enumeratedThingTypeID);
     void removeManufacturer(const hacc::TDBID & manufacturerID);
     QString thingName(const hacc::TDBID & id);
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();
 

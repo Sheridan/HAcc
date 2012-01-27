@@ -95,7 +95,7 @@ void CManufacturers::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CManufacturers::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CManufacturers::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     Q_UNUSED(tagID);
     return false;

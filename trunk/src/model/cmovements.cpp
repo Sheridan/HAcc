@@ -154,7 +154,7 @@ void CMovements::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CMovements::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CMovements::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     switch(tagID)
     {

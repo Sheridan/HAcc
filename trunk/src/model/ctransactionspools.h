@@ -29,7 +29,7 @@ public:
     void remove(const hacc::TDBID & id);
     void edit(const hacc::TDBID & id);
     void tagsEdit(const hacc::TDBID & id);
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();
     //! @ingroup singletoneQActionsGenerators

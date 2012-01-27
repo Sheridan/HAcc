@@ -154,7 +154,7 @@ void CThings::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CThings::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CThings::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     switch(tagID)
     {

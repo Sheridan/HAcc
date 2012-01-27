@@ -31,7 +31,7 @@ public:
     QAction * addAction();
     //! @}
     QString manufacturerName(const hacc::TDBID & id);     //!< Имя производителя
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();
 

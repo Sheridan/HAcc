@@ -218,7 +218,7 @@ void CTransactionsPools::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CTransactionsPools::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CTransactionsPools::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     switch(tagID)
     {

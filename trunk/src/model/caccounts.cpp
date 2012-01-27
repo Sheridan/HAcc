@@ -112,7 +112,7 @@ void CAccounts::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CAccounts::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CAccounts::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     Q_UNUSED(tagID);
     return false;

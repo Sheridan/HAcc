@@ -1,5 +1,5 @@
 #include "ciconscache.h"
-#include "spetial_tags_types.h"
+#include "special_tags_types.h"
 #include "icons.h"
 namespace tools
 {

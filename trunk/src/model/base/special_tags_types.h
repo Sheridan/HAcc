@@ -1,8 +1,8 @@
 /**
   \author Горлов Максим <sheridan@sheridan-home.ru
   */
-#ifndef SPETIAL_TAGS_TYPES_H
-#define SPETIAL_TAGS_TYPES_H
+#ifndef SPECIAL_TAGS_TYPES_H
+#define SPECIAL_TAGS_TYPES_H
 
 #define HACC_TAG_ID_SERVICE       1
 #define HACC_TAG_ID_OBJECT        2
@@ -19,4 +19,4 @@
 #define HACC_TAG_ID_OUTGOING     13
 
 
-#endif // SPETIAL_TAGS_TYPES_H
+#endif // SPECIAL_TAGS_TYPES_H

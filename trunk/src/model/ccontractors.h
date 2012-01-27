@@ -41,7 +41,7 @@ public:
     QAction * addAction();
     QAction * addSelfAction();
     //! @}
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();
 

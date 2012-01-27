@@ -49,7 +49,7 @@ protected:
     virtual hacc::TDBID itemID() = 0;
     virtual hacc::model::TItemTags & itemTags() = 0;
     virtual void commitEvent() = 0;
-    virtual bool checkSpetialPurposeTag(const hacc::TDBID &tagID) = 0;
+    virtual bool checkSpecialPurposeTag(const hacc::TDBID &tagID) = 0;
     void tagAttachEvent(const hacc::TDBID &tagID, const hacc::TDBID &columnID);
     void tagDetachEvent(const hacc::TDBID &tagID, const hacc::TDBID &columnID);
 

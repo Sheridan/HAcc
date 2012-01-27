@@ -292,7 +292,7 @@ HEADERS += src/ui/fmainwindow.h \
     src/ui/widgets/items/wexpandedvaluablebase.h \
     src/ui/widgets/items/wexpandedvaluablecontainer.h \
     src/ui/widgets/items/wexpandedvaluableitem.h \
-    src/model/base/spetial_tags_types.h \
+    src/model/base/special_tags_types.h \
     src/ui/forms/ftransactionpoolthingedit.h \
     src/tools/cdbiconscache.h \
     src/tools/ciconscache.h \
@@ -384,4 +384,4 @@ OTHER_FILES += \
     res/styles/item.qss \
     res/styles/taglabel.qss \
     res/lang/ru.ts \
-    doc/Doxyfile 
+    doc/Doxyfile

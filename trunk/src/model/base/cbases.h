@@ -9,7 +9,7 @@
 #include <QMessageBox>
 #include "hacc_types.h"
 #include "actions.h"
-#include "spetial_tags_types.h"
+#include "special_tags_types.h"
 //! Пространство проекта
 namespace hacc
 {

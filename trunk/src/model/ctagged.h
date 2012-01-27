@@ -50,7 +50,7 @@ public:
     const QString &tagTable  () const;                                 //!< Имя управляемой таблицы
     const QString &itemColumn() const;                                 //!< Имя столбца идентификатора записи таблицы
     const QString &selectSelfTagsQuery() const;                        //!< Текст SQL запрса для выборки только "своих" тегов
-    virtual bool checkSpetialPurposeTag(const hacc::TDBID &tagID) = 0; //!< Проверка тега на причастность к "специальным" тегам
+    virtual bool checkSpecialPurposeTag(const hacc::TDBID &tagID) = 0; //!< Проверка тега на причастность к "специальным" тегам
     QString whereTagsInPurposeTags();                                  //!< Возвращает where часть sql запроса для выборки специальных тегов
     virtual QString purposeTagsIDString() = 0;                         //!< Должна вернуть ID специальных тегов, перечисленных через запятую. @see whereTagsInPurposeTags()
     virtual bool    hasPurposeTags() = 0;                              //!< Есть ли для сущности специальныеметки

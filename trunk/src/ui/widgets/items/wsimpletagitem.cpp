@@ -28,7 +28,7 @@ void WSimpleTagItem::setItemData(const QString &name)
 void WSimpleTagItem::assignActions()
 {
     controlLabel(0, 0)->addAction(hacc::model::CTag::editAction());
-    if(!HACC_TAGS->checkSpetialPurposeTag(itemID())) // Неизменные теги. Трогать нельзя.
+    if(!HACC_TAGS->checkSpecialPurposeTag(itemID())) // Неизменные теги. Трогать нельзя.
     {
         controlLabel(0, 0)->addAction(hacc::model::CTag::removeAction());
     }

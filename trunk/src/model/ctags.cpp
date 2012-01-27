@@ -90,15 +90,15 @@ void CTags::eachTagTableExecute(const QString &sql, const QVariantList &parametr
     }
 }
 
-bool CTags::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CTags::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     return
-            HACC_ACCOUNTS          ->checkSpetialPurposeTag(tagID) ||
-            HACC_CONTRACTORS       ->checkSpetialPurposeTag(tagID) ||
-            HACC_MANUFACTURERS     ->checkSpetialPurposeTag(tagID) ||
-            HACC_THINGS            ->checkSpetialPurposeTag(tagID) ||
-            HACC_TRANSACTIONS      ->checkSpetialPurposeTag(tagID) ||
-            HACC_TRANSACTIONS_POOLS->checkSpetialPurposeTag(tagID);
+            HACC_ACCOUNTS          ->checkSpecialPurposeTag(tagID) ||
+            HACC_CONTRACTORS       ->checkSpecialPurposeTag(tagID) ||
+            HACC_MANUFACTURERS     ->checkSpecialPurposeTag(tagID) ||
+            HACC_THINGS            ->checkSpecialPurposeTag(tagID) ||
+            HACC_TRANSACTIONS      ->checkSpecialPurposeTag(tagID) ||
+            HACC_TRANSACTIONS_POOLS->checkSpecialPurposeTag(tagID);
 }
 
 

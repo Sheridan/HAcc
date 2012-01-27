@@ -40,7 +40,7 @@ public:
     void cleanAfterRemoveTransactionPool(const hacc::TDBID & poolId);   //!< Очистка после удаления пула транзакций
     void removeUncommitedTransactions();
     void cleanAfterThingRemove(const hacc::TDBID & thingID);
-    bool checkSpetialPurposeTag(const hacc::TDBID &tagID);
+    bool checkSpecialPurposeTag(const hacc::TDBID &tagID);
     QString purposeTagsIDString();
     bool    hasPurposeTags();
     hacc::TDBID addOnlyTransactionBase(const hacc::TDBID & poolId, const hacc::TMoney &money);

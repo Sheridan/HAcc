@@ -76,17 +76,17 @@ QString CEnumeratedThingTypes::thingEnumerateTypeName(const hacc::TDBID & id)
 
 hacc::TDBID CEnumeratedThingTypes::maxDBID() { return HACC_DB->nextID("thing_enumerated_types"); }
 
-bool CEnumeratedThingTypes::checkSpetialEnumeratedType(const hacc::TDBID &typeID)
+bool CEnumeratedThingTypes::checkSpecialEnumeratedType(const hacc::TDBID &typeID)
 {
-    return typeID <= HACC_THING_SPETIAL_ENUMERATE_MAX;
+    return typeID <= HACC_THING_SPECIAL_ENUMERATE_MAX;
 }
 
 bool CEnumeratedThingTypes::checkDivisibleEnumeratedType(const hacc::TDBID &typeID)
 {
     switch(typeID)
     {
-        case HACC_THING_SPETIAL_ENUMERATE_ITEMS:
-        case HACC_THING_SPETIAL_ENUMERATE_TIMES:
+        case HACC_THING_SPECIAL_ENUMERATE_ITEMS:
+        case HACC_THING_SPECIAL_ENUMERATE_TIMES:
             return true;
     }
     return false;

@@ -198,7 +198,7 @@ void CValuables::tagsEdit(const hacc::TDBID & id)
     delete dialog;
 }
 
-bool CValuables::checkSpetialPurposeTag(const hacc::TDBID &tagID)
+bool CValuables::checkSpecialPurposeTag(const hacc::TDBID &tagID)
 {
     switch(tagID)
     {

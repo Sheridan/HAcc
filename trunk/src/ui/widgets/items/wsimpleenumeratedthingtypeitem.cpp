@@ -49,7 +49,7 @@ hacc::TDBID WSimpleEnumeratedThingTypeItem::itemID()
 
 void WSimpleEnumeratedThingTypeItem::assignActions()
 {
-    if(!HACC_ENUMERATED_THING_TYPES->checkSpetialEnumeratedType(itemID()))
+    if(!HACC_ENUMERATED_THING_TYPES->checkSpecialEnumeratedType(itemID()))
     {
         controlLabel(0, 0)->addAction(hacc::model::CEnumeratedThingType::editAction());
         controlLabel(0, 0)->addAction(hacc::model::CEnumeratedThingType::removeAction());
