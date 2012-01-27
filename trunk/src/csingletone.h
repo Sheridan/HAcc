@@ -89,6 +89,8 @@ class CSingleTone
 
 private:
     CApplication *m_application;
+    CSingleTone(const CSingleTone&);
+    CSingleTone& operator=(const CSingleTone&);
 
 public:
     CSingleTone();

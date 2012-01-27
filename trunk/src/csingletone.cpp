@@ -71,3 +71,9 @@ CApplication *CSingleTone::application()
     return m_application;
 }
 
+CSingleTone::CSingleTone(const CSingleTone&) {}
+CSingleTone & CSingleTone::operator=(const CSingleTone&)
+{
+//    Q_UNUSED(s);
+    return *this;
+}
