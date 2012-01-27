@@ -26,7 +26,7 @@ private:
     void mousePressEvent ( QMouseEvent * ev );
 
 protected:
-    virtual void mouseClickEvent() {};
+    virtual void mouseClickEvent() {}
 
 signals:
     void clicked();

@@ -69,22 +69,22 @@ class CSingletone
 {
     //! @name Объекты-синглтоны
     //! @{
-    HACC_SIMPLE_ST(tools::db::CDatabase              , db                  );
-    HACC_SIMPLE_ST(tools::icons::CDBIconsCache       , dbIcons             );
-    HACC_SIMPLE_ST(tools::icons::CIconsCache         , icons               );
-    HACC_SIMPLE_ST(ui::form::FMainWindow             , window              );
-    HACC_SIMPLE_ST(hacc::model::CTags                , tags                );
-    HACC_SIMPLE_ST(hacc::model::CThings              , things              );
-    HACC_SIMPLE_ST(hacc::model::CAccounts            , accounts            );
-    HACC_SIMPLE_ST(hacc::model::CValuables           , valuables           );
-    HACC_SIMPLE_ST(hacc::model::CMovements           , movements           );
-    HACC_SIMPLE_ST(hacc::model::CCurrencyes          , currencyes          );
-    HACC_SIMPLE_ST(hacc::model::CContractors         , contractors         );
-    HACC_SIMPLE_ST(hacc::model::CTransactions        , transactions        );
-    HACC_SIMPLE_ST(hacc::model::CManufacturers       , manufacturers       );
-    HACC_SIMPLE_ST(hacc::model::CTransactionsPools   , transactionsPools   );
-    HACC_SIMPLE_ST(hacc::model::CEnumeratedThingTypes, enumeratedThingTypes);
-    HACC_PRECREATED_ST(tools::options::COptions      , options             );
+    HACC_SIMPLE_ST(tools::db::CDatabase              , db                  )
+    HACC_SIMPLE_ST(tools::icons::CDBIconsCache       , dbIcons             )
+    HACC_SIMPLE_ST(tools::icons::CIconsCache         , icons               )
+    HACC_SIMPLE_ST(ui::form::FMainWindow             , window              )
+    HACC_SIMPLE_ST(hacc::model::CTags                , tags                )
+    HACC_SIMPLE_ST(hacc::model::CThings              , things              )
+    HACC_SIMPLE_ST(hacc::model::CAccounts            , accounts            )
+    HACC_SIMPLE_ST(hacc::model::CValuables           , valuables           )
+    HACC_SIMPLE_ST(hacc::model::CMovements           , movements           )
+    HACC_SIMPLE_ST(hacc::model::CCurrencyes          , currencyes          )
+    HACC_SIMPLE_ST(hacc::model::CContractors         , contractors         )
+    HACC_SIMPLE_ST(hacc::model::CTransactions        , transactions        )
+    HACC_SIMPLE_ST(hacc::model::CManufacturers       , manufacturers       )
+    HACC_SIMPLE_ST(hacc::model::CTransactionsPools   , transactionsPools   )
+    HACC_SIMPLE_ST(hacc::model::CEnumeratedThingTypes, enumeratedThingTypes)
+    HACC_PRECREATED_ST(tools::options::COptions      , options             )
     //! @}
 
 private:

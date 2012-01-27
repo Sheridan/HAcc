@@ -13,6 +13,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование валюты
 class FCurrencyEdit : public QDialog
 {
     Q_OBJECT

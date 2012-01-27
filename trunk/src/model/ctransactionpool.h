@@ -11,11 +11,11 @@ namespace hacc
 namespace model
 {
 
-//! Сущность. Пул транзакций
+//! Сущность. Пул транзакций, чек
 class CTransactionPool : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(transactionPool);
+    HACC_MODEL_BASE_EVENTS_DECLARE(transactionPool)
 public:
     CTransactionPool();
     //! @ingroup recordsQActionsGenerators

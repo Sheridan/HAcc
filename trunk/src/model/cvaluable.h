@@ -15,7 +15,7 @@ namespace model
 class CValuable : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(valuable);
+    HACC_MODEL_BASE_EVENTS_DECLARE(valuable)
 public:
     CValuable();
     //! @ingroup recordsQActionsGenerators

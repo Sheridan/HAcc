@@ -15,7 +15,7 @@ namespace model
 class CAccount : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(account);
+    HACC_MODEL_BASE_EVENTS_DECLARE(account)
 public:
     CAccount();
     //! @ingroup recordsQActionsGenerators

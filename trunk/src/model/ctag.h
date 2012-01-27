@@ -15,7 +15,7 @@ namespace model
 class CTag : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(tag);
+    HACC_MODEL_BASE_EVENTS_DECLARE(tag)
 public:
     CTag();
     //! @ingroup recordsQActionsGenerators

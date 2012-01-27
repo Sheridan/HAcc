@@ -15,7 +15,7 @@ namespace model
 class CThing : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(thing);
+    HACC_MODEL_BASE_EVENTS_DECLARE(thing)
 public:
     CThing();
     //! @ingroup recordsQActionsGenerators

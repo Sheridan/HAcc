@@ -13,7 +13,7 @@ namespace model
 class CContractor : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(contractor);
+    HACC_MODEL_BASE_EVENTS_DECLARE(contractor)
 public:
     CContractor();
     //! @ingroup recordsQActionsGenerators

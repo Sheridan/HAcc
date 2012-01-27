@@ -15,7 +15,7 @@ namespace model
 class CManufacturer : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(manufacturer);
+    HACC_MODEL_BASE_EVENTS_DECLARE(manufacturer)
 public:
     CManufacturer();
     //! @ingroup recordsQActionsGenerators

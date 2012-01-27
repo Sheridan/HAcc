@@ -14,6 +14,7 @@ namespace ui
 namespace form
 {
 
+//! Диалог. Редактирование транзакции-подарка
 class FTransactionGiftEdit : public QDialog
 {
     Q_OBJECT

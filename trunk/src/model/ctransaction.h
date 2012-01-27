@@ -11,11 +11,11 @@ namespace hacc
 namespace model
 {
 
-//! Сущность. Транзакция
+//! Сущность. Транзакция.
 class CTransaction : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(transaction);
+    HACC_MODEL_BASE_EVENTS_DECLARE(transaction)
 public:
     CTransaction();
     //! @ingroup recordsQActionsGenerators

@@ -15,7 +15,7 @@ namespace model
 class CEnumeratedThingType : public base::CBase
 {
     Q_OBJECT
-    HACC_MODEL_BASE_EVENTS_DECLARE(enumeratedThingType);
+    HACC_MODEL_BASE_EVENTS_DECLARE(enumeratedThingType)
 public:
     CEnumeratedThingType();
     //! @ingroup recordsQActionsGenerators
