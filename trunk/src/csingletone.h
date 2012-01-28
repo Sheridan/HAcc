@@ -95,7 +95,7 @@ private:
 public:
     CSingletone();
     ~CSingletone();
-    void setCommandLine(int & argc, char ** argv); //!< Обработка коммандной строки
+    void run(int & argc, char ** argv); //!< Обработка коммандной строки
     CApplication *application();
 
     static CSingletone *instance();                //!< Экземпляр синглтона.

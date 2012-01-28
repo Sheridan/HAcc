@@ -4,6 +4,7 @@
 #include <QHeaderView>
 #include "doptions.h"
 #include "hacc_options.h"
+#include "hacc_debug.h"
 #include "st.h"
 
 namespace tools
@@ -11,8 +12,10 @@ namespace tools
 namespace options
 {
 
-COptions::COptions() : QSettings()
-{}
+COptions::COptions() : QSettings(HACC_APPLICATION)
+{
+    HACC_DEBUG("Options filename: " << fileName())
+}
 
 COptions::~COptions()
 {
@@ -24,6 +27,11 @@ QVariant COptions::sectionValue ( const QString & section, const QString & key, 
     beginGroup ( section );
     QVariant result = value ( key, defaultValue );
     endGroup();
+    HACC_DEBUG("Option read. "
+               "Section: " << section      << "; " <<
+               "Key: "     << key          << "; " <<
+               "Default: " << defaultValue << "; " <<
+               "Result: "  << result       << ";");
     return result;
 }
 
@@ -33,7 +41,19 @@ void COptions::setSectionValue ( const QString & section, const QString & key, c
     setValue ( key, value );
     endGroup();
     sync();
+    HACC_DEBUG("Option save. "
+               "Section: " << section      << "; " <<
+               "Key: "     << key          << "; " <<
+               "Value: "   << value        << "; ");
     emit optionChanged(section, key, value);
+}
+
+bool COptions::exists(const QString & section, const QString & key)
+{
+    beginGroup ( section );
+    bool result = contains(key);
+    endGroup();
+    return result;
 }
 
 QString COptions::text(const QString & section, const QString & key, const QString & value)
@@ -46,6 +66,7 @@ void COptions::setText(const QString & section, const QString & key, const QStri
     setSectionValue(section, key, value.toUtf8().toBase64());
 }
 
+// ------------------------------------------  QWidget ---------------------------------------------------------
 void COptions::restoreState(QWidget *widget)
 {
     beginGroup ( "Widgets" );
@@ -57,6 +78,7 @@ void COptions::restoreState(QWidget *widget)
                                )
                        ).toPoint());
     widget->restoreGeometry(value(QString("%1_size").arg(widget->objectName()), QByteArray()).toByteArray());
+    HACC_DEBUG("Option restore state. Widget: " << widget);
     endGroup();
 }
 
@@ -66,9 +88,16 @@ void COptions::saveState(QWidget *widget)
     setValue(QString("%1_size").arg(widget->objectName()), widget->size());
     setValue(QString("%1_position").arg(widget->objectName()), widget->pos());
     setValue(QString("%1_geometry").arg(widget->objectName()), widget->saveGeometry());
+    HACC_DEBUG("Option save state. Widget: " << widget);
     endGroup();
 }
 
+bool COptions::existsState(QWidget *widget)
+{
+    return exists("Widgets", QString("%1_size").arg(widget->objectName()));
+}
+
+// ------------------------------------------  QMainWindow ---------------------------------------------------------
 void COptions::restoreState(QMainWindow *mw)
 {
     restoreState(static_cast<QWidget *>(mw));
@@ -85,24 +114,31 @@ void COptions::saveState(QMainWindow *mw)
     saveState(static_cast<QWidget *>(mw));
 }
 
-void COptions::restoreState(QTableWidget *tw)
+bool COptions::existsState(QMainWindow *mw)
 {
-    restoreState(static_cast<QWidget *>(tw));
-    beginGroup ( "Tables" );
-    tw->horizontalHeader()->restoreState(value(QString("%1_%2_hh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), QByteArray()).toByteArray());
-    tw->verticalHeader()->restoreState(value(QString("%1_%2_vh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), QByteArray()).toByteArray());
-    endGroup();
+    return exists("Windows", QString("%1_state").arg(mw->objectName()));
 }
 
-void COptions::saveState(QTableWidget *tw)
-{
-    beginGroup ( "Tables" );
-    setValue(QString("%1_%2_hh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), tw->horizontalHeader()->saveState());
-    setValue(QString("%1_%2_vh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), tw->verticalHeader()->saveState());
-    endGroup();
-    saveState(static_cast<QWidget *>(tw));
-}
+// ------------------------------------------  QTableWidget ---------------------------------------------------------
+//void COptions::restoreState(QTableWidget *tw)
+//{
+//    restoreState(static_cast<QWidget *>(tw));
+//    beginGroup ( "Tables" );
+//    tw->horizontalHeader()->restoreState(value(QString("%1_%2_hh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), QByteArray()).toByteArray());
+//    tw->verticalHeader()->restoreState(value(QString("%1_%2_vh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), QByteArray()).toByteArray());
+//    endGroup();
+//}
 
+//void COptions::saveState(QTableWidget *tw)
+//{
+//    beginGroup ( "Tables" );
+//    setValue(QString("%1_%2_hh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), tw->horizontalHeader()->saveState());
+//    setValue(QString("%1_%2_vh_state").arg(tw->parent()->objectName()).arg(tw->objectName()), tw->verticalHeader()->saveState());
+//    endGroup();
+//    saveState(static_cast<QWidget *>(tw));
+//}
+
+// ------------------------------------------   ---------------------------------------------------------
 QStringList COptions::sectionKeys(const QString & section)
 {
     beginGroup ( section );

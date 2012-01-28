@@ -52,7 +52,7 @@ private:
     void appendAction(QAction *a);
 
     template <typename TContainerBase> void addMdiSubWindow(const QString &title, const QIcon &icon);
-    template <typename TContainerBase> void addDock(const QString &title, const QIcon &icon);
+    template <typename TContainerBase> QDockWidget * addDock(const QString &title, const QIcon &icon, QDockWidget *tabWith = NULL);
 
 private slots:
     void newEnumeratedThingTypeBaseMdiChild();

@@ -126,7 +126,7 @@ template <typename TContainerBase> void FMainWindow::addMdiSubWindow(const QStri
     sw->show();
 }
 
-template <typename TContainerBase> void FMainWindow::addDock(const QString &title, const QIcon &icon)
+template <typename TContainerBase> QDockWidget * FMainWindow::addDock(const QString &title, const QIcon &icon, QDockWidget *tabWith)
 {
     ui::dock::TDWContainerBase<TContainerBase> *dw = new ui::dock::TDWContainerBase<TContainerBase>(title, icon, this);
     dw->init();
@@ -135,7 +135,15 @@ template <typename TContainerBase> void FMainWindow::addDock(const QString &titl
     a->setIcon(icon);
     a->setToolTip(title);
     appendAction(a);
-    addDockWidget(Qt::TopDockWidgetArea, dw);
+    if(!tabWith)
+    {
+        addDockWidget(Qt::TopDockWidgetArea, dw);
+    }
+    else
+    {
+        tabifyDockWidget(tabWith, dw);
+    }
+    return dw;
 }
 
 void FMainWindow::changeViewMode(bool mdi)
@@ -172,14 +180,14 @@ void FMainWindow::changeViewMode(bool mdi)
         m_transactionPoolBase->buildUi();
         m_transactionPoolBase->container()->refresh();
         setCentralWidget(m_transactionPoolBase);
-        addDock<ui::item::expanded::WExpandedThingBase          > (tr("Things"),                   HACC_ICONS->icon(tools::icons::iThing)       );
-        addDock<ui::item::simple::WSimpleTagBase                > (tr("Tags"),                     HACC_ICONS->icon(tools::icons::iTag)         );
-        addDock<ui::item::expanded::WExpandedContractorBase     > (tr("Contractors"),              HACC_ICONS->icon(tools::icons::iContractor)  );
-        addDock<ui::item::expanded::WExpandedManufacturerBase   > (tr("Manufacturers"),            HACC_ICONS->icon(tools::icons::iManufacturer));
-        addDock<ui::item::simple::WSimpleEnumeratedThingTypeBase> (tr("Things enumeration types"), HACC_ICONS->icon(tools::icons::iEnumerated)  );
-        addDock<ui::item::expanded::WExpandedValuableBase       > (tr("Valuables"),                HACC_ICONS->icon(tools::icons::iValuable)    );
-        addDock<ui::item::simple::WSimpleMovementBase           > (tr("Movement"),                 HACC_ICONS->icon(tools::icons::iMovement)    );
-        addDock<ui::item::simple::WSimpleCurrencyBase           > (tr("Currency"),                 HACC_ICONS->icon(tools::icons::iCurrency)    );
+        QDockWidget * et =     addDock<ui::item::expanded::WExpandedThingBase          > (tr("Things"),                   HACC_ICONS->icon(tools::icons::iThing)       );
+        QDockWidget * st =     addDock<ui::item::simple::WSimpleTagBase                > (tr("Tags"),                     HACC_ICONS->icon(tools::icons::iTag)         );
+        QDockWidget * ec =     addDock<ui::item::expanded::WExpandedContractorBase     > (tr("Contractors"),              HACC_ICONS->icon(tools::icons::iContractor)  );
+        /*QDockWidget * em = */addDock<ui::item::expanded::WExpandedManufacturerBase   > (tr("Manufacturers"),            HACC_ICONS->icon(tools::icons::iManufacturer), ec);
+        /*QDockWidget * se = */addDock<ui::item::simple::WSimpleEnumeratedThingTypeBase> (tr("Things enumeration types"), HACC_ICONS->icon(tools::icons::iEnumerated)  , st);
+        /*QDockWidget * ev = */addDock<ui::item::expanded::WExpandedValuableBase       > (tr("Valuables"),                HACC_ICONS->icon(tools::icons::iValuable)    , et);
+        /*QDockWidget * sm = */addDock<ui::item::simple::WSimpleMovementBase           > (tr("Movement"),                 HACC_ICONS->icon(tools::icons::iMovement)    , et);
+        /*QDockWidget * sc = */addDock<ui::item::simple::WSimpleCurrencyBase           > (tr("Currency"),                 HACC_ICONS->icon(tools::icons::iCurrency)    , st);
     }
     HACC_RESTORE_DIALOG;
 }

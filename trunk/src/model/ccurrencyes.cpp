@@ -35,20 +35,19 @@ void CCurrencyes::remove(const hacc::TDBID & id)
 {
     if(id > 0)
     {
-        //! \todo Не забыть удалить счет "Ничто"
-//        QSqlQuery q = HACC_DB->query("select name from contractors where id=?", QVariantList() << id);
-//        q.next();
-//        if(QMessageBox::question(
-//                HACC_WINDOW,
-//                tr("Contractor remove"),
-//                tr("You sure you want to delete '%1' contractor with her accounts?").arg(HACC_DB_2_STRG(q, 0)),
-//                QMessageBox::Yes | QMessageBox::No)
-//            == QMessageBox::Yes)
-//        {
-//            HACC_DB->exec("delete from contractors where id=?", QVariantList() << id);
-//            HACC_ACCOUNTS->removeContractorAccounts(id);
-//            emit removed(id);
-//        }
+        //! \todo Придумать что делать, ежели есть операции с данной валютой
+        QSqlQuery q = HACC_DB->query("select name from currencyes where id=?", QVariantList() << id);
+        q.next();
+        if(QMessageBox::question(
+                HACC_WINDOW,
+                tr("Currency remove"),
+                tr("You sure you want to delete '%1' currency?").arg(HACC_DB_2_STRG(q, 0)),
+                QMessageBox::Yes | QMessageBox::No)
+            == QMessageBox::Yes)
+        {
+            HACC_DB->exec("delete from currencyes where id=?", QVariantList() << id);
+            emit removed(id);
+        }
     }
 }
 

@@ -33,6 +33,7 @@ public:
     void        setSectionValue    (const QString & section, const QString & key, const QVariant & value        = QVariant() );
     QString     text               (const QString & section, const QString & key, const QString  & value        = QString () );
     void        setText            (const QString & section, const QString & key, const QString  & value);
+    bool        exists             (const QString & section, const QString & key);
     //! @}
     //! @name Настройки, хранящиеся в БД
     //! @{
@@ -44,10 +45,12 @@ public:
     //! @{
     void        restoreState       (QWidget  *widget);
     void        restoreState       (QMainWindow  *mw);
-    void        restoreState       (QTableWidget *tw);
+//    void        restoreState       (QTableWidget *tw);
     void        saveState          (QWidget  *widget);
     void        saveState          (QMainWindow  *mw);
-    void        saveState          (QTableWidget *tw);
+//    void        saveState          (QTableWidget *tw);
+    bool        existsState        (QWidget *widget);
+    bool        existsState        (QMainWindow *mw);
     //! @}
 
     void checkFirstStart(); //!< Проверка на первый запуск, вызывается после создания БД

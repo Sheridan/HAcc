@@ -8,22 +8,6 @@ CSingletone::CSingletone()
     HACC_DEBUG_CLASS_INFO("new CSingletone [" << singletone_instance << "]");
 
     m_application = NULL;
-    init_options();
-    init_db();
-    init_tags();
-    init_accounts();
-    init_valuables();
-    init_movements();
-    init_currencyes();
-    init_contractors();
-    init_things();
-    init_transactions();
-    init_manufacturers();
-    init_transactionsPools();
-    init_enumeratedThingTypes();
-    init_dbIcons();
-    init_icons();
-    init_window();
 }
 
 CSingletone::~CSingletone()
@@ -60,9 +44,25 @@ CSingletone *CSingletone::instance()
     return new CSingletone();
 }
 
-void CSingletone::setCommandLine(int & argc, char ** argv)
+void CSingletone::run(int & argc, char ** argv)
 {
     m_application = new CApplication(argc, argv);
+    init_options();
+    init_db();
+    init_tags();
+    init_accounts();
+    init_valuables();
+    init_movements();
+    init_currencyes();
+    init_contractors();
+    init_things();
+    init_transactions();
+    init_manufacturers();
+    init_transactionsPools();
+    init_enumeratedThingTypes();
+    init_dbIcons();
+    init_icons();
+    init_window();
 }
 
 CApplication *CSingletone::application()

@@ -75,6 +75,7 @@ void CContractors::remove(const hacc::TDBID & id)
         {
             HACC_DB->exec("delete from contractors where id=?", QVariantList() << id);
             HACC_ACCOUNTS->removeContractorAccounts(id);
+            detachTags(id);
             emit removed(id);
         }
     }

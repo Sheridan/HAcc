@@ -38,15 +38,14 @@ hacc::TDBID CBases::nextID()
 */
 QAction * CBases::constructAction(EActionsTypes atype, const hacc::TDBID &id, QObject *reciever, const char * method)
 {
-    if(m_actions[atype][id] == NULL)
+    QAction *& action = m_actions[atype][id];
+    if(action == NULL)
     {
-        QAction *gAction = generateAction(atype, reciever, method);
-        gAction->setEnabled(HACC_DB->isOpen());
-        connect(HACC_DB, SIGNAL(stateChange(bool)), gAction, SLOT(setEnabled(bool)));
-        m_actions[atype][id] = gAction;
-
+        action = generateAction(atype, reciever, method);
+        action->setEnabled(HACC_DB->isOpen());
+        connect(HACC_DB, SIGNAL(stateChange(bool)), action, SLOT(setEnabled(bool)));
     }
-    return m_actions[atype][id];
+    return action;
 }
 
 QAction * CBases::addAction     (const hacc::TDBID &id, QObject *reciever, const char * method) { return constructAction(atAdd     , id, reciever, method); }

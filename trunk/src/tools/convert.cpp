@@ -1,6 +1,7 @@
 #include "convert.h"
 #include <QRegExp>
 #include <QStringList>
+//#include <QLocale>
 
 namespace tools
 {
@@ -16,6 +17,7 @@ QString datetimeToTimeString(const QDateTime &datetime) { return datetime.toStri
 
 hacc::TMoney stringToMoney(QString string)
 {
+//    QChar a = QLocale::decimalPoint();
     return static_cast<hacc::TMoney>
             (
                 string.replace(",", ".")

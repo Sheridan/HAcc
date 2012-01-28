@@ -64,6 +64,7 @@ void CAccounts::remove(const hacc::TDBID & id)
                 В общем надо спросить пользователя.
               */
             HACC_DB->exec("delete from accounts where id=?", QVariantList() << id);
+            detachTags(id);
             emit removed(id);
         }
     }
@@ -76,6 +77,7 @@ void CAccounts::removeContractorAccounts(const hacc::TDBID & contractorID)
     HACC_DB->exec("delete from accounts where contractor_id=?", QVariantList() << contractorID);
     foreach(hacc::TDBID id, list)
     {
+        detachTags(id);
         emit removed(id);
     }
 }
