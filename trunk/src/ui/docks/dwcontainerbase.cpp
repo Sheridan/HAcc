@@ -17,6 +17,7 @@ DWContainerBase::DWContainerBase(const QString &title, const QIcon &icon, QWidge
     m_ui->setupUi(this);
     setWindowTitle(title);
     setWindowIcon(icon);
+    setObjectName(title);
     m_containerBase = NULL;
 }
 
