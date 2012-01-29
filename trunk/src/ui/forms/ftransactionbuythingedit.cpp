@@ -9,7 +9,7 @@ namespace ui
 namespace form
 {
 
-HACC_STD_TRANSLATE_UI(FTransactionBuyThingEdit, QDialog);
+HACC_STD_TRANSLATE_UI(FTransactionBuyThingEdit, QDialog)
 
 FTransactionBuyThingEdit::FTransactionBuyThingEdit(QWidget *parent) : QDialog(parent), m_ui(new Ui::FTransactionBuyThingEdit)
 {
@@ -20,7 +20,7 @@ FTransactionBuyThingEdit::FTransactionBuyThingEdit(QWidget *parent) : QDialog(pa
 FTransactionBuyThingEdit::FTransactionBuyThingEdit(const hacc::TDBID &id, QWidget *parent) : QDialog(parent), m_ui(new Ui::FTransactionBuyThingEdit)
 {
     init();
-     m_minimumAmount = 0.00001;
+    m_minimumAmount = 0.00001;
     QSqlQuery q = HACC_DB->query("select "
                           /* 0*/ "transactions_things.thing_id, "
                           /* 1*/ "transactions.money, "

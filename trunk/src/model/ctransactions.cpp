@@ -169,6 +169,7 @@ void CTransactions::transactionBuyValuablesAppend(const int &amount             
                                                   const int &transactionType)
 {
     hacc::TDBID valuableID;
+    HACC_PROGRESS->show(tr("Append valuables"), amount);
     for (int i=0; i<amount; i++)
     {
         valuableID = HACC_VALUABLES->addTransactionValuable(transactionID, sourceContractor);
@@ -177,6 +178,7 @@ void CTransactions::transactionBuyValuablesAppend(const int &amount             
         {
             HACC_MOVEMENTS->writeOff(sourceContractor, valuableID, datetime);
         }
+        HACC_PROGRESS->step();
     }
 }
 

@@ -12,6 +12,7 @@
 #define HACC_APPLICATION            HACC_SINGLETONE->application() //!< Приложение
 #define HACC_OPTIONS                HACC_ST(options)               //!< Настройки приложения
 #define HACC_WINDOW                 HACC_ST(window)                //!< Основное окно
+#define HACC_PROGRESS               HACC_ST(progress)              //!< Окошко-прогрессбар для длительных операций
 #define HACC_DB                     HACC_ST(db)                    //!< База данных
 #define HACC_DB_ICONS               HACC_ST(dbIcons)               //!< Иконки из БД
 #define HACC_ICONS                  HACC_ST(icons)                 //!< Иконки из ресурсов

@@ -1,4 +1,5 @@
 #include "ctagged.h"
+#include "hacc_debug.h"
 #include "st.h"
 
 namespace hacc
@@ -24,13 +25,16 @@ CTagged::~CTagged()
 
 TItemTags & CTagged::tags(const hacc::TDBID &columnID)
 {
+//    HACC_DEBUG("Tags request. Table: " << m_table << "; Column: " << m_column << "; id: " << columnID);
     if(!m_tagsMap.contains(columnID))
     {
+        TItemTags & column_tags = m_tagsMap[columnID];
         QSqlQuery q = HACC_DB->query(m_selectSelfTagsQuery, QVariantList() << columnID);
         while(q.next())
         {
-            m_tagsMap[columnID][HACC_DB_2_DBID(q, 0)] = HACC_DB_2_STRG(q, 1);
+            column_tags[HACC_DB_2_DBID(q, 0)] = HACC_DB_2_STRG(q, 1);
         }
+//        HACC_DEBUG("Tags scan. Table: " << m_table << "; Column: " << m_column << "; id: " << columnID);
     }
     return m_tagsMap[columnID];
 }

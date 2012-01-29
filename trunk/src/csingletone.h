@@ -21,6 +21,7 @@
 #include "ctransactionspools.h"
 #include "cenumeratedthingtypes.h"
 #include "ctags.h"
+#include "dprogress.h"
 #include "hacc_debug.h"
 
 //! Объявляет и реализует обычный синглтон
@@ -73,6 +74,7 @@ class CSingletone
     HACC_SIMPLE_ST(tools::icons::CDBIconsCache       , dbIcons             )
     HACC_SIMPLE_ST(tools::icons::CIconsCache         , icons               )
     HACC_SIMPLE_ST(ui::form::FMainWindow             , window              )
+    HACC_SIMPLE_ST(ui::form::DProgress               , progress            )
     HACC_SIMPLE_ST(hacc::model::CTags                , tags                )
     HACC_SIMPLE_ST(hacc::model::CThings              , things              )
     HACC_SIMPLE_ST(hacc::model::CAccounts            , accounts            )
@@ -82,7 +84,7 @@ class CSingletone
     HACC_SIMPLE_ST(hacc::model::CContractors         , contractors         )
     HACC_SIMPLE_ST(hacc::model::CTransactions        , transactions        )
     HACC_SIMPLE_ST(hacc::model::CManufacturers       , manufacturers       )
-    HACC_SIMPLE_ST(hacc::model::CTransactionPools   , transactionsPools   )
+    HACC_SIMPLE_ST(hacc::model::CTransactionPools    , transactionsPools   )
     HACC_SIMPLE_ST(hacc::model::CEnumeratedThingTypes, enumeratedThingTypes)
     HACC_PRECREATED_ST(tools::options::COptions      , options             )
     //! @}

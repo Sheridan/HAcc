@@ -170,7 +170,8 @@ SOURCES += src/main.cpp \
     src/ui/widgets/items/wsimplecurrencyitem.cpp \
     src/ui/widgets/selector/wcurrencyelectbutton.cpp \
     src/ui/widgets/selector/wcurrencyselectpopup.cpp \
-    src/ui/forms/fcurrencyedit.cpp
+    src/ui/forms/fcurrencyedit.cpp \
+    src/ui/forms/dprogress.cpp
 
 HEADERS += src/ui/fmainwindow.h \
     src/tools/db/cdatabase.h \
@@ -337,7 +338,8 @@ HEADERS += src/ui/fmainwindow.h \
     src/ui/widgets/selector/wcurrencyelectbutton.h \
     src/ui/widgets/selector/wcurrencyselectpopup.h \
     src/hacc_options.h \
-    src/ui/forms/fcurrencyedit.h
+    src/ui/forms/fcurrencyedit.h \
+    src/ui/forms/dprogress.h
 
 FORMS += src/ui/fmainwindow.ui \
     src/ui/forms/faccountedit.ui \
@@ -355,7 +357,8 @@ FORMS += src/ui/fmainwindow.ui \
     src/ui/forms/ftransactiongiftedit.ui \
     src/ui/forms/ftransactionbuythingedit.ui \
     src/ui/forms/ftransactionsellthingedit.ui \
-    src/ui/forms/fcurrencyedit.ui
+    src/ui/forms/fcurrencyedit.ui \
+    src/ui/forms/dprogress.ui
 
 INCLUDEPATH += src \
     src/ui \

@@ -12,8 +12,7 @@ CSingletone::CSingletone()
 
 CSingletone::~CSingletone()
 {
-    db()->close();
-
+    destroy_progress();
     destroy_window();
     destroy_icons();
     destroy_dbIcons();
@@ -28,6 +27,7 @@ CSingletone::~CSingletone()
     destroy_manufacturers();
     destroy_transactionsPools();
     destroy_enumeratedThingTypes();
+    db()->close();
     destroy_db();
     destroy_options();
     delete m_application;
@@ -63,6 +63,7 @@ void CSingletone::run(int & argc, char ** argv)
     init_dbIcons();
     init_icons();
     init_window();
+    init_progress();
 }
 
 CApplication *CSingletone::application()
@@ -70,6 +71,7 @@ CApplication *CSingletone::application()
     HACC_DEBUG_CLASS_INFO("->CApplication [" << m_application << "]");
     return m_application;
 }
+
 
 CSingletone::CSingletone(const CSingletone&) {}
 CSingletone & CSingletone::operator=(const CSingletone&)
